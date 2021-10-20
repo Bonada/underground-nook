@@ -5,6 +5,12 @@ const { json } = require('body-parser');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const app = express();
 const port = 3000;
+const https = require('https');
+const fs = require('fs');
+const options = {
+  key: fs.readFileSync('./localhost.pem'),
+  cert: fs.readFileSync('./localhost-key.pem'),
+};
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -14,13 +20,28 @@ app.use(bodyParser.urlencoded({
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://TestUser:TestUserPass@undergroundnook.lh3mc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-  const collection = client.db("UndergroundNook").collection("plants");
-  // perform actions on the collection object
-  client.close();
-});
 
-app.use(express.static(__dirname + '/'));
+async function testgetPlants(){
+    await client.connect();
+    let db = client.db('main');
+    let collection = db.collection('plants');
+    let document = await collection.find();
+    let items = await document.toArray();
+
+    for(plant of items){
+      console.log(plant);
+    }
+    client.close();
+}
+testgetPlants();
+
+// app.use(express.static(__dirname + '/'));
+
+// https.createServer(options, function (req, res) {
+//     // server code
+//     // console.log('Listening on *: 3000')
+//   })
+//   .listen(3000);
 
 app.listen(port, () => {
     console.log('Listening on *: 3000')
