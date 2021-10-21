@@ -12,6 +12,8 @@ const options = {
   cert: fs.readFileSync('./localhost-key.pem'),
 };
 
+require('dotenv').config()
+
 // console.log(options.cert);
 
 app.use(bodyParser.json());
@@ -39,11 +41,11 @@ testgetPlants();
 
 // app.use(express.static(__dirname + '/'));
 
-// app.listen(port, () => {
-//     console.log('Listening on *: 3000')
-// })
+app.listen(port, () => {
+    console.log('Listening on *: 3000')
+})
 
 // Create an HTTP service.
 // http.createServer(app).listen(3000);
 // Create an HTTPS service identical to the HTTP service.
-https.createServer(options, app).listen(3000);
+// https.createServer(options, app).listen(3000);
