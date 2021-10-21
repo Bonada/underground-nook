@@ -12,6 +12,8 @@ const options = {
   cert: fs.readFileSync('./localhost-key.pem'),
 };
 
+// console.log(options.cert);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -37,12 +39,11 @@ testgetPlants();
 
 // app.use(express.static(__dirname + '/'));
 
-// https.createServer(options, function (req, res) {
-//     // server code
-//     // console.log('Listening on *: 3000')
-//   })
-//   .listen(3000);
+// app.listen(port, () => {
+//     console.log('Listening on *: 3000')
+// })
 
-app.listen(port, () => {
-    console.log('Listening on *: 3000')
-})
+// Create an HTTP service.
+// http.createServer(app).listen(3000);
+// Create an HTTPS service identical to the HTTP service.
+https.createServer(options, app).listen(3000);
