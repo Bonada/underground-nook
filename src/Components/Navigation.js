@@ -58,6 +58,15 @@ export default function Navigation() {
         <Route path="/Catalog">
           <Catalog />
         </Route>
+        <Route path="/Cart">
+          <Cart />
+        </Route>
+        <Route path="/Settings">
+          <Settings />
+        </Route>
+        <Route path="/Orders">
+          <Orders />
+        </Route>
       </Switch>
     </Router>
   );
