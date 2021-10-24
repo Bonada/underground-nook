@@ -1,16 +1,19 @@
 const express = require('express');
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
+
 var bodyParser = require('body-parser');
 const { json } = require('body-parser');
-const { GoogleSpreadsheet } = require('google-spreadsheet');
+
 const app = express();
-const port = 3000;
-const https = require('https');
 const fs = require('fs');
-const options = {
-  key: fs.readFileSync('./localhost.pem'),
-  cert: fs.readFileSync('./localhost-key.pem'),
-};
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: 'undergroundnook', 
+  api_key: '197948958869879', 
+  api_secret: 'UDvL3l6lxXSHc6Xdk1hb_nWzDH8' 
+});
+
+const port = 3000;
 
 require('dotenv').config()
 
