@@ -1,9 +1,47 @@
-.App {
-  text-align: center;
+h2 {
+  font-size: calc(6.5px + 2vmin);
+}
+
+p {
+  font-style: italic;
+}
+
+.card-img-top {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+
+.card-title {
+  margin-left: 5%;
+}
+
+p.col {
+  margin: 0;
+  padding-left: 0;
+  margin-right: 5%;
+  font-size: calc(3.5px + 2vmin);
+}
+
+div.cards {
+  max-width: 100%;
+}
+
+.card-text {
+  text-align: right;
+}
+
+.profile {
+  border-radius: 50%;
+  max-width: 62.5%;
+}
+
+.card {
+  color: black;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 15vmin;
   pointer-events: none;
 }
 
@@ -18,9 +56,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+  font-size: calc(8px + 2vmin);
   color: white;
 }
 
