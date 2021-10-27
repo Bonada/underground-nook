@@ -5,7 +5,6 @@ import '../Components/Navigation.css';
 function Settings() {
   return (
     <div className="settings">
-      <h1>Settings Page</h1>
       <div className="container">
         <div className="row">
           <div className="col-sm">
