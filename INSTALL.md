@@ -9,6 +9,5 @@ Then type the following commands:
 'npm install npx' (To install Node.js 5.2)
 'npm install -g create-react-app' (To install React App)
 'npm i react-router-dom'
-'npm install --save bootstrap'
 'npm start'
 In a browser go to http://localhost:3000
