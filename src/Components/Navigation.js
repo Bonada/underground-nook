@@ -11,30 +11,36 @@ import './Navigation.css';
 export default function Navigation() {
   return (
     <Router>
-      <div id="Post-Login_NavBar" class="Post-Login_NavBar">
-      <nav class="navbar navbar-expand-lg ">
+      <div id="Post-Login_NavBar" className="Post-Login_NavBar">
+      <nav className="navbar navbar-expand-lg ">
         <div id="WebsiteTitle">
           <Link to="/">Home</Link>
         </div>
-        <div class = "containerLinks"></div>
-        <i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>
+        <div className = "containerLinks"></div>
+        <i className="fa fa-info-circle fa-lg" aria-hidden="true"></i>
         <div id="Links">
           <Link to="/About">About Us</Link>
         </div>
-        <i class="fa fa-pagelines fa-lg" aria-hidden="true"></i>
+        <i className="fa fa-pagelines fa-lg" aria-hidden="true"></i>
         <div id="Links">
           <Link to="/Catalog">Catalog</Link>
         </div>
-        <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+        <i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
         <div id="Links">
           <Link to="/Cart">Cart</Link>
         </div>
-        <i style={{margin: "0px"}} class="fa fa-user fa-lg" aria-hidden="true"></i>
-        <div class="dropdown">
-          <button class="dropbtn"> Insert Name 
-            <i class="fa fa-caret-down"></i>
+
+    
+        <i style={{margin: "0px"}} className="fa fa-user fa-lg" aria-hidden="true"></i>
+        <div id="Links">
+          <Link to="/Settings">Settings</Link>
+        </div>
+
+        {/* <div className="dropdown">
+          <button className="dropbtn"> Insert Name 
+            <i className="fa fa-caret-down"></i>
           </button>   
-          <div class="dropdown-content">
+          <div className="dropdown-content">
             <div id="DropDown">
               <Link to="/Settings">Settings</Link>
             </div>
@@ -42,7 +48,7 @@ export default function Navigation() {
               <Link to="/Orders">Orders</Link>
             </div>
           </div>
-        </div> 
+        </div>  */}
       </nav>
     </div>
 
