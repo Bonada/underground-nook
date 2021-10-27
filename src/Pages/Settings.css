@@ -25,11 +25,9 @@
     padding-right: 20px;
 }
 
-.submit-button,
-.save-button {
+.btn {
     background: #6AA17B;
     border-radius: 20px;
-    /*box-shadow: #5E5DF0 0 10px 20px -10px;*/
     box-sizing: border-box;
     color: #000000;
     cursor: pointer;
@@ -48,7 +46,7 @@
     border: 0;
 }
 
-.card {
+.card-body {
     background-color: #FBFBEF;
 }
 

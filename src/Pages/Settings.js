@@ -14,14 +14,14 @@ function Settings() {
           <div className="col-sm">
             <label for="fname" className="form-label heading2">First Name</label>
             <br />
-            <input className="input-box" type="text" value="Minying" className="form-control" id="fname" />
+            <input className="input-box" type="text" value="Minying" id="fname" />
             <label for="lname" className="form-label heading2">Last Name</label>
             <br />
-            <input className="input-box" type="text" value="Cao" className="form-control" id="lname" />
+            <input className="input-box" type="text" value="Cao" id="lname" />
             <label for="email" className="form-label heading2">Email</label>
             <br />
-            <input className="input-box" type="email" value="minyingcao12@gmail.com" className="form-control" id="email" />
-            <button className="save-button" type="button" className="btn btn-primary">Save</button>
+            <input className="input-box" type="email" value="minyingcao12@gmail.com" id="email" />
+            <button className="btn btn-primary save-button" type="button">Save</button>
           </div>
         </div>
       </div>
