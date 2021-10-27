@@ -48,7 +48,7 @@ export default function Navigation() {
       </nav>
     </div>
 
-      <hr />
+      {/* <hr /> */}
 
       <Switch>
         <Route exact path="/">
