@@ -1,51 +1,63 @@
 /* CSS for Navbar Component - Both Pre-Login and Post-Login*/
 
-i{
-    color: #E5E5E5; 
-    margin: 5px;
+i {
+    color: #E5E5E5;
+    margin-left: 20px;
+    margin-right: 2px;
 }
-  
-html{
+
+html {
     background-color: #26222E;
 }
 
 /* CSS For the Pre-Login Navbar*/
-.Pre-Login_NavBar{
+.Pre-Login_NavBar {
     background-color: #26222E;
 }
-.Pre-Login_NavBar a#WebsiteTitle{
-    color: #E5E5E5 !important; 
+
+.Pre-Login_NavBar a#WebsiteTitle {
+    color: #E5E5E5 !important;
     font-size: 36px;
     font-family: 'Scope One', serif;
     font-weight: lighter;
 }
+
+a {
+    color: #E5E5E5;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
 a:hover {
     text-decoration: none !important;
+    font-weight: bold !important;
+    color: #E5E5E5
 }
-.Pre-Login_NavBar a#Links{
+
+/* .Pre-Login_NavBar a.Links{
     color: #E5E5E5 !important; 
     font-size: 17px;
     font-family: 'Raleway', sans-serif;
     font-weight: lighter;
     float: right;
     margin-right: 2.5%;
-}
-.Pre-Login_NavBar a#Links:hover {
-    font-weight: bold !important;
-}
-button#NavbarButton{
-    color: #1877F2; 
-    border: 1px solid #1877F2; 
-    box-sizing: border-box; 
+} */
+
+button#NavbarButton {
+    color: #1877F2;
+    border: 1px solid #1877F2;
+    box-sizing: border-box;
     border-radius: 34px;
     /* Centering the Icon 
     display: flex;
     align-items: center;*/
 }
-.containerLinks{
-    margin-left:auto; 
+
+.containerLinks {
+    margin-left: auto;
     margin-right: 0;
 }
+
 button#NavbarButton:hover {
     color: #1877F2 !important;
     background-color: white;
@@ -54,39 +66,46 @@ button#NavbarButton:hover {
 
 
 /* For the Post-Login Navbar*/
-.Post-Login_NavBar{
+.Post-Login_NavBar {
     background-color: #26222E;
 }
-.Post-Login_NavBar a#WebsiteTitle{
-    color: #E5E5E5 !important; 
+
+.Post-Login_NavBar a#WebsiteTitle {
+    color: #E5E5E5 !important;
     font-size: 36px;
     font-family: 'Scope One', serif;
     font-weight: lighter;
 }
+
 a:hover {
     text-decoration: none !important;
 }
-.Post-Login_NavBar a#Links{
-    color: #E5E5E5 !important; 
+
+.Post-Login_NavBar a#Links {
+    color: #E5E5E5 !important;
     font-size: 17px;
     font-family: 'Raleway', sans-serif;
     font-weight: lighter;
     float: right;
     margin-right: 2.5%;
 }
+
 .Post-Login_NavBar a#Links:hover {
     font-weight: bold !important;
 }
-.containerLinks{
-    margin-left:auto; 
+
+.containerLinks {
+    margin-left: auto;
     margin-right: 0;
 }
+
 .dropdown {
     float: left;
     overflow: inherit;
 }
+
 .dropdown .dropbtn {
-    font-size: 16px;  
+    font-size: 16px;
     border: none;
     outline: none;
     color: #E5E5E5;
@@ -95,12 +114,14 @@ a:hover {
     font-family: 'Raleway', sans-serif;
     margin: 0;
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
     min-width: 160px;
     /*box-shadow: 0px 8px 16px 0px #E5E5E5;*/
 }
+
 .dropdown-content link {
     float: none;
     color: #E5E5E5;
@@ -110,9 +131,11 @@ a:hover {
     display: block;
     text-align: left;
 }
+
 .dropdown-content link:hover {
     background-color: transparent;
 }
+
 .dropdown:hover .dropdown-content {
     display: block;
 }

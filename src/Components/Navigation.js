@@ -16,24 +16,20 @@ export default function Navigation() {
         <div id="WebsiteTitle">
           <Link to="/">Home</Link>
         </div>
+
         <div className = "containerLinks"></div>
         <i className="fa fa-info-circle fa-lg" aria-hidden="true"></i>
-        <div id="Links">
+     
+        <div className="Links">
           <Link to="/About">About Us</Link>
         </div>
         <i className="fa fa-pagelines fa-lg" aria-hidden="true"></i>
-        <div id="Links">
+        <div className="Links">
           <Link to="/Catalog">Catalog</Link>
         </div>
         <i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
-        <div id="Links">
+        <div className="Links">
           <Link to="/Cart">Cart</Link>
-        </div>
-
-    
-        <i style={{margin: "0px"}} className="fa fa-user fa-lg" aria-hidden="true"></i>
-        <div id="Links">
-          <Link to="/Settings">Settings</Link>
         </div>
 
         <div className="dropdown">
