@@ -50,13 +50,11 @@ function App() {
         data-layout="rounded"
         data-auto-logout-link="true"
         data-use-continue-as="false"
-        data-onlogin="test()"
         scope="public_profile,email">
       </div>
       <Router>
         <Navigation />
       </Router>
->>>>>>> main
     </div>
     
   );

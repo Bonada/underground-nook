@@ -42,11 +42,20 @@ async function testgetPlants(){
 }
 testgetPlants();
 
+// app.post('/endpoint', async (req, res) => {
+//   try {
+
+//     // Do functionality
+//   } catch (e) {
+//     // Error in endpoint
+//   }
+// });
+
 // app.use(express.static(__dirname + '/'));
 
 app.listen(port, () => {
     console.log('Listening on *: 3000')
-})
+});
 
 // Create an HTTP service.
 // http.createServer(app).listen(3000);
