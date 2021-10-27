@@ -36,8 +36,8 @@ export default function Navigation() {
           <Link to="/Settings">Settings</Link>
         </div>
 
-        {/* <div className="dropdown">
-          <button className="dropbtn"> Insert Name 
+        <div className="dropdown">
+          <button className="dropbtn btn"> Insert Name 
             <i className="fa fa-caret-down"></i>
           </button>   
           <div className="dropdown-content">
@@ -48,7 +48,7 @@ export default function Navigation() {
               <Link to="/Orders">Orders</Link>
             </div>
           </div>
-        </div>  */}
+        </div> 
       </nav>
     </div>
 
