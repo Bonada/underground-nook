@@ -1,0 +1,69 @@
+.settings {
+    font-family: "Avenir";
+}
+
+#addAddressModal,
+#editAddressModal {
+    font-family: "Avenir";
+    color: #FBFBEF;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    background: #312C3B;
+}
+
+.input-box {
+    background: #FBFBEF;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: none;
+    width: 100%;
+    padding-right: 20px;
+}
+
+.btn {
+    background: #6AA17B;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    font-family: "Avenir";
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: fit-content;
+    word-break: break-word;
+    border: 0;
+}
+
+.card-body {
+    background-color: #FBFBEF;
+}
+
+.card-text-bold {
+    font-weight: 700;
+}
+
+.profile-picture {
+    border-radius: 50%;
+}
+
+.heading1 {
+    font-family: 'Scope One', serif;
+    color: #FBFBEF;
+}
+
+.heading2 {
+    font-family: 'Scope One', serif;
+    color: #FBFBEF;
+}
