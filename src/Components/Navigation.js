@@ -37,7 +37,7 @@ export default function Navigation() {
         </div>
 
         <div className="dropdown">
-          <button className="dropbtn btn"> Insert Name 
+          <button className="dropbtn btn"> Minying 
             <i className="fa fa-caret-down"></i>
           </button>   
           <div className="dropdown-content">
