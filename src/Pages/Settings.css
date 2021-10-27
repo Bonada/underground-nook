@@ -67,3 +67,7 @@
     font-family: 'Scope One', serif;
     color: #FBFBEF;
 }
+
+.form-label {
+    float: left;
+}
