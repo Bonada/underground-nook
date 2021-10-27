@@ -107,28 +107,28 @@ function Settings() {
                   <div className="mb-3">
                     <label for="fullName" className="form-label">Full Name</label>
                     <br />
-                    <input className="input-box" type="text" placeholder="Enter Full Name" className="form-control" id="fullName" aria-describedby="emailHelp" />
+                    <input className="input-box form-control" type="text" placeholder="Enter Full Name" id="fullName" aria-describedby="emailHelp" />
                   </div>
                   <div className="mb-3">
                     <label for="phoneNumber" className="form-label">Phone Number</label>
                     <br />
-                    <input className="input-box" type="text" placeholder="Enter Phone Number" className="form-control" id="phoneNumber" />
+                    <input className="input-box form-control" type="text" placeholder="Enter Phone Number" id="phoneNumber" />
                   </div>
                   <div className="mb-3">
                     <label for="streetAddress" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box" type="text" placeholder="Enter Street Address" className="form-control" id="streetAddress" />
+                    <input className="input-box form-control" type="text" placeholder="Enter Street Address" id="streetAddress" />
                   </div>
                   <div className="mb-3">
                     <label for="city" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box" type="text" placeholder="Enter City" className="form-control" id="city" />
+                    <input className="input-box form-control" type="text" placeholder="Enter City" id="city" />
                   </div>
                   <div className="mb-3">
                     <label for="state" className="form-label">State</label>
                     <br />
 
-                    <select className="input-box" className="form-select" id="state" name="state">
+                    <select className="input-box form-control" id="state" name="state">
                       <option value="" disabled selected>Select a State</option>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
@@ -187,13 +187,13 @@ function Settings() {
                   <div className="mb-3">
                     <label for="zipcode" className="form-label">Zip Code</label>
                     <br />
-                    <input className="input-box" type="text" placeholder="Enter Zip Code" className="form-control" id="zipcode" />
+                    <input className="input-box form-control" type="text" placeholder="Enter Zip Code" id="zipcode" />
                   </div>
                 </form>
               </div>
             </div>
             <div className="modal-footer">
-              <button className="submit-button" type="button" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+              <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>
@@ -213,27 +213,27 @@ function Settings() {
                   <div className="mb-3">
                     <label for="fullName" className="form-label">Full Name</label>
                     <br />
-                    <input className="input-box" type="text" value="Minying Cao" className="form-control" id="fullName" aria-describedby="emailHelp" />
+                    <input className="input-box form-control" type="text" value="Minying Cao" id="fullName" aria-describedby="emailHelp" />
                   </div>
                   <div className="mb-3">
                     <label for="phoneNumber" className="form-label">Phone Number</label>
                     <br />
-                    <input className="input-box" type="text" value="800-123-4567" className="form-control" id="phoneNumber" />
+                    <input className="input-box form-control" type="text" value="800-123-4567" id="phoneNumber" />
                   </div>
                   <div className="mb-3">
                     <label for="streetAddress" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box" type="text" value="1761 15th St" className="form-control" id="streetAddress" />
+                    <input className="input-box form-control" type="text" value="1761 15th St" id="streetAddress" />
                   </div>
                   <div className="mb-3">
                     <label for="city" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box" type="text" value="Troy" className="form-control" id="city" />
+                    <input className="input-box form-control" type="text" value="Troy" id="city" />
                   </div>
                   <div className="mb-3">
                     <label for="state" className="form-label">State</label>
                     <br />
-                    <select className="input-box" className="form-select" id="state" name="state">
+                    <select className="input-box form-select" id="state" name="state">
                       <option value="" disabled selected>NY</option>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
@@ -291,13 +291,13 @@ function Settings() {
                   <div className="mb-3">
                     <label for="zipcode" className="form-label">Zip Code</label>
                     <br />
-                    <input className="input-box" type="text" value="12180" className="form-control" id="zipcode" />
+                    <input className="input-box form-control" type="text" value="12180" id="zipcode" />
                   </div>
                 </form>
               </div>
             </div>
             <div className="modal-footer">
-              <button className="submit-button" type="button" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+              <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>

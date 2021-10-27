@@ -19,7 +19,7 @@ html{
     /*background: linear-gradient(180deg, #1E1B24 10.94%, #322E3C 100%);*/
     background-color: #26222E;
 }
-button{
+.home button{
     display: flex;
     flex-direction: row;
     justify-content: center;
