@@ -1,12 +1,12 @@
 const express = require('express');
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 
 var bodyParser = require('body-parser');
 const { json } = require('body-parser');
 
 const app = express();
 const fs = require('fs');
-var cloudinary = require('cloudinary');
+var cloudinary = require('cloudinary').v2;
 cloudinary.config({ 
   cloud_name: 'undergroundnook', 
   api_key: '197948958869879', 
@@ -15,7 +15,12 @@ cloudinary.config({
 
 const port = 3000;
 
-require('dotenv').config()
+// function uploadimg() {
+//   cloudinary.uploader.upload("zbALL.jpg", 
+//     function(error, result) {console.log(result, error)});
+// }
+
+// uploadimg();
 
 // console.log(options.cert);
 
