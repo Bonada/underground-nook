@@ -77,6 +77,8 @@ export default function Navigation() {
           scope="public_profile,email">
         </div>
 
+        <div id="status"></div>
+
         {/* <div className="dropdown">
           <button className="dropbtn"> Insert Name 
             <i className="fa fa-caret-down"></i>
