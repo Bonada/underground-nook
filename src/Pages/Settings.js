@@ -11,15 +11,23 @@ function Settings() {
             <img className="profile-picture" src="https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/226848957_4524022060943703_6194489319445931835_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=n3IESs-gxKEAX8NvLXV&_nc_ht=scontent-lga3-2.xx&oh=2b7631efff9821d4eb42bd3a1c8f728b&oe=6195B0A3" alt="Minying Cao Profile Image" width="300px" />
           </div>
           <div className="col-sm">
+
             <label for="fname" className="form-label heading2">First Name</label>
             <br />
             <input className="input-box" type="text" value="Minying" id="fname" />
+
             <label for="lname" className="form-label heading2">Last Name</label>
             <br />
             <input className="input-box" type="text" value="Cao" id="lname" />
+
             <label for="email" className="form-label heading2">Email</label>
             <br />
             <input className="input-box" type="email" value="minyingcao12@gmail.com" id="email" />
+
+            <label for="phonenumber" className="form-label heading2">Phone Number</label>
+            <br />
+            <input className="input-box" type="text" value="1234567890" id="phonenumber" />
+            
             <button className="btn btn-primary save-button" type="button">Save</button>
           </div>
         </div>
@@ -44,7 +52,7 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                <p className="card-text">Phone Number: 800-123-4567</p>
+                {/* <p className="card-text">Phone Number: 800-123-4567</p> */}
                 <a href="#" className="card-link">Remove</a>
 
                 <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
@@ -60,7 +68,7 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                <p className="card-text">Phone Number: 800-123-4567</p>
+                {/* <p className="card-text">Phone Number: 800-123-4567</p> */}
                 <a href="#" className="card-link">Remove</a>
               
                 <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
@@ -78,7 +86,7 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                <p className="card-text">Phone Number: 800-123-4567</p>
+                {/* <p className="card-text">Phone Number: 800-123-4567</p> */}
                 <a href="#" className="card-link">Remove</a>
                 <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
                   Edit Address
@@ -106,13 +114,13 @@ function Settings() {
                   <div className="mb-3">
                     <label for="fullName" className="form-label">Full Name</label>
                     <br />
-                    <input className="input-box form-control" type="text" placeholder="Enter Full Name" id="fullName" aria-describedby="emailHelp" />
+                    <input className="input-box form-control" type="text" placeholder="Enter Full Name" id="fullName" />
                   </div>
-                  <div className="mb-3">
+                  {/* <div className="mb-3">
                     <label for="phoneNumber" className="form-label">Phone Number</label>
                     <br />
                     <input className="input-box form-control" type="text" placeholder="Enter Phone Number" id="phoneNumber" />
-                  </div>
+                  </div> */}
                   <div className="mb-3">
                     <label for="streetAddress" className="form-label">Street Address</label>
                     <br />
@@ -212,13 +220,13 @@ function Settings() {
                   <div className="mb-3">
                     <label for="fullName" className="form-label">Full Name</label>
                     <br />
-                    <input className="input-box form-control" type="text" value="Minying Cao" id="fullName" aria-describedby="emailHelp" />
+                    <input className="input-box form-control" type="text" value="Minying Cao" id="fullName" />
                   </div>
-                  <div className="mb-3">
+                  {/* <div className="mb-3">
                     <label for="phoneNumber" className="form-label">Phone Number</label>
                     <br />
                     <input className="input-box form-control" type="text" value="800-123-4567" id="phoneNumber" />
-                  </div>
+                  </div> */}
                   <div className="mb-3">
                     <label for="streetAddress" className="form-label">Street Address</label>
                     <br />
