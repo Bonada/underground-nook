@@ -71,3 +71,7 @@
 .form-label {
     float: left;
 }
+
+.settings a {
+    color: #312C3B;
+}

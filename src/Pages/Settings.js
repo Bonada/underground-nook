@@ -14,19 +14,19 @@ function Settings() {
 
             <label for="fname" className="form-label heading2">First Name</label>
             <br />
-            <input className="input-box" type="text" value="Minying" id="fname" />
+            <input className="input-box" type="text" defaultValue="Minying" id="fname" />
 
             <label for="lname" className="form-label heading2">Last Name</label>
             <br />
-            <input className="input-box" type="text" value="Cao" id="lname" />
+            <input className="input-box" type="text" defaultValue="Cao" id="lname" />
 
             <label for="email" className="form-label heading2">Email</label>
             <br />
-            <input className="input-box" type="email" value="minyingcao12@gmail.com" id="email" />
+            <input className="input-box" type="email" defaultValue="minyingcao12@gmail.com" id="email" />
 
             <label for="phonenumber" className="form-label heading2">Phone Number</label>
             <br />
-            <input className="input-box" type="text" value="1234567890" id="phonenumber" />
+            <input className="input-box" type="text" defaultValue="1234567890" id="phonenumber" />
             
             <button className="btn btn-primary save-button" type="button">Save</button>
           </div>
@@ -52,7 +52,6 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                {/* <p className="card-text">Phone Number: 800-123-4567</p> */}
                 <a href="#" className="card-link">Remove</a>
 
                 <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
@@ -68,7 +67,6 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                {/* <p className="card-text">Phone Number: 800-123-4567</p> */}
                 <a href="#" className="card-link">Remove</a>
               
                 <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
@@ -86,7 +84,6 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                {/* <p className="card-text">Phone Number: 800-123-4567</p> */}
                 <a href="#" className="card-link">Remove</a>
                 <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
                   Edit Address
@@ -116,11 +113,6 @@ function Settings() {
                     <br />
                     <input className="input-box form-control" type="text" placeholder="Enter Full Name" id="fullName" />
                   </div>
-                  {/* <div className="mb-3">
-                    <label for="phoneNumber" className="form-label">Phone Number</label>
-                    <br />
-                    <input className="input-box form-control" type="text" placeholder="Enter Phone Number" id="phoneNumber" />
-                  </div> */}
                   <div className="mb-3">
                     <label for="streetAddress" className="form-label">Street Address</label>
                     <br />
@@ -220,28 +212,23 @@ function Settings() {
                   <div className="mb-3">
                     <label for="fullName" className="form-label">Full Name</label>
                     <br />
-                    <input className="input-box form-control" type="text" value="Minying Cao" id="fullName" />
+                    <input className="input-box form-control" type="text" defaultValue="Minying Cao" id="fullName" />
                   </div>
-                  {/* <div className="mb-3">
-                    <label for="phoneNumber" className="form-label">Phone Number</label>
-                    <br />
-                    <input className="input-box form-control" type="text" value="800-123-4567" id="phoneNumber" />
-                  </div> */}
                   <div className="mb-3">
                     <label for="streetAddress" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box form-control" type="text" value="1761 15th St" id="streetAddress" />
+                    <input className="input-box form-control" type="text" defaultValue="1761 15th St" id="streetAddress" />
                   </div>
                   <div className="mb-3">
                     <label for="city" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box form-control" type="text" value="Troy" id="city" />
+                    <input className="input-box form-control" type="text" defaultValue="Troy" id="city" />
                   </div>
                   <div className="mb-3">
                     <label for="state" className="form-label">State</label>
                     <br />
                     <select className="input-box form-select" id="state" name="state">
-                      <option value="" disabled selected>NY</option>
+                      <option defaultValue="" disabled selected>NY</option>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
                       <option value="AR">AR</option>  
@@ -298,7 +285,7 @@ function Settings() {
                   <div className="mb-3">
                     <label for="zipcode" className="form-label">Zip Code</label>
                     <br />
-                    <input className="input-box form-control" type="text" value="12180" id="zipcode" />
+                    <input className="input-box form-control" type="text" defaultValue="12180" id="zipcode" />
                   </div>
                 </form>
               </div>
