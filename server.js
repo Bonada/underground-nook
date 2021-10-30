@@ -1,5 +1,6 @@
 const express = require('express');
-// const fetch = require('node-fetch');
+
+import fetch from 'node-fetch';
 
 var bodyParser = require('body-parser');
 const { json } = require('body-parser');
@@ -34,16 +35,7 @@ const uri = "mongodb+srv://TestUser:TestUserPass@undergroundnook.lh3mc.mongodb.n
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function testgetPlants(){
-    await client.connect();
-    let db = client.db('main');
-    let collection = db.collection('plants');
-    let document = await collection.find();
-    let items = await document.toArray();
-
-    for(plant of items){
-      console.log(plant);
-    }
-    client.close();
+    
 }
 testgetPlants();
 
@@ -55,6 +47,81 @@ testgetPlants();
 //     // Error in endpoint
 //   }
 // });
+
+app.post('/add-user' , async (req, res) =>{
+
+  console.log("adding new user");
+  let username = req.body.username;
+  let userid = req.body.userid;
+  let email = req.body.email;
+
+  try {
+      await client.connect();
+      let db = client.db('main');
+
+      let newUser = {userid: userid, username: username, email: email};
+
+      db.collection('users').insertOne(newUser);
+
+      console.log("added new user");
+
+      res.json({
+          success: true,
+          err: 'Facebook user ' + username +  ' added to database'
+      });
+  } catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'User ' + username + 'does not exist'
+      });
+  }
+})
+
+app.get('/get-plants' , async (req, res) =>{
+  try {
+
+      console.log("connecting to db to get plants");
+
+      await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('plants');
+      let document = await collection.find();
+      let items = await document.toArray();
+
+      console.log(items);
+      res.send(items);
+  }catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot get the plant data'
+      });
+  }
+})
+
+app.get('/get-user' , async (req, res) =>{
+  try {
+
+      let userid = req.body.userid;
+      console.log("connecting to db to get user");
+
+      await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('user');
+      let document = await collection.findOne({id: userid});
+      let items = await document.toArray();
+
+      console.log(items);
+      res.send(items);
+  }catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot get the plant data'
+      });
+  }
+})
 
 // app.use(express.static(__dirname + '/'));
 
