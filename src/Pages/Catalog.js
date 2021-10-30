@@ -13,7 +13,6 @@ function Catalog() {
           <p className="catalog-caption">a collection of our plants</p>
         </div>
       </div>
-      <div className="container-fluid"></div>
       <div className="row cards">
         <div className="row">&nbsp;</div>
         <div className="col-md-1"></div>

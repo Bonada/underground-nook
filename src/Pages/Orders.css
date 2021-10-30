@@ -1,0 +1,23 @@
+.orders-bg {
+    background-color: #fbfbef;
+    color: black;
+}
+
+.order.row {
+    position: relative;
+}
+
+.order.row::after {
+    content: "";
+    height: 1px;
+    position: relative;
+    left: 2.5%;
+    width: 95%;
+    border: solid black 1px;
+}
+
+.order-col-parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

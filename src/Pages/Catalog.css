@@ -1,35 +1,37 @@
 .catalog-card-title {
-    font-size: calc(6.5px + 2vmin);
-  }
-  
+    font-size: calc(6.5px + 1vw);
+}
+
 .catalog-caption {
     font-style: italic;
-  }
-  
+}
+
 .catalog-img {
     width: 90%;
     margin-left: 5%;
     margin-top: 5%;
-  }
-  
-  .catalog-card-title {
+}
+
+.catalog-card-title {
     margin-left: 5%;
-  }
-  
+}
+
 .catalog-price {
     margin: 0;
     padding-left: 0;
     margin-right: 5%;
-    font-size: calc(3.5px + 2vmin);
-  }
-  
-  div.cards {
+    font-size: calc(3.5px + 1vw);
+}
+
+div.cards {
     max-width: 100%;
-  }
-  
-  .catalog-price-col {
+}
+
+.catalog-price-col {
     text-align: right;
-  }
-  .card {
+}
+
+.catalog.card {
+    background-color: #FBFBEF;
     color: black;
-  }
+}
