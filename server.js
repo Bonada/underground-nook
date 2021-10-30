@@ -59,7 +59,7 @@ app.post('/add-user' , async (req, res) =>{
       await client.connect();
       let db = client.db('main');
 
-      let newUser = {userid: userid, username: username, email: email};
+      let newUser = {userid: userid, username: username, email: email, addresses: []};
 
       db.collection('users').insertOne(newUser);
 
@@ -74,6 +74,38 @@ app.post('/add-user' , async (req, res) =>{
       res.json({
           success: false,
           err: 'User ' + username + 'does not exist'
+      });
+  }
+})
+
+app.post('/add-plant' , async (req, res) =>{
+
+  console.log("adding new plant");
+  let id = uuidv4();
+  let species_name = req.body.sname;
+  let common_name = req.body.cname;
+  let description = req.body.desc;
+  let price = req.body.price;
+
+  try {
+      await client.connect();
+      let db = client.db('main');
+
+      let newPlant = {id: id, scientific_name: scientific_name, common_name: common_name, description: description};
+
+      db.collection('plants').insertOne(newPlant);
+
+      console.log("added new plant");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + scientific_name +  'added to database'
+      });
+  } catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Error adding ' + scientific_name + 'to database'
       });
   }
 })
