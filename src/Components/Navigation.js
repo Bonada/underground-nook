@@ -10,25 +10,51 @@ import './Navigation.css';
 
 /*global FB*/
 
-function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-  console.log('statusChangeCallback');
-  console.log(response);                   // The current login status of the person.
+function statusChangeCallback(response) {
   if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-    //testAPI();
-  } else {                                 // Not logged into your webpage or we are unable to tell.
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into this webpage.';
-  }
-}
+    let userid = "";
+    let username = "";
+    let email = "";
+    // Get user information with api call to /me
+    FB.api('/me', {fields: 'name, email, picture'}, function(response) {
+      console.log(response);
+      userid = response.name;
+      username = response.name;
+      email = response.email;
+    });
 
-function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-  console.log('Welcome!  Fetching your information.... ');
-  FB.api('/me', {fields: 'name, email, picture'}, function(response) {
-    console.log(response);
-    console.log('Successful login for: ' + response.name);
-    document.getElementById('status').innerHTML =
-      'Thanks for logging in, ' + response.name + '!';
-  });
+    fetch('http://localhost:3030/add-user', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userid: userid,
+        username: username,
+        email: email
+      })
+    })
+    .then(async response => {
+      try {
+       const data = await response.json()
+       console.log('response data?', data)
+     } catch(error) {
+       console.log('Error happened here!')
+       console.error(error)
+     }
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+    // If user doesn't exist in database, add their information and redirect to registration
+    // If user exists in database, update navbar and keep users at current webpage
+  } else {                                 // Not logged into your webpage or we are unable to tell.
+    console.log("Not logged in");
+  }
 }
 
 export default function Navigation() {
