@@ -14,7 +14,7 @@ export default function Navigation() {
       <div id="Post-Login_NavBar" className="Post-Login_NavBar">
       <nav className="navbar navbar-expand-lg ">
         <div id="WebsiteTitle">
-          <Link to="/">Home</Link>
+          <Link to="/">Underground Nook</Link>
         </div>
 
         <div className = "containerLinks"></div>
