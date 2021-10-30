@@ -1,13 +1,4 @@
 /* CSS for the Home Page*/
-
-/* CSS for NavBar - needed for every page*/
-iframe{
-    border: none;
-    width: 100%;
-    height: 100%;
-}
-
-/* CSS for Home Page*/
 div.embed-responsive{
     position: relative;
     overflow: hidden;
@@ -23,17 +14,16 @@ button.home-catalog-button{
     justify-content: center;
     align-items: center;
     padding: 16px 50px;
-    position: absolute;
-    width: 218px;
-    height: 51px;
-    left: 89px;
-    top: 417px;
+    position: fixed;
+    left: 4.7%;
+    top: 55%;
     background: #6AA17B;
     border-color: transparent;
     border: 2px solid transparent;
     border-radius: 50px !important;
     color: #26222E;
     font-weight: 500;
+    font-size: 1.1vw;
 }
 button:hover {
     color: #6AA17B;
@@ -41,116 +31,73 @@ button:hover {
     border-color: #6AA17B;
 }
 h1#Home_Title{
-    position: absolute;
-    width: 613px;
-    height: 97px;
-    left: 89px;
-    top: 300px;
+    position: fixed;
+    left: 4.7%;
+    top: 40%;
     font-family: 'Scope One', serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 70px;
+    font-size: 3.4vw;
+    float: left;
     line-height: 97px;
     color: #E5E5E5;
 }
-/*vector#OverheadLight1{
-    position: absolute;
-    left: 443px;
-    top: 54px;
-    background:  linear-gradient(176.59deg, rgba(251, 251, 239, 0.1) 2.82%, rgba(251, 251, 239, 0) 97.2%);
-	border-bottom: 325px solid rgba(131, 131, 126, 0.158); 
-	border-left: 50px solid transparent;
-	border-right: 50px solid transparent;
-	height: 100px;
-	width: 155px;
-}*/
 .rectangle1 {
-    position: absolute;
-    width: 200px;
-    height: 0px;
-    left: 121px;
-    top: 644px;
+    position: fixed;
+    width: 12%;
+    left: 10%;
+    top: 85%;
     border: 6px solid #7C5B49;
     z-index: 1;
 }
 .rectangle2 {
-    position: absolute;
-    width: 200px;
-    height: 0px;
-    left: 475px;
-    top: 591px;
+    position: fixed;
+    width: 12%;
+    left: 30%;
+    top: 75%;
     border: 6px solid #574444;
     z-index: 1;
 }
 .rectangle3{
-    position: absolute;
-    width: 200px;
-    height: 0px;
-    left: 850px;
-    top: 258px;
+    position: fixed;
+    width: 12%;
+    left: 55%;
+    top: 35%;
     border: 6px solid #7C5B49;
     z-index: 1;
 }
 .rectangle4{
-    position: absolute;
-    width: 200px;
-    height: 0px;
-    left: 1150px;
-    top: 208px;
+    position: fixed;
+    width: 12%;
+    left: 80%;
+    top: 25%;
     border: 6px solid #574444;
     z-index: 1;
 }
 img#HexagonsImage.img-fluid {
-    position: absolute;
-    width: 540px;
-    left: 880px;
-    top: 270px;
+    position: fixed;
+    left: 55%;
+    top: 36%;
+    width: 35%;
 }
 img#Plant1.img-fluid {
-    position: absolute;
-    width: 120px;
-    left: 880px;
-    top: 110px;
+    position: fixed;
+    width: 7%;
+    left: 11%;
+    top: 67%;
 }
 img#Plant2.img-fluid {
-    position: absolute;
-    width: 120px;
-    left: 143px;
-    top: 497px;
+    position: fixed;
+    width: 7%;
+    left: 57%;
+    top: 16%;
 }
-/* NavBar - NEED TO FIX*/
+
+
+
+/* NavBar - NEED TO FIX
 @media only screen and (min-device-width : 710px) and (max-device-width : 851px) {
     div.embed-responsive{
       padding-left: 120%; 
     }
-}
-@media only screen and (min-device-width : 610px) and (max-device-width : 709px) {
-    div.embed-responsive{
-      padding-left: 145%; 
-    }
-}
-@media only screen and (min-device-width : 560px) and (max-device-width : 634px) {
-    div.embed-responsive{
-      padding-left: 164%; 
-    }
-}
-@media only screen and (min-device-width : 460px) and (max-device-width : 559px) {
-    div.embed-responsive{
-      padding-left: 184%; 
-    }
-}
-@media only screen and (min-device-width : 409px) and (max-device-width : 459px) {
-    div.embed-responsive{
-      padding-left: 210%; 
-    }
-}
-@media only screen and (min-device-width : 375px) and (max-device-width : 409px) {
-    div.embed-responsive{
-      padding-left: 240%; 
-    }
-}
-@media only screen and (min-device-width : 320px) and (max-device-width : 375px) {
-    div.embed-responsive{
-      padding-left: 264%; 
-    }
-}
+} */

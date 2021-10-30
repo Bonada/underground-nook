@@ -20,9 +20,9 @@ function Home() {
       <div className="rectangle2"></div>
       <div className="rectangle3"></div>
       <div className="rectangle4"></div>
-      <img className="img-fluid" id="HexagonsImage"  src={HexagonPlants.PNG} />
-      <img className="img-fluid" id="Plant1" src={Plant1.PNG} />
-      <img className="img-fluid" id="Plant2" src={Plant2.PNG} />
+      <img className="img-fluid" id="HexagonsImage" src={HexagonPlants} />
+      <img className="img-fluid" id="Plant1" src={Plant1} />
+      <img className="img-fluid" id="Plant2" src={Plant2} />
     </div>
   );
 }
