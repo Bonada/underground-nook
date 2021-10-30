@@ -1,11 +1,14 @@
 const express = require('express');
 
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 var bodyParser = require('body-parser');
 const { json } = require('body-parser');
 
 const app = express();
+const cors = require('cors');
+app.use(cors());
+
 const fs = require('fs');
 var cloudinary = require('cloudinary').v2;
 cloudinary.config({ 
@@ -14,7 +17,7 @@ cloudinary.config({
   api_secret: 'UDvL3l6lxXSHc6Xdk1hb_nWzDH8' 
 });
 
-const port = 3000;
+const port = 3030;
 
 // function uploadimg() {
 //   cloudinary.uploader.upload("zbALL.jpg", 
@@ -158,7 +161,7 @@ app.get('/get-user' , async (req, res) =>{
 // app.use(express.static(__dirname + '/'));
 
 app.listen(port, () => {
-    console.log('Listening on *: 3000')
+    console.log('Listening on *: 3030')
 });
 
 // Create an HTTP service.
