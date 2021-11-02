@@ -37,11 +37,6 @@ const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://TestUser:TestUserPass@undergroundnook.lh3mc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-async function testgetPlants(){
-    
-}
-testgetPlants();
-
 // app.post('/endpoint', async (req, res) => {
 //   try {
 
@@ -80,6 +75,38 @@ app.post('/add-user' , async (req, res) =>{
       });
   }
 })
+
+app.post('/verify-user' , async (req, res) =>{
+
+    console.log("adding new user");
+    let userid = req.body.userid;
+  
+    try {
+        await client.connect();
+        let db = client.db('main');
+  
+        let existinguser = db.collection('users').findOne({id:newUser});
+  
+        console.log("finding user");
+        if(existinguser){
+            res.json({
+                success: true,
+                err: 'Facebook user ' + username +  ' added to database'
+            });
+        }
+        res.json({
+            success: false,
+            err: 'Facebook user ' + username +  'does not exist'
+        });
+
+    } catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'User ' + username + 'does not exist'
+        });
+    }
+  })
 
 app.post('/add-plant' , async (req, res) =>{
 
