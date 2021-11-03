@@ -57,11 +57,21 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                <a href="#" className="card-link">Remove</a>
 
-                <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
-                  Edit Address
-                </a>
+
+                <div className="container">
+                  <i className="ri-delete-bin-line"></i>
+                  <a href="#" className="card-link">Remove</a>
+                </div>
+
+              
+                <div className="container">
+                  <i className="ri-pencil-line"></i>
+                  <a className="card-link" data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
+                      Edit Address
+                  </a>
+                </div>
+
               </div>
             </div>
           </div>
@@ -72,12 +82,15 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
+
+                <i className="ri-delete-bin-line"></i>
                 <a href="#" className="card-link">Remove</a>
-              
-                <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
+                <i className="ri-pencil-line"></i>
+                <a className="card-link" data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
                   Edit Address
                 </a>
-                <br />
+                <br></br>
+                <i class="ri-arrow-go-back-line"></i>
                 <a href="#" className="card-link">Set as Default</a>
               </div>
             </div>
@@ -89,11 +102,14 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
+                <i className="ri-delete-bin-line"></i>
                 <a href="#" className="card-link">Remove</a>
-                <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
+                <i className="ri-pencil-line"></i>
+                <a className="card-link" data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
                   Edit Address
                 </a>
-                <br />
+                <br></br>
+                <i class="ri-arrow-go-back-line"></i>
                 <a href="#" className="card-link">Set as Default</a>
               </div>
             </div>
@@ -193,10 +209,11 @@ function Settings() {
                     <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" />
                   </div>
                 </form>
+
+                <div className="flex-box-submit-button">
+                  <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Submit</button>
+                </div>
               </div>
-            </div>
-            <div className="modal-footer">
-              <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>
@@ -292,10 +309,10 @@ function Settings() {
                     <input className="input-box-modal form-control" type="text" defaultValue="12180" id="zipcode" />
                   </div>
                 </form>
+                <div className="flex-box-submit-button">
+                  <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Save</button>
+                </div>
               </div>
-            </div>
-            <div className="modal-footer">
-              <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>
