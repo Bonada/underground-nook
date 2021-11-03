@@ -1,6 +1,8 @@
 import './App.css';
-import { BrowserRouter as Router } from "react-router-dom";
-import Navigation from "./Components/Navigation";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import PostLogin_Navigation from "./Components/PostLogin_Navigation";
+import PreLogin_Navigation from "./Components/PreLogin_Navigation";
+import Admin_Navigation from "./Components/Admin_Navigation";
 // import About from "./Pages/About";
 // import Cart from "./Pages/Cart";
 // import Catalog from "./Pages/Catalog";
@@ -12,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Navigation />
+        <Admin_Navigation />
       </Router>
     </div>
     

@@ -1,0 +1,40 @@
+.edit-catalog-pane {
+    background-color: #FBFBEF;
+    border-radius: 7px;
+}
+
+.view-orders-pane {
+    background-color: #FBFBEF;
+    border-radius: 7px;
+}
+
+.flex-box-view-orders-button, .flex-box-edit-catalog-button {
+    display:flex;
+    justify-content: flex-end;
+    width: 84%;
+    padding: 0px;
+    margin-right: 20px;
+    padding-bottom: 15px;
+}
+
+.view-orders-button, .edit-catalog-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #000000;
+}
+
+.view-orders-button:hover, .edit-catalog-button:hover {
+    color: #6AA17B;
+    background: #26222E;
+    border-color: #6AA17B;
+}
+
+.admin-catalog-img {
+    width: 80px;
+}

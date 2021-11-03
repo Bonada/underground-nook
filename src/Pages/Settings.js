@@ -5,30 +5,42 @@ import '../Components/Navigation.css';
 function Settings() {
   return (
     <div className="settings">
-      <h1>Settings Page</h1>
-      <div className="container">
+      <div className="container basic-user-info-container">
         <div className="row">
-          <div className="col-sm">
-            <img className="profile-picture" src="https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/226848957_4524022060943703_6194489319445931835_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=n3IESs-gxKEAX8NvLXV&_nc_ht=scontent-lga3-2.xx&oh=2b7631efff9821d4eb42bd3a1c8f728b&oe=6195B0A3" alt="Minying Cao Profile" width="300px" />
+          <div className="col-md">
+            <img className="profile-picture" src="https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/226848957_4524022060943703_6194489319445931835_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=n3IESs-gxKEAX8NvLXV&_nc_ht=scontent-lga3-2.xx&oh=2b7631efff9821d4eb42bd3a1c8f728b&oe=6195B0A3" alt="Minying Cao Profile Image" width="300px" />
           </div>
-          <div className="col-sm">
-            <label for="fname" className="form-label heading2">First Name</label>
-            <br />
-            <input className="input-box" type="text" value="Minying" id="fname" />
-            <label for="lname" className="form-label heading2">Last Name</label>
-            <br />
-            <input className="input-box" type="text" value="Cao" id="lname" />
-            <label for="email" className="form-label heading2">Email</label>
-            <br />
-            <input className="input-box" type="email" value="minyingcao12@gmail.com" id="email" />
-            <button className="btn btn-primary save-button" type="button">Save</button>
+          <div className="col-md">
+
+            <div className="row">
+              <label for="fname" className="form-label heading2">First Name</label>
+              <input className="input-box" type="text" defaultValue="Minying" id="fname" />
+            </div>
+
+            <div className="row">
+              <label for="lname" className="form-label heading2">Last Name</label>
+              <input className="input-box" type="text" defaultValue="Cao" id="lname" />
+            </div>
+            
+            <div className="row">
+              <label for="email" className="form-label heading2">Email</label>
+              <input className="input-box" type="email" defaultValue="minyingcao12@gmail.com" id="email" />
+            </div>
+          
+            <div className="row">
+              <label for="phonenumber" className="form-label heading2">Phone Number</label>
+              <input className="input-box" type="text" defaultValue="1234567890" id="phonenumber" />
+            </div>
+
+            <div className="row flex-box-save-button">
+              <button className="btn btn-primary save-button" type="button">Save</button>
+            </div>
           </div>
         </div>
       </div>
       
-      <div className="container">
+      <div className="container addresses-container">
         <h1 className="heading1">Addresses</h1>
-
         <div className="row">
           <div className="col-sm">
             <div className="card h-100" style={{width: '18rem'}} data-bs-toggle="modal" data-bs-target="#addAddressModal">
@@ -45,7 +57,6 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                <p className="card-text">Phone Number: 800-123-4567</p>
                 <a href="#" className="card-link">Remove</a>
 
                 <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
@@ -61,7 +72,6 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                <p className="card-text">Phone Number: 800-123-4567</p>
                 <a href="#" className="card-link">Remove</a>
               
                 <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
@@ -79,7 +89,6 @@ function Settings() {
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                <p className="card-text">Phone Number: 800-123-4567</p>
                 <a href="#" className="card-link">Remove</a>
                 <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
                   Edit Address
@@ -90,7 +99,6 @@ function Settings() {
             </div>
           </div>
         </div>
-
       </div>
 
       {/*  Add Address Modal */}
@@ -107,28 +115,23 @@ function Settings() {
                   <div className="mb-3">
                     <label for="fullName" className="form-label">Full Name</label>
                     <br />
-                    <input className="input-box" type="text" placeholder="Enter Full Name" className="form-control" id="fullName" aria-describedby="emailHelp" />
-                  </div>
-                  <div className="mb-3">
-                    <label for="phoneNumber" className="form-label">Phone Number</label>
-                    <br />
-                    <input className="input-box" type="text" placeholder="Enter Phone Number" className="form-control" id="phoneNumber" />
+                    <input className="input-box-modal form-control" type="text" placeholder="Enter Full Name" id="fullName" />
                   </div>
                   <div className="mb-3">
                     <label for="streetAddress" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box" type="text" placeholder="Enter Street Address" className="form-control" id="streetAddress" />
+                    <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" />
                   </div>
                   <div className="mb-3">
                     <label for="city" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box" type="text" placeholder="Enter City" className="form-control" id="city" />
+                    <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" />
                   </div>
                   <div className="mb-3">
                     <label for="state" className="form-label">State</label>
                     <br />
 
-                    <select className="input-box" className="form-select" id="state" name="state">
+                    <select className="input-box-modal form-control" id="state" name="state">
                       <option value="" disabled selected>Select a State</option>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
@@ -187,13 +190,13 @@ function Settings() {
                   <div className="mb-3">
                     <label for="zipcode" className="form-label">Zip Code</label>
                     <br />
-                    <input className="input-box" type="text" placeholder="Enter Zip Code" className="form-control" id="zipcode" />
+                    <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" />
                   </div>
                 </form>
               </div>
             </div>
             <div className="modal-footer">
-              <button className="submit-button" type="button" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+              <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>
@@ -213,28 +216,23 @@ function Settings() {
                   <div className="mb-3">
                     <label for="fullName" className="form-label">Full Name</label>
                     <br />
-                    <input className="input-box" type="text" value="Minying Cao" className="form-control" id="fullName" aria-describedby="emailHelp" />
-                  </div>
-                  <div className="mb-3">
-                    <label for="phoneNumber" className="form-label">Phone Number</label>
-                    <br />
-                    <input className="input-box" type="text" value="800-123-4567" className="form-control" id="phoneNumber" />
+                    <input className="input-box-modal form-control" type="text" defaultValue="Minying Cao" id="fullName" />
                   </div>
                   <div className="mb-3">
                     <label for="streetAddress" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box" type="text" value="1761 15th St" className="form-control" id="streetAddress" />
+                    <input className="input-box-modal form-control" type="text" defaultValue="1761 15th St" id="streetAddress" />
                   </div>
                   <div className="mb-3">
                     <label for="city" className="form-label">Street Address</label>
                     <br />
-                    <input className="input-box" type="text" value="Troy" className="form-control" id="city" />
+                    <input className="input-box-modal form-control" type="text" defaultValue="Troy" id="city" />
                   </div>
                   <div className="mb-3">
                     <label for="state" className="form-label">State</label>
                     <br />
-                    <select className="input-box" className="form-select" id="state" name="state">
-                      <option value="" disabled selected>NY</option>
+                    <select className="input-box-modal form-select" id="state" name="state">
+                      <option defaultValue="" disabled selected>NY</option>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
                       <option value="AR">AR</option>  
@@ -291,13 +289,13 @@ function Settings() {
                   <div className="mb-3">
                     <label for="zipcode" className="form-label">Zip Code</label>
                     <br />
-                    <input className="input-box" type="text" value="12180" className="form-control" id="zipcode" />
+                    <input className="input-box-modal form-control" type="text" defaultValue="12180" id="zipcode" />
                   </div>
                 </form>
               </div>
             </div>
             <div className="modal-footer">
-              <button className="submit-button" type="button" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+              <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Submit</button>
             </div>
           </div>
         </div>

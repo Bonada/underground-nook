@@ -1,0 +1,77 @@
+.catalog-card-title {
+    font-size: calc(6px + 1vw);
+}
+
+.catalog-header {
+    font-family: 'Scope One', 'Serif';
+}
+
+.catalog-caption {
+    font-family: 'Scope One', 'Serif';
+    font-style: italic;
+}
+
+.catalog-img {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.catalog-card-title {
+    margin-left: 5%;
+}
+
+.catalog-price {
+    margin: 0;
+    padding-left: 0;
+    margin-right: 5%;
+    font-size: calc(3.5px + 1vw);
+}
+
+div.cards {
+    max-width: 100%;
+}
+
+.catalog-price-col {
+    text-align: right;
+}
+
+.catalog.card {
+    font-family: 'Scope One', 'Serif';
+    background-color: #FBFBEF;
+    color: black;
+}
+
+#catalogModal {
+    font-family: 'Scope One', 'Serif';
+}
+
+button.cart-button {
+    background: #6AA17B;
+    border-radius: 20px;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    font-family: "Avenir";
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+    word-break: break-word;
+    border: 0;
+}
+
+.catalog.modal-header {
+    border: none;
+}
+
+.catalog.modal-footer {
+    border: none;
+}

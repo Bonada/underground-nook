@@ -14,15 +14,21 @@
     background: #312C3B;
 }
 
-.input-box {
+.basic-user-info-container {
+    margin-top: 40px;
+}
+
+.basic-user-info-container .input-box {
     background: #FBFBEF;
     border-radius: 20px;
     padding-left: 15px;
     padding-top: 8px;
     padding-bottom: 8px;
     border: none;
-    width: 100%;
+    width: 80%;
     padding-right: 20px;
+    margin-bottom: 20px;
+    margin-left: 8px;
 }
 
 .btn {
@@ -66,4 +72,55 @@
 .heading2 {
     font-family: 'Scope One', serif;
     color: #FBFBEF;
+    text-align: left;
+}
+
+.form-label {
+    float: left;
+}
+
+.settings a {
+    color: #312C3B;
+}
+
+.settings .heading1 {
+    text-align: left;
+}
+
+.flex-box-save-button {
+    display:flex;
+    justify-content: flex-end;
+    width: 84%;
+}
+
+.save-button, .submit-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #000000;
+}
+
+.save-button:hover, .submit-button:hover {
+    color: #6AA17B;
+    background: #26222E;
+    border-color: #6AA17B;
+}
+
+.input-box-modal {
+    background: #FBFBEF;
+    border-radius: 20px;
+    border: none;
+}
+
+.card-link {
+    margin: 10px;
+}
+
+.addresses-container {
+    padding-bottom: 50px;
 }

@@ -87,7 +87,7 @@ export default class Navigation extends React.Component {
         <div id="Post-Login_NavBar" className="Post-Login_NavBar">
         <nav className="navbar navbar-expand-lg ">
           <div id="WebsiteTitle">
-            <Link to="/">Home</Link>
+            <Link to="/">Underground Nook</Link>
           </div>
           <div className = "containerLinks"></div>
           <i className="fa fa-info-circle fa-lg" aria-hidden="true"></i>
@@ -121,23 +121,23 @@ export default class Navigation extends React.Component {
             >
           </div>
 
-          {/* <div className="dropdown">
-            <button className="dropbtn"> Insert Name 
-              <i className="fa fa-caret-down"></i>
-            </button>   
-            <div className="dropdown-content">
-              <div id="DropDown">
-                <Link to="/Settings">Settings</Link>
-              </div>
-              <div id="DropDown">
-                <Link to="/Orders">Orders</Link>
-              </div>
+          <div className="dropdown">
+          <button className="dropbtn btn"> Minying 
+            <i className="fa fa-caret-down"></i>
+          </button>   
+          <div className="dropdown-content container-fluid">
+            <div id="DropDown" className="row">
+              <Link to="/Settings">Settings</Link>
             </div>
-          </div>  */}
-        </nav>
-      </div>
+            <div id="DropDown" className="row">
+              <Link to="/Orders">Orders</Link>
+            </div>
+          </div>
+        </div> 
+      </nav>
+    </div>
 
-        <hr />
+      {/* <hr /> */}
 
         <Switch>
           <Route exact path="/">
