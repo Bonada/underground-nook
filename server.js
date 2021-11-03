@@ -76,7 +76,7 @@ app.post('/add-user' , async (req, res) =>{
   }
 })
 
-app.post('/verify-user' , async (req, res) =>{
+app.get('/verify-user' , async (req, res) =>{
 
     console.log("adding new user");
     let userid = req.body.userid;
