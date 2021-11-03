@@ -1,0 +1,14 @@
+/* CSS for the Cart Page*/
+
+h1.CartPage_Title{
+    float: left;
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    padding-left: 8%;
+    padding-top: 4%
+}
+div#CartPageContainer.container{
+    padding-top: 12%
+}
