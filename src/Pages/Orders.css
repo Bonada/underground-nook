@@ -1,23 +1,26 @@
-.orders-bg {
+.table-bg {
     background-color: #fbfbef;
     color: black;
 }
 
-.order.row {
-    position: relative;
+.orders.table {
+    font-family: 'Scope One', 'Serif';
+    width:84%;
+    margin: auto;
+    font-size: calc(3px + 1vw);
+    border-radius: 5px;
 }
 
-.order.row::after {
-    content: "";
-    height: 1px;
-    position: relative;
-    left: 2.5%;
-    width: 95%;
-    border: solid black 1px;
+th {
+    text-align: center;
 }
 
-.order-col-parent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.orders-header {
+    font-family: 'Scope One', 'Serif';
+}
+
+.table-body {
+    font-weight: lighter;
+    border-radius: 5px;
+    border-bottom: none;
 }

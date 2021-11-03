@@ -1,8 +1,13 @@
 .catalog-card-title {
-    font-size: calc(6.5px + 1vw);
+    font-size: calc(6px + 1vw);
+}
+
+.catalog-header {
+    font-family: 'Scope One', 'Serif';
 }
 
 .catalog-caption {
+    font-family: 'Scope One', 'Serif';
     font-style: italic;
 }
 
@@ -32,6 +37,7 @@ div.cards {
 }
 
 .catalog.card {
+    font-family: 'Scope One', 'Serif';
     background-color: #FBFBEF;
     color: black;
 }
