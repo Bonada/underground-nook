@@ -1,6 +1,9 @@
 .App {
   color: white;
-  text-align: center;
+}
+
+.card {
+  color: black;
 }
 
 .App-logo {

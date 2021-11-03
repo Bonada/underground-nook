@@ -1,0 +1,26 @@
+.table-bg {
+    background-color: #fbfbef;
+    color: black;
+}
+
+.orders.table {
+    font-family: 'Scope One', 'Serif';
+    width:84%;
+    margin: auto;
+    font-size: calc(3px + 1vw);
+    border-radius: 5px;
+}
+
+th {
+    text-align: center;
+}
+
+.orders-header {
+    font-family: 'Scope One', 'Serif';
+}
+
+.table-body {
+    font-weight: lighter;
+    border-radius: 5px;
+    border-bottom: none;
+}

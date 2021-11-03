@@ -36,11 +36,11 @@ export default function Navigation() {
           <button className="dropbtn btn"> Minying 
             <i className="fa fa-caret-down"></i>
           </button>   
-          <div className="dropdown-content">
-            <div id="DropDown">
+          <div className="dropdown-content container-fluid">
+            <div id="DropDown" className="row">
               <Link to="/Settings">Settings</Link>
             </div>
-            <div id="DropDown">
+            <div id="DropDown" className="row">
               <Link to="/Orders">Orders</Link>
             </div>
           </div>
