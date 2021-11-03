@@ -58,15 +58,25 @@ app.post('/add-user' , async (req, res) =>{
       let db = client.db('main');
 
       let newUser = {userid: userid, username: username, email: email, addresses: []};
+      let users = db.collection('users');
 
-      db.collection('users').insertOne(newUser);
+      let existinguser = users.findOne({userid:userid});
+      if (!existinguser) {
+        users.insertOne(newUser);
 
-      console.log("added new user");
+        console.log("added new user");
 
-      res.json({
-          success: true,
-          err: 'Facebook user ' + username +  ' added to database'
-      });
+        res.json({
+            success: true,
+            err: 'Facebook user ' + username +  ' added to database'
+        });
+      }
+      else {
+        res.json({
+            success: false,
+            err: 'Facebook user ' + username +  'already exists'
+        });
+      }
   } catch (e) {
       res.status(400);
       res.json({
@@ -85,25 +95,25 @@ app.get('/verify-user' , async (req, res) =>{
         await client.connect();
         let db = client.db('main');
   
-        let existinguser = db.collection('users').findOne({id:newUser});
+        let existinguser = db.collection('users').findOne({id:userid});
   
         console.log("finding user");
         if(existinguser){
             res.json({
                 success: true,
-                err: 'Facebook user ' + username +  ' added to database'
+                err: 'Facebook user ' + userid +  ' added to database'
             });
         }
         res.json({
             success: false,
-            err: 'Facebook user ' + username +  'does not exist'
+            err: 'Facebook user ' + userid +  'does not exist'
         });
 
     } catch (e) {
         res.status(400);
         res.json({
             success: false,
-            err: 'User ' + username + 'does not exist'
+            err: 'User ' + userid + 'does not exist'
         });
     }
   })
