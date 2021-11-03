@@ -21,12 +21,24 @@ export default class Navigation extends React.Component {
 
   componentDidMount() {
     window.fbAsyncInit = function() {
-      FB.Event.subscribe('auth.statusChange', function(response) {   // Called after the JS SDK has been initialized.
-        if (response.authResponse) {   // Logged into your webpage and Facebook.
+      FB.Event.subscribe('auth.login', function(response) {
+        console.log("login_event");
+        if (response.status === 'connected') {
           this.userLoggedIn = true;
           this.handleFacebookInfo();
-        } else {                                 // Not logged into your webpage or we are unable to tell.
-          console.log("Not logged in");
+        } else {
+          console.log("Log in cancelled");
+        }
+      }.bind(this));
+
+      FB.Event.subscribe('auth.logout', function(response) {
+        console.log("logout_event");
+        if (response.status === 'unknown') {
+          this.userLoggedIn = false;
+          // Redirect to homepage
+          console.log("Redirecting to homepage...");
+        } else {
+          console.log("Log out didn't work");
         }
       }.bind(this));
     }.bind(this);
