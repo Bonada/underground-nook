@@ -1,4 +1,4 @@
-/* CSS for Navbar Component - Both Pre-Login and Post-Login*/
+/* CSS for Navbar Component - Pre-Login, Post-Login, and Admin*/
 
 body{
     overflow-x: hidden; /* Hide horizontal scrollbar */
@@ -36,12 +36,17 @@ div.Links a:hover {
     margin-left: auto;
     margin-right: 0;
 }
-
+img#Logo.img-fluid{
+    width: 2%;
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
 
 
 /* CSS For the Pre-Login Navbar*/
 div#Pre-Login_NavBar{
-    padding: 16px;
+    padding: 19px;
 }
 button#NavbarButton.btn {
     color: #1877F2 !important;
@@ -71,7 +76,7 @@ i.ri-facebook-circle-fill.ri-lg{
 
 /* CSS For the Post-Login Navbar*/
 div#Post-Login_NavBar{
-    padding: 16px;
+    padding: 15px;
 }
 .dropdown {
     float: left;
@@ -112,4 +117,11 @@ div#DropDown a:hover {
 }
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+
+
+/* CSS For the Admin Navbar*/
+div#Admin_NavBar{
+    padding: 15px;
 }

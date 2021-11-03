@@ -7,12 +7,14 @@ import Home from "../Pages/Home";
 import Orders from "../Pages/Orders";
 import Settings from "../Pages/Settings";
 import './Navigation.css';
+import Logo from '../Images/Logo.png'; // gives image path
 
 export default function PostLogin_Navigation() {
   return (
     <Router>
       <div id="Post-Login_NavBar" className="Post-Login_NavBar">
       <nav className="navbar navbar-expand-lg ">
+        <img className="img-fluid" id="Logo" src={Logo} />
         <div id="WebsiteTitle">
           <Link to="/">Underground Nook</Link>
         </div>
