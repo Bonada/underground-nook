@@ -16,7 +16,7 @@ button.home-catalog-button{
     padding: 16px 50px;
     position: fixed;
     left: 4.7%;
-    top: 55%;
+    top: 51%;
     background: #6AA17B;
     border-color: transparent;
     border: 2px solid transparent;
@@ -33,7 +33,7 @@ button:hover {
 h1#Home_Title{
     position: fixed;
     left: 4.7%;
-    top: 40%;
+    top: 36%;
     font-family: 'Scope One', serif;
     font-style: normal;
     font-weight: normal;
