@@ -28,7 +28,7 @@ export default function PreLogin_Navigation() {
         </div>
 
         <button className="btn " id="NavbarButton" type="submit"> 
-          <i  class="ri-facebook-circle-fill ri-lg"></i> Log In with Facebook
+          <i  className="ri-facebook-circle-fill ri-lg"></i> Log In with Facebook
         </button>
       </nav>
     </div>

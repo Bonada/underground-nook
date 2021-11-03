@@ -9,16 +9,48 @@ function Cart() {
       <div className="container" id="CartPageContainer">
         <div className="row">
           <div className="col-md-4">
-            One of two columns
+            <h1 className="YourOrderTitle">Your Order</h1>
           </div>
           <div className="col-md-8">
-            One of two columns
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-              in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <div className="accordion" id="accordionPanelsStayOpenExample">
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="panelsStayOpen-headingOne">
+                  <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    <h1 className="AccordianTitle">Select Delivery Address</h1>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                  <div className="accordion-body">
+                    <h2 className="AccordianSubtitle">Select or Add an Address:</h2>
+                    
+                  </div>
+                </div>
+              </div>
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="panelsStayOpen-headingTwo">
+                  <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                    <h1 className="AccordianTitle">Select Shipping Carrier</h1>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                  <div className="accordion-body">
+                    <h1></h1>
+                  </div>
+                </div>
+              </div>
+              <div className="accordion-item">
+                <h2 className="accordion-header" id="panelsStayOpen-headingThree">
+                  <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    <h1 className="AccordianTitle">Select Payment Method</h1>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                  <div className="accordion-body">
+                    <h1></h1>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
