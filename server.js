@@ -150,6 +150,42 @@ app.post('/add-plant' , async (req, res) =>{
   }
 })
 
+app.post('/add-order' , async (req, res) =>{
+
+    console.log("adding new plant");
+    let id = uuidv4();
+    let username = req.body.username;
+    let date = Date().toString();
+    let time = Date().now();
+    let address = req.body.address;
+    let paymentmethod = req.body.paymentmethod;
+    let paymentinfo = req.body.paymentinfo;
+    let shippingcarrier = req.body.shippingcarrier;
+    let plants = req.body.plants;
+  
+    try {
+        await client.connect();
+        let db = client.db('main');
+
+        let newOrder = {id: id, username: username, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo};
+  
+        db.collection('orders').insertOne(newOrder);
+  
+        console.log("added new plant");
+  
+        res.json({
+            success: true,
+            err: 'Plant ' + scientific_name +  'added to database'
+        });
+    } catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Error adding ' + scientific_name + 'to database'
+        });
+    }
+  })
+
 app.get('/get-plants' , async (req, res) =>{
   try {
 
