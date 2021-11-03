@@ -8,12 +8,14 @@ import Orders from "../Pages/Orders";
 import Settings from "../Pages/Settings";
 import Admin from "../Pages/Admin";
 import './Navigation.css';
+import Logo from '../Images/Logo.png'; // gives image path
 
 export default function Admin_Navigation() {
   return (
     <Router>
       <div id="Admin_NavBar" className="Admin_NavBar">
       <nav className="navbar navbar-expand-lg ">
+        <img className="img-fluid" id="Logo" src={Logo} />
         <div id="WebsiteTitle">
           <Link to="/">Underground Nook</Link>
         </div>

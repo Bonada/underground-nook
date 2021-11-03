@@ -4,12 +4,14 @@ import About from "../Pages/About";
 import Catalog from "../Pages/Catalog";
 import Home from "../Pages/Home";
 import './Navigation.css';
+import Logo from '../Images/Logo.png'; // gives image path
 
 export default function PreLogin_Navigation() {
   return (
     <Router>
       <div id="Pre-Login_NavBar" className="Pre-Login_NavBar">
       <nav className="navbar navbar-expand-lg ">
+        <img className="img-fluid" id="Logo" src={Logo} />
         <div id="WebsiteTitle">
           <Link to="/">Underground Nook</Link>
         </div>
