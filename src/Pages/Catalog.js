@@ -24,7 +24,7 @@ function Catalog() {
           <CatalogCard />
         </div>
       </div>
-      <div className="modal fade" id="catalogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="catalogModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="catalog modal-header">
