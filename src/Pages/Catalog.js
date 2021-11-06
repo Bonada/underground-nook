@@ -15,7 +15,8 @@ export default class Catalog extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('load', () => { this.populateCards() });
+    console.log("mounted")
+    this.populateCards();
   }
 
   render (){
