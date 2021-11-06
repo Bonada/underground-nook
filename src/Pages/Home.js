@@ -6,7 +6,7 @@ import HexagonPlants from '../Images/HexagonPlants.PNG'; // gives image path
 import Plant1 from '../Images/Plant1.PNG'; // gives image path
 import Plant2 from '../Images/Plant2.PNG'; // gives image path
 
-function Home() {
+export default function Home() {
   return (
     <div id="HomePage">
       <h1 id="Home_Title">Underground Nook</h1>
@@ -27,4 +27,15 @@ function Home() {
   );
 }
 
-export default Home;
+  // async getPlants() {
+  //   fetch("http://localhost:3030/get-plants", {
+  //           method: 'GET',
+  //           mode: 'cors'
+  //       })
+  //           .then(response => response.json())
+  //           .then(data => {
+  //               console.log(data);
+  //           });
+  // }
+
+//}

@@ -3,6 +3,14 @@ import './Settings.css';
 import '../Components/Navigation.css';
 
 function Settings() {
+  function handleSubmit(event) {
+    console.log(event.target.value);
+  }
+
+  function handleChange(event) {
+    console.log(event.target.value);
+  }
+
   return (
     <div className="settings">
       <div className="container basic-user-info-container">
@@ -13,22 +21,22 @@ function Settings() {
           <div className="col-md">
 
             <div className="row">
-              <label for="fname" className="form-label heading2">First Name</label>
+              <label htmlFor="fname" className="form-label heading2">First Name</label>
               <input className="input-box" type="text" defaultValue="Minying" id="fname" />
             </div>
 
             <div className="row">
-              <label for="lname" className="form-label heading2">Last Name</label>
+              <label htmlFor="lname" className="form-label heading2">Last Name</label>
               <input className="input-box" type="text" defaultValue="Cao" id="lname" />
             </div>
 
             <div className="row">
-              <label for="email" className="form-label heading2">Email</label>
+              <label htmlFor="email" className="form-label heading2">Email</label>
               <input className="input-box" type="email" defaultValue="minyingcao12@gmail.com" id="email" />
             </div>
 
             <div className="row">
-              <label for="phonenumber" className="form-label heading2">Phone Number</label>
+              <label htmlFor="phonenumber" className="form-label heading2">Phone Number</label>
               <input className="input-box" type="text" defaultValue="1234567890" id="phonenumber" />
             </div>
 
@@ -131,7 +139,7 @@ function Settings() {
       </div>
 
       {/*  Add Address Modal */}
-      <div className="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="addAddressModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -140,28 +148,28 @@ function Settings() {
             </div>
             <div className="modal-body">
               <div className="container">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="mb-3">
-                    <label for="fullName" className="form-label">Full Name</label>
+                    <label htmlFor="fullName" className="form-label">Full Name</label>
                     <br />
                     <input className="input-box-modal form-control" type="text" placeholder="Enter Full Name" id="fullName" />
                   </div>
                   <div className="mb-3">
-                    <label for="streetAddress" className="form-label">Street Address</label>
+                    <label htmlFor="streetAddress" className="form-label">Street Address</label>
                     <br />
                     <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" />
                   </div>
                   <div className="mb-3">
-                    <label for="city" className="form-label">Street Address</label>
+                    <label htmlFor="city" className="form-label">Street Address</label>
                     <br />
                     <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" />
                   </div>
                   <div className="mb-3">
-                    <label for="state" className="form-label">State</label>
+                    <label htmlFor="state" className="form-label">State</label>
                     <br />
 
-                    <select className="input-box-modal form-control" id="state" name="state">
-                      <option value="" disabled selected>Select a State</option>
+                    <select className="input-box-modal form-control" id="state" name="state" value="Select State" onChange={handleChange}>
+                      <option value="Select State" disabled>Select State</option>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
                       <option value="AR">AR</option>
@@ -217,14 +225,14 @@ function Settings() {
                   </div>
 
                   <div className="mb-3">
-                    <label for="zipcode" className="form-label">Zip Code</label>
+                    <label htmlFor="zipcode" className="form-label">Zip Code</label>
                     <br />
                     <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" />
                   </div>
                 </form>
 
                 <div className="flex-box-submit-button">
-                  <button className="submit-button btn" type="button" data-bs-dismiss="modal">Submit</button>
+                  <button className="submit-button btn" type="submit" data-bs-dismiss="modal">Submit</button>
                 </div>
               </div>
             </div>
@@ -233,7 +241,7 @@ function Settings() {
       </div>
 
       {/* Edit Address Modal */}
-      <div className="modal fade" id="editAddressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="editAddressModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -242,27 +250,26 @@ function Settings() {
             </div>
             <div className="modal-body">
               <div className="container">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="mb-3">
-                    <label for="fullName" className="form-label">Full Name</label>
+                    <label htmlFor="fullName" className="form-label">Full Name</label>
                     <br />
                     <input className="input-box-modal form-control" type="text" defaultValue="Minying Cao" id="fullName" />
                   </div>
                   <div className="mb-3">
-                    <label for="streetAddress" className="form-label">Street Address</label>
+                    <label htmlFor="streetAddress" className="form-label">Street Address</label>
                     <br />
                     <input className="input-box-modal form-control" type="text" defaultValue="1761 15th St" id="streetAddress" />
                   </div>
                   <div className="mb-3">
-                    <label for="city" className="form-label">Street Address</label>
+                    <label htmlFor="city" className="form-label">Street Address</label>
                     <br />
                     <input className="input-box-modal form-control" type="text" defaultValue="Troy" id="city" />
                   </div>
                   <div className="mb-3">
-                    <label for="state" className="form-label">State</label>
+                    <label htmlFor="state" className="form-label">State</label>
                     <br />
-                    <select className="input-box-modal form-select" id="state" name="state">
-                      <option defaultValue="" disabled selected>NY</option>
+                    <select className="input-box-modal form-select" id="state" name="state" value="NY" onChange={handleChange}>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
                       <option value="AR">AR</option>
@@ -317,13 +324,13 @@ function Settings() {
                     </select>
                   </div>
                   <div className="mb-3">
-                    <label for="zipcode" className="form-label">Zip Code</label>
+                    <label htmlFor="zipcode" className="form-label">Zip Code</label>
                     <br />
                     <input className="input-box-modal form-control" type="text" defaultValue="12180" id="zipcode" />
                   </div>
                 </form>
                 <div className="flex-box-submit-button">
-                  <button className="submit-button btn" type="button" data-bs-dismiss="modal">Save</button>
+                  <button className="submit-button btn" type="submit" data-bs-dismiss="modal">Save</button>
                 </div>
               </div>
             </div>

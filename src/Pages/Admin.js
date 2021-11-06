@@ -10,7 +10,7 @@ function Admin() {
         <div className="row">
           <div className="col-md-5">
             <div className="edit-catalog-pane">
-              <table class="table">
+              <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">Image</th>
@@ -49,7 +49,7 @@ function Admin() {
 
           <div className="col-md-7">
             <div className="view-orders-pane">
-              <table class="table">
+              <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">Order Id</th>
