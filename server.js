@@ -162,12 +162,13 @@ app.post('/add-order' , async (req, res) =>{
     let paymentinfo = req.body.paymentinfo;
     let shippingcarrier = req.body.shippingcarrier;
     let plants = req.body.plants;
+    let images = req.body.images;
   
     try {
         await client.connect();
         let db = client.db('main');
 
-        let newOrder = {id: id, username: username, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo};
+        let newOrder = {id: id, username: username, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier = shippingcarrier};
   
         db.collection('orders').insertOne(newOrder);
   

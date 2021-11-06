@@ -203,7 +203,7 @@ function Settings() {
       </div>
 
       {/* Edit Address Modal */}
-      <div className="modal fade" id="editAddressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div className="modal fade" id="editAddressModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -287,7 +287,7 @@ function Settings() {
                     </select>
                   </div>
                   <div className="mb-3">
-                    <label for="zipcode" className="form-label">Zip Code</label>
+                    <label htmlFor="zipcode" className="form-label">Zip Code</label>
                     <br />
                     <input className="input-box-modal form-control" type="text" defaultValue="12180" id="zipcode" />
                   </div>
