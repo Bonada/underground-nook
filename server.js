@@ -277,25 +277,6 @@ app.get('/get-user' , async (req, res) =>{
   }
 })
 
-app.get('/is-admin', async (req, res) => {
-  try {
-    let userid = req.body.userid;
-
-    await client.connect();
-    let db = client.db('main');
-    let collection = db.collection('user');
-    let user_doc = await collection.findOne({id: userid});
-
-    res.send(user_doc.isAdmin);
-  } catch (e) {
-    res.status(400);
-    res.json({
-      success: false,
-      err: 'Cannot find user'
-    })
-  }
-})
-
 // app.use(express.static(__dirname + '/'));
 
 app.listen(port, () => {
