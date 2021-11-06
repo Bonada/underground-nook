@@ -10,10 +10,28 @@ h1.CartPage_Title{
     color: #E5E5E5;
 }
 div#CartPageContainer.container{
-    padding-top: 12%
+    padding-top: 12%;
+    margin-left: 5.5%;
+    margin-right: 20px;
 }
 div#CartPage{
     padding-left: 6%;
+}
+button.PlaceOrder-button{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 310px;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #26222E;
+    font-weight: 500;
+    font-size: 1.1vw;
+    font-family: 'Scope One', serif;
+    margin: 40px;
+    margin-left: 80px;
+    font-weight: 600;
 }
 
 
@@ -26,8 +44,63 @@ h1.YourOrderTitle{
     color: #E5E5E5;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 28px;
     float: left;
+}
+div.OrderContents{
+    background-color: transparent;
+    margin-top: 20%;
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color:#E5E5E5;
+}
+div.order.card{
+    background-color: transparent;
+    color: #E5E5E5;
+    font-size: 15px;
+    font-family: "Avenir";
+    border-style: solid;
+    border-width: thin;
+    border-color: transparent;
+    border-bottom-width: thin;
+    border-bottom-style: solid;
+    border-bottom-color: #E5E5E5;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+img.order-img.card-img-top{
+    width: 30%;
+}
+h2.order-card-title.card-title.col-md-8{
+    font-size: 25px;
+}
+div#OrderTotal.row{
+    color: #E5E5E5;
+    font-family: "Avenir";
+}
+div.col-md-8{
+    padding: 0px;
+}
+div#Order.col-md-4{
+    padding-right: 30px;
+}
+button.AddPurgePlant-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 20px;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #26222E;
+    font-weight: 500;
+    font-size: 1.0vw;
+    font-family: 'Scope One', serif;
+    margin: 20px;
+    margin-left: 50px;
+    font-weight: 600;
 }
 
 
@@ -57,7 +130,7 @@ div.accordion-body{
 div.accordion-item{
     background: transparent !important;
     border-color: transparent;
-    margin-bottom: 7%;
+    margin-bottom: 3%;
 }
 button.accordion-button{
     background: transparent !important;
@@ -67,4 +140,28 @@ button.accordion-button{
 }
 .accordion-button::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23E5E5E5'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+div.container.addresses-container{
+    margin-top: 30px;
+}
+div.card.h-100{
+    margin-right: 0px !important;
+    max-width: 13rem;
+}
+input{
+    margin-right: 5px;
+}
+label.radio-label{
+    font-family: 'Avenir';
+    font-style: normal;
+    color: #E5E5E5;
+    font-size: 18px;
+}
+div.PaymentSelection{
+    margin-top: 30px;
+    padding-left: 40px;
+}
+input#PaymentUsername{
+    width: 15em;
+    margin-left: 45px;
 }
