@@ -4,11 +4,11 @@ import '../Components/Navigation.css';
 
 function Admin() {
   return (
-  <div id="Admin-Dashboard-Page">
-      <h1 className="CartPage_Title"> Admin Dashboard</h1>
-      <div className="container" id="CartPageContainer">
+  <div id="AdminDashboardPage">
+      <h1 className="AdminDashboardPage_Title"> Admin Dashboard</h1>
+      <div className="container" id="AdminDashboardPageContainer">
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-5 col-catalog">
             <div className="edit-catalog-pane">
               <table className="table">
                 <thead>
