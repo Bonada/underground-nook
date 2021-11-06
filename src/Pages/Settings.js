@@ -33,7 +33,7 @@ function Settings() {
             </div>
 
             <div className="row flex-box-save-button">
-              <button className="btn btn-primary save-button" type="button">Save</button>
+              <button className="btn save-button" type="button">Save</button>
             </div>
           </div>
         </div>
@@ -211,7 +211,7 @@ function Settings() {
                 </form>
 
                 <div className="flex-box-submit-button">
-                  <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Submit</button>
+                  <button className="submit-button btn" type="button" data-bs-dismiss="modal">Submit</button>
                 </div>
               </div>
             </div>
@@ -310,7 +310,7 @@ function Settings() {
                   </div>
                 </form>
                 <div className="flex-box-submit-button">
-                  <button className="submit-button btn btn-primary" type="button" data-bs-dismiss="modal">Save</button>
+                  <button className="submit-button btn" type="button" data-bs-dismiss="modal">Save</button>
                 </div>
               </div>
             </div>

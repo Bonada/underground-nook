@@ -42,7 +42,7 @@ function Admin() {
               </table>
               
               <div className="container flex-box-edit-catalog-button">
-                <button className="btn btn-primary edit-catalog-button" type="button">Edit Catalog</button>
+                <button className="btn edit-catalog-button" type="button">Edit Catalog</button>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@ function Admin() {
                 </tbody>
               </table>
               <div className="container flex-box-view-orders-button">
-                <button className="btn btn-primary view-orders-button" type="button">View Orders</button>
+                <button className="btn view-orders-button" type="button">View Orders</button>
               </div>
             </div>
           </div>
