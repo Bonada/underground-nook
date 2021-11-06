@@ -1,3 +1,4 @@
+import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import About from "../Pages/About";
@@ -50,4 +51,4 @@ export default function PreLogin_Navigation() {
   );
 }
 
-ReactDOM.render(<PreLogin_Navigation />, document.getElementById("root"));
+//ReactDOM.render(<PreLogin_Navigation />, document.getElementById("root"));

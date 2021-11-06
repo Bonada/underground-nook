@@ -1,12 +1,12 @@
 import './App.css';
 import { BrowserRouter as Router } from "react-router-dom";
-import Admin_Navigation from "./Components/Admin_Navigation";
+import Navigation from "./Components/Navigation";
 
 function App() {  
   return (
     <div className="App">
       <Router>
-        <Admin_Navigation />
+        <Navigation />
       </Router>
     </div>
     
