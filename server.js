@@ -122,7 +122,7 @@ app.post('/add-plant' , async (req, res) =>{
 
   console.log("adding new plant");
   let id = uuidv4();
-  let species_name = req.body.sname;
+  let scientific_name = req.body.sname;
   let common_name = req.body.cname;
   let description = req.body.desc;
   let price = req.body.price;
@@ -163,12 +163,13 @@ app.post('/add-order' , async (req, res) =>{
     let shippingcarrier = req.body.shippingcarrier;
     let plants = req.body.plants;
     let images = req.body.images;
+    let scientific_name = req.body.sname;
   
     try {
         await client.connect();
         let db = client.db('main');
 
-        let newOrder = {id: id, username: username, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier = shippingcarrier};
+        let newOrder = {id: id, username: username, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier: shippingcarrier};
   
         db.collection('orders').insertOne(newOrder);
   
