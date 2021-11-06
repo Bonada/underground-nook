@@ -65,7 +65,7 @@ export default class Catalog extends React.Component {
               </div>
             </div>
             <div className="catalog modal-footer">
-              <button className="cart-button btn-primary" type="button" data-bs-dismiss="modal">Add to Cart</button>
+              <button className="cart-button" type="button" data-bs-dismiss="modal">Add to Cart</button>
             </div>
           </div>
         </div>

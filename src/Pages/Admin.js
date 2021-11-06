@@ -10,7 +10,7 @@ function Admin() {
         <div className="row">
           <div className="col-md-5">
             <div className="edit-catalog-pane">
-              <table class="table">
+              <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">Image</th>
@@ -42,14 +42,14 @@ function Admin() {
               </table>
               
               <div className="container flex-box-edit-catalog-button">
-                <button className="btn btn-primary edit-catalog-button" type="button">Edit Catalog</button>
+                <button className="btn edit-catalog-button" type="button">Edit Catalog</button>
               </div>
             </div>
           </div>
 
           <div className="col-md-7">
             <div className="view-orders-pane">
-              <table class="table">
+              <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">Order Id</th>
@@ -80,7 +80,7 @@ function Admin() {
                 </tbody>
               </table>
               <div className="container flex-box-view-orders-button">
-                <button className="btn btn-primary view-orders-button" type="button">View Orders</button>
+                <button className="btn view-orders-button" type="button">View Orders</button>
               </div>
             </div>
           </div>

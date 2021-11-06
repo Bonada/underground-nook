@@ -58,6 +58,7 @@
 
 .card-text-bold {
     font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .profile-picture {
@@ -118,9 +119,37 @@
 }
 
 .card-link {
-    margin: 10px;
+    text-decoration: none;
+}
+
+.card-link:hover {
+    color: #6AA17B;
 }
 
 .addresses-container {
     padding-bottom: 50px;
 }
+
+.flex-box-submit-button {
+    display:flex;
+    justify-content: flex-end;
+}
+
+.settings i {
+    color: black;
+    margin: 0px;
+    margin-right: 4px;
+}
+
+.settings a:hover {
+    color: #6AA17B;
+}
+
+.settings .card-text {
+    margin-bottom: 10px;
+}
+
+/* .settings .card-col {
+    padding: 0px;
+    margin: 0px;
+} */
