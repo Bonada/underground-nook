@@ -20,7 +20,7 @@ function Orders() {
             <th scope="col">Order Status</th>
           </tr>
         </thead>
-        <tbody class="table-body">
+        <tbody className="table-body">
           <OrderRow />
           <OrderRow />
           <OrderRow />
