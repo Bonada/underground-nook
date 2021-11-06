@@ -148,7 +148,22 @@
 .settings .card-text {
     margin-bottom: 10px;
 }
+.container.address-card {
+    display: inline;
+    padding-right: 8px;
+}
 
+.edit-address-block {
+    margin-top: 32px;
+}
+
+.container.edit-card {
+    text-align: center;
+}
+
+.edit-link {
+    padding-right: 8px;
+}
 /* .settings .card-col {
     padding: 0px;
     margin: 0px;

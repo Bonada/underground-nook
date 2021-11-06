@@ -21,12 +21,12 @@ function Settings() {
               <label for="lname" className="form-label heading2">Last Name</label>
               <input className="input-box" type="text" defaultValue="Cao" id="lname" />
             </div>
-            
+
             <div className="row">
               <label for="email" className="form-label heading2">Email</label>
               <input className="input-box" type="email" defaultValue="minyingcao12@gmail.com" id="email" />
             </div>
-          
+
             <div className="row">
               <label for="phonenumber" className="form-label heading2">Phone Number</label>
               <input className="input-box" type="text" defaultValue="1234567890" id="phonenumber" />
@@ -38,12 +38,12 @@ function Settings() {
           </div>
         </div>
       </div>
-      
+
       <div className="container addresses-container">
         <h1 className="heading1">Addresses</h1>
         <div className="row">
           <div className="col-sm">
-            <div className="card h-100" style={{width: '18rem'}} data-bs-toggle="modal" data-bs-target="#addAddressModal">
+            <div className="card h-100" style={{ width: '18rem' }} data-bs-toggle="modal" data-bs-target="#addAddressModal">
               <div className="card-body align-items-center d-flex justify-content-center">
                 <h5 className="card-title">+ Add Address</h5>
               </div>
@@ -51,7 +51,7 @@ function Settings() {
           </div>
 
           <div className="col-sm">
-            <div className="card h-100" style={{width: '18rem'}}>
+            <div className="card h-100" style={{ width: '18rem' }}>
               <div className="card-body">
                 <p className="card-text-bold">Default Address</p>
                 <p className="card-text">Minying Cao</p>
@@ -59,16 +59,16 @@ function Settings() {
                 <p className="card-text">Troy, NY 12180</p>
 
 
-                <div className="container">
+                <div className="container address-card">
                   <i className="ri-delete-bin-line"></i>
                   <a href="#" className="card-link">Remove</a>
                 </div>
 
-              
-                <div className="container">
+
+                <div className="container address-card">
                   <i className="ri-pencil-line"></i>
                   <a className="card-link" data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
-                      Edit Address
+                    Edit Address
                   </a>
                 </div>
 
@@ -77,40 +77,53 @@ function Settings() {
           </div>
 
           <div className="col-sm">
-            <div className="card h-100" style={{width: '18rem'}}>
+            <div className="card h-100" style={{ width: '18rem' }}>
               <div className="card-body">
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-
-                <i className="ri-delete-bin-line"></i>
-                <a href="#" className="card-link">Remove</a>
-                <i className="ri-pencil-line"></i>
-                <a className="card-link" data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
-                  Edit Address
-                </a>
-                <br></br>
-                <i class="ri-arrow-go-back-line"></i>
-                <a href="#" className="card-link">Set as Default</a>
+                <div className="edit-address-block">
+                  <div className="container address-card">
+                    <i className="ri-delete-bin-line"></i>
+                    <a href="#" className="card-link">Remove</a>
+                  </div>
+                  <div className="container address-card">
+                    <i className="ri-pencil-line"></i>
+                    <a className="card-link" data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
+                      Edit Address
+                    </a>
+                  </div>
+                  <div className="container edit-card">
+                    <i class="ri-arrow-go-back-line"></i>
+                    <a href="#" className="card-link">Set as Default</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="col-sm">
-            <div className="card h-100" style={{width: '18rem'}}>
+            <div className="card h-100" style={{ width: '18rem' }}>
               <div className="card-body">
                 <p className="card-text">Minying Cao</p>
                 <p className="card-text">1761 15th St</p>
                 <p className="card-text">Troy, NY 12180</p>
-                <i className="ri-delete-bin-line"></i>
-                <a href="#" className="card-link">Remove</a>
-                <i className="ri-pencil-line"></i>
-                <a className="card-link" data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
-                  Edit Address
-                </a>
-                <br></br>
-                <i class="ri-arrow-go-back-line"></i>
-                <a href="#" className="card-link">Set as Default</a>
+                <div className="edit-address-block">
+                  <div className="container address-card">
+                    <i className="ri-delete-bin-line"></i>
+                    <a href="#" className="card-link">Remove</a>
+                  </div>
+                  <div className="container address-card">
+                    <i className="ri-pencil-line"></i>
+                    <a className="card-link" data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
+                      Edit Address
+                    </a>
+                  </div>
+                  <div className="container edit-card">
+                    <i class="ri-arrow-go-back-line"></i>
+                    <a href="#" className="card-link">Set as Default</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -151,7 +164,7 @@ function Settings() {
                       <option value="" disabled selected>Select a State</option>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
-                      <option value="AR">AR</option>  
+                      <option value="AR">AR</option>
                       <option value="AZ">AZ</option>
                       <option value="CA">CA</option>
                       <option value="CO">CO</option>
@@ -161,7 +174,7 @@ function Settings() {
                       <option value="FL">FL</option>
                       <option value="GA">GA</option>
                       <option value="HI">HI</option>
-                      <option value="IA">IA</option>  
+                      <option value="IA">IA</option>
                       <option value="ID">ID</option>
                       <option value="IL">IL</option>
                       <option value="IN">IN</option>
@@ -173,14 +186,14 @@ function Settings() {
                       <option value="ME">ME</option>
                       <option value="MI">MI</option>
                       <option value="MN">MN</option>
-                      <option value="MO">MO</option>  
+                      <option value="MO">MO</option>
                       <option value="MS">MS</option>
                       <option value="MT">MT</option>
-                      <option value="NC">NC</option>  
+                      <option value="NC">NC</option>
                       <option value="NE">NE</option>
                       <option value="NH">NH</option>
                       <option value="NJ">NJ</option>
-                      <option value="NM">NM</option>      
+                      <option value="NM">NM</option>
                       <option value="NV">NV</option>
                       <option value="NY">NY</option>
                       <option value="ND">ND</option>
@@ -197,7 +210,7 @@ function Settings() {
                       <option value="VT">VT</option>
                       <option value="VA">VA</option>
                       <option value="WA">WA</option>
-                      <option value="WI">WI</option>  
+                      <option value="WI">WI</option>
                       <option value="WV">WV</option>
                       <option value="WY">WY</option>
                     </select>
@@ -252,7 +265,7 @@ function Settings() {
                       <option defaultValue="" disabled selected>NY</option>
                       <option value="AL">AL</option>
                       <option value="AK">AK</option>
-                      <option value="AR">AR</option>  
+                      <option value="AR">AR</option>
                       <option value="AZ">AZ</option>
                       <option value="CA">CA</option>
                       <option value="CO">CO</option>
@@ -262,7 +275,7 @@ function Settings() {
                       <option value="FL">FL</option>
                       <option value="GA">GA</option>
                       <option value="HI">HI</option>
-                      <option value="IA">IA</option>  
+                      <option value="IA">IA</option>
                       <option value="ID">ID</option>
                       <option value="IL">IL</option>
                       <option value="IN">IN</option>
@@ -274,14 +287,14 @@ function Settings() {
                       <option value="ME">ME</option>
                       <option value="MI">MI</option>
                       <option value="MN">MN</option>
-                      <option value="MO">MO</option>  
+                      <option value="MO">MO</option>
                       <option value="MS">MS</option>
                       <option value="MT">MT</option>
-                      <option value="NC">NC</option>  
+                      <option value="NC">NC</option>
                       <option value="NE">NE</option>
                       <option value="NH">NH</option>
                       <option value="NJ">NJ</option>
-                      <option value="NM">NM</option>      
+                      <option value="NM">NM</option>
                       <option value="NV">NV</option>
                       <option value="NY">NY</option>
                       <option value="ND">ND</option>
@@ -298,7 +311,7 @@ function Settings() {
                       <option value="VT">VT</option>
                       <option value="VA">VA</option>
                       <option value="WA">WA</option>
-                      <option value="WI">WI</option>  
+                      <option value="WI">WI</option>
                       <option value="WV">WV</option>
                       <option value="WY">WY</option>
                     </select>

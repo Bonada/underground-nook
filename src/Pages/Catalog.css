@@ -1,5 +1,5 @@
 .catalog-card-title {
-    font-size: calc(6px + 1vw);
+    font-size: calc(5.5px + 1vw);
 }
 
 .catalog-header {
@@ -27,6 +27,7 @@
     padding-left: 0;
     margin-right: 5%;
     font-size: calc(3.5px + 1vw);
+    white-space: nowrap;
 }
 
 div.cards {
