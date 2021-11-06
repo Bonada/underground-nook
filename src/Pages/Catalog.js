@@ -4,8 +4,23 @@ import '../Components/Navigation.css';
 
 import CatalogCard from './CatalogCard.js'
 
-function Catalog() {
-  return (
+export default class Catalog extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      plants: []
+    };
+  }
+
+  componentDidMount() {
+    console.log("mounted")
+    this.populateCards();
+  }
+
+  render (){
+    return(
     <div className="catalog">
       <div className="container-fluid">
         <div className="row">
@@ -17,11 +32,12 @@ function Catalog() {
         <div className="row cards">
           <div className="row">&nbsp;</div>
           <div className="col-md-1"></div>
-          <CatalogCard />
-          <CatalogCard />
-          <CatalogCard />
-          <CatalogCard />
-          <CatalogCard />
+
+          {this.state.loading ? (null) : this.state.plants.map((plant, index) => {
+            console.log(plant, index);
+            return <CatalogCard key={"card"+index} species_name={plant['species_name']} common_name={plant['common_name']} price={plant['price']} description={plant['description']} img_url={plant['img_url']}/>;
+          })}
+
         </div>
       </div>
       <div className="modal fade" id="catalogModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -55,9 +71,20 @@ function Catalog() {
         </div>
       </div>
     </div>
+    )
+  }
 
-
-  );
+    async populateCards() {
+      fetch("http://localhost:3030/get-plants", {
+              method: 'GET',
+              mode: 'cors'
+          })
+            .then(response => response.json())
+            .then(data => {
+              this.setState({
+                loading: false,
+                plants: data
+              });
+            });
+    }
 }
-
-export default Catalog;
