@@ -1,5 +1,5 @@
 .catalog-card-title {
-    font-size: calc(6px + 1vw);
+    font-size: calc(5.5px + 1vw);
 }
 
 .catalog-header {
@@ -27,6 +27,7 @@
     padding-left: 0;
     margin-right: 5%;
     font-size: calc(3.5px + 1vw);
+    white-space: nowrap;
 }
 
 div.cards {
@@ -44,11 +45,14 @@ div.cards {
 }
 
 #catalogModal {
+    border: none;
     font-family: 'Scope One', 'Serif';
 }
 
 button.cart-button {
     background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
     border-radius: 20px;
     box-sizing: border-box;
     color: #000000;
@@ -58,14 +62,22 @@ button.cart-button {
     font-weight: 400;
     line-height: 24px;
     opacity: 1;
-    outline: 0 solid transparent;
     padding: 8px 18px;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
     width: 100%;
     word-break: break-word;
-    border: 0;
+}
+
+button.cart-button:hover {
+    color: #6AA17B;
+    background: #26222E;
+    border-color: #6AA17B;
+}
+
+button.cart-button:focus {
+    color: #6AA17B;
 }
 
 .catalog.modal-header {
