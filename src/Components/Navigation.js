@@ -10,36 +10,28 @@ import Admin from "../Pages/Admin";
 import Orders from "../Pages/Orders";
 import Settings from "../Pages/Settings";
 import Logo from '../Images/Logo.png'; // gives image path
-// import Admin_Navigation from "./Admin_Navigation";
-// import PostLogin_Navigation from "./PostLogin_Navigation";
-// import PreLogin_Navigation from "./PreLogin_Navigation";
 import './Navigation.css';
 
 /*global FB*/
 
 export default function Navigation(props) {
-    // window.fbAsyncInit = function() {
-    //   FB.init({
-    //     appId      : '580811376573225',
-    //     xfbml      : true,
-    //     version    : 'v12.0'
-    //   });
-    // };
-
-    // (function(d, s, id){
-    //    var js, fjs = d.getElementsByTagName(s)[0];
-    //    if (d.getElementById(id)) {return;}
-    //    js = d.createElement(s); js.id = id;
-    //    js.src = "//connect.facebook.net/en_US/sdk.js";
-    //    fjs.parentNode.insertBefore(js, fjs);
-    //  }(document, 'script', 'facebook-jssdk'));
-
-    window.fbAsyncInit = function() {
-      // Check initial login status
-    }.bind(this);
-
   const [userType, setUserType] = useState("Pre-Login");
+  //const [currentPage, setCurrentPage] = useState("Home");
   const [redirect, setRedirect] = useState(null);
+
+  window.fbAsyncInit = function() {
+    // Check initial login status
+    FB.getLoginStatus(function(response) {
+      if (response.status === 'connected') {
+        setUserType("Post-Login");
+        console.log("User is logged in");
+      }
+      else {
+        setUserType("Pre-Login");
+        console.log("User not logged in");
+      }
+    });
+  };
 
   const handleFacebookInfo = () => {
     // Get user information with api call to /me
@@ -66,6 +58,7 @@ export default function Navigation(props) {
         if (data.success) {     // New user was added to database
           // Redirect to registration page
           console.log("Redirecting to registration...");
+          //setCurrentPage("Registration");
           setRedirect("/Registration");
         }
         else {
@@ -74,8 +67,8 @@ export default function Navigation(props) {
           // setuserType === "Admin"(true);
           // Redirect to catalog page if general user
           setUserType("Post-Login");
-          console.log()
           console.log("Redirecting to catalog...");
+          //setCurrentPage("Catalog");
           setRedirect("/Catalog");
         }
       })
@@ -109,6 +102,8 @@ export default function Navigation(props) {
         if (response.status === 'unknown') {
           // Redirect to homepage
           console.log("Redirecting to homepage...");
+          setUserType("Pre-Login");
+          //setCurrentPage("Home");
           setRedirect("/");
         } else {
           console.log("Log out didn't work");
@@ -121,8 +116,13 @@ export default function Navigation(props) {
     }
   }
 
+  // Try redirect with else branch
+  var showPage = '';
   if (redirect) {
-    return <Redirect to={redirect} />
+    showPage = <Redirect to={redirect} />;
+  }
+  else {
+    showPage = '';
   }
 
   return (
@@ -161,16 +161,16 @@ export default function Navigation(props) {
             </button>
           }
 
-          {userType === "Admin" || userType === "Post-Login" &&
+          {(userType === "Admin" || userType === "Post-Login") &&
             <i className="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
           }
-          {userType === "Admin" || userType === "Post-Login" &&
+          {(userType === "Admin" || userType === "Post-Login") &&
             <div className="Links">
               <Link to="/Cart">Cart</Link>
             </div>
           }
 
-          {userType === "Admin" || userType === "Post-Login" &&
+          {(userType === "Admin" || userType === "Post-Login") &&
             <div className="dropdown">
               <button className="dropbtn btn"> Minying 
                 <i className="fa fa-caret-down"></i>
@@ -183,7 +183,7 @@ export default function Navigation(props) {
                   <Link to="/Orders">Orders</Link>
                 </div>
                 <div id="DropDown">
-                  <Link to="/Orders" onClick={startLogout}>Log Out</Link>
+                  <button onClick={startLogout}>Log Out</button>
                 </div>
               </div>
             </div>
@@ -191,37 +191,38 @@ export default function Navigation(props) {
         </nav>
       </div>
 
+      {showPage}
+
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        {userType === "Admin" &&
-          <Route path="/Admin">
-            <Admin />
+          <Route exact path="/">
+            <Home />
           </Route>
-        }
-        <Route path="/About">
-          <About />
-        </Route>
-        <Route path="/Catalog">
-          <p>Hello</p>
-          <Catalog />
-        </Route>
-        {userType === "Admin" || userType === "Post-Login" &&
-          <Route path="/Cart">
-            <Cart />
+          {userType === "Admin" &&
+            <Route path="/Admin">
+              <Admin />
+            </Route>
+          }
+          <Route path="/About">
+            <About />
           </Route>
-        }
-        {userType === "Admin" || userType === "Post-Login" &&
-          <Route path="/Settings">
-            <Settings />
+          <Route path="/Catalog">
+            <Catalog />
           </Route>
-        }
-        {userType === "Admin" || userType === "Post-Login" &&
-          <Route path="/Orders">
-            <Orders />
-          </Route>
-        }
+          {(userType === "Admin" || userType === "Post-Login") &&
+            <Route path="/Cart">
+              <Cart />
+            </Route>
+          }
+          {(userType === "Admin" || userType === "Post-Login") &&
+            <Route path="/Settings">
+              <Settings />
+            </Route>
+          }
+          {(userType === "Admin" || userType === "Post-Login") &&
+            <Route path="/Orders">
+              <Orders />
+            </Route>
+          }
       </Switch>
     </Router>
   );
