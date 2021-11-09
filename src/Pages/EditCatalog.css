@@ -1,0 +1,70 @@
+.EditCatalogPage_Title {
+    float: left;
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    padding-top: 4%;
+    color: #E5E5E5;
+}
+
+div#EditCatalogPageContainer.container{
+    padding-top: 12%;
+    margin-left: 0px;
+}
+
+div#EditCatalogPage{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+#EditCatalogPage .edit-catalog-pane {
+    background-color: #FBFBEF;
+    border-radius: 7px;
+}
+
+#EditCatalogPage .col-catalog {
+    padding-left: 0px ;
+}
+
+#EditCatalogPage .admin-catalog-img {
+    width: 100%;
+}
+
+#EditCatalogPage .img-col {
+    width: 10%;
+}
+
+#EditCatalogPage .title-col {
+    width: 20%;
+}
+
+#EditCatalogPage .description-col {
+    width: 30%;
+}
+
+#EditCatalogPage .price-col {
+    width: 20%;
+}
+
+#EditCatalogPage .edit-col {
+    width: 20%;
+}
+
+#EditCatalogPage .edit-col i {
+    color: black;
+    position: relative;
+    top: 1.5px;
+}
+
+#EditCatalogPage .edit-col a {
+    color: black;
+}
+
+#EditCatalogPage .edit-col .edit-container:hover > * {
+    color: #6AA17B;
+}
+
+#EditCatalogPage {
+    text-align: center;
+}

@@ -40,9 +40,8 @@ function Admin() {
                   </tr>
                 </tbody>
               </table>
-              
               <div className="container flex-box-edit-catalog-button">
-                <button className="btn edit-catalog-button" type="button">Edit Catalog</button>
+                <button className="btn btn-primary edit-catalog-button" type="button" onClick={event => window.location.href='/EditCatalog'}>Edit Catalog</button>
               </div>
             </div>
           </div>
