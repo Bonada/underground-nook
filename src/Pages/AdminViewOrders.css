@@ -1,4 +1,4 @@
-.EditCatalogPage_Title {
+.AdminViewOrders_Title {
     float: left;
     font-family: 'Scope One', serif;
     font-style: normal;
@@ -8,63 +8,63 @@
     color: #E5E5E5;
 }
 
-div#EditCatalogPageContainer.container{
+div#AdminViewOrdersContainer.container {
     padding-top: 12%;
     margin-left: 0px;
 }
 
-div#EditCatalogPage{
+div#AdminViewOrders{
     padding-left: 6%;
     padding-right: 6%;
 }
 
-#EditCatalogPage .edit-catalog-pane {
+#AdminViewOrders .edit-catalog-pane {
     background-color: #FBFBEF;
     border-radius: 7px;
 }
 
-#EditCatalogPage .col-catalog {
+#AdminViewOrders .col-catalog {
     padding-left: 0px ;
 }
 
-#EditCatalogPage .admin-catalog-img {
+#AdminViewOrders .admin-catalog-img {
     width: 100%;
 }
 
-#EditCatalogPage .img-col {
+#AdminViewOrders .img-col {
     width: 10%;
 }
 
-#EditCatalogPage .title-col {
+#AdminViewOrders .title-col {
     width: 20%;
 }
 
-#EditCatalogPage .description-col {
+#AdminViewOrders .description-col {
     width: 30%;
 }
 
-#EditCatalogPage .price-col {
+#AdminViewOrders .price-col {
     width: 20%;
 }
 
-#EditCatalogPage .edit-col {
+#AdminViewOrders .edit-col {
     width: 20%;
 }
 
-#EditCatalogPage .edit-col i {
-    color: black;
+#AdminViewOrders .edit-col i {
+    color: #000000;
     position: relative;
     top: 1.5px;
 }
 
-#EditCatalogPage .edit-col a {
-    color: black;
+#AdminViewOrders .edit-col a {
+    color: #000000;
 }
 
-#EditCatalogPage .edit-col .edit-container:hover > * {
+#AdminViewOrders .edit-col .edit-container:hover > * {
     color: #6AA17B;
 }
 
-#EditCatalogPage {
+#AdminViewOrders {
     text-align: center;
 }

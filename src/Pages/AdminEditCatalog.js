@@ -1,14 +1,16 @@
 import React from "react";
-import './EditCatalog.css';
+import './AdminEditCatalog.css';
 import '../Components/Navigation.css';
 
-function EditCatalog() {
+function AdminEditCatalog() {
   return (
-  <div id="EditCatalogPage">
-      <h1 className="EditCatalogPage_Title">Edit Catalog</h1>
-      <div className="container" id="EditCatalogPageContainer">
+  <div id="AdminEditCatalog">
+      <h1 className="AdminEditCatalog_Title">Edit Catalog</h1>
+      <div className="container" id="AdminEditCatalogContainer">
         <div className="row">
+          <a href="#" className="add-plant-button">+ Add Plant</a>
           <div className="col-md col-catalog">
+          
             <div className="edit-catalog-pane">
               <table class="table">
                 <thead>
@@ -83,4 +85,4 @@ function EditCatalog() {
   );
 }
 
-export default EditCatalog;
+export default AdminEditCatalog;

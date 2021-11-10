@@ -41,7 +41,7 @@ div.cards {
 .catalog.card {
     font-family: 'Scope One', 'Serif';
     background-color: #FBFBEF;
-    color: black;
+    color: #000000;
 }
 
 #catalogModal {

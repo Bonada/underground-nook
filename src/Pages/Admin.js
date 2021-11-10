@@ -1,6 +1,8 @@
 import React from "react";
 import './Admin.css';
 import '../Components/Navigation.css';
+import AdminDashboardOrderRow from "./AdminDashboardOrderRow";
+import AdminDashboardCatalogRow from "./AdminDashboardCatalogRow";
 
 function Admin() {
   return (
@@ -20,28 +22,13 @@ function Admin() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><img className="admin-catalog-img card-img-top" src="https://i.etsystatic.com/25913068/r/il/1a565b/3138887356/il_1140xN.3138887356_4n0k.jpg" alt="PPP"></img></td>
-                    <td>Pink Princess Philodendron</td>
-                    <td>This beautiful PPP is well rooted and ships in a 4" pot.</td>
-                    <td>$165</td>
-                  </tr>
-                  <tr>
-                    <td><img className="admin-catalog-img card-img-top" src="https://i.etsystatic.com/25913068/r/il/b0d3b1/3138956994/il_1588xN.3138956994_c45f.jpg" alt="Monstera Adansonii"></img></td>
-                    <td>Monstera Adansonii</td>
-                    <td>A green Mostera plant, also known as the Swiss cheese plant. Includes 4" pot.</td>
-                    <td>$15</td>
-                  </tr>
-                  <tr>
-                    <td><img className="admin-catalog-img card-img-top" src="https://i.etsystatic.com/25913068/r/il/e13afe/3186672225/il_1588xN.3186672225_eccq.jpg" alt="Nanouk"></img></td>
-                    <td>Nanouk</td>
-                    <td>Pink and Green striped Nanouk plant. Includes 4" pot.</td>
-                    <td>$15</td>
-                  </tr>
+                  <AdminDashboardCatalogRow />
+                  <AdminDashboardCatalogRow />
+                  <AdminDashboardCatalogRow />
                 </tbody>
               </table>
               <div className="container flex-box-edit-catalog-button">
-                <button className="btn btn-primary edit-catalog-button" type="button" onClick={event => window.location.href='/EditCatalog'}>Edit Catalog</button>
+                <button className="btn btn-primary edit-catalog-button" type="button" onClick={event => window.location.href='/AdminEditCatalog'}>Edit Catalog</button>
               </div>
             </div>
           </div>
@@ -52,34 +39,19 @@ function Admin() {
                 <thead>
                   <tr>
                     <th scope="col">Order Id</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Paid</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Payment Status</th>
+                    <th scope="col">Order Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">10028492</th>
-                    <td>1761 15th St Troy, NY 12180</td>
-                    <td>Yes</td>
-                    <td>Delivered</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">29482932</th>
-                    <td>212 Bugbee Ln Southwick, MA 01077</td>
-                    <td>Yes</td>
-                    <td>Approved</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">12920293</th>
-                    <td>861 Michigan Ave Schenectady, NY 12309</td>
-                    <td>No</td>
-                    <td>Pending</td>
-                  </tr>
+                  <AdminDashboardOrderRow />
+                  <AdminDashboardOrderRow />
+                  <AdminDashboardOrderRow />
                 </tbody>
               </table>
               <div className="container flex-box-view-orders-button">
-                <button className="btn view-orders-button" type="button">View Orders</button>
+                <button className="btn view-orders-button" type="button" onClick={event => window.location.href='/AdminViewOrders'}>View Orders</button>
               </div>
             </div>
           </div>
