@@ -33,6 +33,9 @@ button.PlaceOrder-button{
     margin-left: 80px;
     font-weight: 600;
 }
+button.PlaceOrder-button:hover{
+    background: transparent;
+}
 
 
 
@@ -102,13 +105,15 @@ button.AddPurgePlant-button{
     margin-left: 50px;
     font-weight: 600;
 }
+button.AddPurgePlant-button:hover{
+    background: transparent;
+}
 #addAddressModal,
 #editAddressModal,
 #addPurgePlantModal {
     font-family: "Avenir";
     color: #FBFBEF;
 }
-
 .modal-header,
 .modal-body,
 .modal-footer {
@@ -130,7 +135,7 @@ button.purge-plant-button.btn{
 }
 .save-button:hover, .submit-button:hover, button.purge-plant-button.btn:hover {
     color: #6AA17B;
-    background: #26222E;
+    background: transparent;
     border-color: #6AA17B;
 }
 
