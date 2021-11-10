@@ -63,9 +63,12 @@ button#NavbarButton.btn {
     display: flex;
     align-items: center;
 }
-button#NavbarButton.btn:hover {
+button#NavbarButton.btn:hover{
     color: #E5E5E5 !important;
     background-color: #1877F2 !important;
+}
+button#NavbarButton.btn:hover i.ri-facebook-circle-fill.ri-lg{
+    color: #E5E5E5 !important;
 }
 i.ri-facebook-circle-fill.ri-lg{
     margin-left: 0px;
@@ -118,7 +121,19 @@ div#DropDown a:hover {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
+button#LogoutBtn{
+    background-color: transparent;
+    color: #E5E5E5;
+    font-family: 'Raleway', sans-serif;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    padding: 10px 16px;
+}
+button#LogoutBtn:hover{
+    background-color: transparent;
+    font-weight: bold !important;
+}
 
 
 /* CSS For the Admin Navbar*/

@@ -1,14 +1,34 @@
-.edit-catalog-pane {
+.AdminDashboardPage_Title {
+    float: left;
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    padding-top: 4%;
+    color: #E5E5E5;
+}
+
+div#AdminDashboardPageContainer.container{
+    padding-top: 12%;
+    margin-left: 0px;
+}
+div#AdminDashboardPage{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+#AdminDashboardPage .edit-catalog-pane {
     background-color: #FBFBEF;
     border-radius: 7px;
 }
 
-.view-orders-pane {
+#AdminDashboardPage .view-orders-pane {
     background-color: #FBFBEF;
     border-radius: 7px;
 }
 
-.flex-box-view-orders-button, .flex-box-edit-catalog-button {
+#AdminDashboardPage .flex-box-view-orders-button, 
+#AdminDashboardPage .flex-box-edit-catalog-button {
     display:flex;
     justify-content: flex-end;
     width: 84%;
@@ -17,7 +37,8 @@
     padding-bottom: 15px;
 }
 
-.view-orders-button, .edit-catalog-button {
+#AdminDashboardPage .view-orders-button, 
+#AdminDashboardPage .edit-catalog-button {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -29,12 +50,17 @@
     color: #000000;
 }
 
-.view-orders-button:hover, .edit-catalog-button:hover {
+#AdminDashboardPage .view-orders-button:hover, 
+#AdminDashboardPage .edit-catalog-button:hover {
     color: #6AA17B;
     background: #26222E;
     border-color: #6AA17B;
 }
 
-.admin-catalog-img {
+#AdminDashboardPage .admin-catalog-img {
     width: 80px;
+}
+
+#AdminDashboardPage .col-catalog {
+    padding-left: 0px ;
 }
