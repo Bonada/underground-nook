@@ -180,7 +180,7 @@ button.accordion-button{
 div.container.addresses-container{
     margin-top: 30px;
 }
-div.card.h-100{
+div.card.h-100.cart{
     margin-right: 0px !important;
     max-width: 13rem;
 }
