@@ -183,7 +183,7 @@ export default function Navigation(props) {
                   <Link to="/Orders">Orders</Link>
                 </div>
                 <div id="DropDown">
-                  <button onClick={startLogout}>Log Out</button>
+                  <button id="LogoutBtn" onClick={startLogout}>Log Out</button>
                 </div>
               </div>
             </div>
