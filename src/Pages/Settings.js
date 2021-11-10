@@ -1,15 +1,15 @@
 import React from "react";
 import './Settings.css';
 import '../Components/Navigation.css';
-import AddAddress  from "./AddAddress.js";
-import AddAddressModal from './AddAddressModal.js';
-import EditAddress from './EditAddress.js';
-import EditAddressModal from './EditAddressModal.js';
+import AddressModal from './AddressModal.js';
+import AddressCard from './AddressCard.js';
 import EditInformation  from "./EditInformation.js";
-import EditDefault from "./EditDefault.js";
 
 
-function Settings() {
+function Settings(props) {
+
+  // Get user addresses with api call
+
   return (
     <div className="settings">
       <div className="container basic-user-info-container">
@@ -27,28 +27,32 @@ function Settings() {
         <h1 className="heading1">Addresses</h1>
         <div className="row">
           <div className="col-sm">
-            <AddAddress />
+            <div className="card h-100" style={{ width: '18rem' }} data-bs-toggle="modal" data-bs-target="#addAddressModal">
+              <div className="card-body align-items-center d-flex justify-content-center">
+                <h5 className="card-title">+ Add Address</h5>
+              </div>
+            </div>
           </div>
 
           <div className="col-sm">
-            <EditDefault />
+            <AddressCard name="Minying Cao" street="1761 15th St" city="Troy, NY 12180" isDefault={true} />
           </div>
 
           <div className="col-sm">
-            <EditAddress />
+            <AddressCard name="Minying Cao" street="1761 15th St" city="Troy, NY 12180" isDefault={false} />
           </div>
 
           <div className="col-sm">
-            <EditAddress />
+            <AddressCard name="Minying Cao" street="1761 15th St" city="Troy, NY 12180" isDefault={false} />
           </div>
         </div>
       </div>
 
       {/*  Add Address Modal */}
-      <AddAddressModal />
+      <AddressModal isNew={true} currentUser={props.currentUser} isAdmin={props.isAdmin} />
 
       {/* Edit Address Modal */}
-      <EditAddressModal />
+      <AddressModal isNew={false} name="Minying Cao" street="1761 15th St" city="Troy" state="NY" zip="12180" currentUser={props.currentUser} isAdmin={props.isAdmin} />
     </div>
   );
 }
