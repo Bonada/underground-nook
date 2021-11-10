@@ -39,7 +39,7 @@ export default function Navigation(props) {
       console.log(response);
 
       // If user doesn't exist in database, add their information and redirect to registration
-      fetch('http://localhost:3030/add-user', {
+      fetch('/add-user', {
         method: 'POST',
         mode: 'cors',
         headers: {
