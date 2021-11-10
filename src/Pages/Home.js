@@ -6,7 +6,7 @@ import HexagonPlants from '../Images/HexagonPlants.PNG'; // gives image path
 import Plant1 from '../Images/Plant1.PNG'; // gives image path
 import Plant2 from '../Images/Plant2.PNG'; // gives image path
 
-export default function Home() {
+export default function Home(props) {
   return (
     <div id="HomePage">
       <h1 id="Home_Title">Underground Nook</h1>

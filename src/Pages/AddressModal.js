@@ -1,6 +1,6 @@
 import StateSelect from "./StateSelect.js";
 
-function AddAddressModal(props) {
+function AddressModal(props) {
     function handleSubmit(event) {
         console.log(event.target.value);
         
@@ -9,12 +9,28 @@ function AddAddressModal(props) {
     function handleChange(event) {
         console.log(event.target.value);
     }
+
+    const id = props.isNew ? "addAddressModal" : "editAddressModal";
+    const title = props.isNew ? "Add Address" : "Edit Address";
+    const name_input = props.isNew ? 
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Full Name" id="fullName" /> : 
+        <input className="input-box-modal form-control" type="text" defaultValue={props.name} id="fullName" />;
+    const street_input = props.isNew ? 
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" /> : 
+        <input className="input-box-modal form-control" type="text" defaultValue={props.street} id="streetAddress" />;
+    const city_input = props.isNew ? 
+        <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" /> : 
+        <input className="input-box-modal form-control" type="text" defaultValue={props.city} id="city" />;
+    const zip_input = props.isNew ? 
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" /> : 
+        <input className="input-box-modal form-control" type="text" defaultValue={props.zip} id="zipcode" />;
+
     return (
-        <div className="modal fade" id="addAddressModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Add Address</h5>
+                        <h5 className="modal-title" id="exampleModalLabel">{title}</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -23,23 +39,23 @@ function AddAddressModal(props) {
                                 <div className="mb-3">
                                     <label htmlFor="fullName" className="form-label">Full Name</label>
                                     <br />
-                                    <input className="input-box-modal form-control" type="text" placeholder="Enter Full Name" id="fullName" />
+                                    {name_input}
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="streetAddress" className="form-label">Street Address</label>
                                     <br />
-                                    <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" />
+                                    {street_input}
                                 </div>
                                 <div className="mb-3">
-                                    <label htmlFor="city" className="form-label">Street Address</label>
+                                    <label htmlFor="city" className="form-label">City</label>
                                     <br />
-                                    <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" />
+                                    {city_input}
                                 </div>
                                 <StateSelect />
                                 <div className="mb-3">
                                     <label htmlFor="zipcode" className="form-label">Zip Code</label>
                                     <br />
-                                    <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" />
+                                    {zip_input}
                                 </div>
                             </form>
 
@@ -53,4 +69,4 @@ function AddAddressModal(props) {
         </div>);
 }
 
-export default AddAddressModal;
+export default AddressModal;
