@@ -15,16 +15,42 @@ import './Navigation.css';
 /*global FB*/
 
 export default function Navigation(props) {
+  const admin_ids = ['4524022054277037', '2034884766556492', '1839081979786582'];
+
   const [userType, setUserType] = useState("Pre-Login");
-  //const [currentPage, setCurrentPage] = useState("Home");
   const [redirect, setRedirect] = useState(null);
+
+  let userId = null;
+
+  // Check if user is admin or general user based on id
+  const handleUserLogin = (id, redirect=false) => {
+    // Set user type to render new navbar, update userId with logged in user
+    if (admin_ids.includes(id)) {
+      setUserType("Admin");
+      userId = id;
+      console.log("Admin user is logged in");
+      // Redirect to admin homepage if admin and redirect is desired
+      if (redirect) {
+        console.log("Redirecting to admin page...");
+        setRedirect("/Admin");
+      }
+    } else {
+      setUserType("Post-Login");
+      userId = id;
+      console.log("General user is logged in");
+      // Redirect to catalog page if general user and redirect is desired
+      if (redirect) {
+        console.log("Redirecting to catalog...");
+        setRedirect("/Catalog");
+      }
+    }
+  }
 
   window.fbAsyncInit = function() {
     // Check initial login status
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-        setUserType("Post-Login");
-        console.log("User is logged in");
+        handleUserLogin(response.authResponse.userID);
       }
       else {
         setUserType("Pre-Login");
@@ -35,8 +61,8 @@ export default function Navigation(props) {
 
   const handleFacebookInfo = () => {
     // Get user information with api call to /me
-    FB.api('/me', {fields: 'name, email, picture'}, function(response) {
-      console.log(response);
+    FB.api('/me', {fields: 'name, email, picture'}, function(fb_response) {
+      console.log(fb_response);
 
       // If user doesn't exist in database, add their information and redirect to registration
       fetch('http://localhost:3030/add-user', {
@@ -46,13 +72,13 @@ export default function Navigation(props) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          userid: response.name,
-          username: response.name,
-          email: response.email
+          userid: fb_response.id,
+          username: fb_response.name,
+          email: fb_response.email
         })
       })
-      .then(async response => {
-        const data = await response.json()
+      .then(async adduser_response => {
+        const data = await adduser_response.json()
         console.log(data);
 
         if (data.success) {     // New user was added to database
@@ -62,14 +88,7 @@ export default function Navigation(props) {
           setRedirect("/Registration");
         }
         else {
-          // Check if user is admin or general user
-          // Redirect to admin homepage if admin
-          // setuserType === "Admin"(true);
-          // Redirect to catalog page if general user
-          setUserType("Post-Login");
-          console.log("Redirecting to catalog...");
-          //setCurrentPage("Catalog");
-          setRedirect("/Catalog");
+          handleUserLogin(fb_response.id, true);
         }
       })
       .catch(e => {
@@ -103,7 +122,7 @@ export default function Navigation(props) {
           // Redirect to homepage
           console.log("Redirecting to homepage...");
           setUserType("Pre-Login");
-          //setCurrentPage("Home");
+          userId = null;
           setRedirect("/");
         } else {
           console.log("Log out didn't work");
@@ -195,32 +214,32 @@ export default function Navigation(props) {
 
       <Switch>
           <Route exact path="/">
-            <Home />
+            <Home currentUser={userId} isAdmin={admin_ids.includes(userId)} />
           </Route>
           {userType === "Admin" &&
             <Route path="/Admin">
-              <Admin />
+              <Admin currentUser={userId} />
             </Route>
           }
           <Route path="/About">
-            <About />
+            <About currentUser={userId} isAdmin={admin_ids.includes(userId)} />
           </Route>
           <Route path="/Catalog">
-            <Catalog />
+            <Catalog currentUser={userId} isAdmin={admin_ids.includes(userId)} />
           </Route>
           {(userType === "Admin" || userType === "Post-Login") &&
             <Route path="/Cart">
-              <Cart />
+              <Cart currentUser={userId} isAdmin={admin_ids.includes(userId)} />
             </Route>
           }
           {(userType === "Admin" || userType === "Post-Login") &&
             <Route path="/Settings">
-              <Settings />
+              <Settings currentUser={userId} isAdmin={admin_ids.includes(userId)} />
             </Route>
           }
           {(userType === "Admin" || userType === "Post-Login") &&
             <Route path="/Orders">
-              <Orders />
+              <Orders currentUser={userId} isAdmin={admin_ids.includes(userId)} />
             </Route>
           }
       </Switch>

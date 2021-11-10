@@ -232,27 +232,27 @@ app.get('/get-orders' , async (req, res) =>{
     }
   })
 
-  app.get('/get-user-orders' , async (req, res) =>{
-    try {
-  
-        let userid = req.body.userid;
-        console.log("connecting to db to get user");
-  
-        await client.connect();
-        let db = client.db('main');
-        let collection = db.collection('users');
-        let document = await collection.findOne({id: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
-  
-        console.log(document);
-        res.send(document);
-    }catch (e) {
-        res.status(400);
-        res.json({
-            success: false,
-            err: 'Cannot get the plant data'
-        });
-    }
-  })
+app.get('/get-user-orders' , async (req, res) =>{
+  try {
+
+      let userid = req.body.userid;
+      console.log("connecting to db to get user");
+
+      await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('users');
+      let document = await collection.findOne({id: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
+
+      console.log(document);
+      res.send(document);
+  }catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot get the plant data'
+      });
+  }
+})
 
 app.get('/get-user' , async (req, res) =>{
   try {
