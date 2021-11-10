@@ -102,6 +102,37 @@ button.AddPurgePlant-button{
     margin-left: 50px;
     font-weight: 600;
 }
+#addAddressModal,
+#editAddressModal,
+#addPurgePlantModal {
+    font-family: "Avenir";
+    color: #FBFBEF;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    background: #312C3B;
+}
+button.purge-plant-button.btn{
+    width: 100%;
+}
+.save-button, .submit-button, button.purge-plant-button.btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #000000;
+}
+.save-button:hover, .submit-button:hover, button.purge-plant-button.btn:hover {
+    color: #6AA17B;
+    background: #26222E;
+    border-color: #6AA17B;
+}
 
 
 
