@@ -1,0 +1,88 @@
+.AdminEditCatalog_Title {
+    float: left;
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    padding-top: 4%;
+    color: #E5E5E5;
+}
+
+div#AdminEditCatalogContainer.container {
+    padding-top: 10%;
+    margin-left: 0px;
+}
+
+div#AdminEditCatalog{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+#AdminEditCatalog .edit-catalog-pane {
+    background-color: #FBFBEF;
+    border-radius: 7px;
+}
+
+#AdminEditCatalog .col-catalog {
+    padding-left: 0px ;
+}
+
+#AdminEditCatalog .admin-catalog-img {
+    width: 100%;
+}
+
+#AdminEditCatalog .img-col {
+    width: 10%;
+}
+
+#AdminEditCatalog .title-col {
+    width: 20%;
+}
+
+#AdminEditCatalog .description-col {
+    width: 30%;
+}
+
+#AdminEditCatalog .price-col {
+    width: 20%;
+}
+
+#AdminEditCatalog .edit-col {
+    width: 20%;
+}
+
+#AdminEditCatalog .edit-col i {
+    color: #000000;
+    position: relative;
+    top: 1.5px;
+}
+
+#AdminEditCatalog .edit-col a {
+    color: #000000;
+}
+
+#AdminEditCatalog .edit-col .edit-container:hover > * {
+    color: #6AA17B;
+}
+
+#AdminEditCatalog {
+    text-align: center;
+}
+
+#AdminEditCatalog .add-plant-button{
+    text-decoration: none;
+    padding: 10px 50px;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #26222E;
+    font-weight: 500;
+    font-size: 1.1vw;
+    margin-bottom: 10px;
+}
+#AdminEditCatalog .add-plant-button:hover {
+    color: #6AA17B;
+    background: #26222E;
+    border-color: #6AA17B;
+}
