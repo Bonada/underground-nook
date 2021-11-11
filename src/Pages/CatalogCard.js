@@ -4,7 +4,7 @@ function CatalogCard(props) {
     console.log("MAKING: ", props);
 
     return (
-        <div className="col-md-2">
+        <div className="col-md-2" onClick={props.onClick}>
             <div className="catalog card" data-bs-toggle="modal" data-bs-target="#catalogModal">
                 <div className="row">
                     <img className="catalog-img card-img-top" src={props.img_url} alt="PPP"></img>
