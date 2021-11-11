@@ -65,7 +65,7 @@ export default function Navigation(props) {
       console.log(fb_response);
 
       // If user doesn't exist in database, add their information and redirect to registration
-      fetch('http://localhost:3030/add-user', {
+      fetch('/api/add-user', {
         method: 'POST',
         mode: 'cors',
         headers: {
