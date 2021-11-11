@@ -5,7 +5,7 @@ const express = require('express');
 var bodyParser = require('body-parser');
 const { json } = require('body-parser');
 
-const app = express().use(express.static(path.join(__dirname, 'public')));
+const app = express();
 const cors = require('cors');
 app.use(cors());
 
