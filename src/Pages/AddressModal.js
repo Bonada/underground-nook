@@ -24,7 +24,10 @@ function AddressModal(props) {
     const zip_input = props.isNew ? 
         <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" /> : 
         <input className="input-box-modal form-control" type="text" defaultValue={props.zip} id="zipcode" />;
-
+    const state_select = props.isNew ?
+        <StateSelect state="" placeholder="AL" /> :
+        <StateSelect state={props.state} placeholder="" />;
+        
     return (
         <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
@@ -51,7 +54,7 @@ function AddressModal(props) {
                                     <br />
                                     {city_input}
                                 </div>
-                                <StateSelect />
+                                {state_select}
                                 <div className="mb-3">
                                     <label htmlFor="zipcode" className="form-label">Zip Code</label>
                                     <br />
