@@ -1,66 +1,14 @@
-const express = require('express');
+const express = require("express");
+const router = express.Router();
+// const postControllers = require("../controllers/postControllers");
 
-// import fetch from 'node-fetch';
+// router.route("/").get(postControllers.getAllPosts);
 
-// var bodyParser = require('body-parser');
-// const { json } = require('body-parser');
-const path = require('path');
+const { MongoClient } = require('mongodb');
+const uri = "mongodb+srv://TestUser:TestUserPass@undergroundnook.lh3mc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const app = express();
-// const cors = require('cors');
-// app.use(cors());
-
-// const fs = require('fs');
-// var cloudinary = require('cloudinary').v2;
-// cloudinary.config({ 
-//   cloud_name: 'undergroundnook', 
-//   api_key: '197948958869879', 
-//   api_secret: 'UDvL3l6lxXSHc6Xdk1hb_nWzDH8' 
-// });
-
-const port = process.env.PORT || 3030;
-
-// function uploadimg() {
-//   cloudinary.uploader.upload("zbALL.jpg", 
-//     function(error, result) {console.log(result, error)});
-// }
-
-// uploadimg();
-
-// console.log(options.cert);
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//   extended: true
-// }));
-
-app.use(express.json());
-
-app.use(express.static(path.join(__dirname, '/client/build')));
-
-const postRoutes = require("./routes/api");
-app.use("/api", postRoutes);
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'src', 'pages', 'Home.js'));
-})
-
-
-// app.get('/', (req, res) => {
-//   res.send("Hi");
-// })
-
-
-// app.post('/endpoint', async (req, res) => {
-//   try {
-
-//     // Do functionality
-//   } catch (e) {
-//     // Error in endpoint
-//   }
-// });
-
-app.post('/add-user' , async (req, res) =>{
+router.post('/add-user' , async (req, res) =>{
 
   console.log("adding new user");
   let username = req.body.username;
@@ -100,7 +48,7 @@ app.post('/add-user' , async (req, res) =>{
   }
 })
 
-app.get('/verify-user' , async (req, res) =>{
+router.get('/verify-user' , async (req, res) =>{
 
     console.log("adding new user");
     let userid = req.body.userid;
@@ -132,7 +80,7 @@ app.get('/verify-user' , async (req, res) =>{
     }
   })
 
-app.post('/add-plant' , async (req, res) =>{
+router.post('/add-plant' , async (req, res) =>{
 
   console.log("adding new plant");
   let id = uuidv4();
@@ -164,7 +112,7 @@ app.post('/add-plant' , async (req, res) =>{
   }
 })
 
-app.post('/add-order' , async (req, res) =>{
+router.post('/add-order' , async (req, res) =>{
 
     console.log("adding new plant");
     let id = uuidv4();
@@ -202,7 +150,7 @@ app.post('/add-order' , async (req, res) =>{
     }
   })
 
-app.get('/get-plants' , async (req, res) =>{
+router.get('/get-plants' , async (req, res) =>{
   try {
 
       console.log("connecting to db to get plants");
@@ -224,7 +172,7 @@ app.get('/get-plants' , async (req, res) =>{
   }
 })
 
-app.get('/get-orders' , async (req, res) =>{
+router.get('/get-orders' , async (req, res) =>{
     try {
   
         console.log("connecting to db to get plants");
@@ -246,7 +194,7 @@ app.get('/get-orders' , async (req, res) =>{
     }
   })
 
-  app.get('/get-user-orders' , async (req, res) =>{
+router.get('/get-user-orders' , async (req, res) =>{
     try {
   
         let userid = req.body.userid;
@@ -268,7 +216,7 @@ app.get('/get-orders' , async (req, res) =>{
     }
   })
 
-app.get('/get-user' , async (req, res) =>{
+router.get('/get-user' , async (req, res) =>{
   try {
 
       let userid = req.body.userid;
@@ -291,13 +239,4 @@ app.get('/get-user' , async (req, res) =>{
   }
 })
 
-app.use(express.static(__dirname + '/'));
-
-app.listen(port, () => {
-    console.log(`Listening on *: ${port}`)
-});
-
-// Create an HTTP service.
-// http.createServer(app).listen(3000);
-// Create an HTTPS service identical to the HTTP service.
-// https.createServer(options, app).listen(3000);
+module.exports = router;
