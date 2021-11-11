@@ -1,0 +1,70 @@
+.AdminViewOrders_Title {
+    float: left;
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    padding-top: 4%;
+    color: #E5E5E5;
+}
+
+div#AdminViewOrdersContainer.container {
+    padding-top: 12%;
+    margin-left: 0px;
+}
+
+div#AdminViewOrders{
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+#AdminViewOrders .edit-catalog-pane {
+    background-color: #FBFBEF;
+    border-radius: 7px;
+}
+
+#AdminViewOrders .col-catalog {
+    padding-left: 0px ;
+}
+
+#AdminViewOrders .admin-catalog-img {
+    width: 100%;
+}
+
+#AdminViewOrders .img-col {
+    width: 10%;
+}
+
+#AdminViewOrders .title-col {
+    width: 20%;
+}
+
+#AdminViewOrders .description-col {
+    width: 30%;
+}
+
+#AdminViewOrders .price-col {
+    width: 20%;
+}
+
+#AdminViewOrders .edit-col {
+    width: 20%;
+}
+
+#AdminViewOrders .edit-col i {
+    color: #000000;
+    position: relative;
+    top: 1.5px;
+}
+
+#AdminViewOrders .edit-col a {
+    color: #000000;
+}
+
+#AdminViewOrders .edit-col .edit-container:hover > * {
+    color: #6AA17B;
+}
+
+#AdminViewOrders {
+    text-align: center;
+}
