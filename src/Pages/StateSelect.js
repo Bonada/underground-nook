@@ -1,8 +1,8 @@
-function StateSelect(handleChange) {
+function StateSelect() {
     return <div className="mb-3">
         <label htmlFor="state" className="form-label">State</label>
         <br />
-        <select className="input-box-modal form-select" id="state" name="state" value="NY" onChange={handleChange}>
+        <select className="input-box-modal form-select" id="state" name="state" value="NY">
             <option value="AL">AL</option>
             <option value="AK">AK</option>
             <option value="AR">AR</option>

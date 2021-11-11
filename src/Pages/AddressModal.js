@@ -1,13 +1,14 @@
 import StateSelect from "./StateSelect.js";
 
 function AddressModal(props) {
-    function handleSubmit(event) {
-        console.log(event.target.value);
-        
-    }
 
-    function handleChange(event) {
-        console.log(event.target.value);
+    const handleSubmit = function() {
+        if (props.isNew) {
+            // Call add address endpoint
+        }
+        else {
+            // Call edit address endpoint
+        }
     }
 
     const id = props.isNew ? "addAddressModal" : "editAddressModal";
@@ -57,11 +58,11 @@ function AddressModal(props) {
                                     <br />
                                     {zip_input}
                                 </div>
-                            </form>
 
-                            <div className="flex-box-submit-button">
-                                <button className="submit-button btn" type="submit" data-bs-dismiss="modal">Submit</button>
-                            </div>
+                                <div className="flex-box-submit-button">
+                                    <button className="submit-button btn" type="submit" data-bs-dismiss="modal">Submit</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

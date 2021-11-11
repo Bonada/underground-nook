@@ -104,10 +104,12 @@ app.get('/verify-user' , async (req, res) =>{
                 err: 'Facebook user ' + userid +  ' added to database'
             });
         }
-        res.json({
-            success: false,
-            err: 'Facebook user ' + userid +  'does not exist'
-        });
+        else {
+          res.json({
+              success: false,
+              err: 'Facebook user ' + userid +  'does not exist'
+          });
+        }
 
     } catch (e) {
         res.status(400);
@@ -213,7 +215,7 @@ app.get('/get-plants' , async (req, res) =>{
 app.get('/get-orders' , async (req, res) =>{
     try {
   
-        console.log("connecting to db to get plants");
+        console.log("connecting to db to get orders");
   
         await client.connect();
         let db = client.db('main');
@@ -227,7 +229,7 @@ app.get('/get-orders' , async (req, res) =>{
         res.status(400);
         res.json({
             success: false,
-            err: 'Cannot get the plant data'
+            err: 'Cannot get the order data'
         });
     }
   })
@@ -249,7 +251,7 @@ app.get('/get-user-orders' , async (req, res) =>{
       res.status(400);
       res.json({
           success: false,
-          err: 'Cannot get the plant data'
+          err: 'Cannot get the user order data'
       });
   }
 })
@@ -272,8 +274,80 @@ app.get('/get-user' , async (req, res) =>{
       res.status(400);
       res.json({
           success: false,
-          err: 'Cannot get the plant data'
+          err: 'Cannot get the user data'
       });
+  }
+})
+
+const addressMatch = (a1, a2) => {
+  return (
+    a1.name == a2.name &&
+    a1.street == a2.street &&
+    a1.city == a2.city &&
+    a1.state == a2.state &&
+    a1.zip == a2.zip
+  );
+}
+
+app.get('/add-address', async (req, res) => {
+  try {
+    let userid = req.body.userid;
+
+    await client.connect();
+    let db = client.db('main');
+    let users = db.collection('user');
+    let user_addresses = await collection.findOne({id: userid}).addresses;
+
+    let no_dups = true;
+    for (address in user_addresses) {
+      if (addressMatch(address, req.body.address)) {
+        res.json({
+          success: false,
+          err: 'Address already exists in user entry'
+        });
+        no_dups = false;
+        break;
+      }
+    }
+    if (no_dups) {
+      user_addresses.push(req.body.address);
+      res.json({
+        success: true,
+        err: 'Added address to user'
+      });
+    }
+  } catch (e) {
+    res.status(400);
+    res.json({
+      success: false,
+      err: 'Failed to add address'
+    });
+  }
+})
+
+app.get('/edit-address', async (req, res) => {
+  try {
+    let userid = req.body.userid;
+    let index = req.body.address_index;
+    let add_info = req.body.address;
+
+    await client.connect();
+    let db = client.db('main');
+    let users = db.collection('users');
+    let user_addresses = await collection.findOne({id: userid}).addresses;
+    let address = user_addresses[index];
+
+    address = add_info;
+    res.json({
+      success: true,
+      err: 'Successfully edited address'
+    });
+  } catch (e) {
+    res.status(400);
+    res.json({
+      success: false,
+      err: 'Failed to edit address'
+    });
   }
 })
 
