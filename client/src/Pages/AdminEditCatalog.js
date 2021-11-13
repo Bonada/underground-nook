@@ -15,11 +15,11 @@ function AdminEditCatalog() {
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Image</th>
+                    <th scope="col"></th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Edit</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>

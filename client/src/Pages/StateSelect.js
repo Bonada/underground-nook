@@ -1,8 +1,13 @@
-function StateSelect() {
+function StateSelect(props) {
+    let handleChange = () => {
+        console.log("changed state");
+    }
+
     return <div className="mb-3">
         <label htmlFor="state" className="form-label">State</label>
         <br />
-        <select className="input-box-modal form-select" id="state" name="state" value="NY">
+
+        <select className="input-box-modal form-select" id="state" name="state" value={props.state} placeholder={props.placeholder} onChange={handleChange}>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
             <option value="AR">AR</option>
