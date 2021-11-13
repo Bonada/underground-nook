@@ -3,6 +3,7 @@ import StateSelect from "./StateSelect.js";
 function AddressModal(props) {
 
     const handleSubmit = function() {
+        console.log("Started submit");
         if (props.isNew) {
             // Call add address endpoint
         }
