@@ -42,7 +42,7 @@ const postRoutes = require("./routes/api");
 app.use("/api", postRoutes);
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'src', 'pages', 'Home.js'));
+  res.sendFile(path.join(__dirname, 'client', 'src', 'Pages', 'Home.js'));
 })
 
 
