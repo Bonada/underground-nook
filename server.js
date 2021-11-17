@@ -49,7 +49,7 @@ app.post('/add-user' , async (req, res) =>{
       let newUser = {userid: userid, username: username, email: email, addresses: []};
       let users = db.collection('users');
 
-      let existinguser = users.findOne({userid:userid});
+      let existinguser = await users.findOne({userid:userid});
       if (!existinguser) {
         users.insertOne(newUser);
 
@@ -75,29 +75,29 @@ app.post('/add-user' , async (req, res) =>{
   }
 })
 
-app.get('/verify-user' , async (req, res) =>{
+app.post('/get-user' , async (req, res) =>{
 
-    console.log("adding new user");
+    console.log("looking for user");
     let userid = req.body.userid;
+    console.log(userid);
   
     try {
         await client.connect();
         let db = client.db('main');
-  
-        let existinguser = db.collection('users').findOne({id:userid});
-  
-        console.log("finding user");
+        let users = db.collection('users');
+
+        let existinguser = await users.findOne({userid:userid});
+
+        console.log(existinguser);
         if(existinguser){
-            res.json({
-                success: true,
-                err: 'Facebook user ' + userid +  ' added to database'
-            });
+            res.send(existinguser);
         }
-        res.json({
+        else {
+          res.json({
             success: false,
             err: 'Facebook user ' + userid +  'does not exist'
-        });
-
+          });
+        }
     } catch (e) {
         res.status(400);
         res.json({
