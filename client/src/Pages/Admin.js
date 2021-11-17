@@ -7,7 +7,7 @@ import AdminDashboardCatalogRow from "./AdminDashboardCatalogRow";
 function Admin() {
   return (
   <div id="AdminDashboardPage">
-      <h1 className="AdminDashboardPage_Title"> Admin Dashboard</h1>
+      <h1 className="AdminDashboardPage_Title">Admin Dashboard</h1>
       <div className="container" id="AdminDashboardPageContainer">
         <div className="row">
           <div className="col-md-5 col-catalog">
