@@ -20,20 +20,6 @@ app.use(cors());
 
 const port = process.env.PORT || 3030;
 
-// function uploadimg() {
-//   cloudinary.uploader.upload("zbALL.jpg", 
-//     function(error, result) {console.log(result, error)});
-// }
-
-// uploadimg();
-
-// console.log(options.cert);
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//   extended: true
-// }));
-
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '/client/build')));
