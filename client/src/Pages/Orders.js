@@ -8,12 +8,14 @@ export default class Orders extends React.Component {
     super(props)
     this.state = {
       loading: true,
-      orders: []
+      orders: [],
+      userId: props.currentUser
     }
   }
 
   componentDidMount() {
-    console.log("mounted")
+    console.log("mounted");
+    console.log(this.state.userId);
     this.populateOrders();
   }
 
@@ -42,6 +44,19 @@ export default class Orders extends React.Component {
         </table>
       </div>
     );
+  }
+
+  async getUserInfo() {
+    fetch("http://localhost:3030/get-user", {
+      method: 'GET',
+      mode: "cors"
+    }).then(response => response.json())
+    .then(data => {
+      this.setState({
+        user: data
+      });
+      
+    });
   }
 
   async populateOrders() {
