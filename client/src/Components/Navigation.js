@@ -21,15 +21,13 @@ export default function Navigation(props) {
 
   const [userType, setUserType] = useState("Pre-Login");
   const [redirect, setRedirect] = useState(null);
-
-  let userId = null;
+  const [userInfo, setUserInfo] = useState({});
 
   // Check if user is admin or general user based on id
   const handleUserLogin = (id, redirect=false) => {
     // Set user type to render new navbar, update userId with logged in user
     if (admin_ids.includes(id)) {
       setUserType("Admin");
-      userId = id;
       console.log("Admin user is logged in");
       // Redirect to admin homepage if admin and redirect is desired
       if (redirect) {
@@ -38,7 +36,6 @@ export default function Navigation(props) {
       }
     } else {
       setUserType("Post-Login");
-      userId = id;
       console.log("General user is logged in");
       // Redirect to catalog page if general user and redirect is desired
       if (redirect) {
@@ -52,6 +49,22 @@ export default function Navigation(props) {
     // Check initial login status
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
+        fetch('http://localhost:3030/get-user', {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({userid: response.authResponse.userID})
+        })
+        .then(async user_response => {
+          const data = user_response.json();
+          setUserInfo(data);
+          console.log(data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
         handleUserLogin(response.authResponse.userID);
       }
       else {
@@ -65,6 +78,14 @@ export default function Navigation(props) {
     // Get user information with api call to /me
     FB.api('/me', {fields: 'name, email, picture'}, function(fb_response) {
       console.log(fb_response);
+
+      setUserInfo({
+        userid: fb_response.id,
+        username: fb_response.name,
+        email: fb_response.email
+      });
+
+      console.log(userInfo);
 
       // If user doesn't exist in database, add their information and redirect to registration
       fetch('http://localhost:3030/add-user', {
@@ -90,7 +111,7 @@ export default function Navigation(props) {
           setRedirect("/Registration");
         }
         else {
-          handleUserLogin(fb_response.id, true);
+          handleUserLogin(userInfo.userid, true);
         }
       })
       .catch(e => {
@@ -124,7 +145,7 @@ export default function Navigation(props) {
           // Redirect to homepage
           console.log("Redirecting to homepage...");
           setUserType("Pre-Login");
-          userId = null;
+          setUserInfo({});
           setRedirect("/");
         } else {
           console.log("Log out didn't work");
@@ -160,11 +181,11 @@ export default function Navigation(props) {
           {userType === "Admin" &&
             <i className="fa ri-admin-line fa-lg" aria-hidden="true"></i>
           }
-          {/* {userType === "Admin" && */}
+          {userType === "Admin" && 
             <div className="Links">
               <Link to="/Admin">Admin Page</Link>
             </div>
-          {/* } */}
+          }
 
 
           <i className="fa fa-info-circle fa-lg" aria-hidden="true"></i>
@@ -193,7 +214,7 @@ export default function Navigation(props) {
 
           {(userType === "Admin" || userType === "Post-Login") &&
             <div className="dropdown">
-              <button className="dropbtn btn"> Minying 
+              <button className="dropbtn btn"> <p>{userInfo.username}</p>
                 <i className="fa fa-caret-down"></i>
               </button>   
               <div className="dropdown-content">
@@ -216,13 +237,13 @@ export default function Navigation(props) {
 
       <Switch>
           <Route exact path="/">
-            <Home currentUser={userId} isAdmin={admin_ids.includes(userId)} />
+            <Home currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>
-          {/* {userType === "Admin" && */}
+          {userType === "Admin" &&
             <Route path="/Admin">
-              <Admin currentUser={userId} />
+              <Admin currentUser={userInfo.userid} />
             </Route>
-          {/* } */}
+          }
           <Route path="/AdminViewOrders">
               <AdminViewOrders />
           </Route>
@@ -230,24 +251,24 @@ export default function Navigation(props) {
             <AdminEditCatalog />
           </Route>
           <Route path="/About">
-            <About currentUser={userId} isAdmin={admin_ids.includes(userId)} />
+            <About currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>
           <Route path="/Catalog">
-            <Catalog currentUser={userId} isAdmin={admin_ids.includes(userId)} />
+            <Catalog currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>
           {(userType === "Admin" || userType === "Post-Login") &&
             <Route path="/Cart">
-              <Cart currentUser={userId} isAdmin={admin_ids.includes(userId)} />
+              <Cart currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
             </Route>
           }
           {(userType === "Admin" || userType === "Post-Login") &&
             <Route path="/Settings">
-              <Settings currentUser={userId} isAdmin={admin_ids.includes(userId)} />
+              <Settings currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
             </Route>
           }
           {(userType === "Admin" || userType === "Post-Login") &&
             <Route path="/Orders">
-              <Orders currentUser={userId} isAdmin={admin_ids.includes(userId)} />
+              <Orders currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
             </Route>
           }
       </Switch>
