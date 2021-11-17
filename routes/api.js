@@ -239,4 +239,76 @@ router.get('/get-user' , async (req, res) =>{
   }
 })
 
+const addressMatch = (a1, a2) => {
+  return (
+    a1.name == a2.name &&
+    a1.street == a2.street &&
+    a1.city == a2.city &&
+    a1.state == a2.state &&
+    a1.zip == a2.zip
+  );
+}
+
+router.post('/add-address', async (req, res) => {
+  try {
+    let userid = req.body.userid;
+
+    await client.connect();
+    let db = client.db('main');
+    let users = db.collection('user');
+    let user_addresses = await collection.findOne({id: userid}).addresses;
+
+    let no_dups = true;
+    for (address in user_addresses) {
+      if (addressMatch(address, req.body.address)) {
+        res.json({
+          success: false,
+          err: 'Address already exists in user entry'
+        });
+        no_dups = false;
+        break;
+      }
+    }
+    if (no_dups) {
+      user_addresses.push(req.body.address);
+      res.json({
+        success: true,
+        err: 'Added address to user'
+      });
+    }
+  } catch (e) {
+    res.status(400);
+    res.json({
+      success: false,
+      err: 'Failed to add address'
+    });
+  }
+})
+
+router.post('/edit-address', async (req, res) => {
+  try {
+    let userid = req.body.userid;
+    let index = req.body.address_index;
+    let add_info = req.body.address;
+
+    await client.connect();
+    let db = client.db('main');
+    let users = db.collection('users');
+    let user_addresses = await collection.findOne({id: userid}).addresses;
+    let address = user_addresses[index];
+
+    address = add_info;
+    res.json({
+      success: true,
+      err: 'Successfully edited address'
+    });
+  } catch (e) {
+    res.status(400);
+    res.json({
+      success: false,
+      err: 'Failed to edit address'
+    });
+  }
+})
+
 module.exports = router;
