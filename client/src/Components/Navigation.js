@@ -243,12 +243,16 @@ export default function Navigation(props) {
               <Admin currentUser={userInfo.userid} />
             </Route>
           }
-          <Route path="/AdminViewOrders">
-              <AdminViewOrders />
-          </Route>
-          <Route path="/AdminEditCatalog">
-            <AdminEditCatalog />
-          </Route>
+          {userType === "Admin" &&
+            <Route path="/AdminViewOrders">
+                <AdminViewOrders />
+            </Route>
+          }
+          {userType === "Admin" &&
+            <Route path="/AdminEditCatalog">
+              <AdminEditCatalog />
+            </Route>
+          }
           <Route path="/About">
             <About currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>
