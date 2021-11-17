@@ -249,7 +249,7 @@ const addressMatch = (a1, a2) => {
   );
 }
 
-router.get('/add-address', async (req, res) => {
+router.post('/add-address', async (req, res) => {
   try {
     let userid = req.body.userid;
 
@@ -285,7 +285,7 @@ router.get('/add-address', async (req, res) => {
   }
 })
 
-router.get('/edit-address', async (req, res) => {
+router.post('/edit-address', async (req, res) => {
   try {
     let userid = req.body.userid;
     let index = req.body.address_index;
