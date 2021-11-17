@@ -1,0 +1,15 @@
+.total-price {
+    text-align: right;
+}
+
+.OrderPageRow img {
+    width: 20%;
+}
+
+.order-info-p {
+    text-align: left;
+}
+
+.save-changes-order-page .cart-button {
+    margin-bottom: 20px;
+}
