@@ -10,6 +10,8 @@ These instructions will get you a copy of a Github project up and running on you
     * 'npm install npx' (To install Node.js 5.2)
     * 'npm install -g create-react-app' (To install React App)
     * 'npm i react-router-dom'
- - Open up another Command Prompt window and navigate to the same folder and enter the following command:
+ - Navigate into the node_modules folder and enter the following:
+     * npm install mongodb
+ - In the same Command Prompt window navigate back to the original folder and enter the following command:
     * node server
 - In a browser go to https://localhost:3000
