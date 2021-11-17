@@ -1,0 +1,17 @@
+/* CSS for the New User Page*/
+html{
+    /*background: linear-gradient(180deg, #1E1B24 10.94%, #322E3C 100%);*/
+    background-color: #26222E;
+}
+h1#Home_Title{
+    position: fixed;
+    left: 4.7%;
+    top: 36%;
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 3.4vw;
+    float: left;
+    line-height: 97px;
+    color: #E5E5E5;
+}
