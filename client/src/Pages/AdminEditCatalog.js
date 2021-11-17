@@ -1,6 +1,8 @@
 import React from "react";
 import './AdminEditCatalog.css';
 import '../Components/Navigation.css';
+import AddPlantModal from './AddPlantModal.js';
+import EditPlantModal from "./EditPlantModal";
 
 function AdminEditCatalog() {
   return (
@@ -8,7 +10,8 @@ function AdminEditCatalog() {
       <h1 className="AdminEditCatalog_Title">Edit Catalog</h1>
       <div className="container" id="AdminEditCatalogContainer">
         <div className="row">
-          <a href="#" className="add-plant-button">+ Add Plant</a>
+          <a href="#" className="add-plant-button" data-bs-toggle="modal" data-bs-target="#addPlantModal">+ Add Plant</a>
+          
           <div className="col-md col-catalog">
           
             <div className="edit-catalog-pane">
@@ -16,7 +19,7 @@ function AdminEditCatalog() {
                 <thead>
                   <tr>
                     <th scope="col"></th>
-                    <th scope="col">Title</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Price</th>
                     <th scope="col"></th>
@@ -31,7 +34,7 @@ function AdminEditCatalog() {
                     <td className="edit-col">
                       <div className="edit-container">
                         <i class="ri-pencil-line"></i>
-                        <a href="#" className="card-link">Edit</a>
+                        <a href="#" className="card-link" data-bs-toggle="modal" data-bs-target="#editPlantModal">Edit</a>
                       </div>
                       
                       <div className="edit-container">
@@ -48,7 +51,7 @@ function AdminEditCatalog() {
                     <td className="edit-col">
                       <div className="edit-container">
                         <i class="ri-pencil-line"></i>
-                        <a href="#" className="card-link">Edit</a>
+                        <a href="#" className="card-link" data-bs-toggle="modal" data-bs-target="#editPlantModal">Edit</a>
                       </div>
                       
                       <div className="edit-container">
@@ -66,7 +69,7 @@ function AdminEditCatalog() {
                     <td className="edit-col">
                       <div className="edit-container">
                         <i class="ri-pencil-line"></i>
-                        <a href="#" className="card-link">Edit</a>
+                        <a href="#" className="card-link" data-bs-toggle="modal" data-bs-target="#editPlantModal">Edit</a>
                       </div>
                       
                       <div className="edit-container">
@@ -81,6 +84,8 @@ function AdminEditCatalog() {
           </div>
         </div>
       </div>
+      <AddPlantModal />
+      <EditPlantModal />
     </div>
   );
 }

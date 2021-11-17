@@ -3,7 +3,7 @@ import './Settings.css';
 import '../Components/Navigation.css';
 import AddressModal from './AddressModal.js';
 import AddressCard from './AddressCard.js';
-import EditInformation  from "./EditInformation.js";
+import EditInformation from "./EditInformation.js";
 
 
 function Settings(props) {

@@ -9,6 +9,8 @@ import Home from "../Pages/Home";
 import Admin from "../Pages/Admin";
 import Orders from "../Pages/Orders";
 import Settings from "../Pages/Settings";
+import AdminEditCatalog from "../Pages/AdminEditCatalog";
+import AdminViewOrders from "../Pages/AdminViewOrders";
 import Logo from '../Images/Logo.png'; // gives image path
 import './Navigation.css';
 
@@ -158,11 +160,11 @@ export default function Navigation(props) {
           {userType === "Admin" &&
             <i className="fa ri-admin-line fa-lg" aria-hidden="true"></i>
           }
-          {userType === "Admin" &&
+          {/* {userType === "Admin" && */}
             <div className="Links">
               <Link to="/Admin">Admin Page</Link>
             </div>
-          }
+          {/* } */}
 
 
           <i className="fa fa-info-circle fa-lg" aria-hidden="true"></i>
@@ -216,11 +218,17 @@ export default function Navigation(props) {
           <Route exact path="/">
             <Home currentUser={userId} isAdmin={admin_ids.includes(userId)} />
           </Route>
-          {userType === "Admin" &&
+          {/* {userType === "Admin" && */}
             <Route path="/Admin">
               <Admin currentUser={userId} />
             </Route>
-          }
+          {/* } */}
+          <Route path="/AdminViewOrders">
+              <AdminViewOrders />
+          </Route>
+          <Route path="/AdminEditCatalog">
+            <AdminEditCatalog />
+          </Route>
           <Route path="/About">
             <About currentUser={userId} isAdmin={admin_ids.includes(userId)} />
           </Route>
