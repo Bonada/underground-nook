@@ -1,0 +1,27 @@
+.plantModal input[type="file"] {
+    display: none;
+}
+
+.plantModal .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.plantModal i {
+    font-size: 40px;
+    margin: auto;
+
+}
+
+.plantModal p {
+    margin: 0px;
+}
+
+.plantModal .field-name {
+    text-align: left;
+    margin-bottom: 10px;
+}
