@@ -1,10 +1,10 @@
-function OrderRow() {
+function OrderRow(props) {
     return (
         <tr>
-            <th scope="row">861 Michigan Ave <br />Schenectady, NY 12309</th>
-            <th className="align-middle">id1</th>
-            <th className="align-middle">Unpaid</th>
-            <th className="align-middle">Pending</th>
+            <th scope="row">{props.address} <br />{props.address}</th>
+            <th className="align-middle">{props.orderid}</th>
+            <th className="align-middle">{props.payment}</th>
+            <th className="align-middle">{props.status}</th>
         </tr>
     );
 }

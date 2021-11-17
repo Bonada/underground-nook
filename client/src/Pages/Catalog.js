@@ -15,11 +15,6 @@ export default class Catalog extends React.Component {
     };
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextState);
-    return true;
-  }
-
   componentDidMount() {
     console.log("mounted")
     this.populateCards();
