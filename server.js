@@ -10,6 +10,8 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
+const { v4: uuidv4 } = require('uuid');
+
 // const fs = require('fs');
 var cloudinary = require('cloudinary').v2;
 cloudinary.config({ 
@@ -48,15 +50,6 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://TestUser:TestUserPass@undergroundnook.lh3mc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
-app.post('/testup' , async (req, res) =>{
-
-    let img = req.body.img;
-    console.log("TESTING UPLOAD IMAGE :", img);
-
-    cloudinary.uploader.upload(img, 
-    function(error, result) {console.log(result, error)});
-})
 
 app.post('/add-user' , async (req, res) =>{
 
@@ -134,7 +127,7 @@ app.post('/add-plant' , async (req, res) =>{
 
   console.log("adding new plant");
   let id = uuidv4();
-  let scientific_name = req.body.sname;
+  let species_name = req.body.sname;
   let common_name = req.body.cname;
   let description = req.body.desc;
   let price = req.body.price;
@@ -144,7 +137,7 @@ app.post('/add-plant' , async (req, res) =>{
       await client.connect();
       let db = client.db('main');
 
-      let newPlant = {id: id, scientific_name: scientific_name, common_name: common_name, description: description, price: price};
+      let newPlant = {id: id, species_name: species_name, common_name: common_name, description: description, price: price, img_url: img};
 
       db.collection('plants').insertOne(newPlant);
 

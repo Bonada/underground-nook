@@ -1,22 +1,30 @@
 import React from 'react';
 import Axios from 'axios';
 import './AddEditPlantModal.css';
+import { parse } from 'dotenv';
 
 class AddPlantModal extends React.Component {
     
     constructor(props) {
         super(props);
-        this.state = {name: '', desc: '', price: '', file: ''};
+        this.state = {sname: '', cname: '', desc: '', price: '', file: '', img: ''};
 
-        this.changeName = this.changeName.bind(this);
+        this.changeSname = this.changeSname.bind(this);
+        this.changeCname = this.changeCname.bind(this);
         this.changeDesc = this.changeDesc.bind(this);
         this.changePrice = this.changePrice.bind(this);
         this.changeFiles = this.changeFiles.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    changeName(event){
-        this.setState({name: event.target.value});
+    changeSname(event){
+        this.setState({sname: event.target.value});
+        // console.log("VALUE: ", event.target.value );
+        // console.log("NAME: ", this.state.name);
+    }
+
+    changeCname(event){
+        this.setState({cname: event.target.value});
         // console.log("VALUE: ", event.target.value );
         // console.log("NAME: ", this.state.name);
     }
@@ -45,11 +53,33 @@ class AddPlantModal extends React.Component {
         const formData = new FormData();
         formData.append("file", this.state.file);
         formData.append("upload_preset", "uur2huja");
+        
+        let imageurl;
+        let floatprice = parseFloat(this.state.price);
 
         Axios.post("https://api.cloudinary.com/v1_1/undergroundnook/image/upload", formData)
         .then((response) => {
-            console.log(response);
+            console.log(response['data']['url']);
+            imageurl = response['data']['url'];
+            this.setState({img: response['data']['url']});
+
+            fetch("http://localhost:3030/add-plant", {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    sname: this.state.sname,
+                    cname: this.state.cname,
+                    desc: this.state.desc,
+                    price: floatprice,
+                    img: this.state.img
+                })
+            })
+
         });
+    
         event.preventDefault();
     }
 
@@ -66,9 +96,14 @@ class AddPlantModal extends React.Component {
                         <div className="container">
                             <form onSubmit={this.handleSubmit}>
                                 <div className="mb-3">
-                                    <label htmlFor="name" className="form-label">Name</label>
+                                    <label htmlFor="name" className="form-label">Scientific Name</label>
                                     <br />
-                                    <input onChange={this.changeName} value={this.state.name} className="input-box-modal form-control" type="text" placeholder="Enter a Name" id="name" />
+                                    <input onChange={this.changeSname} value={this.state.sname} className="input-box-modal form-control" type="text" placeholder="Enter a Name" id="name" />
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="name" className="form-label">Common Name</label>
+                                    <br />
+                                    <input onChange={this.changeCname} value={this.state.cname} className="input-box-modal form-control" type="text" placeholder="Enter a Name" id="name" />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="descriptionOfPlant" className="form-label">Description</label>
@@ -84,7 +119,7 @@ class AddPlantModal extends React.Component {
                                     Upload Image
                                 </p>
                                 <div className="mb-3">
-                                    <label for="file-upload" class="custom-file-upload">
+                                    <label htmlFor="file-upload" class="custom-file-upload">
                                         <i class="ri-image-add-fill"></i>
                                         <p>Drop your image here, or browse</p>
                                         <p>Supports: JPG, PNG</p>
