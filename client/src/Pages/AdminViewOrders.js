@@ -15,13 +15,12 @@ function AdminViewOrders() {
                 <thead>
                   <tr>
                     <th scope="col">Order ID</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Purchaser ID</th>
+                    <th scope="col">Recepient Name</th>
                     <th scope="col">Street</th>
                     <th scope="col">City</th>
                     <th scope="col">State</th>
                     <th scope="col">Zip</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Email</th>
                     <th scope="col">Shipping Carrier</th>
                     <th scope="col">Order Status</th>
                     <th scope="col">Total</th>
