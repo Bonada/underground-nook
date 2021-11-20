@@ -1,6 +1,8 @@
+// import ppp from './PPP.png';
+
 function CatalogCard(props) {
     console.log("MAKING: ", props);
-    
+
     return (
         <div className="col-md-2" onClick={props.onClick}>
             <div className="catalog card" data-bs-toggle="modal" data-bs-target="#catalogModal">
@@ -10,7 +12,7 @@ function CatalogCard(props) {
                     <div className="catalog-price-col card-text col-md-3 ">
                         <div className="row">&nbsp;</div>
                         <div className="row">
-                            <p className="catalog-price col"> {'$' + (parseFloat(props.price)).toFixed(2)}</p>
+                            <p className="catalog-price col">{props.price}</p>
                         </div>
                     </div>
                 </div>

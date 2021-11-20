@@ -10,15 +10,13 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
-const { v4: uuidv4 } = require('uuid');
-
 // const fs = require('fs');
-var cloudinary = require('cloudinary').v2;
-cloudinary.config({ 
-  cloud_name: 'undergroundnook', 
-  api_key: '197948958869879', 
-  api_secret: 'UDvL3l6lxXSHc6Xdk1hb_nWzDH8' 
-});
+// var cloudinary = require('cloudinary').v2;
+// cloudinary.config({ 
+//   cloud_name: 'undergroundnook', 
+//   api_key: '197948958869879', 
+//   api_secret: 'UDvL3l6lxXSHc6Xdk1hb_nWzDH8' 
+// });
 
 const port = process.env.PORT || 3030;
 
@@ -113,17 +111,16 @@ app.post('/add-plant' , async (req, res) =>{
 
   console.log("adding new plant");
   let id = uuidv4();
-  let species_name = req.body.sname;
+  let scientific_name = req.body.sname;
   let common_name = req.body.cname;
   let description = req.body.desc;
   let price = req.body.price;
-  let img = req.body.img;
 
   try {
       await client.connect();
       let db = client.db('main');
 
-      let newPlant = {id: id, species_name: species_name, common_name: common_name, description: description, price: price, img_url: img};
+      let newPlant = {id: id, scientific_name: scientific_name, common_name: common_name, description: description};
 
       db.collection('plants').insertOne(newPlant);
 
@@ -147,7 +144,6 @@ app.post('/add-order' , async (req, res) =>{
     console.log("adding new plant");
     let id = uuidv4();
     let username = req.body.username;
-    let userid = req.body.userid;
     let date = Date().toString();
     let time = Date().now();
     let address = req.body.address;
@@ -162,7 +158,7 @@ app.post('/add-order' , async (req, res) =>{
         await client.connect();
         let db = client.db('main');
 
-        let newOrder = {id: id, username: username, userid: userid, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier: shippingcarrier};
+        let newOrder = {id: id, username: username, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier: shippingcarrier};
   
         db.collection('orders').insertOne(newOrder);
   
@@ -172,7 +168,6 @@ app.post('/add-order' , async (req, res) =>{
             success: true,
             err: 'Plant ' + scientific_name +  'added to database'
         });
-
     } catch (e) {
         res.status(400);
         res.json({
@@ -226,27 +221,27 @@ app.get('/get-orders' , async (req, res) =>{
     }
   })
 
-app.get('/get-user-orders' , async (req, res) =>{
-try {
-
-    let userid = req.body.userid;
-    console.log("connecting to db to get user");
-
-    await client.connect();
-    let db = client.db('main');
-    let collection = db.collection('users');
-    let document = await collection.findOne({userid: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
-
-    console.log(document);
-    res.send(document);
-}catch (e) {
-    res.status(400);
-    res.json({
-        success: false,
-        err: 'Cannot get the plant data'
-    });
-}
-})
+  app.get('/get-user-orders' , async (req, res) =>{
+    try {
+  
+        let userid = req.body.userid;
+        console.log("connecting to db to get user");
+  
+        await client.connect();
+        let db = client.db('main');
+        let collection = db.collection('users');
+        let document = await collection.findOne({id: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
+  
+        console.log(document);
+        res.send(document);
+    }catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Cannot get the plant data'
+        });
+    }
+  })
 
 app.get('/get-user' , async (req, res) =>{
   try {
