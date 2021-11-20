@@ -58,10 +58,9 @@ export default function Navigation(props) {
           },
           body: JSON.stringify({userid: response.authResponse.userID})
         })
-        .then(async user_response => {
-          const data = user_response.json();
-          setUserInfo(data);
-          console.log(data);
+        .then(user_response => user_response.json())
+        .then(user => {
+          setUserInfo(user);
         })
         .catch(e => {
           console.log(e);
@@ -238,41 +237,42 @@ export default function Navigation(props) {
 
       <Switch>
           <Route exact path="/">
-            <Home currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
+            <Home currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>
           {userType === "Admin" &&
             <Route path="/Admin">
               <Admin currentUser={userInfo.userid} />
             </Route>
           }
-          <Route path="/AdminViewOrders">
-              <AdminViewOrders />
-          </Route>
-          <Route path="/AdminEditCatalog">
-            <AdminEditCatalog />
-          </Route>
-          <Route path="/OrderPage">
-              <OrderPage />
-          </Route>
+          {userType === "Admin" &&
+            <Route path="/AdminViewOrders">
+                <AdminViewOrders />
+            </Route>
+          }
+          {userType === "Admin" &&
+            <Route path="/AdminEditCatalog">
+              <AdminEditCatalog />
+            </Route>
+          }
           <Route path="/About">
-            <About currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
+            <About currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>
           <Route path="/Catalog">
-            <Catalog currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
+            <Catalog currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>
           {(userType === "Admin" || userType === "Post-Login") &&
             <Route path="/Cart">
-              <Cart currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
+              <Cart currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
             </Route>
           }
           {(userType === "Admin" || userType === "Post-Login") &&
             <Route path="/Settings">
-              <Settings currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
+              <Settings currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
             </Route>
           }
           {(userType === "Admin" || userType === "Post-Login") &&
             <Route path="/Orders">
-              <Orders currentUser={userInfo.userid} isAdmin={admin_ids.includes(userInfo.userid)} />
+              <Orders currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
             </Route>
           }
       </Switch>

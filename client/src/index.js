@@ -14,9 +14,6 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-export { default as PreLogin_Navigation } from "./Components/PreLogin_Navigation";
-export { default as PostLogin_Navigation } from "./Components/PostLogin_Navigation";
-export { default as Admin_Navigation } from "./Components/Admin_Navigation";
 export { default as Navigation } from "./Components/Navigation";
 export { default as About } from "./Pages/About";
 export { default as Cart } from "./Pages/Cart";

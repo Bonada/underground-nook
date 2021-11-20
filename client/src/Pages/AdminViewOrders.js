@@ -2,8 +2,26 @@ import React from "react";
 import './AdminViewOrders.css';
 import '../Components/Navigation.css';
 import AdminOrderRow from "./AdminOrderRow";
+import Table from "../Components/Table";
+
 
 function AdminViewOrders() {
+  const headers = [
+    "Order ID", 
+    "Name", 
+    "Street", 
+    "City", 
+    "State", 
+    "Zip", 
+    "Phone Number", 
+    "Email", 
+    "Shipping Carrier", 
+    "Order Status", 
+    "Total"
+  ];
+
+  const rowComponent = <AdminOrderRow />;
+
   return (
   <div id="AdminViewOrders">
       <h1 className="AdminViewOrders_Title">View Orders</h1>
@@ -11,26 +29,7 @@ function AdminViewOrders() {
         <div className="row">
           <div className="col-md col-catalog">
             <div className="edit-catalog-pane">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Purchaser ID</th>
-                    <th scope="col">Recepient Name</th>
-                    <th scope="col">Street</th>
-                    <th scope="col">City</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Zip</th>
-                    <th scope="col">Shipping Carrier</th>
-                    <th scope="col">Order Status</th>
-                    <th scope="col">Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <AdminOrderRow />
-                  <AdminOrderRow />
-                </tbody>
-              </table>
+              <Table headers={headers} row_comp={rowComponent}/>
             </div>
           </div>
         </div>
