@@ -35,7 +35,7 @@ function EditPlantModal(handleSubmit) {
                                     Change Image
                                 </p>
                                 <div className="mb-3">
-                                    <label for="file-upload" class="custom-file-upload">
+                                    <label htmlFor="file-upload" class="custom-file-upload">
                                         <i class="ri-image-add-fill"></i>
                                         <p>Drop your image here, or browse</p>
                                         <p>Supports: JPG, PNG</p>
