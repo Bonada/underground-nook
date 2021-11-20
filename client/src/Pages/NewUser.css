@@ -3,6 +3,9 @@ html{
     /*background: linear-gradient(180deg, #1E1B24 10.94%, #322E3C 100%);*/
     background-color: #26222E;
 }
+body{
+    height: 900px;
+}
 h1#User_Page_Title{
     font-family: 'Scope One', serif;
     font-style: normal;
@@ -57,7 +60,7 @@ h1#NewUser_ButtonText{
     font-family: 'Scope One', serif;
     margin-top: 1.6%;
     margin-bottom: 1.4%;
-    margin-left: 40%;
+    margin-left: 40.5%;
 }
 .flex-box-save-button {
     width: 47.5% !important;
@@ -89,4 +92,33 @@ label#NewUser-label{
 form#Settings_Info{
     margin-left: 30%;
     margin-top: 10%;
+}
+@media screen and (min-width: 636px) and (max-width: 913px)  {
+    h1#NewUser_ButtonText {
+        margin-left: 35% !important;
+    }
+}
+@media screen and (min-width: 497px) and (max-width: 636px)  {
+    h1#NewUser_ButtonText {
+        margin-left: 30% !important;
+    }
+}
+@media screen and (min-width: 382px) and (max-width: 497px)  {
+    h1#NewUser_ButtonText {
+        margin-left: 20% !important;
+    }
+}
+@media screen and (max-width: 382px)  {
+    h1#NewUser_ButtonText {
+        margin-left: 20% !important;
+        font-size: 100% !important;
+    }
+    div#NewUser{
+        top: 70% !important;
+    }
+    body{
+        /*background: linear-gradient(180deg, #1E1B24 10.94%, #322E3C 100%);*/
+        height: 1000px !important;
+        background-color: #26222E;
+    }
 }
