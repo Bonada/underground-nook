@@ -12,22 +12,22 @@ function NewUser() {
       <form id="Settings_Info" onSubmit="create_user-settings">
         <div className="row">
           <label htmlFor="firstname" id="NewUser-label" className="form-label heading">First Name</label>
-          <input className="input-box" type="text" defaultValue="John" id="firstname" />
+          <input className="input-box" type="text" placeholder="John" id="firstname" />
         </div>
 
         <div className="row">
           <label htmlFor="lastname" id="NewUser-label" className="form-label heading">Last Name</label>
-          <input className="input-box" type="text" defaultValue="Doe" id="lastname" />
+          <input className="input-box" type="text" placeholder="Doe" id="lastname" />
         </div>
 
         <div className="row">
           <label htmlFor="email" id="NewUser-label" className="form-label heading">Email</label>
-          <input className="input-box" type="email" defaultValue="abc123@gmail.com" id="email" />
+          <input className="input-box" type="email" placeholder="abc123@gmail.com" id="email" />
         </div>
 
         <div className="row">
           <label htmlFor="phonenumber" id="NewUser-label" className="form-label heading">Phone Number</label>
-          <input className="input-box" type="text" defaultValue="1234567890" id="phonenumber" />
+          <input className="input-box" type="text" placeholder="1234567890" id="phonenumber" />
         </div>
 
         <div className="row flex-box-save-button" id="NewUserButton">
