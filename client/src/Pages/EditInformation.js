@@ -1,29 +1,40 @@
-function EditInformation() {
-  return <form onSubmit="save-settings">
-    <div className="row">
-      <label htmlFor="fname" className="form-label heading2">First Name</label>
-      <input className="input-box" type="text" defaultValue="Minying" id="fname" />
-    </div>
+function EditInformation(props) {
+  let name = props.currentUser.username ? props.currentUser.username.split(" ") : "";
 
-    <div className="row">
-      <label htmlFor="lname" className="form-label heading2">Last Name</label>
-      <input className="input-box" type="text" defaultValue="Cao" id="lname" />
-    </div>
+  let firstname_label = props.parent + "_fname-label";
+  let lastname_label = props.parent + "_lname-label";
+  let email_label = props.parent + "_email-label";
+  let number_label = props.parent + "_number-label";
 
-    <div className="row">
-      <label htmlFor="email" className="form-label heading2">Email</label>
-      <input className="input-box" type="email" defaultValue="minyingcao12@gmail.com" id="email" />
-    </div>
+  let classes = "form-label heading" + (props.parent === "Settings" ? "2" : "");
 
-    <div className="row">
-      <label htmlFor="phonenumber" className="form-label heading2">Phone Number</label>
-      <input className="input-box" type="text" defaultValue="1234567890" id="phonenumber" />
-    </div>
+  return (
+    <form onSubmit={props.onSubmit}>
+      <div className="row">
+        <label htmlFor="fname" id={firstname_label} className={classes}>First Name</label>
+        <input className="input-box" type="text" defaultValue={name[0]} id="fname" />
+      </div>
 
-    <div className="row flex-box-save-button">
-      <button className="btn save-button" type="button">Save</button>
-    </div>
-  </form>;
+      <div className="row">
+        <label htmlFor="lname" id={lastname_label} className={classes}>Last Name</label>
+        <input className="input-box" type="text" defaultValue={name[1]} id="lname" />
+      </div>
+
+      <div className="row">
+        <label htmlFor="email" id={email_label} className={classes}>Email</label>
+        <input className="input-box" type="email" defaultValue={props.currentUser.email} id="email" />
+      </div>
+
+      <div className="row">
+        <label htmlFor="phonenumber" id={number_label} className={classes}>Phone Number</label>
+        <input className="input-box" type="text" defaultValue={props.currentUser.number || "000"} id="phonenumber" />
+      </div>
+
+      <div className="row flex-box-save-button">
+        <button className="btn save-button" type="button">Save</button>
+      </div>
+    </form>
+  );
 }
 
 export default EditInformation
