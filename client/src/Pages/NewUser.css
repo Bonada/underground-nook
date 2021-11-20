@@ -60,26 +60,45 @@ h1#NewUser_ButtonText{
     font-family: 'Scope One', serif;
     margin-top: 1.6%;
     margin-bottom: 1.4%;
-    margin-left: 40.5%;
-}
-.flex-box-save-button {
-    width: 47.5% !important;
+    margin-left: 41%;
 }
 div.row.flex-box-save-button{
     margin-top: 4%;
     margin-bottom: 4%;
-    margin-left: 0px;
-    margin-right: 10px;
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: calc(-.5 * var(--bs-gutter-x)) !important;
+    margin-left: calc(-.5 * var(--bs-gutter-x)) !important;
+    width: 52% !important;
 }
 .input-box{
     background: #FBFBEF;
     border-radius: 20px;
-    padding-left: 15px;
-    padding-top: 8px;
-    padding-bottom: 8px;
     margin-bottom: 1%;
     border: none;
     width: 50%;
+}
+input#firstname.input-box{
+    height: 38px;
+    font-family: 'Avenir';
+}
+input#lastname.input-box{
+    height: 38px;
+    font-family: 'Avenir';
+}
+input#email.input-box{
+    height: 38px;
+    font-family: 'Avenir';
+}
+input#phonenumber.input-box{
+    height: 38px;
+    font-family: 'Avenir';
+}
+label#NewUser-label.form-label.heading{
+    padding-left: 0px;
+    margin-top: 1.5%;
 }
 label#NewUser-label{
     padding-left: 12px;
@@ -110,7 +129,7 @@ form#Settings_Info{
 }
 @media screen and (max-width: 382px)  {
     h1#NewUser_ButtonText {
-        margin-left: 20% !important;
+        margin-left: 23% !important;
         font-size: 100% !important;
     }
     div#NewUser{
