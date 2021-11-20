@@ -3,15 +3,90 @@ html{
     /*background: linear-gradient(180deg, #1E1B24 10.94%, #322E3C 100%);*/
     background-color: #26222E;
 }
-h1#Home_Title{
-    position: fixed;
-    left: 4.7%;
-    top: 36%;
+h1#User_Page_Title{
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    color: #E5E5E5;
+    text-align: center;
+}
+p#User_Page_Description{
     font-family: 'Scope One', serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 3.4vw;
+    font-size: 1.1em;
     float: left;
     line-height: 97px;
     color: #E5E5E5;
+    text-align: center;
+    line-height: 1.4;
+    margin: 0.01%;
+    margin-top: 2%;
+}
+div#NewUser{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    margin-top: 5%;
+}
+.btn_save-button {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    word-break: break-word;
+}
+.btn_save-button:hover{
+    background: transparent;
+    border: 2px solid #6AA17B;
+    border-radius: 50px !important;
+}
+.btn_save-button:hover h1#NewUser_ButtonText{
+    color: #6AA17B;
+}
+h1#NewUser_ButtonText{
+    color: #26222E;
+    font-weight: 550;
+    font-size: 130%;
+    font-family: 'Scope One', serif;
+    margin-top: 1.6%;
+    margin-bottom: 1.4%;
+    margin-left: 40.5%;
+}
+.flex-box-save-button {
+    width: 47.5% !important;
+}
+div.row.flex-box-save-button{
+    margin-top: 4%;
+    margin-bottom: 4%;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+.input-box{
+    background: #FBFBEF;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 1%;
+    border: none;
+    width: 50%;
+}
+label#NewUser-label{
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-bottom: 8px;
+    font-family: 'Scope One', serif;
+    color: #FBFBEF;
+    text-align: left;
+}
+form#Settings_Info{
+    margin-left: 30%;
+    margin-top: 10%;
 }
