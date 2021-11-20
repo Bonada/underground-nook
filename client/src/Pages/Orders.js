@@ -9,14 +9,17 @@ export default class Orders extends React.Component {
     this.state = {
       loading: true,
       orders: [],
-      userId: props.currentUser
+      userId: ""
     }
   }
 
   componentDidMount() {
     console.log("mounted");
-    console.log(this.state.userId);
-    this.populateOrders();
+    setTimeout(() => {
+      this.setState({ userId: this.props.currentUser.userid });
+      console.log(this.state.userId);
+      this.populateOrders();
+    }, 100);
   }
 
   render() {
@@ -37,10 +40,10 @@ export default class Orders extends React.Component {
             </tr>
           </thead>
           <tbody className="table-body">
-          {this.state.loading ? (null) : this.state.orders.map((order, index) => {
-            console.log(order, index);
-            return <OrderRow address="test" orderid="orderid" payment="payment" status="status" />;
-          })}
+            {this.state.loading ? (null) : this.state.orders.map((order, index) => {
+              console.log(order, index);
+              return <OrderRow key={index} address="test" orderid="orderid" payment="payment" status="status" />;
+            })}
           </tbody>
         </table>
       </div>
