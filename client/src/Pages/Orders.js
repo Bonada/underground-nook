@@ -37,32 +37,26 @@ export default class Orders extends React.Component {
             </tr>
           </thead>
           <tbody className="table-body">
-            <OrderRow />
-            <OrderRow />
-            <OrderRow />
+          {this.state.loading ? (null) : this.state.orders.map((order, index) => {
+            console.log(order, index);
+            return <OrderRow address="test" orderid="orderid" payment="payment" status="status" />;
+          })}
           </tbody>
         </table>
       </div>
     );
   }
 
-  async getUserInfo() {
-    fetch("http://localhost:3030/get-user", {
-      method: 'GET',
-      mode: "cors"
-    }).then(response => response.json())
-    .then(data => {
-      this.setState({
-        user: data
-      });
-      
-    });
-  }
-
   async populateOrders() {
     fetch("http://localhost:3030/get-user-orders", {
-      method: 'GET',
-      mode: "cors"
+      method: 'POST',
+      mode: "cors",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: this.state.userId
+      })
     })
       .then(response => response.json())
       .then(data => {

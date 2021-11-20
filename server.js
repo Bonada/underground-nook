@@ -223,19 +223,19 @@ app.get('/get-orders' , async (req, res) =>{
     }
   })
 
-  app.get('/get-user-orders' , async (req, res) =>{
+  app.post('/get-user-orders' , async (req, res) =>{
     try {
   
-        let userid = req.body.userid;
+        let userid = req.body.id;
         console.log("connecting to db to get user");
-        console.log(userid);
+        console.log(req.body);
         await client.connect();
         let db = client.db('main');
         let collection = db.collection('users');
-        let document = await collection.findOne({id: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
-  
-        console.log(document);
-        res.send(document);
+        let orders = await db.collection('orders').find({userid: userid});
+        let items = await orders.toArray();
+        console.log(items);
+        res.send(items);
     }catch (e) {
         res.status(400);
         res.json({
@@ -245,28 +245,28 @@ app.get('/get-orders' , async (req, res) =>{
     }
   })
 
-app.get('/get-user' , async (req, res) =>{
-  try {
+// app.get('/get-user' , async (req, res) =>{
+//   try {
 
-      let userid = req.body.userid;
-      console.log("connecting to db to get user");
+//       let userid = req.body.userid;
+//       console.log("connecting to db to get user");
 
-      await client.connect();
-      let db = client.db('main');
-      let collection = db.collection('user');
-      let document = await collection.findOne({userid: userid});
-      let items = await document.toArray();
+//       await client.connect();
+//       let db = client.db('main');
+//       let collection = db.collection('user');
+//       let document = await collection.findOne({userid: userid});
+//       let items = await document.toArray();
 
-      console.log(items);
-      res.send(items);
-  }catch (e) {
-      res.status(400);
-      res.json({
-          success: false,
-          err: 'Cannot get the user data'
-      });
-  }
-})
+//       console.log(items);
+//       res.send(items);
+//   }catch (e) {
+//       res.status(400);
+//       res.json({
+//           success: false,
+//           err: 'Cannot get the user data'
+//       });
+//   }
+// })
 
 app.listen(port, () => {
     console.log(`Listening on *: ${port}`)

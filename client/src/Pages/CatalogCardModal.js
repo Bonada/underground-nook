@@ -19,7 +19,7 @@ function CatalogCardModal(props) {
             </div>
             <div className="row">
               <p>{props.plant.description}</p>
-              <p>{props.plant.price}</p>
+              <p>{'$' + (parseFloat(props.plant.price)).toFixed(2)}</p>
             </div>
           </div>
         </div>
