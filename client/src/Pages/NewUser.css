@@ -81,16 +81,20 @@ div.row.flex-box-save-button{
     width: 50%;
 }
 input#firstname.input-box{
-    height: 35px
+    height: 38px;
+    font-family: 'Avenir';
 }
 input#lastname.input-box{
-    height: 35px
+    height: 38px;
+    font-family: 'Avenir';
 }
 input#email.input-box{
-    height: 35px
+    height: 38px;
+    font-family: 'Avenir';
 }
 input#phonenumber.input-box{
-    height: 35px
+    height: 38px;
+    font-family: 'Avenir';
 }
 label#NewUser-label.form-label.heading{
     padding-left: 0px;
