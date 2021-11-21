@@ -69,7 +69,7 @@ div#AdminEditCatalog{
     text-align: center;
 }
 
-#AdminEditCatalog .add-plant-button{
+#AdminEditCatalog .add-plant-button, #AdminViewOrders .add-plant-button{
     text-decoration: none;
     padding: 10px 50px;
     background: #6AA17B;
@@ -81,7 +81,7 @@ div#AdminEditCatalog{
     font-size: 1.1vw;
     margin-bottom: 10px;
 }
-#AdminEditCatalog .add-plant-button:hover {
+#AdminEditCatalog .add-plant-button:hover, #AdminViewOrders .add-plant-button:hover {
     color: #6AA17B;
     background: #26222E;
     border-color: #6AA17B;

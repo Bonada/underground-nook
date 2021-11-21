@@ -24,4 +24,4 @@ export function EditAddress() {
   </div>;
 }
 
-export default EditAddress
+export default EditAddress;
