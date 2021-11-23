@@ -1,7 +1,7 @@
 import React from "react";
-import '../Components/Navigation.css';
+import '../Components/Navigation/Navigation.css';
 import './OrderPage.css';
-import OrderPageRow from "./OrderPageRow";
+import OrderPageRow from "../Components/Rows/OrderPageRow";
 
 function OrderPage() {
   	return (

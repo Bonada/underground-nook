@@ -1,5 +1,5 @@
 import './Modal.css';
-import ShippingCarrierSelect from './ShippingCarrierSelect';
+import ShippingCarrierSelect from '../Selects/ShippingCarrierSelect';
 
 function ExportDataModal(handleSubmit) {
     function handleSubmit(event) {

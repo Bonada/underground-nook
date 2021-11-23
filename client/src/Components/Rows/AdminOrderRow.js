@@ -1,4 +1,4 @@
-import EditOrderModal from "./EditOrderModal";
+import EditOrderModal from "../Modals/EditOrderModal";
 
 function AdminOrderRow() {
     function hideRow() {

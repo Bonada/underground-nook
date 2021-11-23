@@ -1,8 +1,8 @@
 import React from "react";
 import './Admin.css';
-import '../Components/Navigation.css';
-import AdminDashboardOrderRow from "./AdminDashboardOrderRow";
-import AdminDashboardCatalogRow from "./AdminDashboardCatalogRow";
+import '../Components/Navigation/Navigation.css';
+import AdminDashboardOrderRow from "../Components/Rows/AdminDashboardOrderRow";
+import AdminDashboardCatalogRow from "../Components/Rows/AdminDashboardCatalogRow";
 
 function Admin() {
   return (

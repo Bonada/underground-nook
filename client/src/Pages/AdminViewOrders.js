@@ -1,8 +1,8 @@
 import React from "react";
 import './AdminViewOrders.css';
-import '../Components/Navigation.css';
-import AdminOrderRow from "./AdminOrderRow";
-import ExportDataModal from "./ExportDataModal";
+import '../Components/Navigation/Navigation.css';
+import AdminOrderRow from "../Components/Rows/AdminOrderRow";
+import ExportDataModal from "../Components/Modals/ExportDataModal";
 
 function AdminViewOrders() {
   return (

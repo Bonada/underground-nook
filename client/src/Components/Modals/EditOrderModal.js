@@ -1,6 +1,6 @@
 import './Modal.css';
-import StateSelect from "./StateSelect.js";
-import ShippingCarrierSelect from "./ShippingCarrierSelect.js";
+import StateSelect from "../Selects/StateSelect.js";
+import ShippingCarrierSelect from "../Selects/ShippingCarrierSelect.js";
 
 function EditOrderModal(handleSubmit) {
     function handleSubmit(event) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import './Home.css';
-import '../Components/Navigation.css';
+import '../Components/Navigation/Navigation.css';
 import HexagonPlants from '../Images/HexagonPlants.PNG'; // gives image path
 import Plant1 from '../Images/Plant1.PNG'; // gives image path
 import Plant2 from '../Images/Plant2.PNG'; // gives image path

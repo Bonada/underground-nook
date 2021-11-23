@@ -1,4 +1,4 @@
-import StateSelect from "./StateSelect.js";
+import StateSelect from "../Selects/StateSelect.js";
 
 function AddressModal(props) {
 
