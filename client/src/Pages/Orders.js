@@ -1,7 +1,7 @@
 import React from "react";
 import './Orders.css';
-import '../Components/Navigation.css';
-import OrderRow from './OrderRow.js';
+import '../Components/Navigation/Navigation.css';
+import OrderRow from '../Components/Rows/OrderRow.js';
 
 function Orders() {
   return (

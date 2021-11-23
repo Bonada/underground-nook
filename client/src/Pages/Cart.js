@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './Cart.css';
-import '../Components/Navigation.css';
-import CartOrderCard from './CartOrderCard.js'
-import CartAddresses from './CartAddresses.js'
+import '../Components/Navigation/Navigation.css';
+import CartOrderCard from '../Components/Cards/CartOrderCard.js'
+import CartAddresses from '../Components/CartAddresses.js'
 
 
 function Cart() {

@@ -1,4 +1,4 @@
-import './AddEditPlantModal.css';
+import './Modal.css';
 
 function EditPlantModal(handleSubmit) {
     function handleSubmit(event) {
@@ -6,7 +6,7 @@ function EditPlantModal(handleSubmit) {
     }
 
     return (
-        <div className="modal fade plantModal" id="editPlantModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="editPlantModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">

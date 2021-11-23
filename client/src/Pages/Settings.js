@@ -1,9 +1,9 @@
 import React from "react";
 import './Settings.css';
-import '../Components/Navigation.css';
-import AddressModal from './AddressModal.js';
-import AddressCard from './AddressCard.js';
-import EditInformation from "./EditInformation.js";
+import '../Components/Navigation/Navigation.css';
+import AddressModal from '../Components/Modals/AddressModal.js';
+import AddressCard from '../Components/Cards/AddressCard.js';
+import EditInformation from "../Components/Edits/EditInformation.js";
 
 
 function Settings(props) {

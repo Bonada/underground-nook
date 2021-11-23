@@ -1,10 +1,10 @@
 import React from "react";
 import './AdminEditCatalog.css';
-import '../Components/Navigation.css';
-import AddPlantModal from './AddPlantModal.js';
-import EditPlantModal from "./EditPlantModal";
+import '../Components/Navigation/Navigation.css';
+import AddPlantModal from '../Components/Modals/AddPlantModal.js';
+import EditPlantModal from "../Components/Modals/EditPlantModal";
 import Table from "../Components/Table";
-import AdminEditCatalogRow from "./AdminEditCatalogRow";
+import AdminEditCatalogRow from "../Components/Rows/AdminEditCatalogRow";
 
 function AdminEditCatalog() {
 

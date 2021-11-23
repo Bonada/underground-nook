@@ -68,3 +68,7 @@ div#AdminViewOrders{
 #AdminViewOrders {
     text-align: center;
 }
+
+.hidden-row {
+    display: none;
+}

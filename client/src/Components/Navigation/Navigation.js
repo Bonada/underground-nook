@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import About from "../Pages/About";
-import Cart from "../Pages/Cart";
-import Catalog from "../Pages/Catalog";
-import Home from "../Pages/Home";
-import Admin from "../Pages/Admin";
-import Orders from "../Pages/Orders";
-import Settings from "../Pages/Settings";
-import NewUser from "../Pages/NewUser";
-import AdminEditCatalog from "../Pages/AdminEditCatalog";
-import AdminViewOrders from "../Pages/AdminViewOrders";
-import OrderPage from "../Pages/OrderPage";
-import Logo from '../Images/Logo.png'; // gives image path
+import About from "../../Pages/About";
+import Cart from "../../Pages/Cart";
+import Catalog from "../../Pages/Catalog";
+import Home from "../../Pages/Home";
+import Admin from "../../Pages/Admin";
+import Orders from "../../Pages/Orders";
+import Settings from "../../Pages/Settings";
+import NewUser from "../../Pages/NewUser";
+import AdminEditCatalog from "../../Pages/AdminEditCatalog";
+import AdminViewOrders from "../../Pages/AdminViewOrders";
+import OrderPage from "../../Pages/OrderPage";
+import Logo from '../../Images/Logo.png'; // gives image path
 import './Navigation.css';
 
 /*global FB*/
