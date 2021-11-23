@@ -7,16 +7,15 @@ import Table from "../Components/Table";
 
 function AdminViewOrders() {
   const headers = [
-    "Order ID", 
-    "Name", 
-    "Street", 
-    "City", 
-    "State", 
-    "Zip", 
-    "Phone Number", 
-    "Email", 
-    "Shipping Carrier", 
-    "Order Status", 
+    "Order ID",
+    "Purchaser ID",
+    "Recepient Name",
+    "Street",
+    "City",
+    "State",
+    "Zip",
+    "Shipping Carrier",
+    "Order Status",
     "Total"
   ];
 

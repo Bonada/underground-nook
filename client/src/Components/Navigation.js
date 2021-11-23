@@ -12,13 +12,14 @@ import Settings from "../Pages/Settings";
 import NewUser from "../Pages/NewUser";
 import AdminEditCatalog from "../Pages/AdminEditCatalog";
 import AdminViewOrders from "../Pages/AdminViewOrders";
+import OrderPage from "../Pages/OrderPage";
 import Logo from '../Images/Logo.png'; // gives image path
 import './Navigation.css';
 
 /*global FB*/
 //'1839081979786582'
 export default function Navigation(props) {
-  const admin_ids = ['4524022054277037', '2034884766556492'];
+  const admin_ids = ['4524022054277037', '2034884766556492', '2997818750540073'];
 
   const [userType, setUserType] = useState("Pre-Login");
   const [redirect, setRedirect] = useState(null);
@@ -257,6 +258,9 @@ export default function Navigation(props) {
               <AdminEditCatalog />
             </Route>
           }
+          <Route path="/OrderPage">
+              <OrderPage />
+          </Route>
           <Route path="/About">
             <About currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>
