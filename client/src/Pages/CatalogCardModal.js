@@ -15,6 +15,9 @@ function CatalogCardModal(props) {
             </div>
             <div className="row">&nbsp;</div>
             <div className="row">
+              <h2>{props.plant.species_name}</h2>
+            </div>
+            <div className="row">
               <h2>{props.plant.common_name}</h2>
             </div>
             <div className="row">

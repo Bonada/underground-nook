@@ -11,7 +11,6 @@ function AdminEditCatalog() {
       <div className="container" id="AdminEditCatalogContainer">
         <div className="row">
           <a href="#" className="add-plant-button" data-bs-toggle="modal" data-bs-target="#addPlantModal">+ Add Plant</a>
-          
           <div className="col-md col-catalog">
           
             <div className="edit-catalog-pane">
