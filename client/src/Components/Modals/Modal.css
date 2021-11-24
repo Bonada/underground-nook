@@ -1,8 +1,8 @@
-.plantModal input[type="file"] {
+.modal input[type="file"] {
     display: none;
 }
 
-.plantModal .custom-file-upload {
+.modal .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
     padding: 6px 12px;
@@ -11,17 +11,21 @@
     padding-bottom: 20px;
 }
 
-.plantModal i {
+.modal i {
     font-size: 40px;
     margin: auto;
 
 }
 
-.plantModal p {
+.modal p {
     margin: 0px;
 }
 
-.plantModal .field-name {
+.modal .field-name {
     text-align: left;
     margin-bottom: 10px;
+}
+
+.modal {
+    color: #e5e5e5;
 }

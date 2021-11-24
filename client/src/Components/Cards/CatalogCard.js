@@ -1,6 +1,8 @@
+// import ppp from './PPP.png';
+
 function CatalogCard(props) {
     console.log("MAKING: ", props);
-    
+
     return (
         <div className="col-md-2" onClick={props.onClick}>
             <div className="catalog-card" data-bs-toggle="modal" data-bs-target="#catalogModal">

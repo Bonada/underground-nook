@@ -1,4 +1,4 @@
-import './AddEditPlantModal.css';
+import './Modal.css';
 
 function EditPlantModal(handleSubmit) {
     function handleSubmit(event) {
@@ -6,7 +6,7 @@ function EditPlantModal(handleSubmit) {
     }
 
     return (
-        <div className="modal fade plantModal" id="editPlantModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="editPlantModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -35,7 +35,7 @@ function EditPlantModal(handleSubmit) {
                                     Change Image
                                 </p>
                                 <div className="mb-3">
-                                    <label htmlFor="file-upload" class="custom-file-upload">
+                                    <label for="file-upload" class="custom-file-upload">
                                         <i class="ri-image-add-fill"></i>
                                         <p>Drop your image here, or browse</p>
                                         <p>Supports: JPG, PNG</p>

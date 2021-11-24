@@ -1,8 +1,8 @@
 import React from "react";
 import './Catalog.css';
-import '../Components/Navigation.css';
-import CatalogCardModal from './CatalogCardModal.js';
-import CatalogCard from './CatalogCard.js';
+import '../Components/Navigation/Navigation.css';
+import CatalogCardModal from '../Components/Modals/CatalogCardModal.js';
+import CatalogCard from '../Components/Cards/CatalogCard.js';
 
 export default class Catalog extends React.Component {
 

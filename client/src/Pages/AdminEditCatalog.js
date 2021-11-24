@@ -1,8 +1,8 @@
 import React from "react";
 import './AdminEditCatalog.css';
-import '../Components/Navigation.css';
-import AddPlantModal from './AddPlantModal.js';
-import EditPlantModal from "./EditPlantModal";
+import '../Components/Navigation/Navigation.css';
+import AddPlantModal from '../Components/Modals/AddPlantModal.js';
+import EditPlantModal from "../Components/Modals/EditPlantModal";
 
 function AdminEditCatalog() {
   return (
