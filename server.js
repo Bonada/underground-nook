@@ -173,6 +173,52 @@ app.get('/get-plants' , async (req, res) =>{
 //--------------------------------------------------------------------------------------------------------------
 // Order endpoints
 
+app.post('/add-to-cart', async (req, res) => {
+
+  console.log("adding plant to cart");
+  let userid = req.body.userid;
+  let plant = req.body.plant;
+
+  try {
+    await client.connect();
+    let db = client.db('main');
+
+    let carts = db.collection('carts');
+    let user_cart = await carts.findOne({userid: userid});
+    if (!user_cart) {
+      carts.insertOne({userid: userid, plants: [plant], total_price: plant.price, size: 1});
+
+      console.log("added plant to new cart for user");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + plant.id +  ' added to new cart';
+      });
+    }
+    else {
+      user_cart.plants.push(plant);
+      user_cart.total_price += plant.price;
+      user_cart.size += 1;
+
+      console.log("added plant to existing cart for user");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + plant.id +  ' added to existing cart';
+      });
+    }
+  } catch (e) {
+    res.status(400);
+    res.json({
+        success: false,
+        err: 'Could not add plant to cart'
+    });
+  }
+})
+
+//--------------------------------------------------------------------------------------------------------------
+// Order endpoints
+
 // Add timestamp to this api with order
 app.post('/add-order' , async (req, res) =>{
 
