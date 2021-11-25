@@ -1,6 +1,6 @@
 function AdminDashboardCatalogRow(props) {
     return (
-        <tr>
+        <tr onClick={props.onClick}>
             <td><img className="admin-catalog-img card-img-top" src={props.img_url} alt="PPP"></img></td>
             <td>{props.name}</td>
             <td>{props.desc}</td>
