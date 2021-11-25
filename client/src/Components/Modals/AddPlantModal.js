@@ -85,60 +85,61 @@ class AddPlantModal extends React.Component {
     }
 
     render() {
-    return (
-        <div className="modal fade" id="addPlantModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Add Plant to Catalog</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                        <div className="container">
-                            <form onSubmit={this.handleSubmit}>
-                                <div className="mb-3">
-                                    <label htmlFor="name" className="form-label">Scientific Name</label>
-                                    <br />
-                                    <input onChange={this.changeSname} value={this.state.sname} className="input-box-modal form-control" type="text" placeholder="Enter a Name" id="name" />
+        return (
+            <div className="modal fade" id="addPlantModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Add Plant to Catalog</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="container">
+                                <form onSubmit={this.handleSubmit}>
+                                    <div className="mb-3">
+                                        <label htmlFor="name" className="form-label">Scientific Name</label>
+                                        <br />
+                                        <input onChange={this.changeSname} value={this.state.sname} className="input-box-modal form-control" type="text" placeholder="Enter a Name" id="name" />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="name" className="form-label">Common Name</label>
+                                        <br />
+                                        <input onChange={this.changeCname} value={this.state.cname} className="input-box-modal form-control" type="text" placeholder="Enter a Name" id="name" />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="descriptionOfPlant" className="form-label">Description</label>
+                                        <br />
+                                        <textarea onChange={this.changeDesc} value={this.state.desc} className="input-box-modal form-control" type="text" placeholder="Enter a Description" id="descriptionOfPlant" />
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="price" className="form-label">Price</label>
+                                        <br />
+                                        <input onChange={this.changePrice} value={String(this.state.price)} className="input-box-modal form-control" type="text" placeholder="Enter a Price" id="price" />
+                                    </div>
+                                    <p className="field-name">
+                                        Upload Image
+                                    </p>
+                                    <div className="mb-3">
+                                        <label htmlFor="file-upload" class="custom-file-upload">
+                                            <i class="ri-image-add-fill"></i>
+                                            <p>Drop your image here, or browse</p>
+                                            <p>Supports: JPG, PNG</p>
+                                        </label>
+                                        <input onChange={this.changeFiles} id="file-upload" type="file"/>
+                                    </div>
+                                    <div id="filename" className="mb-3">
+                                        {this.state.file['name']}
+                                    </div>
+                                </form>
+                                <div className="flex-box-submit-button">
+                                    <button onClick={this.handleSubmit} className="cart-button" type="submit" data-bs-dismiss="modal" >Add Plant</button>
                                 </div>
-                                <div className="mb-3">
-                                    <label htmlFor="name" className="form-label">Common Name</label>
-                                    <br />
-                                    <input onChange={this.changeCname} value={this.state.cname} className="input-box-modal form-control" type="text" placeholder="Enter a Name" id="name" />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="descriptionOfPlant" className="form-label">Description</label>
-                                    <br />
-                                    <textarea onChange={this.changeDesc} value={this.state.desc} className="input-box-modal form-control" type="text" placeholder="Enter a Description" id="descriptionOfPlant" />
-                                </div>
-                                <div className="mb-3">
-                                    <label htmlFor="price" className="form-label">Price</label>
-                                    <br />
-                                    <input onChange={this.changePrice} value={String(this.state.price)} className="input-box-modal form-control" type="text" placeholder="Enter a Price" id="price" />
-                                </div>
-                                <p className="field-name">
-                                    Upload Image
-                                </p>
-                                <div className="mb-3">
-                                    <label htmlFor="file-upload" class="custom-file-upload">
-                                        <i class="ri-image-add-fill"></i>
-                                        <p>Drop your image here, or browse</p>
-                                        <p>Supports: JPG, PNG</p>
-                                    </label>
-                                    <input onChange={this.changeFiles} id="file-upload" type="file"/>
-                                </div>
-                                <div id="filename" className="mb-3">
-                                    {this.state.file['name']}
-                                </div>
-                            </form>
-                            <div className="flex-box-submit-button">
-                                <button onClick={this.handleSubmit} className="cart-button" type="submit" data-bs-dismiss="modal" >Add Plant</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>);
+        );
     }
 }
 
