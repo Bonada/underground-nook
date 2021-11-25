@@ -37,6 +37,9 @@ const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://TestUser:TestUserPass@undergroundnook.lh3mc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+//--------------------------------------------------------------------------------------------------------------
+// User endpoints
+
 app.post('/add-user' , async (req, res) =>{
 
   console.log("adding new user");
@@ -79,35 +82,38 @@ app.post('/add-user' , async (req, res) =>{
 
 app.post('/get-user' , async (req, res) =>{
 
-    console.log("looking for user");
-    let userid = req.body.userid;
-    console.log(userid);
-  
-    try {
-        await client.connect();
-        let db = client.db('main');
-        let users = db.collection('users');
+  console.log("looking for user");
+  let userid = req.body.userid;
+  console.log(userid);
 
-        let existinguser = await users.findOne({userid:userid});
+  try {
+      await client.connect();
+      let db = client.db('main');
+      let users = db.collection('users');
 
-        console.log(existinguser);
-        if(existinguser){
-            res.send(existinguser);
-        }
-        else {
-          res.json({
-            success: false,
-            err: 'Facebook user ' + userid +  'does not exist'
-          });
-        }
-    } catch (e) {
-        res.status(400);
+      let existinguser = await users.findOne({userid:userid});
+
+      console.log(existinguser);
+      if(existinguser){
+          res.send(existinguser);
+      }
+      else {
         res.json({
-            success: false,
-            err: 'User ' + userid + 'does not exist'
+          success: false,
+          err: 'Facebook user ' + userid +  'does not exist'
         });
-    }
-  })
+      }
+  } catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'User ' + userid + 'does not exist'
+      });
+  }
+})
+
+//--------------------------------------------------------------------------------------------------------------
+// Plant endpoints
 
 app.post('/add-plant' , async (req, res) =>{
 
@@ -141,6 +147,31 @@ app.post('/add-plant' , async (req, res) =>{
       });
   }
 })
+
+app.get('/get-plants' , async (req, res) =>{
+  try {
+
+      console.log("connecting to db to get plants");
+
+      await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('plants');
+      let document = await collection.find();
+      let items = await document.toArray();
+
+      console.log(items);
+      res.send(items);
+  } catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot get the plant data'
+      });
+  }
+})
+
+//--------------------------------------------------------------------------------------------------------------
+// Order endpoints
 
 // Add timestamp to this api with order
 app.post('/add-order' , async (req, res) =>{
@@ -183,28 +214,6 @@ app.post('/add-order' , async (req, res) =>{
     }
   })
 
-app.get('/get-plants' , async (req, res) =>{
-  try {
-
-      console.log("connecting to db to get plants");
-
-      await client.connect();
-      let db = client.db('main');
-      let collection = db.collection('plants');
-      let document = await collection.find();
-      let items = await document.toArray();
-
-      console.log(items);
-      res.send(items);
-  }catch (e) {
-      res.status(400);
-      res.json({
-          success: false,
-          err: 'Cannot get the plant data'
-      });
-  }
-})
-
 app.get('/get-orders' , async (req, res) =>{
     try {
   
@@ -228,28 +237,6 @@ app.get('/get-orders' , async (req, res) =>{
   })
 
 app.get('/get-user-orders' , async (req, res) =>{
-try {
-
-    let userid = req.body.userid;
-    console.log("connecting to db to get user");
-
-    await client.connect();
-    let db = client.db('main');
-    let collection = db.collection('users');
-    let document = await collection.findOne({userid: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
-
-    console.log(document);
-    res.send(document);
-}catch (e) {
-    res.status(400);
-    res.json({
-        success: false,
-        err: 'Cannot get the plant data'
-    });
-}
-})
-
-app.get('/get-user' , async (req, res) =>{
   try {
 
       let userid = req.body.userid;
@@ -257,12 +244,11 @@ app.get('/get-user' , async (req, res) =>{
 
       await client.connect();
       let db = client.db('main');
-      let collection = db.collection('user');
-      let document = await collection.findOne({id: userid});
-      let items = await document.toArray();
+      let collection = db.collection('users');
+      let document = await collection.findOne({userid: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
 
-      console.log(items);
-      res.send(items);
+      console.log(document);
+      res.send(document);
   }catch (e) {
       res.status(400);
       res.json({
@@ -271,6 +257,8 @@ app.get('/get-user' , async (req, res) =>{
       });
   }
 })
+
+//--------------------------------------------------------------------------------------------------------------
 
 app.listen(port, () => {
     console.log(`Listening on *: ${port}`)
