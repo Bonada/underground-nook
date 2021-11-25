@@ -1,9 +1,9 @@
 import './Modal.css';
 
 function AddPlantModal(handleSubmit) {
-    function handleSubmit(event) {
-        console.log(event.target.value);
-    }
+    // function handleSubmit(event) {
+    //     console.log(event.target.value);
+    // }
 
     return (
         <div className="modal fade" id="addPlantModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

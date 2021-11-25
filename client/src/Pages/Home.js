@@ -20,9 +20,9 @@ export default function Home(props) {
       <div className="rectangle2"></div>
       <div className="rectangle3"></div>
       <div className="rectangle4"></div>
-      <img className="img-fluid" id="HexagonsImage" src={HexagonPlants} />
-      <img className="img-fluid" id="Plant1" src={Plant1} />
-      <img className="img-fluid" id="Plant2" src={Plant2} />
+      <img className="img-fluid" id="HexagonsImage" src={HexagonPlants} alt="Hexagon Plants" />
+      <img className="img-fluid" id="Plant1" src={Plant1} alt="Plant 1" />
+      <img className="img-fluid" id="Plant2" src={Plant2} alt="Plant2" />
     </div>
   );
 }

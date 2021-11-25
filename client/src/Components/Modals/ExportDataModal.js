@@ -2,9 +2,9 @@ import './Modal.css';
 import ShippingCarrierSelect from '../Selects/ShippingCarrierSelect';
 
 function ExportDataModal(handleSubmit) {
-    function handleSubmit(event) {
-        console.log(event.target.value);
-    }
+    // function handleSubmit(event) {
+    //     console.log(event.target.value);
+    // }
 
     return (
         <div className="modal fade" id="exportDataModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
