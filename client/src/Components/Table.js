@@ -13,7 +13,6 @@ function Table(props) {
       </thead>
       <tbody>
         {props.row_comp}
-        {props.row_comp}
       </tbody>
     </table>
 	);
