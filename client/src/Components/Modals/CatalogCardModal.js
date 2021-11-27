@@ -1,4 +1,5 @@
 function CatalogCardModal(props) {
+  console.log(props);
   return <div className="modal fade" id="catalogModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div className="modal-dialog">
       <div className="modal-content">

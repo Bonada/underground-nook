@@ -140,6 +140,46 @@ app.post('/add-plant' , async (req, res) =>{
   }
 })
 
+app.post('/update-plant' , async (req, res) =>{
+
+    console.log("updating plant");
+    let id = req.body.id;
+    let species_name = req.body.sname;
+    let common_name = req.body.cname;
+    let description = req.body.desc;
+    let price = req.body.price;
+    let img = req.body.img;
+
+    console.log(img);
+  
+    try {
+        await client.connect();
+        let db = client.db('main');
+        console.log(img);
+        db.collection('plants').updateOne({id: id}, {$set:{species_name: species_name, common_name: common_name, description: description, price: price, img_url: img}})
+
+        if(img){
+        }
+        else{
+            // db.collection('plants').updateOne({id: id}, {$set:{species_name: species_name, common_name: common_name, description: description, price: price}})
+        }
+        
+  
+        console.log("updated plant");
+  
+        res.json({
+            success: true,
+            err: 'Plant ' + species_name +  'updated'
+        });
+    } catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Error adding ' + species_name + 'to database'
+        });
+    }
+  })
+
 app.post('/add-order' , async (req, res) =>{
 
     console.log("adding new plant");
@@ -180,15 +220,12 @@ app.post('/add-order' , async (req, res) =>{
 
 app.get('/get-plants' , async (req, res) =>{
   try {
-
       console.log("connecting to db to get plants");
-
       await client.connect();
       let db = client.db('main');
       let collection = db.collection('plants');
       let document = await collection.find();
       let items = await document.toArray();
-
       console.log(items);
       res.send(items);
   }catch (e) {
