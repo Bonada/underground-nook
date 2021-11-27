@@ -164,7 +164,7 @@ app.post('/update-plant' , async (req, res) =>{
     let price = req.body.price;
     let img = req.body.img;
 
-    console.log(img);
+    console.log(req.body);
   
     try {
         await client.connect();

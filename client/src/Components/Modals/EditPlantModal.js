@@ -67,6 +67,7 @@ function EditPlantModal(props) {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        id: id,
                         sname: sname,
                         cname: cname,
                         desc: desc,
