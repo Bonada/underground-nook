@@ -170,12 +170,12 @@ app.post('/update-plant' , async (req, res) =>{
         await client.connect();
         let db = client.db('main');
         console.log(img);
-        db.collection('plants').updateOne({id: id}, {$set:{species_name: species_name, common_name: common_name, description: description, price: price, img_url: img}})
 
         if(img){
+            db.collection('plants').updateOne({id: id}, {$set:{species_name: species_name, common_name: common_name, description: description, price: price, img_url: img}})
         }
         else{
-            // db.collection('plants').updateOne({id: id}, {$set:{species_name: species_name, common_name: common_name, description: description, price: price}})
+            db.collection('plants').updateOne({id: id}, {$set:{species_name: species_name, common_name: common_name, description: description, price: price}})
         }
         
   
