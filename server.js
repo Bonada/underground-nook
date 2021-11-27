@@ -10,6 +10,16 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 
+const { v4: uuidv4 } = require('uuid');
+
+// const fs = require('fs');
+var cloudinary = require('cloudinary').v2;
+cloudinary.config({ 
+  cloud_name: 'undergroundnook', 
+  api_key: '197948958869879', 
+  api_secret: 'UDvL3l6lxXSHc6Xdk1hb_nWzDH8' 
+});
+
 // const fs = require('fs');
 // var cloudinary = require('cloudinary').v2;
 // cloudinary.config({ 
@@ -112,12 +122,15 @@ app.post('/add-plant' , async (req, res) =>{
 
   console.log("adding new plant");
   let id = uuidv4();
-  let scientific_name = req.body.sname;
+  console.log(req.body);
+  let species_name = req.body.sname;
   let common_name = req.body.cname;
   let description = req.body.desc;
   let price = req.body.price;
+  let img = req.body.img;
 
   try {
+      await client.close();
       await client.connect();
       let db = client.db('main');
 
@@ -132,6 +145,7 @@ app.post('/add-plant' , async (req, res) =>{
           err: 'Plant ' + scientific_name +  'added to database'
       });
   } catch (e) {
+      console.log(e);
       res.status(400);
       res.json({
           success: false,
@@ -238,7 +252,7 @@ app.get('/get-plants' , async (req, res) =>{
 })
 
 
-app.delete('/update-plant', async (req, res) => {
+app.delete('/delete-plant', async (req, res) => {
 
     let id = req.body.id;
 
@@ -264,31 +278,6 @@ app.delete('/update-plant', async (req, res) => {
 
 })
 
-app.delete('delete-plant', async (req, res) => {
-
-    let id = req.body.id;
-
-    try {
-  
-        console.log("connecting to db to get plants");
-  
-        await client.connect();
-        let db = client.db('main');
-        let collection = db.collection('plants');
-        let document = await collection.deleteOne({id: id});
-  
-        console.log("Deleted: ", document);
-        res.send(document);
-
-    }catch (e) {
-        res.status(400);
-        res.json({
-            success: false,
-            err: 'Cannot find plant'
-        });
-    }
-
-})
 
 app.get('/get-orders' , async (req, res) =>{
     try {
