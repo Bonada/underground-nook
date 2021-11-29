@@ -13,14 +13,11 @@ function AddPlantModal(props){
 
     function changeSname(event){
         sname = event.target.value;
-        // console.log("VALUE: ", event.target.value );
-        // console.log("NAME: ", this.state.name);
     }
+
 
     function changeCname(event){
         cname = event.target.value;
-        // console.log("VALUE: ", event.target.value );
-        // console.log("NAME: ", this.state.name);
     }
 
     function changeDesc(event){
@@ -74,7 +71,6 @@ function AddPlantModal(props){
             })
 
         });
-
     }
 
     return (
@@ -87,7 +83,7 @@ function AddPlantModal(props){
                     </div>
                     <div className="modal-body">
                         <div className="container">
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={this.handleSubmit}>
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">Scientific Name</label>
                                     <br />
@@ -131,6 +127,7 @@ function AddPlantModal(props){
                 </div>
             </div>
         </div>);
+    
 }
 
 export default AddPlantModal;
