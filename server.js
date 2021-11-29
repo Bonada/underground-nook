@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, '/client/build')));
 // })
 
 const { MongoClient } = require('mongodb');
+const { async } = require('q');
 const uri = "mongodb+srv://TestUser:TestUserPass@undergroundnook.lh3mc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -113,6 +114,7 @@ app.post('/add-plant' , async (req, res) =>{
 
   console.log("adding new plant");
   let id = uuidv4();
+
   let species_name = req.body.sname;
   let common_name = req.body.cname;
   let description = req.body.desc;
@@ -120,10 +122,11 @@ app.post('/add-plant' , async (req, res) =>{
   let img = req.body.img;
 
   try {
+      await client.close();
       await client.connect();
       let db = client.db('main');
 
-      let newPlant = {id: id, species_name: species_name, common_name: common_name, description: description, price: price, img_url: img};
+      let newPlant = {id: id, species_name: species_name, common_name: common_name, description: description, price: price, img_url: img, availability: true};
 
       db.collection('plants').insertOne(newPlant);
 
@@ -134,6 +137,7 @@ app.post('/add-plant' , async (req, res) =>{
           err: 'Plant ' + scientific_name +  'added to database'
       });
   } catch (e) {
+      console.log(e);
       res.status(400);
       res.json({
           success: false,
@@ -141,6 +145,46 @@ app.post('/add-plant' , async (req, res) =>{
       });
   }
 })
+
+app.post('/update-plant' , async (req, res) =>{
+
+    console.log("updating plant");
+    let id = req.body.id;
+    let species_name = req.body.sname;
+    let common_name = req.body.cname;
+    let description = req.body.desc;
+    let price = req.body.price;
+    let img = req.body.img;
+
+    console.log(req.body);
+  
+    try {
+        await client.connect();
+        let db = client.db('main');
+        console.log(img);
+
+        if(img){
+            db.collection('plants').updateOne({id: id}, {$set:{species_name: species_name, common_name: common_name, description: description, price: price, img_url: img}})
+        }
+        else{
+            db.collection('plants').updateOne({id: id}, {$set:{species_name: species_name, common_name: common_name, description: description, price: price}})
+        }
+        
+  
+        console.log("updated plant");
+  
+        res.json({
+            success: true,
+            err: 'Plant ' + species_name +  'updated'
+        });
+    } catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Error adding ' + species_name + 'to database'
+        });
+    }
+  })
 
 app.post('/add-order' , async (req, res) =>{
 
@@ -159,10 +203,11 @@ app.post('/add-order' , async (req, res) =>{
     let scientific_name = req.body.sname;
   
     try {
+
         await client.connect();
         let db = client.db('main');
 
-        let newOrder = {id: id, username: username, userid: userid, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier: shippingcarrier};
+        let newOrder = {id: id, username: username, userid: userid, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier: shippingcarrier, images: images};
   
         db.collection('orders').insertOne(newOrder);
   
@@ -184,15 +229,12 @@ app.post('/add-order' , async (req, res) =>{
 
 app.get('/get-plants' , async (req, res) =>{
   try {
-
       console.log("connecting to db to get plants");
-
       await client.connect();
       let db = client.db('main');
       let collection = db.collection('plants');
       let document = await collection.find();
       let items = await document.toArray();
-
       console.log(items);
       res.send(items);
   }catch (e) {
@@ -203,6 +245,34 @@ app.get('/get-plants' , async (req, res) =>{
       });
   }
 })
+
+
+app.delete('/delete-plant', async (req, res) => {
+
+    let id = req.body.id;
+
+    try {
+  
+        console.log("connecting to db to get plants");
+  
+        await client.connect();
+        let db = client.db('main');
+        let collection = db.collection('plants');
+        let document = await collection.deleteOne({id: id});
+  
+        console.log("Deleted: ", document);
+        res.send(document);
+        
+    }catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Cannot find plant'
+        });
+    }
+
+})
+
 
 app.get('/get-orders' , async (req, res) =>{
     try {
