@@ -38,7 +38,7 @@ div.cards {
     text-align: right;
 }
 
-.catalog.card {
+.catalog-card {
     font-family: 'Scope One', 'Serif';
     background-color: #FBFBEF;
     color: #000000;
@@ -86,4 +86,14 @@ button.cart-button:focus {
 
 .catalog.modal-footer {
     border: none;
+}
+
+.searchbar {
+    width: 60%;
+}
+
+.col-md-2 {
+    display: inline-block;
+    margin-left: 3%;
+    margin-top: 2%;
 }

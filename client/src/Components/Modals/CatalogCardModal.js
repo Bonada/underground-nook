@@ -1,4 +1,5 @@
 function CatalogCardModal(props) {
+  console.log(props);
   return <div className="modal fade" id="catalogModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div className="modal-dialog">
       <div className="modal-content">
@@ -14,6 +15,9 @@ function CatalogCardModal(props) {
               </div>
             </div>
             <div className="row">&nbsp;</div>
+            <div className="row">
+              <h2>{props.plant.species_name}</h2>
+            </div>
             <div className="row">
               <h2>{props.plant.common_name}</h2>
             </div>
