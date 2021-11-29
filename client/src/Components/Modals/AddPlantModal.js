@@ -3,8 +3,7 @@ import React from 'react';
 import Axios from 'axios';
 import { parse } from 'dotenv';
 
-function AddPlantModal(props){
-    
+function AddPlantModal(props){    
     let sname = '';
     let cname = '';
     let desc = '';
@@ -14,7 +13,6 @@ function AddPlantModal(props){
     function changeSname(event){
         sname = event.target.value;
     }
-
 
     function changeCname(event){
         cname = event.target.value;
@@ -83,7 +81,7 @@ function AddPlantModal(props){
                     </div>
                     <div className="modal-body">
                         <div className="container">
-                            <form onSubmit={this.handleSubmit}>
+                            <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">Scientific Name</label>
                                     <br />
@@ -126,8 +124,8 @@ function AddPlantModal(props){
                     </div>
                 </div>
             </div>
-        </div>);
-    
+        </div>
+    );
 }
 
 export default AddPlantModal;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './Cart.css';
 import '../Components/Navigation/Navigation.css';
 import CartOrderCard from '../Components/Cards/CartOrderCard.js'

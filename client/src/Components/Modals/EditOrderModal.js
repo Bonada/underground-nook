@@ -3,9 +3,9 @@ import StateSelect from "../Selects/StateSelect.js";
 import ShippingCarrierSelect from "../Selects/ShippingCarrierSelect.js";
 
 function EditOrderModal(handleSubmit) {
-    function handleSubmit(event) {
-        console.log(event.target.value);
-    }
+    // function handleSubmit(event) {
+    //     console.log(event.target.value);
+    // }
 
     return (
         <div className="modal fade" id="editOrderModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

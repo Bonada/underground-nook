@@ -3,14 +3,18 @@ import './AdminEditCatalog.css';
 import '../Components/Navigation/Navigation.css';
 import AddPlantModal from '../Components/Modals/AddPlantModal.js';
 import EditPlantModal from "../Components/Modals/EditPlantModal";
+import Table from "../Components/Table";
+import AdminEditCatalogRow from "../Components/Rows/AdminEditCatalogRow";
 import AdminDashboardCatalogRow from "../Components/Rows/AdminEditRow";
 import AdminEditRow from "../Components/Rows/AdminEditRow";
-
 
 export default class AdminEditCatalog extends React.Component {
 
   constructor(props) {
     super(props);
+    
+    this.table_header = ["", "Name", "Description", "Price", ""];
+
     this.state = {
       loading: true,
       plants: [],
@@ -21,6 +25,15 @@ export default class AdminEditCatalog extends React.Component {
   componentDidMount() {
     console.log("mounted")
     this.populateAdminCatalog();
+  }
+
+  getTableRows(plant, index) {
+    return (
+      <div onClick={() => this.setState({currentIndex: index}) } >
+        <AdminEditRow key={"catrow"+index} id={plant['id']} name={plant['species_name']} price={plant['price']} desc={plant['description']} img_url={plant['img_url']}
+        onClick={() => this.setState({currentIndex: index})}/>
+      </div>
+    );
   }
 
   render() {
@@ -34,27 +47,7 @@ export default class AdminEditCatalog extends React.Component {
             <div className="col-md col-catalog">
             
               <div className="edit-catalog-pane">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Price</th>
-                      <th scope="col"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {this.state.loading ? (null) : this.state.plants.map((plant, index) => {
-                        return (
-                          <div onClick={() => this.setState({currentIndex: index}) } >
-                          <AdminEditRow key={"catrow"+index} id={plant['id']} name={plant['species_name']} price={plant['price']} desc={plant['description']} img_url={plant['img_url']}
-                          onClick={() => this.setState({currentIndex: index})}/>
-                          </div>
-                         )
-                  })}                    
-                  </tbody>
-                </table>
+                <Table headers={this.table_header} row_comp={this.state.loading ? (null) : this.state.plants.map((plant, index) => this.getTableRows(plant, index))} />
               </div>
             </div>
             {this.state.loading ? (null) : <EditPlantModal plant={this.state.plants[this.state.currentIndex]}/>}

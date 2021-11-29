@@ -38,6 +38,9 @@ const { async } = require('q');
 const uri = "mongodb+srv://TestUser:TestUserPass@undergroundnook.lh3mc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+//--------------------------------------------------------------------------------------------------------------
+// User endpoints
+
 app.post('/add-user' , async (req, res) =>{
 
   console.log("adding new user");
@@ -52,7 +55,7 @@ app.post('/add-user' , async (req, res) =>{
       let newUser = {userid: userid, username: username, email: email, addresses: []};
       let users = db.collection('users');
 
-      let existinguser = users.findOne({userid:userid});
+      let existinguser = await users.findOne({userid:userid});
       if (!existinguser) {
         users.insertOne(newUser);
 
@@ -78,37 +81,40 @@ app.post('/add-user' , async (req, res) =>{
   }
 })
 
-app.get('/verify-user' , async (req, res) =>{
+app.post('/get-user' , async (req, res) =>{
 
-    console.log("adding new user");
-    let userid = req.body.userid;
-  
-    try {
-        await client.connect();
-        let db = client.db('main');
-  
-        let existinguser = db.collection('users').findOne({id:userid});
-  
-        console.log("finding user");
-        if(existinguser){
-            res.json({
-                success: true,
-                err: 'Facebook user ' + userid +  ' added to database'
-            });
-        }
-        res.json({
-            success: false,
-            err: 'Facebook user ' + userid +  'does not exist'
-        });
+  console.log("looking for user");
+  let userid = req.body.userid;
+  console.log(userid);
 
-    } catch (e) {
-        res.status(400);
+  try {
+      await client.connect();
+      let db = client.db('main');
+      let users = db.collection('users');
+
+      let existinguser = await users.findOne({userid:userid});
+
+      console.log(existinguser);
+      if(existinguser){
+          res.send(existinguser);
+      }
+      else {
         res.json({
-            success: false,
-            err: 'User ' + userid + 'does not exist'
+          success: false,
+          err: 'Facebook user ' + userid +  'does not exist'
         });
-    }
-  })
+      }
+  } catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'User ' + userid + 'does not exist'
+      });
+  }
+})
+
+//--------------------------------------------------------------------------------------------------------------
+// Plant endpoints
 
 app.post('/add-plant' , async (req, res) =>{
 
@@ -186,47 +192,6 @@ app.post('/update-plant' , async (req, res) =>{
     }
   })
 
-app.post('/add-order' , async (req, res) =>{
-
-    console.log("adding new plant");
-    let id = uuidv4();
-    let username = req.body.username;
-    let userid = req.body.userid;
-    let date = Date().toString();
-    let time = Date().now();
-    let address = req.body.address;
-    let paymentmethod = req.body.paymentmethod;
-    let paymentinfo = req.body.paymentinfo;
-    let shippingcarrier = req.body.shippingcarrier;
-    let plants = req.body.plants;
-    let images = req.body.images;
-    let scientific_name = req.body.sname;
-  
-    try {
-
-        await client.connect();
-        let db = client.db('main');
-
-        let newOrder = {id: id, username: username, userid: userid, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier: shippingcarrier, images: images};
-  
-        db.collection('orders').insertOne(newOrder);
-  
-        console.log("added new plant");
-  
-        res.json({
-            success: true,
-            err: 'Plant ' + scientific_name +  'added to database'
-        });
-
-    } catch (e) {
-        res.status(400);
-        res.json({
-            success: false,
-            err: 'Error adding ' + scientific_name + 'to database'
-        });
-    }
-  })
-
 app.get('/get-plants' , async (req, res) =>{
   try {
       console.log("connecting to db to get plants");
@@ -273,6 +238,96 @@ app.delete('/delete-plant', async (req, res) => {
 
 })
 
+//--------------------------------------------------------------------------------------------------------------
+// Cart endpoints
+
+app.post('/add-to-cart', async (req, res) => {
+
+  console.log("adding plant to cart");
+  let userid = req.body.userid;
+  let plant = req.body.plant;
+
+  try {
+    await client.connect();
+    let db = client.db('main');
+
+    let carts = db.collection('carts');
+    let user_cart = await carts.findOne({userid: userid});
+    if (!user_cart) {
+      carts.insertOne({userid: userid, plants: [plant], total_price: plant.price, size: 1});
+
+      console.log("added plant to new cart for user");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + plant.id + ' added to new cart'
+      });
+    }
+    else {
+      user_cart.plants.push(plant);
+      user_cart.total_price += plant.price;
+      user_cart.size += 1;
+
+      console.log("added plant to existing cart for user");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + plant.id + ' added to existing cart'
+      });
+    }
+  } catch (e) {
+    res.status(400);
+    res.json({
+        success: false,
+        err: 'Could not add plant to cart'
+    });
+  }
+})
+
+//--------------------------------------------------------------------------------------------------------------
+// Order endpoints
+
+// Add timestamp to this api with order
+app.post('/add-order' , async (req, res) =>{
+
+    console.log("adding new plant");
+    let id = uuidv4();
+    let username = req.body.username;
+    let userid = req.body.userid;
+    let date = Date().toString();
+    let time = Date().now();
+    let address = req.body.address;
+    let paymentmethod = req.body.paymentmethod;
+    let paymentinfo = req.body.paymentinfo;
+    let shippingcarrier = req.body.shippingcarrier;
+    let plants = req.body.plants;
+    let images = req.body.images;
+    let scientific_name = req.body.sname;
+  
+    try {
+
+        await client.connect();
+        let db = client.db('main');
+
+        let newOrder = {id: id, username: username, userid: userid, plants: plants, date: date, time: time, address:address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier: shippingcarrier, images: images};
+  
+        db.collection('orders').insertOne(newOrder);
+  
+        console.log("added new plant");
+  
+        res.json({
+            success: true,
+            err: 'Plant ' + scientific_name +  'added to database'
+        });
+
+    } catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Error adding ' + scientific_name + 'to database'
+        });
+    }
+  })
 
 app.get('/get-orders' , async (req, res) =>{
     try {
@@ -297,28 +352,6 @@ app.get('/get-orders' , async (req, res) =>{
   })
 
 app.get('/get-user-orders' , async (req, res) =>{
-try {
-
-    let userid = req.body.userid;
-    console.log("connecting to db to get user");
-
-    await client.connect();
-    let db = client.db('main');
-    let collection = db.collection('users');
-    let document = await collection.findOne({userid: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
-
-    console.log(document);
-    res.send(document);
-}catch (e) {
-    res.status(400);
-    res.json({
-        success: false,
-        err: 'Cannot get the plant data'
-    });
-}
-})
-
-app.get('/get-user' , async (req, res) =>{
   try {
 
       let userid = req.body.userid;
@@ -326,12 +359,11 @@ app.get('/get-user' , async (req, res) =>{
 
       await client.connect();
       let db = client.db('main');
-      let collection = db.collection('user');
-      let document = await collection.findOne({id: userid});
-      let items = await document.toArray();
+      let collection = db.collection('users');
+      let document = await collection.findOne({userid: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
 
-      console.log(items);
-      res.send(items);
+      console.log(document);
+      res.send(document);
   }catch (e) {
       res.status(400);
       res.json({
@@ -340,6 +372,8 @@ app.get('/get-user' , async (req, res) =>{
       });
   }
 })
+
+//--------------------------------------------------------------------------------------------------------------
 
 app.listen(port, () => {
     console.log(`Listening on *: ${port}`)

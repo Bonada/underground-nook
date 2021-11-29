@@ -3,6 +3,7 @@ import './Admin.css';
 import '../Components/Navigation/Navigation.css';
 import AdminDashboardOrderRow from "../Components/Rows/AdminDashboardOrderRow";
 import AdminDashboardCatalogRow from "../Components/Rows/AdminDashboardCatalogRow";
+import Table from "../Components/Table.js";
 
 export default class Admin extends React.Component {
 
@@ -21,6 +22,22 @@ export default class Admin extends React.Component {
   }
 
   render() {
+    const catalog_headers = ["Image", "Title", "Description", "Price"];
+    const catalog_row = this.state.loading ? (null) : this.state.plants.map((plant, index) => {
+                          console.log(plant, index);
+                          return <AdminDashboardCatalogRow
+                                    key={"catrow"+index}
+                                    name={plant['species_name']}
+                                    price={plant['price']}
+                                    desc={plant['description']}
+                                    img_url={plant['img_url']}
+                                    onClick={() => this.setState({currentIndex: index})}
+                                  />;
+                        });
+
+    const order_headers = ["Order Id", "Name", "Payment Status", "Order Status"];
+    const order_row = <AdminDashboardOrderRow />;
+
     return (
       <div id="AdminDashboardPage">
           <h1 className="AdminDashboardPage_Title">Admin Dashboard</h1>
@@ -28,46 +45,15 @@ export default class Admin extends React.Component {
             <div className="row">
               <div className="col-md-5 col-catalog">
                 <div className="edit-catalog-pane">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {this.state.loading ? (null) : this.state.plants.map((plant, index) => {
-                        console.log(plant, index);
-                        return <AdminDashboardCatalogRow key={"catrow"+index} name={plant['species_name']} price={plant['price']} desc={plant['description']} img_url={plant['img_url']}
-                        onClick={() => this.setState({currentIndex: index}) }/>;
-                      })}
-                    </tbody>
-                  </table>
+                  <Table headers={catalog_headers} row_comp={catalog_row} />
                   <div className="container flex-box-edit-catalog-button">
                     <button className="btn btn-primary edit-catalog-button" type="button" onClick={event => window.location.href='/AdminEditCatalog'}>Edit Catalog</button>
                   </div>
                 </div>
               </div>
-
               <div className="col-md-7">
                 <div className="view-orders-pane">
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th scope="col">Order Id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Payment Status</th>
-                        <th scope="col">Order Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <AdminDashboardOrderRow />
-                      <AdminDashboardOrderRow />
-                      <AdminDashboardOrderRow />
-                    </tbody>
-                  </table>
+                  <Table headers={order_headers} row_comp={order_row} />
                   <div className="container flex-box-view-orders-button">
                     <button className="btn view-orders-button" type="button" onClick={event => window.location.href='/AdminViewOrders'}>View Orders</button>
                   </div>
