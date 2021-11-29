@@ -48,7 +48,7 @@ export default class AdminEditCatalog extends React.Component {
                   {this.state.loading ? (null) : this.state.plants.map((plant, index) => {
                         return (
                           <div onClick={() => this.setState({currentIndex: index}) } >
-                          <AdminEditRow key={"catrow"+index} name={plant['species_name']} price={plant['price']} desc={plant['description']} img_url={plant['img_url']}
+                          <AdminEditRow key={"catrow"+index} id={plant['id']} name={plant['species_name']} price={plant['price']} desc={plant['description']} img_url={plant['img_url']}
                           onClick={() => this.setState({currentIndex: index})}/>
                           </div>
                          )
