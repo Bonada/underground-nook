@@ -192,7 +192,7 @@ app.post('/add-to-cart', async (req, res) => {
 
       res.json({
           success: true,
-          err: 'Plant ' + plant.id +  ' added to new cart';
+          err: 'Plant ' + plant.id + ' added to new cart'
       });
     }
     else {
@@ -204,7 +204,7 @@ app.post('/add-to-cart', async (req, res) => {
 
       res.json({
           success: true,
-          err: 'Plant ' + plant.id +  ' added to existing cart';
+          err: 'Plant ' + plant.id + ' added to existing cart'
       });
     }
   } catch (e) {
