@@ -1,5 +1,5 @@
 .catalog-card-title {
-    font-size: calc(5.5px + 1vw);
+    font-size: calc(9px + 1vmin);
 }
 
 .catalog-header {
@@ -16,6 +16,8 @@
     margin-left: 5%;
     margin-top: 5%;
     margin-bottom: 5%;
+    object-fit: cover;
+    min-height: 21.5rem;
 }
 
 .catalog-card-title {
@@ -42,6 +44,7 @@ div.cards {
     font-family: 'Scope One', 'Serif';
     background-color: #FBFBEF;
     color: #000000;
+    min-height: 28rem;
 }
 
 #catalogModal {

@@ -15,11 +15,6 @@ export default class Catalog extends React.Component {
     };
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextState);
-    return true;
-  }
-
   componentDidMount() {
     console.log("mounted")
     this.populateCards();
@@ -41,7 +36,7 @@ export default class Catalog extends React.Component {
 
           {this.state.loading ? (null) : this.state.plants.map((plant, index) => {
             console.log(plant, index);
-            return <CatalogCard key={"card"+index} species_name={plant['species_name']} common_name={plant['common_name']} price={'$' + plant['price']} description={plant['description']} img_url={plant['img_url']}
+            return <CatalogCard key={"card"+index} species_name={plant['species_name']} common_name={plant['common_name']} price={plant['price']} description={plant['description']} img_url={plant['img_url']}
             onClick={() => this.setState({currentIndex: index}) }/>;
           })}
 

@@ -8,11 +8,11 @@ function CatalogCard(props) {
             <div className="catalog card" data-bs-toggle="modal" data-bs-target="#catalogModal">
                 <div className="row">
                     <img className="catalog-img card-img-top" src={props.img_url} alt="PPP"></img>
-                    <h2 className="catalog-card-title card-title col-md-8 ">{props.species_name}</h2>
-                    <div className="catalog-price-col card-text col-md-3 ">
+                    <h2 className="catalog-card-title card-title col-md-7 ">{props.species_name}</h2>
+                    <div className="catalog-price-col card-text col-md-4 ">
                         <div className="row">&nbsp;</div>
                         <div className="row">
-                            <p className="catalog-price col">{props.price}</p>
+                            <p className="catalog-price col">{'$' + (parseFloat(props.price)).toFixed(2)}</p>
                         </div>
                     </div>
                 </div>
