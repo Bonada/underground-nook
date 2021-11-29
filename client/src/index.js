@@ -14,7 +14,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-export { default as Navigation } from "./Components/Navigation";
+export { default as Navigation } from "./Components/Navigation/Navigation";
 export { default as About } from "./Pages/About";
 export { default as Cart } from "./Pages/Cart";
 export { default as Catalog } from "./Pages/Catalog";

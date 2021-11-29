@@ -1,6 +1,6 @@
 import React from "react";
 import './NewUser.css';
-import '../Components/Navigation.css';
+import '../Components/Navigation/Navigation.css';
 
 function NewUser(props) {
   let name = props.currentUser.username.split(" ");

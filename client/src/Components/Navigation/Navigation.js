@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import About from "../Pages/About";
-import Cart from "../Pages/Cart";
-import Catalog from "../Pages/Catalog";
-import Home from "../Pages/Home";
-import Admin from "../Pages/Admin";
-import Orders from "../Pages/Orders";
-import Settings from "../Pages/Settings";
-import NewUser from "../Pages/NewUser";
-import AdminEditCatalog from "../Pages/AdminEditCatalog";
-import AdminViewOrders from "../Pages/AdminViewOrders";
-import OrderPage from "../Pages/OrderPage";
-import Logo from '../Images/Logo.png'; // gives image path
+import About from "../../Pages/About";
+import Cart from "../../Pages/Cart";
+import Catalog from "../../Pages/Catalog";
+import Home from "../../Pages/Home";
+import Admin from "../../Pages/Admin";
+import Orders from "../../Pages/Orders";
+import Settings from "../../Pages/Settings";
+import NewUser from "../../Pages/NewUser";
+import AdminEditCatalog from "../../Pages/AdminEditCatalog";
+import AdminViewOrders from "../../Pages/AdminViewOrders";
+import OrderPage from "../../Pages/OrderPage";
+import Logo from '../../Images/Logo.png'; // gives image path
 import './Navigation.css';
 
 /*global FB*/
 //'1839081979786582'
 export default function Navigation(props) {
-  const admin_ids = ['4524022054277037', '2034884766556492', '1839081979786582', '2997818750540073'];
+  const admin_ids = ['4524022054277037', '2034884766556492', '2997818750540073', '1839081979786582'];
 
   const [userType, setUserType] = useState("Pre-Login");
   const [redirect, setRedirect] = useState(null);
@@ -258,6 +258,9 @@ export default function Navigation(props) {
               <AdminEditCatalog />
             </Route>
           }
+          <Route path="/OrderPage">
+              <OrderPage />
+          </Route>
           <Route path="/About">
             <About currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>

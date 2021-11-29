@@ -1,6 +1,6 @@
 import React from "react";
 import './About.css';
-import '../Components/Navigation.css';
+import '../Components/Navigation/Navigation.css';
 
 //import minying from './Minying.jpg';
 

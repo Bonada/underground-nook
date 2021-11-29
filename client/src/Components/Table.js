@@ -2,7 +2,7 @@
 
 function Table(props) {
 	let headers = props.headers;
-	let header_row = headers.map(item => <th scope="col">{item}</th>);
+	let header_row = headers.map(item => <th key={item} scope="col">{item}</th>);
 
 	return (
     <table className="table">
@@ -12,7 +12,6 @@ function Table(props) {
         </tr>
       </thead>
       <tbody>
-        {props.row_comp}
         {props.row_comp}
       </tbody>
     </table>
