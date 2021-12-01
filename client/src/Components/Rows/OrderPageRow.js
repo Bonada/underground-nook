@@ -1,10 +1,10 @@
-function OrderPageRow() {
+function OrderPageRow(props) {
     return (
         <tr className="OrderPageRow">
-            <th scope="row">2</th>
-            <td><img src="https://i.imgur.com/wmKkTi3.jpeg" alt="Plant 2" /></td>
-            <td>Philodendron Pink Princess</td>
-            <td>$125</td>
+            <th scope="row">{props.plant.id}</th>
+            <td><img src={props.plant.img_url} alt="Plant 2" /></td>
+            <td>{props.plant.species_name}</td>
+            <td>${props.plant.price}</td>
         </tr>
     );
 }

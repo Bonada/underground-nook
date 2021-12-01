@@ -211,7 +211,6 @@ app.get('/get-plants' , async (req, res) =>{
   }
 })
 
-
 app.delete('/delete-plant', async (req, res) => {
 
     let id = req.body.id;
@@ -302,7 +301,6 @@ app.post('/add-order' , async (req, res) =>{
     let shippingcarrier = req.body.shippingcarrier;
     let plants = req.body.plants;
     let images = req.body.images;
-    let scientific_name = req.body.sname;
   
     try {
 
@@ -330,6 +328,7 @@ app.post('/add-order' , async (req, res) =>{
   })
 
 app.get('/get-orders' , async (req, res) =>{
+
     try {
   
         console.log("connecting to db to get plants");
@@ -351,7 +350,63 @@ app.get('/get-orders' , async (req, res) =>{
     }
   })
 
-app.get('/get-user-orders' , async (req, res) =>{
+app.post('/get-order' , async (req, res) =>{
+
+    let orderid = req.body.orderid;
+
+    try {
+  
+        console.log("connecting to db to get plants");
+  
+        await client.connect();
+        let db = client.db('main');
+        let collection = db.collection('orders');
+        let document = await collection.findOne({id:orderid});
+  
+        console.log(document);
+        res.send(document);
+    }catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Cannot get the plant data'
+        });
+    }
+  })
+
+  app.post('/get-order-plants' , async (req, res) =>{
+
+    let plants = req.body.plants;
+    console.log(plants);
+
+    try {
+  
+        console.log("connecting to db to get order plants");
+  
+        await client.connect();
+        let db = client.db('main');
+        let collection = db.collection('plants');
+
+        let retplants = [];
+        for(plantid of plants){
+            console.log(plantid);
+            let document = await collection.findOne({id:plantid});
+            retplants.push(document);
+        }
+        
+  
+        console.log(retplants);
+        res.send(retplants);
+    }catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Cannot get the plant data'
+        });
+    }
+  })
+
+app.post('/get-user-orders' , async (req, res) =>{
   try {
 
       let userid = req.body.userid;
@@ -359,11 +414,12 @@ app.get('/get-user-orders' , async (req, res) =>{
 
       await client.connect();
       let db = client.db('main');
-      let collection = db.collection('users');
-      let document = await collection.findOne({userid: userid}, {orders: 1, userid: 0, addresses: 0, username: 0, email: 0});
+      let collection = db.collection('orders');
+      let document = await collection.find({userid: userid});
+      let items = await document.toArray();
 
-      console.log(document);
-      res.send(document);
+      console.log(items);
+      res.send(items);
   }catch (e) {
       res.status(400);
       res.json({

@@ -214,7 +214,7 @@ export default function Navigation(props) {
 
           {(userType === "Admin" || userType === "Post-Login") &&
             <div className="dropdown">
-              <button className="dropbtn btn"> <p>{userInfo.username && userInfo.username.split(" ")[0]}</p>
+              <button className="dropbtn btn"> <p id="userid"> {userInfo.userid}</p> <p>{userInfo.username && userInfo.username.split(" ")[0]}</p>
                 <i className="fa fa-caret-down"></i>
               </button>   
               <div className="dropdown-content">
