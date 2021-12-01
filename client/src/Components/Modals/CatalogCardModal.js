@@ -1,5 +1,24 @@
 function CatalogCardModal(props) {
   console.log(props);
+
+  function handleSubmit(pid, uid) {
+    console.log(pid);
+    console.log(uid);
+    fetch("http://localhost:3030/add-to-cart", {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userid: uid,
+        plantid: pid
+      })
+    })
+    .then(async response => await console.log(response.json()))
+    .catch(e => console.log(e));
+  }
+
   return <div className="modal fade" id="catalogModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div className="modal-dialog">
       <div className="modal-content">
@@ -28,7 +47,7 @@ function CatalogCardModal(props) {
           </div>
         </div>
         <div className="catalog modal-footer">
-          <button className="cart-button" type="button" data-bs-dismiss="modal">Add to Cart</button>
+          <button className="cart-button" type="button" data-bs-dismiss="modal" onClick={handleSubmit.bind(null, props.plant.id, props.currentUser.userid)}>Add to Cart</button>
         </div>
       </div>
     </div>

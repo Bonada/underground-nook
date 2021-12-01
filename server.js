@@ -245,14 +245,16 @@ app.post('/add-to-cart', async (req, res) => {
 
   console.log("adding plant to cart");
   let userid = req.body.userid;
-  let plant = req.body.plant;
+  let plantid = req.body.plantid;
 
   try {
     await client.connect();
     let db = client.db('main');
 
     let carts = db.collection('carts');
+    let plants = db.collection('plants');
     let user_cart = await carts.findOne({userid: userid});
+    let plant = await plants.findOne({id: plantid});
     if (!user_cart) {
       carts.insertOne({userid: userid, plants: [plant], total_price: plant.price, size: 1});
 
@@ -264,9 +266,12 @@ app.post('/add-to-cart', async (req, res) => {
       });
     }
     else {
-      user_cart.plants.push(plant);
-      user_cart.total_price += plant.price;
-      user_cart.size += 1;
+      let new_price = user_cart.total_price + plant.price;
+      let new_size = user_cart.size + 1;
+      let new_plants = user_cart.plants;
+      new_plants.push(plant);
+
+      carts.updateOne({userid: userid}, {$set: {plants: new_plants, total_price: new_price, size: new_size}});
 
       console.log("added plant to existing cart for user");
 

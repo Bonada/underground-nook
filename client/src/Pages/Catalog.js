@@ -32,12 +32,12 @@ export default class Catalog extends React.Component {
             <h1 className="catalog-header">Catalog</h1>
             <p className="catalog-caption">a collection of our plants</p>
           </div>
-          <section class="searchbar">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">🔍</span>
+          <section className="searchbar">
+            <div className="input-group mb-3">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="basic-addon1">🔍</span>
               </div>
-                  <input type="text" class="form-control" id="itemSearch" onKeyUp={() => { this.searchListings(); }} placeholder="Search" aria-label="Search" aria-describedby="basic-addon1"/>
+                  <input type="text" className="form-control" id="itemSearch" onKeyUp={() => { this.searchListings(); }} placeholder="Search" aria-label="Search" aria-describedby="basic-addon1"/>
             </div>
           </section>
 
@@ -47,7 +47,7 @@ export default class Catalog extends React.Component {
             onClick={() => this.setState({currentIndex: index}) }/>;
           })}
 
-      {this.state.loading ? (null) : <CatalogCardModal plant={this.state.plants[this.state.currentIndex]}/>}
+      {this.state.loading ? (null) : <CatalogCardModal plant={this.state.plants[this.state.currentIndex]} currentUser={this.props.currentUser} />}
           
     </div>
     )
