@@ -1,6 +1,8 @@
+import React from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import EditOrderModal from "../Modals/EditOrderModal";
 
-function AdminOrderRow() {
+function AdminOrderRow(props) {
     function hideRow() {
         document.getElementById("row-10028492").classList.add("hidden-row");
         document.getElementById("row-10028492").classList.add("displayed-row");
@@ -14,17 +16,17 @@ function AdminOrderRow() {
     return (
         <tr id="row-10028492" className="displayed-row">
             <th scope="row">
-                <a href="OrderPage">10028492</a>
+            <Link to={"/OrderPage?id=" + props.order.id}>{props.order.id}</Link>
             </th>
-            <td>Minying Cao</td>
-            <td>1761 15th St</td>
+            <td>{props.order.username}</td>
+            <td>{props.order.address}</td>
             <td>-</td>
             <td>Troy</td>
             <td>NY</td>
             <td>12180</td>
             <td>USPS</td>
             <td>Paid</td>
-            <td>$25.67</td>
+            <td>{props.order.price}</td>
 
             <td className="edit-col">
                 <div className="edit-container">

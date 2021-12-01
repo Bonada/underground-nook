@@ -10,8 +10,10 @@ export default class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      plantsloading: true,
+      ordersloading: true,
       plants: [],
+      orders: [],
       currentIndex: 0
     };
   }
@@ -23,7 +25,7 @@ export default class Admin extends React.Component {
 
   render() {
     const catalog_headers = ["Image", "Title", "Description", "Price"];
-    const catalog_row = this.state.loading ? (null) : this.state.plants.map((plant, index) => {
+    const catalog_row = this.state.plantsloading ? (null) : this.state.plants.map((plant, index) => {
                           console.log(plant, index);
                           return <AdminDashboardCatalogRow
                                     key={"catrow"+index}
@@ -36,7 +38,14 @@ export default class Admin extends React.Component {
                         });
 
     const order_headers = ["Order Id", "Name", "Payment Status", "Order Status"];
-    const order_row = <AdminDashboardOrderRow />;
+    const order_row = this.state.plantsloading ? (null) : this.state.orders.map((order, index) => {
+                      console.log(order, index);
+                      return <AdminDashboardOrderRow
+                                key={"catrow"+index}
+                                order={order}
+                                onClick={() => this.setState({currentIndex: index})}
+                              />;
+                    });
 
     return (
       <div id="AdminDashboardPage">
@@ -73,10 +82,22 @@ export default class Admin extends React.Component {
           .then(response => response.json())
           .then(data => {
             this.setState({
-              loading: false,
+              plantsloading: false,
               plants: data
             });
           });
+
+  fetch("http://localhost:3030/get-orders", {
+    method: 'GET',
+    mode: 'cors'
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          ordersloading: false,
+          orders: data
+        });
+      });
   }
 
 }

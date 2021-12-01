@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import OrderPage from "../../Pages/OrderPage";
+import React from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 
 
 function OrderRow(props) {

@@ -53,7 +53,7 @@ export default class OrderPage extends React.Component {
 							</div>
 						</div>
 					</div>
-					<h2 className="total-price">{"Total: $" + this.state.order.price}</h2>
+					<h2 className="total-price">{"Total: $" + parseFloat(this.state.order.price).toFixed(2)}</h2>
 				</div>
 			</div>
 		}
