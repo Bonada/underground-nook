@@ -131,9 +131,10 @@ app.post('/add-address', async (req, res) => {
 
         console.log(existinguser);
         if (existinguser) {
-            existinguser.addresses.push(address);
-            console.log(existinguser);
-            await users.updateOne({userid: userid}, existinguser);
+            let addrarray = existinguser.addresses;
+            console.log(addrarray);
+            addrarray.push(address);
+            users.updateOne({userid: userid}, {$set:{addresses: addrarray}});
             console.log(existinguser);
             res.send(existinguser);
         }
