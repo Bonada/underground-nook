@@ -2,10 +2,37 @@ import StateSelect from "../Selects/StateSelect.js";
 
 function AddressModal(props) {
 
-    const handleSubmit = function() {
+    let useraddress = {
+        name: "",
+        fulladdress: "",
+        street: "",
+        number: "",
+        city: "",
+        state: "",
+        zip: ""
+    }
+
+    const handleSubmit = function () {
         console.log("Started submit");
         if (props.isNew) {
             // Call add address endpoint
+            fetch('http://localhost:3030/add-address', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    address: useraddress
+                })
+            })
+                .then(async addaddress_response => {
+                    const data = await addaddress_response.json()
+                    console.log(data);
+                })
+                .catch(e => {
+                    console.log(e);
+                });
         }
         else {
             // Call edit address endpoint
@@ -14,22 +41,22 @@ function AddressModal(props) {
 
     const id = props.isNew ? "addAddressModal" : "editAddressModal";
     const title = props.isNew ? "Add Address" : "Edit Address";
-    const name_input = props.isNew ? 
-        <input className="input-box-modal form-control" type="text" placeholder="Enter Full Name" id="fullName" /> : 
+    const name_input = props.isNew ?
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Full Name" id="fullName" /> :
         <input className="input-box-modal form-control" type="text" defaultValue={props.name} id="fullName" />;
-    const street_input = props.isNew ? 
-        <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" /> : 
+    const street_input = props.isNew ?
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" /> :
         <input className="input-box-modal form-control" type="text" defaultValue={props.street} id="streetAddress" />;
-    const city_input = props.isNew ? 
-        <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" /> : 
+    const city_input = props.isNew ?
+        <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" /> :
         <input className="input-box-modal form-control" type="text" defaultValue={props.city} id="city" />;
-    const zip_input = props.isNew ? 
-        <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" /> : 
+    const zip_input = props.isNew ?
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" /> :
         <input className="input-box-modal form-control" type="text" defaultValue={props.zip} id="zipcode" />;
     const state_select = props.isNew ?
         <StateSelect state="" placeholder="AL" /> :
         <StateSelect state={props.state} placeholder="" />;
-        
+
     return (
         <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">

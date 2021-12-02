@@ -4,6 +4,9 @@ import '../Components/Navigation/Navigation.css';
 
 function NewUser(props) {
   let name = props.currentUser.username.split(" ");
+
+  let email = "";
+
   return (
     <div id="NewUser">
       <div id="Welcome_Message">
@@ -22,8 +25,8 @@ function NewUser(props) {
         </div>
 
         <div className="row">
-          <label htmlFor="email" id="NewUser-label" className="form-label heading">Email</label>
-          <input className="input-box" type="email" defaultValue={props.currentUser.email} id="email" />
+          <label htmlFor="email" id="NewUser-label-email" className="form-label heading">Email</label>
+          <input className="input-box" type="email" defaultValue={email} id="email" />
         </div>
 
         <div className="row">
@@ -32,7 +35,7 @@ function NewUser(props) {
         </div>
 
         <div className="row flex-box-save-button" id="NewUserButton">
-          <button className="btn_save-button" type="button">
+          <button className="btn_save-button" type="button" onClick={() => {props.onSubmit(props.currentUser)}} onMouseEnter={() => props.currentUser.email = document.getElementById("email").value}>
             <h1 id="NewUser_ButtonText">Submit</h1>
           </button>
         </div>
