@@ -52,10 +52,10 @@ function AddressModal(props) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
+                    userid: props.currentUser.userid,
                     address: useraddress
                 })
             })
-            window.location.reload(false);
         }
         else {
             // Call edit address endpoint
