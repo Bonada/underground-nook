@@ -269,6 +269,16 @@ app.post('/add-to-cart', async (req, res) => {
       let new_price = user_cart.total_price + plant.price;
       let new_size = user_cart.size + 1;
       let new_plants = user_cart.plants;
+
+      for (var i = 0; i < new_plants.length; i++) {
+        if (new_plants[i].id == plant.id) {
+          res.json({
+            success: false,
+            err: 'Plant already exists in cart'
+          })
+          return;
+        }
+      }
       new_plants.push(plant);
 
       carts.updateOne({userid: userid}, {$set: {plants: new_plants, total_price: new_price, size: new_size}});
@@ -286,6 +296,37 @@ app.post('/add-to-cart', async (req, res) => {
         success: false,
         err: 'Could not add plant to cart'
     });
+  }
+})
+
+app.post('/get-cart', async (req, res) => {
+
+  console.log("getting plants from user cart");
+  let userid = req.body.userid;
+
+  try {
+    await client.connect();
+    let db = client.db('main');
+
+    let carts = db.collection('carts');
+    let user_cart = await carts.findOne({userid: userid});
+    if (!user_cart) {
+      console.log("No plants in cart");
+
+      res.json({
+        success: true,
+        err: 'No plants in cart for user ' + userid
+      });
+    }
+    else {
+      res.send(user_cart);
+    }
+  } catch (e) {
+    res.status(400);
+    res.json({
+      success: false,
+      err: 'Could not get cart for user ' + userid
+    })
   }
 })
 

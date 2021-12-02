@@ -2,8 +2,10 @@ function CatalogCardModal(props) {
   console.log(props);
 
   function handleSubmit(pid, uid) {
-    console.log(pid);
-    console.log(uid);
+    if (uid == null) {
+      alert("Log in to purchase plants");
+      return;
+    }
     fetch("http://localhost:3030/add-to-cart", {
       method: 'POST',
       mode: 'cors',

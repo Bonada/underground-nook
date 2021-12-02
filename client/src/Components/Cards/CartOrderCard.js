@@ -1,18 +1,18 @@
 // import ppp from './PPP.png';
 
-function CartOrderCard() {
+function CartOrderCard(props) {
     return (
         <div className="OrderContent">
             <div className="order card" data-bs-toggle="modal" data-bs-target="#orderModal">
                 <div className="row">
-                    <img className="order-img card-img-top" src="https://i.etsystatic.com/25913068/r/il/1a565b/3138887356/il_1140xN.3138887356_4n0k.jpg" alt="PPP"></img>
-                    <h2 className="order-card-title card-title col-md-8 ">Pink Princess Philodendron</h2>
+                    <img className="order-img card-img-top" src={props.plant.img_url} alt="PPP"></img>
+                    <h2 className="order-card-title card-title col-md-8 ">{props.plant.species_name}</h2>
                     <div className="order-price-col card-text col-md-3 ">
                     <div className="row">&nbsp;</div>
                     </div>
                     <div className="row">
                         <div className="col-md-10">
-                            <p className="order-price col">Price: $165.00</p>
+                            <p className="order-price col">${props.plant.price}</p>
                         </div>
                         <div className="col-md-2">
                             <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>

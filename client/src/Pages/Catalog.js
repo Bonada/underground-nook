@@ -8,6 +8,8 @@ export default class Catalog extends React.Component {
 
   constructor(props) {
     super(props);
+    this._isMounted = false;
+
     this.state = {
       loading: true,
       plants: [],
@@ -22,7 +24,12 @@ export default class Catalog extends React.Component {
 
   componentDidMount() {
     console.log("mounted")
-    this.populateCards();
+    this._isMounted = true;
+    this._isMounted && this.populateCards();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render (){
@@ -53,39 +60,39 @@ export default class Catalog extends React.Component {
     )
   }
 
-    async populateCards() {
-      fetch("http://localhost:3030/get-plants", {
-              method: 'GET',
-              mode: 'cors'
-          })
-            .then(response => response.json())
-            .then(data => {
-              this.setState({
-                loading: false,
-                plants: data
-              });
+  async populateCards() {
+    fetch("http://localhost:3030/get-plants", {
+            method: 'GET',
+            mode: 'cors'
+        })
+          .then(response => response.json())
+          .then(data => {
+            this._isMounted && this.setState({
+              loading: false,
+              plants: data
             });
+          });
+  }
+
+  searchListings() {
+    // Declare variables
+    var input, filter, list, listings, p, i, txtValue;
+    input = document.getElementById("itemSearch");
+    filter = input.value.toUpperCase();
+    listings = document.getElementsByClassName("col-md-2");
+    console.log(listings);
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < listings.length; i++) {
+        p = listings[i].getElementsByTagName("h2")[0];
+        txtValue = p.textContent || p.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            listings[i].style.display = "";
+        } else {
+            listings[i].style.display = "none";
+        }
+        // Reposition footer as needed based on element removal/addition
     }
-
-    searchListings() {
-      // Declare variables
-      var input, filter, list, listings, p, i, txtValue;
-      input = document.getElementById("itemSearch");
-      filter = input.value.toUpperCase();
-      listings = document.getElementsByClassName("col-md-2");
-      console.log(listings);
-
-      // Loop through all list items, and hide those who don't match the search query
-      for (i = 0; i < listings.length; i++) {
-          p = listings[i].getElementsByTagName("h2")[0];
-          txtValue = p.textContent || p.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-              listings[i].style.display = "";
-          } else {
-              listings[i].style.display = "none";
-          }
-          // Reposition footer as needed based on element removal/addition
-      }
   }
 
 }
