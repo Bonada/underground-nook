@@ -238,32 +238,6 @@ app.delete('/delete-plant', async (req, res) => {
 
 })
 
-app.delete('/delete-order', async (req, res) => {
-
-  let id = req.body.id;
-
-  try {
-
-      console.log("connecting to db to delete order");
-
-      // await client.connect();
-      let db = client.db('main');
-      let collection = db.collection('orders');
-      let document = await collection.deleteOne({id: id});
-
-      console.log("Deleted: ", document);
-      res.send(document);
-      
-  }catch (e) {
-      res.status(400);
-      res.json({
-          success: false,
-          err: 'Cannot find order'
-      });
-  }
-
-})
-
 //--------------------------------------------------------------------------------------------------------------
 // Cart endpoints
 
@@ -331,7 +305,7 @@ app.post('/get-cart', async (req, res) => {
   let userid = req.body.userid;
 
   try {
-    await client.connect();
+    // await client.connect();
     let db = client.db('main');
 
     let carts = db.collection('carts');
@@ -348,6 +322,63 @@ app.post('/get-cart', async (req, res) => {
       res.send(user_cart);
     }
   } catch (e) {
+    res.status(400);
+    res.json({
+      success: false,
+      err: 'Could not get cart for user ' + userid
+    })
+  }
+})
+
+app.post('/remove-from-cart', async (req, res) => {
+
+  console.log("removing plant from user cart");
+  let userid = req.body.userid;
+  let plantid = req.body.plantid;
+
+  try {
+    let db = client.db('main');
+    let carts = db.collection('carts');
+    let user_cart = await carts.findOne({userid: userid});
+
+    let user_plants = user_cart.plants;
+    let plant_i = -1;
+    for (var i = 0; i < user_plants.length; i++) {
+      if (user_plants[i].id == plantid) {
+        plant_i = i;
+        break;
+      }
+    }
+
+    if (plant_i == -1) {
+      res.json({
+        success: false,
+        err: 'Plant ' + plantid + ' does not exist in user cart'
+      })
+    }
+    else {
+      let remove_plant = user_plants[plant_i];
+
+      if (user_cart.size == 1) {
+        carts.deleteOne({userid: userid});
+      }
+      else {
+        carts.updateOne({userid: userid}, {$set: {
+          plants: user_plants.slice(0, plant_i).concat(user_plants.slice(plant_i+1)),
+          total_price: user_cart.total_price - remove_plant.price,
+          size: user_cart.size - 1
+        }});
+      }
+
+      console.log("removed plant from user cart");
+
+      res.json({
+        success: true,
+        err: 'Plant ' + plantid + ' removed from user cart'
+      })
+    }
+  } catch (e) {
+    console.log(e);
     res.status(400);
     res.json({
       success: false,
@@ -483,6 +514,32 @@ app.post('/update-order' , async (req, res) =>{
     }
   })
 
+  app.delete('/delete-order', async (req, res) => {
+
+    let id = req.body.id;
+
+    try {
+
+        console.log("connecting to db to delete order");
+
+        // await client.connect();
+        let db = client.db('main');
+        let collection = db.collection('orders');
+        let document = await collection.deleteOne({id: id});
+
+        console.log("Deleted: ", document);
+        res.send(document);
+        
+    } catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Cannot find order'
+        });
+    }
+
+  })
+
   app.post('/get-order-plants' , async (req, res) =>{
 
     let plants = req.body.plants;
@@ -506,7 +563,7 @@ app.post('/update-order' , async (req, res) =>{
   
         console.log(retplants);
         res.send(retplants);
-    }catch (e) {
+    } catch (e) {
         res.status(400);
         res.json({
             success: false,
@@ -529,7 +586,7 @@ app.post('/get-user-orders' , async (req, res) =>{
 
       console.log(items);
       res.send(items);
-  }catch (e) {
+  } catch (e) {
       res.status(400);
       res.json({
           success: false,

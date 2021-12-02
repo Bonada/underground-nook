@@ -1,7 +1,7 @@
 import React from 'react'
 import './Cart.css';
 import '../Components/Navigation/Navigation.css';
-import CartOrderCard from '../Components/Cards/CartOrderCard.js'
+import CartItemCard from '../Components/Cards/CartItemCard.js'
 import CartAddresses from '../Components/CartAddresses.js'
 
 export default class Cart extends React.Component {
@@ -27,6 +27,28 @@ export default class Cart extends React.Component {
     console.log(event.target.value);
   }
 
+  handleRemove(pid) {
+    fetch("http://localhost:3030/remove-from-cart", {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userid: this.props.currentUser.userid,
+        plantid: pid
+      })
+    })
+    .then(async response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert("Plant removed from cart");
+        this._isMounted && this.getCartItems();
+      }
+    })
+    .catch(e => console.log(e));
+  }
+
   componentDidMount() {
     this._isMounted = true;
     this._isMounted && this.getCartItems();
@@ -45,7 +67,7 @@ export default class Cart extends React.Component {
 
   async getCartItems() {
     console.log("fetching cart");
-    console.log(this.props.currentUser.userid == null);
+    
     fetch("http://localhost:3030/get-cart", {
       method: 'POST',
       mode: 'cors',
@@ -74,7 +96,7 @@ export default class Cart extends React.Component {
 
     var cards = [];
     for (var i = 0; i < this.state.size; i++) {
-      cards.push(<CartOrderCard key={i} plant={plants[i]} />);
+      cards.push(<CartItemCard key={i} plant={plants[i]} handleRemove={this.handleRemove.bind(this, plants[i].id)} />);
     }
 
     return (
