@@ -4,6 +4,7 @@ import '../Components/Navigation/Navigation.css';
 import AdminDashboardOrderRow from "../Components/Rows/AdminDashboardOrderRow";
 import AdminDashboardCatalogRow from "../Components/Rows/AdminDashboardCatalogRow";
 import Table from "../Components/Table.js";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class Admin extends React.Component {
 
@@ -56,15 +57,15 @@ export default class Admin extends React.Component {
                 <div className="edit-catalog-pane">
                   <Table headers={catalog_headers} row_comp={catalog_row} />
                   <div className="container flex-box-edit-catalog-button">
-                    <button className="btn btn-primary edit-catalog-button" type="button" onClick={event => window.location.href='/AdminEditCatalog'}>Edit Catalog</button>
+                    <Link className="Adminlinks" to="/AdminEditCatalog"><button className="btn btn-primary edit-catalog-button" type="button">Edit Catalog</button></Link>
                   </div>
                 </div>
               </div>
               <div className="col-md-7">
                 <div className="view-orders-pane">
-                  <Table headers={order_headers} row_comp={order_row} />
+                  <Table headers={order_headers} row_comp={order_row}/>
                   <div className="container flex-box-view-orders-button">
-                    <button className="btn view-orders-button" type="button" onClick={event => window.location.href='/AdminViewOrders'}>View Orders</button>
+                  <Link className="Adminlinks" to="/AdminViewOrders"> <button className="btn btn-primary view-orders-button" type="button">Edit Orders</button></Link>
                   </div>
                 </div>
               </div>

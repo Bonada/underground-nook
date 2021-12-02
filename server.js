@@ -238,6 +238,32 @@ app.delete('/delete-plant', async (req, res) => {
 
 })
 
+app.delete('/delete-order', async (req, res) => {
+
+  let id = req.body.id;
+
+  try {
+
+      console.log("connecting to db to delete order");
+
+      // await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('orders');
+      let document = await collection.deleteOne({id: id});
+
+      console.log("Deleted: ", document);
+      res.send(document);
+      
+  }catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot find order'
+      });
+  }
+
+})
+
 //--------------------------------------------------------------------------------------------------------------
 // Cart endpoints
 
@@ -367,6 +393,42 @@ app.post('/get-order' , async (req, res) =>{
         console.log(document);
         res.send(document);
     }catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Cannot get the plant data'
+        });
+    }
+  })
+
+app.post('/update-order' , async (req, res) =>{
+
+    console.log("body",req.body);
+    let orderid = req.body.id;
+    let paystatus = req.body.paystatus;
+    let paymentmethod = req.body.paymentmethod;
+    let paymentinfo = req.body.paymentinfo;
+    let address = req.body.address;
+    let shippingcarrier = req.body.shippingcarrier;
+    let orderstatus = req.body.orderstatus;
+    let price = req.body.price;
+
+    try {
+  
+        console.log("connecting to db to get plants");
+  
+        // await client.connect();
+        let db = client.db('main');
+        db.collection('orders').updateOne({id: orderid}, {$set:{paystatus: paystatus, orderstatus: orderstatus, address: address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, price: price, shippingcarrier: shippingcarrier}})
+  
+        console.log("updated order");
+  
+        res.json({
+            success: true,
+            err: 'Order ' + orderid +  'updated'
+        });
+    }catch (e) {
+      console.log(e);
         res.status(400);
         res.json({
             success: false,

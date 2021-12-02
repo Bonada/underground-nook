@@ -3,6 +3,7 @@ import './AdminViewOrders.css';
 import '../Components/Navigation/Navigation.css';
 import AdminOrderRow from "../Components/Rows/AdminOrderRow";
 import ExportDataModal from "../Components/Modals/ExportDataModal";
+import EditOrderModal from "../Components/Modals/EditOrderModal";
 import Table from "../Components/Table";
 
 export default class AdminViewOrders extends React.Component{
@@ -26,8 +27,8 @@ export default class AdminViewOrders extends React.Component{
     const headers = [
       "Order ID",
       "Recepient Name",
-      "Address 1",
-      "Address 2",
+      "Address",
+      "Apt/Suit No.",
       "City",
       "State",
       "Zip",
@@ -59,7 +60,7 @@ export default class AdminViewOrders extends React.Component{
             </div>
           </div>
         </div>
-        <ExportDataModal />
+        {this.state.loading ? (null) : <EditOrderModal order={this.state.orders[this.state.currentIndex]}/>}
       </div>
     );
   }
