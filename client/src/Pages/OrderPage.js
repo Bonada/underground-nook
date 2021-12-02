@@ -35,7 +35,7 @@ export default class OrderPage extends React.Component {
 					<div className="row">
 						<div className="col-md col-catalog">
 							<div className="edit-catalog-pane">
-								<table class="table">
+								<table className="table">
 									<thead>
 									<tr>
 										<th scope="col">Plant ID</th>
