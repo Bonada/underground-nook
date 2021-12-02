@@ -152,12 +152,12 @@ export default class Cart extends React.Component {
                   </h2>
                   <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                     <div className="accordion-body">
-                      <div className="radio">
-                        <input id="USPS" name="radio" type="radio" checked></input>
+                      <div className="radio 1">
+                        <input id="USPS" name="radio 1" type="radio" checked></input>
                         <label htmlFor="USPS" className="radio-label"> USPS - 3-Day Shipping ($14 for small orders | $15+ for larger orders with multiple items)</label>
                       </div>
-                      <div className="radio">
-                        <input id="Fedex_UPS" name="radio" type="radio"></input>
+                      <div className="radio 1">
+                        <input id="Fedex_UPS" name="radio 1" type="radio"></input>
                         <label  htmlFor="Fedex_UPS" className="radio-label"> FedEx / UPS - 2-Day Shipping ($19+ depending on order size)</label>
                       </div>
                     </div>
@@ -173,24 +173,24 @@ export default class Cart extends React.Component {
                     <div className="accordion-body">
                       <h2 className="AccordianSubtitle">Select a Payment Method:</h2>
                       <div className="PaymentSelection">
-                        <div className="radio">
-                          <input id="PayPal" name="radio" type="radio" checked></input>
+                        <div className="radio 2">
+                          <input id="PayPal" name="radio 2" type="radio" checked></input>
                           <label htmlFor="PayPal" className="radio-label"> PayPal</label>
                         </div>
-                        <div className="radio">
-                          <input id="Venmo" name="radio" type="radio"></input>
+                        <div className="radio 2">
+                          <input id="Venmo" name="radio 2" type="radio"></input>
                           <label  htmlFor="Venmo" className="radio-label"> Venmo</label>
                         </div>
-                        <div className="radio">
-                          <input id="Zelle" name="radio" type="radio" checked></input>
+                        <div className="radio 2">
+                          <input id="Zelle" name="radio 2" type="radio" checked></input>
                           <label htmlFor="Zelle" className="radio-label"> Zelle</label>
                         </div>
-                        <div className="radio">
-                          <input id="CashApp" name="radio" type="radio"></input>
+                        <div className="radio 2">
+                          <input id="CashApp" name="radio 2" type="radio"></input>
                           <label  htmlFor="CashApp" className="radio-label"> CashApp</label>
                         </div>   
-                        <div className="radio">
-                          <input id="Facebook" name="radio" type="radio"></input>
+                        <div className="radio 2">
+                          <input id="Facebook" name="radio 2" type="radio"></input>
                           <label  htmlFor="Facebook" className="radio-label"> Facebook Pay</label>
                         </div>  
                       </div>
