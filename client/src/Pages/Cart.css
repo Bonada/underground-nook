@@ -52,7 +52,7 @@ h1.YourOrderTitle{
 }
 div.OrderContents{
     background-color: transparent;
-    margin-top: 20%;
+    margin-top: 25%;
     border-bottom-width: thin;
     border-bottom-style: solid;
     border-bottom-color:#E5E5E5;
@@ -138,7 +138,112 @@ button.purge-plant-button.btn{
     background: transparent;
     border-color: #6AA17B;
 }
+@media screen and (min-width: 992px)  and (max-width: 1199px)  {
+    div.OrderContents{
+        margin-top: 30%;
+    }    
+    div.col-md-1{
+        width: 5%;
+    }
+    div.col-md-3{
+        width: 27%;
+    }
+    div.col-md-8{
+        width: 68%;
+    }
+}
+@media screen and (min-width: 825px)  and (max-width: 991px)  {
+    div.OrderContents{
+        margin-top: 30%;
+    }    
+    div.col-md-1{
+        width: 3%;
+    }
+    div.col-md-3{
+        width: 35%;
+    }
+    div.col-md-8{
+        width: 61%;
+    }
+}
+@media screen and (min-width: 768px)  and (max-width: 824px)  {
+    div.OrderContents{
+        margin-top: 30%;
+    }
+    div#CartPageContainer.container{
+        padding-top: 6%;
+        float:left;
+    }    
+    div.col-md-1{
+        width: 1%;
+    }
+    div.col-md-3{
+        width: 35%;
+    }
+    div.col-md-8{
+        width: 61%;
+    }
+}
+@media screen and (max-width: 767px)  {
+    div.OrderContents{
+        margin-top: 35%;
+    }
+    div#CartPageContainer.container{
+        padding-top: 5%;
+        float:left;
+    }
+    div.order.card img{
+        width: 100px;
+    }
+    div.order.card h2{
+        font-size: 25px !important;
+        margin-top: 3% !important;
+    }
+}
 
+@media screen and (min-width: 567px)  and (max-width: 767px)  {
+    div.col-md-1{
+        width: 0.5%;
+    }
+    div.col-md-3{
+        width: 41.5%;
+    }
+    div.col-md-8{
+        width: 54%;
+    }
+}
+@media screen and (min-width: 511px)  and (max-width: 566px)  { 
+    div.OrderContents{
+        margin-top: 40%;
+    }  
+    div.col-md-1{
+        width: 0%;
+    }
+    div.col-md-3{
+        width: 35%;
+    }
+    div.col-md-8{
+        width: 60%;
+    }
+}
+@media screen and (max-width: 511px)  {
+    div.OrderContents{
+        margin-top: 40%;
+    }   
+    div.col-md-3{
+        width: 50%;
+    }
+    div#Order.col-md-3{
+        padding-bottom: 15%;
+        padding-left: 10%;
+    }
+    div.col-md-8{
+        width: 57%;
+    }
+    div#accordionPanelsStayOpenExample.accordion{
+        padding-left: 10%;
+    }
+}
 
 
 /* CSS for the Accordian Section*/
@@ -200,4 +305,36 @@ div.PaymentSelection{
 input#PaymentUsername{
     width: 15em;
     margin-left: 45px;
+}
+@media screen and (min-width: 1200px)  and (max-width: 1399px)  {
+    h1.CartPage_Title{
+        color: red;
+    }
+    div.col-sm{
+        width: 0% !important;
+    }
+}
+@media screen and (min-width: 992px)  and (max-width: 1199px)  {
+    h1.CartPage_Title{
+        color: green;
+    }
+    div.col-sm{
+        width: 40% !important;
+        padding-bottom: 5%;
+    }
+    .col-sm{
+        flex: 0 0 0%;
+    }
+}
+@media screen and (max-width: 991px)  {
+    h1.CartPage_Title{
+        color: rgb(217, 255, 130);
+    }
+    div.col-sm{
+        width: 55% !important;
+        padding-bottom: 5%;
+    }
+    .col-sm{
+        flex: 0 0 0%;
+    }
 }

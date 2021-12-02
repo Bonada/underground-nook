@@ -4,22 +4,20 @@ import '../Components/Navigation/Navigation.css';
 import OrderRow from '../Components/Rows/OrderRow.js';
 
 export default class Orders extends React.Component {
+
   constructor(props) {
-    super(props)
+    super(props);
+
     this.state = {
       loading: true,
       orders: [],
-      userId: ""
-    }
+      currentIndex: 0
+    };
   }
 
   componentDidMount() {
-    console.log("mounted");
-    setTimeout(() => {
-      this.setState({ userId: this.props.currentUser.userid });
-      console.log(this.state.userId);
-      this.populateOrders();
-    }, 100);
+    console.log("mounted")
+    window.addEventListener('load', this.populateUserOrders());
   }
 
   render() {
@@ -29,45 +27,56 @@ export default class Orders extends React.Component {
           <div className="offset-md-1 col-md-3">
             <h1 className="orders-header">Orders</h1>
           </div>
+          <table className="orders table table-bg">
+            <thead>
+              <tr>
+                <th scope="col">Address</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Payment Status</th>
+                <th scope="col">Order Status</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody className="table-body">
+              {this.state.loading ? (null) : this.state.orders.map((order, index) => {
+                console.log(this.state.orders);
+                console.log(order, index);
+                return <OrderRow key={"order" + index} order={order}
+                  onClick={() => this.setState({ currentIndex: index })} />;
+              })}
+            </tbody>
+          </table>
         </div>
-        <table className="orders table table-bg">
-          <thead>
-            <tr>
-              <th scope="col">Address</th>
-              <th scope="col">Order ID</th>
-              <th scope="col">Payment Status</th>
-              <th scope="col">Order Status</th>
-            </tr>
-          </thead>
-          <tbody className="table-body">
-            {this.state.loading ? (null) : this.state.orders.map((order, index) => {
-              console.log(order, index);
-              return <OrderRow key={index} address="test" orderid="orderid" payment="payment" status="status" />;
-            })}
-          </tbody>
-        </table>
       </div>
     );
   }
 
-  async populateOrders() {
+  async populateUserOrders() {
+
+    // const queryString = window.location.search;
+    // const urlParams = new URLSearchParams(queryString);
+    // let id = urlParams.get("id");
+    console.log(this.props);
+    let id = this.props.currentUser['userid'];
+    // alert(id);
     fetch("http://localhost:3030/get-user-orders", {
       method: 'POST',
-      mode: "cors",
+      mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        id: this.state.userId
+        userid: id
       })
     })
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         this.setState({
           loading: false,
           orders: data
         });
-        console.log(data);
       });
   }
+
 }

@@ -2,7 +2,7 @@ import React from "react";
 import './About.css';
 import '../Components/Navigation/Navigation.css';
 
-//import minying from './Minying.jpg';
+import minying from '../Images/minying.jpg';
 
 function About() {
     return (
@@ -16,7 +16,7 @@ function About() {
           <div className="row cards">
             <div className="row">&nbsp;</div>
             <div className="offset-md-1 col-md-4 d-flex justify-content-center">
-              <img src="https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/226848957_4524022060943703_6194489319445931835_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=n3IESs-gxKEAX8NvLXV&_nc_ht=scontent-lga3-2.xx&oh=2b7631efff9821d4eb42bd3a1c8f728b&oe=6195B0A3" className="minying" alt="Minying Cao"></img>
+              <img src={minying} className="minying" alt="Minying Cao"></img>
             </div>
             <div className="col-md-5">
               Minying Cao is the proud owner of Underground Nook. She started this company as a pastime during the

@@ -135,8 +135,11 @@ button#LogoutBtn:hover{
     font-weight: bold !important;
 }
 
-
 /* CSS For the Admin Navbar*/
 div#Admin_NavBar{
     padding: 15px;
+}
+
+#userid{
+    display: none;
 }
