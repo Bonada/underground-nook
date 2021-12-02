@@ -12,8 +12,37 @@ function AddressModal(props) {
         zip: ""
     }
 
-    const handleSubmit = function () {
+    let oldaddress = props.isNew ? useraddress : props.old
+
+    function updateName(event) {
+        console.log(event.target.value);
+        useraddress.name = event.target.value;
+    }
+
+    function updateAddress(event) {
+        console.log(event.target.value);
+        useraddress.street = event.target.value;
+    }
+
+    function updateCity(event) {
+        console.log(event.target.value);
+        useraddress.city = event.target.value;
+    }
+
+    function updateState(event) {
+        console.log(event.target.value);
+        StateSelect.state = event.target.value;
+        useraddress.state = event.target.value;
+    }
+
+    function updateZip(event) {
+        console.log(event.target.value);
+        useraddress.zip = event.target.value;
+    }
+
+    const handleSubmit = function (event) {
         console.log("Started submit");
+        console.log("adding");
         if (props.isNew) {
             // Call add address endpoint
             fetch('http://localhost:3030/add-address', {
@@ -26,6 +55,22 @@ function AddressModal(props) {
                     address: useraddress
                 })
             })
+            window.location.reload(false);
+        }
+        else {
+            // Call edit address endpoint
+            console.log("editing");
+            fetch('http://localhost:3030/edit-address', {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    old: oldaddress,
+                    update: useraddress
+                })
+            })
                 .then(async addaddress_response => {
                     const data = await addaddress_response.json()
                     console.log(data);
@@ -34,31 +79,29 @@ function AddressModal(props) {
                     console.log(e);
                 });
         }
-        else {
-            // Call edit address endpoint
-        }
+        event.preventDefault();
     }
 
     const id = props.isNew ? "addAddressModal" : "editAddressModal";
     const title = props.isNew ? "Add Address" : "Edit Address";
     const name_input = props.isNew ?
-        <input className="input-box-modal form-control" type="text" placeholder="Enter Full Name" id="fullName" /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.name} id="fullName" />;
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Full Name" id="fullName" onChange={updateName} /> :
+        <input className="input-box-modal form-control" type="text" defaultValue={props.name} id="fullName" onChange={updateName} />;
     const street_input = props.isNew ?
-        <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.street} id="streetAddress" />;
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" onChange={updateAddress} /> :
+        <input className="input-box-modal form-control" type="text" defaultValue={props.street} id="streetAddress" onChange={updateAddress} />;
     const city_input = props.isNew ?
-        <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.city} id="city" />;
+        <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" onChange={updateCity} /> :
+        <input className="input-box-modal form-control" type="text" defaultValue={props.city} id="city" onChange={updateCity} />;
     const zip_input = props.isNew ?
-        <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.zip} id="zipcode" />;
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" onChange={updateZip} /> :
+        <input className="input-box-modal form-control" type="text" defaultValue={props.zip} id="zipcode" onChange={updateZip} />;
     const state_select = props.isNew ?
-        <StateSelect state="" placeholder="AL" /> :
-        <StateSelect state={props.state} placeholder="" />;
+        <StateSelect state="" placeholder="AL" onChange={updateState} /> :
+        <StateSelect state={props.state} placeholder="" onChange={updateState} />;
 
     return (
-        <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onMouseEnter={props.onMouseEnter}>
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">

@@ -132,6 +132,8 @@ app.post('/add-address', async (req, res) => {
         console.log(existinguser);
         if (existinguser) {
             existinguser.addresses.push(address);
+            await users.updateOne({userid: userid}, existinguser);
+            console.log(existinguser);
             res.send(existinguser);
         }
         else {
