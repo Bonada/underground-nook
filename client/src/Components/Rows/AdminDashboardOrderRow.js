@@ -1,10 +1,10 @@
-function AdminDashboardOrderRow() {
+function AdminDashboardOrderRow(props) {
     return (
         <tr>
-            <th scope="row">12920293</th>
-            <td>Minying Cao</td>
-            <td>No</td>
-            <td>Pending</td>
+            <th scope="row">{props.order.id}</th>
+            <td>{props.order.username}</td>
+            <td>{props.order.paystatus}</td>
+            <td>{props.order.orderstatus}</td>
       </tr>
     );
 }
