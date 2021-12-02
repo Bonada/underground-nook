@@ -64,3 +64,9 @@ div#AdminDashboardPage{
 #AdminDashboardPage .col-catalog {
     padding-left: 0px ;
 }
+
+.Adminlinks {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}

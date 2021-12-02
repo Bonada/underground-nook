@@ -19,7 +19,7 @@ import './Navigation.css';
 /*global FB*/
 //'1839081979786582'
 export default function Navigation(props) {
-  const admin_ids = ['4524022054277037', '2034884766556492', '2997818750540073', '1839081979786582'];
+  const admin_ids = ['1238211160013297', '4524022054277037', '2034884766556492', '2997818750540073', '1839081979786582'];
 
   const [userType, setUserType] = useState("Pre-Login");
   const [redirect, setRedirect] = useState(null);
@@ -214,7 +214,7 @@ export default function Navigation(props) {
 
           {(userType === "Admin" || userType === "Post-Login") &&
             <div className="dropdown">
-              <button className="dropbtn btn"> <p>{userInfo.username && userInfo.username.split(" ")[0]}</p>
+              <button className="dropbtn btn"> <p id="userid"> {userInfo.userid}</p> <p>{userInfo.username && userInfo.username.split(" ")[0]}</p>
                 <i className="fa fa-caret-down"></i>
               </button>   
               <div className="dropdown-content">
@@ -250,12 +250,12 @@ export default function Navigation(props) {
           }
           {userType === "Admin" &&
             <Route path="/AdminViewOrders">
-                <AdminViewOrders />
+                <AdminViewOrders currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
             </Route>
           }
           {userType === "Admin" &&
             <Route path="/AdminEditCatalog">
-              <AdminEditCatalog />
+              <AdminEditCatalog currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)}/>
             </Route>
           }
           <Route path="/OrderPage">

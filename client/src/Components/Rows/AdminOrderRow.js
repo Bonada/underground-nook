@@ -1,6 +1,8 @@
+import React from "react";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import EditOrderModal from "../Modals/EditOrderModal";
 
-function AdminOrderRow() {
+function AdminOrderRow(props) {
     function hideRow() {
         document.getElementById("row-10028492").classList.add("hidden-row");
         document.getElementById("row-10028492").classList.add("displayed-row");
@@ -8,27 +10,37 @@ function AdminOrderRow() {
 
     function handleDeleteClicked() {
         hideRow();
-        // make call to API to delete from db
+        fetch("http://localhost:3030/delete-order", {
+                    method: 'DELETE',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: props.order.id
+                    })
+                })
+        window.location.reload(false);
     }
 
     return (
         <tr id="row-10028492" className="displayed-row">
             <th scope="row">
-                <a href="OrderPage">10028492</a>
+            <Link to={"/OrderPage?id=" + props.order.id}>{props.order.id}</Link>
             </th>
-            <td>Minying Cao</td>
-            <td>1761 15th St</td>
-            <td>-</td>
-            <td>Troy</td>
-            <td>NY</td>
-            <td>12180</td>
-            <td>USPS</td>
-            <td>Paid</td>
-            <td>$25.67</td>
+            <td>{props.order.username}</td>
+            <td>{props.order.address.address}</td>
+            <td>{props.order.address.aptno}</td>
+            <td>{props.order.address.city}</td>
+            <td>{props.order.address.state}</td>
+            <td>{props.order.address.zip}</td>
+            <td>{props.order.shippingcarrier}</td>
+            <td>{props.order.paystatus}</td>
+            <td>{props.order.price}</td>
 
             <td className="edit-col">
                 <div className="edit-container">
-                    <i class="ri-pencil-line"></i>
+                    <i className="ri-pencil-line"></i>
                     <a href="#" className="card-link" data-bs-toggle="modal" data-bs-target="#editOrderModal">Edit</a>
                 </div>
                 
@@ -37,7 +49,7 @@ function AdminOrderRow() {
                     <a href="#" className="card-link" onClick={handleDeleteClicked}>Remove</a>
                 </div>
             </td>
-            <EditOrderModal />
+            {/* <EditOrderModal /> */}
         </tr>
     );
 }
