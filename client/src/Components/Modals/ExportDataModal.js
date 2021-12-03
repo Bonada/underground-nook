@@ -6,6 +6,13 @@ function ExportDataModal(handleSubmit) {
     //     console.log(event.target.value);
     // }
 
+    function getCSV(event){
+        fetch("http://localhost:3030/get-csv", {
+            method: 'GET',
+            mode: 'cors'
+        })
+    }
+
     return (
         <div className="modal fade" id="exportDataModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
@@ -20,7 +27,7 @@ function ExportDataModal(handleSubmit) {
                                 <ShippingCarrierSelect />
                             </form>
                             <div className="flex-box-submit-button">
-                                <button className="cart-button" type="submit" data-bs-dismiss="modal">Export as CSV</button>
+                                <button onClick={getCSV} className="cart-button" type="submit" data-bs-dismiss="modal">Export as CSV</button>
                             </div>
                         </div>
                     </div>
