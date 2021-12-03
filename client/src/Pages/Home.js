@@ -16,17 +16,21 @@ export default function Home(props) {
         </button>
       </Link>
       
-      <div className="rectangle1"></div>
-      <div className="rectangle2"></div>
-      <div className="rectangle3"></div>
-      <div className="rectangle4"></div>
+      <img className="img-fluid" id="Ledge1" src={Ledge1} alt="Ledge 1" />
+      <img className="img-fluid" id="Ledge2" src={Ledge2} alt="Ledge 2" />
       <img className="img-fluid" id="HexagonsImage" src={HexagonPlants} alt="Hexagon Plants" />
       <img className="img-fluid" id="Plant1" src={Plant1} alt="Plant 1" />
-      <img className="img-fluid" id="Plant2" src={Plant2} alt="Plant2" />
+      <img className="img-fluid" id="Plant2" src={Plant2} alt="Plant 2" />
     </div>
   );
 }
 
+  /* Line 18
+    <div className="rectangle1"></div>
+    <div className="rectangle2"></div>
+    <div className="rectangle3"></div>
+    <div className="rectangle4"></div>
+  */
   // async getPlants() {
   //   fetch("http://localhost:3030/get-plants", {
   //           method: 'GET',
