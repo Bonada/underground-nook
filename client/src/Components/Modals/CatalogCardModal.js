@@ -17,7 +17,8 @@ function CatalogCardModal(props) {
         plantid: pid
       })
     })
-    .then(async response => await console.log(response.json()))
+    .then(async response => await console.log(response.json()),
+    window.location.reload(false))
     .catch(e => console.log(e));
   }
 

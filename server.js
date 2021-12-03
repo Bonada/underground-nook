@@ -280,6 +280,25 @@ app.get('/get-plants' , async (req, res) =>{
   }
 })
 
+app.get('/get-available-plants' , async (req, res) =>{
+  try {
+      console.log("connecting to db to get plants");
+    //   await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('plants');
+      let document = await collection.find({availability: true});
+      let items = await document.toArray();
+      console.log(items);
+      res.send(items);
+  }catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot get the plant data'
+      });
+  }
+})
+
 app.delete('/delete-plant', async (req, res) => {
 
     let id = req.body.id;
@@ -321,6 +340,8 @@ app.post('/add-to-cart', async (req, res) => {
 
     let carts = db.collection('carts');
     let plants = db.collection('plants');
+    plants.updateOne({id: plantid}, {$set:{availability: false}});
+
     let user_cart = await carts.findOne({userid: userid});
     let plant = await plants.findOne({id: plantid});
     if (!user_cart) {
@@ -406,6 +427,9 @@ app.post('/remove-from-cart', async (req, res) => {
 
   try {
     let db = client.db('main');
+    let plants = db.collection('plants');
+    plants.updateOne({id: plantid}, {$set:{availability: true}});
+
     let carts = db.collection('carts');
     let user_cart = await carts.findOne({userid: userid});
 
