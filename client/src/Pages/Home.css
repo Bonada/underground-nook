@@ -46,7 +46,7 @@ h1#Home_Title{
     position: fixed;
     width: 12%;
     left: 10%;
-    top: 85%;
+    top: 87%;
     border: 6px solid #7C5B49;
     z-index: 1;
 }
@@ -55,6 +55,7 @@ h1#Home_Title{
     width: 12%;
     left: 30%;
     top: 75%;
+    border-radius: 0rem;
     border: 6px solid #574444;
     z-index: 1;
 }
@@ -62,7 +63,7 @@ h1#Home_Title{
     position: fixed;
     width: 12%;
     left: 55%;
-    top: 35%;
+    top: 38%;
     border: 6px solid #7C5B49;
     z-index: 1;
 }
@@ -82,22 +83,25 @@ img#HexagonsImage.img-fluid {
 }
 img#Plant1.img-fluid {
     position: fixed;
-    width: 7%;
-    left: 11%;
-    top: 67%;
+    width: 13%;
+    left: 10%;
+    top: 68.5%;
 }
 img#Plant2.img-fluid {
     position: fixed;
-    width: 7%;
-    left: 57%;
-    top: 16%;
+    width: 13%;
+    left: 53%;
+    top: 19%;
 }
-
-
-
-/* NavBar - NEED TO FIX
-@media only screen and (min-device-width : 710px) and (max-device-width : 851px) {
-    div.embed-responsive{
-      padding-left: 120%; 
-    }
-} */
+img#Ledge1.img-fluid {
+    position: fixed;
+    width: 13%;
+    left: 30%;
+    top: 75%;
+}
+img#Ledge2.img-fluid {
+    position: fixed;
+    width: 13%;
+    left: 75%;
+    top: 25%;
+}

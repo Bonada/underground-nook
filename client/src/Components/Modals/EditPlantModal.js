@@ -95,6 +95,7 @@ function EditPlantModal(props) {
                         })
                     })
         }
+        window.location.reload(false);
         event.preventDefault();
     }
 
