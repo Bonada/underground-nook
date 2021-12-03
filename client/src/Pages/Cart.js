@@ -3,6 +3,7 @@ import './Cart.css';
 import '../Components/Navigation/Navigation.css';
 import CartItemCard from '../Components/Cards/CartItemCard.js'
 import CartAddresses from '../Components/CartAddresses.js'
+import AddressCard from '../Components/Cards/AddressCard.js'
 import AddPlantModal from '../Components/Modals/AddPlantModal.js'
 
 export default class Cart extends React.Component {
@@ -141,7 +142,27 @@ export default class Cart extends React.Component {
                   <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                     <div className="accordion-body">
                       <h2 className="AccordianSubtitle">Select or Add an Address:</h2>
-                        <CartAddresses />
+                      <div className="container addresses-container">
+                        <div className="row">
+
+                          <div className="col-sm">
+                            <div className="card h-100 cart" style={{width: '18rem'}} data-bs-toggle="modal" data-bs-target="#addAddressModal">
+                              <div className="card-body align-items-center d-flex justify-content-center">
+                                <h5 className="card-title">+ Add Address</h5>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="col-sm">
+                            <AddressCard name="Minying Cao" street="1761 15th St" city="Troy, NY 12180" isDefault={true} />
+                          </div>
+
+                          <div className="col-sm">
+                            <AddressCard name="Minying Cao" street="1761 15th St" city="Troy, NY 12180" isDefault={true} />
+                          </div>
+
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -203,9 +224,11 @@ export default class Cart extends React.Component {
                   </div>
                 </div>
               </div>
-              <button type = "button" className="PlaceOrder-button">
-                  Place Order
-              </button>
+              {this.state.size && 
+                <button type = "button" className="PlaceOrder-button">
+                    Place Order
+                </button>
+              }
             </div>
           </div>
         </div>
