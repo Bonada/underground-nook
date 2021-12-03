@@ -7,7 +7,7 @@ function StateSelect(props) {
         <label htmlFor="state" className="form-label">State</label>
         <br />
 
-        <select className="input-box-modal form-select" id="state" name="state" value={props.state} placeholder={props.placeholder} onChange={handleChange}>
+        <select className="input-box-modal form-select" id="state" name="state" value={props.state} placeholder={props.placeholder} onChange={props.onChange}>
             <option value="AL">AL</option>
             <option value="AK">AK</option>
             <option value="AR">AR</option>

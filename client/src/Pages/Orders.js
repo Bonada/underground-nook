@@ -21,38 +21,38 @@ export default class Orders extends React.Component {
   }
 
   render() {
-  return (
-    <div className="container-fluid justify-content-center">
-      <div className="row">
-        <div className="offset-md-1 col-md-3">
-          <h1 className="orders-header">Orders</h1>
+    return (
+      <div className="container-fluid justify-content-center">
+        <div className="row">
+          <div className="offset-md-1 col-md-3">
+            <h1 className="orders-header">Orders</h1>
+          </div>
+          <table className="orders table table-bg">
+            <thead>
+              <tr>
+                <th scope="col">Address</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Payment Status</th>
+                <th scope="col">Order Status</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody className="table-body">
+              {this.state.loading ? (null) : this.state.orders.map((order, index) => {
+                console.log(this.state.orders);
+                console.log(order, index);
+                return <OrderRow key={"order" + index} order={order}
+                  onClick={() => this.setState({ currentIndex: index })} />;
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
-      <table className="orders table table-bg">
-        <thead>
-          <tr>
-            <th scope="col">Address</th>
-            <th scope="col">Order ID</th>
-            <th scope="col">Payment Status</th>
-            <th scope="col">Order Status</th>
-            <th scope="col">Price</th>
-          </tr>
-        </thead>
-        <tbody className="table-body">
-          {this.state.loading ? (null) : this.state.orders.map((order, index) => {
-            console.log(this.state.orders);
-            console.log(order, index);
-            return <OrderRow key={"order"+index}  order={order}
-            onClick={() => this.setState({currentIndex: index})}/>;
-          })}
-        </tbody>
-      </table>
-    </div>
-  );
+    );
   }
 
-  async populateUserOrders(){
-    
+  async populateUserOrders() {
+
     // const queryString = window.location.search;
     // const urlParams = new URLSearchParams(queryString);
     // let id = urlParams.get("id");
@@ -60,23 +60,23 @@ export default class Orders extends React.Component {
     let id = this.props.currentUser['userid'];
     // alert(id);
     fetch("http://localhost:3030/get-user-orders", {
-              method: 'POST',
-              mode: 'cors',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                  userid: id
-              })
-          })
-            .then(response => response.json())
-            .then(data => {
-              console.log(data);
-              this.setState({
-                loading: false,
-                orders: data
-              });
-            });
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userid: id
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        this.setState({
+          loading: false,
+          orders: data
+        });
+      });
   }
 
 }

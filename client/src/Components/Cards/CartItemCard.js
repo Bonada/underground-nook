@@ -14,7 +14,7 @@ function CartItemCard(props) {
               <div className="col-md-10">
                 <p className="order-price col">${props.plant.price}</p>
               </div>
-              <div className="col-md-2" onClick={props.handleRemove}>
+              <div className="col-md-1" onClick={props.handleRemove}>
                 <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>
               </div>
             </div>

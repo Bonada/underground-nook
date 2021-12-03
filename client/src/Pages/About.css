@@ -1,4 +1,38 @@
 .minying {
     border-radius: 50%;
     max-width: 62.5%;
-  }  
+}  
+h1.page-header{
+  font-family: 'Scope One', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 45px;
+  padding-top: 5.3%;
+  color: #E5E5E5;
+}
+div.offset-md-1.col-md-8{
+  margin-left: 6% !important;
+}
+p.page-caption{
+  font-family: 'Petrona', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 25px;
+  color: #E5E5E5;
+}
+div.col-md-5{
+  font-family: 'Avenir', serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #E5E5E5;
+  line-height: 35px;
+}
+@media screen and (max-width: 767px)  {
+  div.offset-md-1.col-md-8{
+    margin-left: 5%;
+  }
+  div.col-md-5{
+    margin-left: 3%;
+  }
+}
