@@ -16,10 +16,11 @@ export default class Settings extends React.Component {
       currentIndex: 0
     };
   }
-  currentAddress = {}
+  
 
-  updateOld() {
-
+  componentDidMount() {
+    console.log("mounted")
+    this.populateAddresses();
   }
 
   // Get user addresses with api call
@@ -54,17 +55,17 @@ export default class Settings extends React.Component {
               console.log(address, index);
               return (<div className="col-sm">
                 <AddressCard key={"address " + index} address={address}
-                  onClick={() => this.setState({ currentIndex: index })} />
+                  onClick={() => this.setState({ currentIndex: index })}/>
               </div>);
             })}
           </div>
         </div>
 
         {/*  Add Address Modal */}
-        <AddressModal isNew={true} currentUser={this.props.currentUser} isAdmin={this.props.isAdmin} />
+        {this.state.loading ? (null) : <AddressModal isNew={true} currentUser={this.props.currentUser} isAdmin={this.props.isAdmin} />}
 
         {/* Edit Address Modal */}
-        <AddressModal isNew={false} old={this.currentAddress} currentUser={this.props.currentUser} isAdmin={this.props.isAdmin} onMouseEnter={this.updateOld} />
+        {this.state.loading ? (null) : <AddressModal isNew={false} address={this.state.addresses[this.state.currentIndex]} currentUser={this.props.currentUser} isAdmin={this.props.isAdmin}  />}
       </div>
     )
 
@@ -73,13 +74,19 @@ export default class Settings extends React.Component {
   async populateAddresses() {
     fetch("http://localhost:3030/get-addresses", {
       method: 'POST',
-      mode: 'cors'
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userid: this.props.currentUser.userid,
+      })
     })
       .then(response => response.json())
       .then(data => {
         this.setState({
-          loading: false,
-          addresses: data
+          addresses: data,
+          loading: false
         });
       });
   }
