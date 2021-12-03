@@ -86,8 +86,8 @@ export default function Navigation(props) {
         email: fb_response.email
       });
 
-      // If user doesn't exist in database, add their information and redirect to registration
-      fetch('http://localhost:3030/add-user', {
+      // If user doesn't exist in database, redirect to registration
+      fetch('http://localhost:3030/get-user', {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -103,7 +103,7 @@ export default function Navigation(props) {
         const data = await adduser_response.json()
         console.log(data);
 
-        if (data.success && !admin_ids.includes(fb_response.id)) {     // New user was added to database
+        if (!data.userid && !admin_ids.includes(fb_response.id)) {     // No user found, redirect
           // Redirect to registration page
           console.log("Redirecting to registration...");
           setUserType("No-Login");
@@ -118,6 +118,30 @@ export default function Navigation(props) {
       });
     });
   }
+
+  const addUser = (user) => {
+    fetch('http://localhost:3030/add-user', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userid: user.userid,
+          username: user.username,
+          email: user.email
+        })
+      })
+      .then(async adduser_response => {
+        const data = await adduser_response.json()
+        console.log(data);
+          handleUserLogin(user.id, true);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+  
 
   const startLogin = () => {
     try {
@@ -241,7 +265,7 @@ export default function Navigation(props) {
             <Home currentUser={userInfo} isAdmin={admin_ids.includes(userInfo.userid)} />
           </Route>
           <Route path="/NewUser">
-            <NewUser currentUser={userInfo} onSubmit={() => handleUserLogin(userInfo.userid, true)}/>
+            <NewUser currentUser={userInfo} onSubmit={(user) => addUser(user, true)}/>
           </Route>
           {userType === "Admin" &&
             <Route path="/Admin">
