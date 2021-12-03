@@ -3,10 +3,9 @@ import StateSelect from "../Selects/StateSelect.js";
 function AddressModal(props) {
 
     let useraddress = {
-        name: "",
         fulladdress: "",
-        street: "",
-        number: "",
+        address: "",
+        aptno: "",
         city: "",
         state: "",
         zip: ""
@@ -14,14 +13,14 @@ function AddressModal(props) {
 
     let oldaddress = props.isNew ? useraddress : props.old
 
-    function updateName(event) {
-        console.log(event.target.value);
-        useraddress.name = event.target.value;
-    }
-
     function updateAddress(event) {
         console.log(event.target.value);
-        useraddress.street = event.target.value;
+        useraddress.address = event.target.value;
+    }
+
+    function updateAptno(event) {
+        console.log(event.target.value);
+        useraddress.aptno = event.target.value;
     }
 
     function updateCity(event) {
@@ -84,12 +83,12 @@ function AddressModal(props) {
 
     const id = props.isNew ? "addAddressModal" : "editAddressModal";
     const title = props.isNew ? "Add Address" : "Edit Address";
-    const name_input = props.isNew ?
-        <input className="input-box-modal form-control" type="text" placeholder="Enter Full Name" id="fullName" onChange={updateName} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.name} id="fullName" onChange={updateName} />;
     const street_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" onChange={updateAddress} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.street} id="streetAddress" onChange={updateAddress} />;
+        <input className="input-box-modal form-control" type="text" defaultValue={props.address} id="streetAddress" onChange={updateAddress} />;
+    const aptno_input = props.isNew ?
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Apt/Suite No." id="aptno" onChange={updateAddress} /> :
+        <input className="input-box-modal form-control" type="text" defaultValue={props.aptno} id="aptno" onChange={updateAptno} />;
     const city_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" onChange={updateCity} /> :
         <input className="input-box-modal form-control" type="text" defaultValue={props.city} id="city" onChange={updateCity} />;
@@ -97,7 +96,7 @@ function AddressModal(props) {
         <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" onChange={updateZip} /> :
         <input className="input-box-modal form-control" type="text" defaultValue={props.zip} id="zipcode" onChange={updateZip} />;
     const state_select = props.isNew ?
-        <StateSelect state="" placeholder="AL" onChange={updateState} /> :
+        <StateSelect state="" state={useraddress.state} placeholder="" onChange={updateState} /> :
         <StateSelect state={props.state} placeholder="" onChange={updateState} />;
 
     return (
@@ -112,14 +111,14 @@ function AddressModal(props) {
                         <div className="container">
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
-                                    <label htmlFor="fullName" className="form-label">Full Name</label>
-                                    <br />
-                                    {name_input}
-                                </div>
-                                <div className="mb-3">
                                     <label htmlFor="streetAddress" className="form-label">Street Address</label>
                                     <br />
                                     {street_input}
+                                </div>
+                                <div className="mb-3">
+                                    <label htmlFor="aptno" className="form-label">Apt/Suite No.</label>
+                                    <br />
+                                    {aptno_input}
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="city" className="form-label">City</label>
