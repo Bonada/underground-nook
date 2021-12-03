@@ -153,6 +153,74 @@ app.post('/add-plant' , async (req, res) =>{
   }
 })
 
+app.post('/add-purge-plant', async (req, res) => {
+
+  console.log("adding purge plant to cart");
+  let userid = req.body.userid;
+  let id = uuidv4();
+
+  let species_name = req.body.sname;
+  let common_name = "";
+  let description = "";
+  let price = req.body.price;
+  let img = req.body.img;
+
+  try {
+    let newPlant = {id: id, species_name: species_name, common_name: common_name, description: description, price: price, img_url: img, availability: false};
+
+    let db = client.db('main');
+    db.collection('plants').insertOne(newPlant);
+
+    console.log("added new purge plant");
+
+    let carts = db.collection('carts');
+    let user_cart = await carts.findOne({userid: userid});
+
+    if (!user_cart) {
+      carts.insertOne({userid: userid, plants: [newPlant], total_price: price, size: 1});
+
+      console.log("added plant to new cart for user");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + id + ' added to new cart'
+      });
+    }
+    else {
+      let new_price = user_cart.total_price + price;
+      let new_size = user_cart.size + 1;
+      let new_plants = user_cart.plants;
+
+      for (var i = 0; i < new_plants.length; i++) {
+        if (new_plants[i].id == id) {
+          res.json({
+            success: false,
+            err: 'Plant already exists in cart'
+          })
+          return;
+        }
+      }
+      new_plants.push(newPlant);
+
+      carts.updateOne({userid: userid}, {$set: {plants: new_plants, total_price: new_price, size: new_size}});
+
+      console.log("added plant to existing cart for user");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + id + ' added to existing cart'
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+    res.json({
+        success: false,
+        err: 'Error adding purge plant ' + species_name
+    });
+  }
+})
+
 app.post('/update-plant' , async (req, res) =>{
 
     console.log("updating plant");
@@ -514,63 +582,63 @@ app.post('/update-order' , async (req, res) =>{
     }
   })
 
-  app.delete('/delete-order', async (req, res) => {
+app.delete('/delete-order', async (req, res) => {
 
-    let id = req.body.id;
+  let id = req.body.id;
 
-    try {
+  try {
 
-        console.log("connecting to db to delete order");
+      console.log("connecting to db to delete order");
 
-        // await client.connect();
-        let db = client.db('main');
-        let collection = db.collection('orders');
-        let document = await collection.deleteOne({id: id});
+      // await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('orders');
+      let document = await collection.deleteOne({id: id});
 
-        console.log("Deleted: ", document);
-        res.send(document);
-        
-    } catch (e) {
-        res.status(400);
-        res.json({
-            success: false,
-            err: 'Cannot find order'
-        });
-    }
+      console.log("Deleted: ", document);
+      res.send(document);
+      
+  } catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot find order'
+      });
+  }
 
-  })
+})
 
-  app.post('/get-order-plants' , async (req, res) =>{
+app.post('/get-order-plants' , async (req, res) =>{
 
-    let plants = req.body.plants;
-    console.log(plants);
+  let plants = req.body.plants;
+  console.log(plants);
 
-    try {
-  
-        console.log("connecting to db to get order plants");
-  
-        // await client.connect();
-        let db = client.db('main');
-        let collection = db.collection('plants');
+  try {
 
-        let retplants = [];
-        for(plantid of plants){
-            console.log(plantid);
-            let document = await collection.findOne({id:plantid});
-            retplants.push(document);
-        }
-        
-  
-        console.log(retplants);
-        res.send(retplants);
-    } catch (e) {
-        res.status(400);
-        res.json({
-            success: false,
-            err: 'Cannot get the plant data'
-        });
-    }
-  })
+      console.log("connecting to db to get order plants");
+
+      // await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('plants');
+
+      let retplants = [];
+      for(plantid of plants){
+          console.log(plantid);
+          let document = await collection.findOne({id:plantid});
+          retplants.push(document);
+      }
+      
+
+      console.log(retplants);
+      res.send(retplants);
+  } catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot get the plant data'
+      });
+  }
+})
 
 app.post('/get-user-orders' , async (req, res) =>{
   try {

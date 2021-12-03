@@ -54,7 +54,7 @@ export default class AdminEditCatalog extends React.Component {
           </div>
         </div>
 
-        <AddPlantModal />
+        <AddPlantModal id="addPlantModal" title="Add Plant to Catalog" type="catalog"/>
       </div>
     );
   }
