@@ -624,6 +624,7 @@ app.post('/get-user-orders' , async (req, res) =>{
 
 app.get('/get-csv' , async (req, res) =>{
     try {
+
         console.log("connecting to db to get plants");
       //   await client.connect();
         client
@@ -637,10 +638,11 @@ app.get('/get-csv' , async (req, res) =>{
             const json2csvParser = new Json2csvParser({ header: true });
             const csvData = json2csvParser.parse(data);
     
-            fs.writeFile("test.csv", csvData, function(error) {
-              if (error) throw error;
-              console.log("Write to bezkoder_mongodb_fs.csv successfully!");
-            });
+            res.send(csvData);
+
+            // const file = fs.createWriteStream("test.csv");
+            // const request = http.get("/get-csv", function(response) {
+            // response.pipe(file);})
         });
         // console.log(items);
         // res.send(items);
