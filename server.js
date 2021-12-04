@@ -51,12 +51,13 @@ app.post('/add-user', async (req, res) => {
     let username = req.body.username;
     let userid = req.body.userid;
     let email = req.body.email;
+    let phonenumber = req.body.phonenumber;
 
   try {
     //   await client.connect();
       let db = client.db('main');
 
-        let newUser = { userid: userid, username: username, email: email, addresses: [] };
+        let newUser = { userid: userid, username: username, email: email, addresses: [], phonenumber: phonenumber };
         let users = db.collection('users');
 
         let existinguser = await users.findOne({ userid: userid });
@@ -171,7 +172,7 @@ app.post('/get-addresses', async (req, res) => {
 
         console.log(existinguser);
         if (existinguser) {
-            res.send(existinguser.addresses);
+            res.send(existinguser);
         }
         else {
             res.json({
