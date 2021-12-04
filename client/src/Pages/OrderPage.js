@@ -46,6 +46,7 @@ export default class OrderPage extends React.Component {
 									</thead>
 									<tbody>
 									{this.state.plants.map((plant, index) => {
+										console.log(plant, index);
 										return <OrderPageRow key={"plant" + index} plant={plant}/>;
 									})}
 									</tbody>
@@ -81,7 +82,7 @@ export default class OrderPage extends React.Component {
           })
             .then(response => response.json())
             .then(data => {
-              console.log(data);
+              console.log(data['plants']);
 			  this.setState({
                 order: data
               });
@@ -98,7 +99,6 @@ export default class OrderPage extends React.Component {
 				})
 				.then(response => response.json())
 				.then(data => {
-					console.log(data);
 					this.setState({
 						loading: false,
 						plants: data

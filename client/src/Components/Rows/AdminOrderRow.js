@@ -29,11 +29,11 @@ function AdminOrderRow(props) {
             <Link to={"/OrderPage?id=" + props.order.id}>{props.order.id}</Link>
             </th>
             <td>{props.order.username}</td>
-            <td>{props.order.address.address}</td>
-            <td>{props.order.address.aptno}</td>
-            <td>{props.order.address.city}</td>
-            <td>{props.order.address.state}</td>
-            <td>{props.order.address.zip}</td>
+            <td>{props.order.address}</td>
+            <td>{props.order.aptno}</td>
+            <td>{props.order.city}</td>
+            <td>{props.order.state}</td>
+            <td>{props.order.zip}</td>
             <td>{props.order.shippingcarrier}</td>
             <td>{props.order.paystatus}</td>
             <td>{props.order.price}</td>
