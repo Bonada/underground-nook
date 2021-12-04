@@ -129,7 +129,8 @@ export default function Navigation(props) {
         body: JSON.stringify({
           userid: user.userid,
           username: user.username,
-          email: user.email
+          email: user.email,
+          phonenumber: user.phonenumber
         })
       })
       .then(async adduser_response => {

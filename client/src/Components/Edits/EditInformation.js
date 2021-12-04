@@ -27,7 +27,7 @@ function EditInformation(props) {
 
       <div className="row">
         <label htmlFor="phonenumber" id={number_label} className={classes}>Phone Number</label>
-        <input className="input-box" type="text" defaultValue={props.currentUser.number || "000"} id="phonenumber" />
+        <input className="input-box" type="text" defaultValue={props.currentUser.phonenumber || "000"} id="phonenumber" />
       </div>
 
       <div className="row flex-box-save-button" id="edit-information-div-btn">
