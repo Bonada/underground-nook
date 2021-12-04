@@ -1,6 +1,6 @@
 import './Modal.css';
-import StateSelect from "../Selects/StateSelect.js";
-import ShippingCarrierSelect from "../Selects/ShippingCarrierSelect.js";
+// import StateSelect from "../Selects/StateSelect.js";
+// import ShippingCarrierSelect from "../Selects/ShippingCarrierSelect.js";
 
 function EditOrderModal(props) {
     // function handleSubmit(event) {
@@ -11,11 +11,11 @@ function EditOrderModal(props) {
     let paystatus = props.order.paystatus;
     let paymentmethod = props.order.paymentmethod;
     let paymentinfo = props.order.paymentinfo;
-    let address = props.order.address.address;
-    let aptno = props.order.address.aptno;
-    let city = props.order.address.city;
-    let state = props.order.address.state;
-    let zip = props.order.address.zip;
+    let address = props.order.address;
+    let aptno = props.order.aptno;
+    let city = props.order.city;
+    let state = props.orderstate;
+    let zip = props.order.zip;
     let shippingcarrier = props.order.shippingcarrier;
     let orderstatus = props.order.orderstatus;
     let price = props.order.price;
