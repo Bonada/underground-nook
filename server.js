@@ -761,16 +761,25 @@ app.post('/get-user-orders' , async (req, res) =>{
   }
 })
 
-app.get('/get-csv' , async (req, res) =>{
+app.post('/get-csv' , async (req, res) =>{
+
+  shippingcarrier = req.body.shippingcarrier;
+
     try {
 
         console.log("connecting to db to get plants");
       //   await client.connect();
-        client
-        .db("main")
-        .collection("orders")
-        .find({})
-        .toArray((err, data) => {
+        orders = client.db("main").collection("orders")
+
+        let document;
+        if(shippingcarrier == "all"){
+          document = orders.find({})
+        }
+        else{
+          document = orders.find({shippingcarrier: shippingcarrier})
+        }
+        
+        document.toArray((err, data) => {
             // if (err) throw err;
     
             console.log(data);

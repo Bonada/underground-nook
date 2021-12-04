@@ -6,10 +6,24 @@ function ExportDataModal(handleSubmit) {
     //     console.log(event.target.value);
     // }
 
+    let shippingcarrier = 'all';
+
+
+    function changeshippingcarrier(event){
+        console.log(event.target.value);
+        shippingcarrier = event.target.value;
+    }
+
     function getCSV(event){
         fetch("http://localhost:3030/get-csv", {
-            method: 'GET',
-            mode: 'cors'
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                shippingcarrier: shippingcarrier,
+            })
         })
         .then(response => response.text())
           .then(data => {
@@ -50,8 +64,16 @@ function ExportDataModal(handleSubmit) {
                     </div>
                     <div className="modal-body">
                         <div className="container">
-                            <form onSubmit={handleSubmit}>
-                                <ShippingCarrierSelect />
+                            <form>
+                            <div className="mb-3">
+                                <label htmlFor="name" className="form-label">Shipping Carrier</label>
+                                <select onChange={changeshippingcarrier} className="input-box-modal form-control" id="state" name="state" defaultValue="Select Shipping Carrier">
+                                    <option value="Select Shipping Carrier" disabled>Select Shipping Carrier</option>
+                                    <option value="USPS">USPS</option>
+                                    <option value="FedEx">FedEx</option>
+                                    <option value="UPS">UPS</option>
+                                </select>
+                            </div>
                             </form>
                             <div className="flex-box-submit-button">
                                 <button onClick={getCSV} className="cart-button" type="submit" data-bs-dismiss="modal">Export as CSV</button>
