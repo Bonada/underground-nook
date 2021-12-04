@@ -15,8 +15,16 @@ th {
     text-align: center;
 }
 
-.orders-header {
-    font-family: 'Scope One', 'Serif';
+h1.orders-header {
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    padding-top: 14%;
+    color: #E5E5E5;
+}
+div#OrderHeader.offset-md-1.col-md-3{
+    margin-left: 5% !important;
 }
 
 .table-body {

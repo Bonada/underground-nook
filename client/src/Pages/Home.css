@@ -105,3 +105,86 @@ img#Ledge2.img-fluid {
     left: 75%;
     top: 25%;
 }
+@media screen and (min-width: 608px) and (max-width: 875px)  {
+    button.home-catalog-button{
+        font-size: 15px;
+        top: 45%;
+    }h1#Home_Title{
+        font-size: 40px;
+    }img#HexagonsImage.img-fluid {
+        top: 46%;
+        width: 45%;
+        left: 50%;
+    }img#Plant1.img-fluid {
+        width: 18%;
+        left: 5%;
+        top: 68.5%;
+    }img#Plant2.img-fluid {
+        width: 18%;
+        left: 48%;
+        top: 19%;
+    }img#Ledge1.img-fluid {
+        width: 18%;
+        left: 30%;
+        top: 75%;
+    }img#Ledge2.img-fluid {
+        width: 18%;
+        left: 70%;
+        top: 25%;
+    }
+}@media screen and (min-width: 367px) and (max-width: 607px)  {
+    button.home-catalog-button{
+        font-size: 15px;
+        top: 45%;
+    }h1#Home_Title{
+        font-size: 40px;
+    }img#HexagonsImage.img-fluid {
+        top: 66%;
+        width: 60%;
+        left: 37%;
+    }img#Plant1.img-fluid {
+        width: 20%;
+        left: 5%;
+        top: 60%;
+    }img#Plant2.img-fluid {
+        width: 20%;
+        left: 43%;
+        top: 19%;
+    }img#Ledge1.img-fluid {
+        width: 20%;
+        left: 30%;
+        top: 60%;
+    }img#Ledge2.img-fluid {
+        width: 20%;
+        left: 70%;
+        top: 20%;
+    }
+}
+@media screen and (max-width: 366px)  {
+    button.home-catalog-button{
+        font-size: 15px;
+        top: 52%;
+    }h1#Home_Title{
+        font-size: 35px;
+    }img#HexagonsImage.img-fluid {
+        top: 70%;
+        width: 60%;
+        left: 37%;
+    }img#Plant1.img-fluid {
+        width: 20%;
+        left: 5%;
+        top: 65%;
+    }img#Plant2.img-fluid {
+        width: 20%;
+        left: 43%;
+        top: 25%;
+    }img#Ledge1.img-fluid {
+        width: 20%;
+        left: 30%;
+        top: 65%;
+    }img#Ledge2.img-fluid {
+        width: 20%;
+        left: 70%;
+        top: 25%;
+    }
+}

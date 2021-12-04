@@ -24,7 +24,7 @@ export default class Orders extends React.Component {
     return (
       <div className="container-fluid justify-content-center">
         <div className="row">
-          <div className="offset-md-1 col-md-3">
+          <div className="offset-md-1 col-md-3" id="OrderHeader">
             <h1 className="orders-header">Orders</h1>
           </div>
           <table className="orders table table-bg">
