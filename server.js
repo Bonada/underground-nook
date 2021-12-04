@@ -168,7 +168,7 @@ app.post('/get-addresses', async (req, res) => {
 
         console.log(existinguser);
         if (existinguser) {
-            res.send(existinguser.addresses);
+            res.send(existinguser);
         }
         else {
             res.json({

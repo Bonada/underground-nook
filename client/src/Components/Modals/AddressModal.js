@@ -36,8 +36,9 @@ function AddressModal(props) {
     }
 
     function updateState(event) {
+        console.log(oldaddress.state);
         console.log(event.target.value);
-        StateSelect.state = event.target.value;
+        StateSelect.value = event.target.value;
         useraddress.state = event.target.value;
     }
 

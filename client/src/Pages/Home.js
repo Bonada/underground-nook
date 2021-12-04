@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import './Home.css';
 import '../Components/Navigation/Navigation.css';
+import Ledge1 from '../Images/ledge.PNG'
+import Ledge2 from '../Images/ledge.PNG'
 import HexagonPlants from '../Images/HexagonPlants.PNG'; // gives image path
 import Plant1 from '../Images/Plant1.PNG'; // gives image path
 import Plant2 from '../Images/Plant2.PNG'; // gives image path

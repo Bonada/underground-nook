@@ -10,18 +10,35 @@ export default class Settings extends React.Component {
 
   constructor(props) {
     super(props);
+    this._isMounted = false;
     this.state = {
       loading: true,
-      addresses: [],
+      addresses: [{
+        fulladdress: "",
+        address: "",
+        aptno: "",
+        city: "",
+        state: "",
+        zip: ""
+      }],
       currentIndex: 0
     };
   }
-  
 
   componentDidMount() {
-    console.log("mounted")
-    this.populateAddresses();
+    this._isMounted = true;
+    console.log(this.state.addresses);
+    this._isMounted && this.populateAddresses();
   }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentUser && prevProps.currentUser.userid) return;
+    if (this.props.currentUser && this.props.currentUser.userid) {
+      this.populateAddresses();
+    }
+  }
+
+
 
   // Get user addresses with api call
 
@@ -50,14 +67,14 @@ export default class Settings extends React.Component {
               </div>
             </div>
 
-            {this.state.loading ? (null) : this.state.addresses.map((address, index) => {
+            {this.state.loading ? (null) : (console.log(this.state.addresses), this.state.addresses.map((address, index) => {
               console.log(this.state.addresses);
               console.log(address, index);
               return (<div className="col-sm">
                 <AddressCard key={"address " + index} address={address}
-                  onClick={() => this.setState({ currentIndex: index })}/>
+                  onClick={() => this.setState({ currentIndex: index })} />
               </div>);
-            })}
+            }))}
           </div>
         </div>
 
@@ -65,7 +82,7 @@ export default class Settings extends React.Component {
         {this.state.loading ? (null) : <AddressModal isNew={true} currentUser={this.props.currentUser} isAdmin={this.props.isAdmin} />}
 
         {/* Edit Address Modal */}
-        {this.state.loading ? (null) : <AddressModal isNew={false} address={this.state.addresses[this.state.currentIndex]} currentUser={this.props.currentUser} isAdmin={this.props.isAdmin}  />}
+        {this.state.loading ? (null) : <AddressModal isNew={false} address={this.state.addresses[this.state.currentIndex]} currentUser={this.props.currentUser} isAdmin={this.props.isAdmin} />}
       </div>
     )
 
@@ -84,10 +101,12 @@ export default class Settings extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({
-          addresses: data,
-          loading: false
-        });
+        if (data.success == false) {
+          this.setState({
+            loading: false,
+            addresses: data.addresses
+          });
+        }
       });
   }
 }
