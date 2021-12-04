@@ -115,7 +115,7 @@ function EditOrderModal(props) {
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Edit Order</h5>
+                        <h5 className="modal-title" id="EditOrderModalLabel">Edit Order</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -237,7 +237,7 @@ function EditOrderModal(props) {
                                 </div>
                             </form>
                             <div className="flex-box-submit-button">
-                                <button onClick={handleSubmit} className="cart-button" type="submit" data-bs-dismiss="modal">Save</button>
+                                <button onClick={handleSubmit} className="cart-button" id="EditOrderButton" type="submit" data-bs-dismiss="modal">Save</button>
                             </div>
                         </div>
                     </div>

@@ -82,6 +82,7 @@ div#AdminEditCatalog{
     font-weight: 400;
     font-size: 20px;
     margin-bottom: 10px;
+    width:99%
 }
 #AdminEditCatalog .add-plant-button:hover, #AdminViewOrders .add-plant-button:hover {
     color: #6AA17B;

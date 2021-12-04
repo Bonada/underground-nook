@@ -1,29 +1,68 @@
+h5#AddPlantModalLabel.modal-title{
+    font-family: 'Avenir';
+    font-size: 30px;
+    margin-left: 20%;
+}
+h5#EditPlantModalLabel.modal-title{
+    font-family: 'Avenir';
+    font-size: 30px;
+    margin-left: 37%;
+}
+h5#EditOrderModalLabel.modal-title{
+    font-family: 'Avenir';
+    font-size: 30px;
+    margin-left: 35%;
+}
+h5#AddPurgePlantlLabel.modal-title{
+    font-family: 'Avenir';
+    font-size: 30px;
+    margin-left: 28%;
+}
+h5#AddAddressLabel.modal-title{
+    font-family: 'Avenir';
+    font-size: 30px;
+    margin-left: 32%;
+}
+h5#EditAddressLabel.modal-title{
+    font-family: 'Avenir';
+    font-size: 30px;
+    margin-left: 28%;
+}
+div.modal-header button{
+    background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23E5E5E5'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+}
+
 .modal input[type="file"] {
     display: none;
+    font-family: 'Avenir';
 }
 
 .modal .custom-file-upload {
-    border: 1px solid #ccc;
+    border: 1px solid #E5E5E5;;
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
     width: 100%;
     padding-bottom: 20px;
+    font-family: 'Avenir';
 }
 
 .modal i {
     font-size: 40px;
     margin: auto;
+    font-family: 'Avenir';
 
 }
 
 .modal p {
     margin: 0px;
+    font-family: 'Avenir';
 }
 
 .modal .field-name {
     text-align: left;
     margin-bottom: 10px;
+    font-family: 'Avenir';
 }
 
 .modal {
@@ -43,4 +82,103 @@ button#edit-plant-modal-button{
     font-size: 20px;
     font-weight: 500;
     line-height: 28px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+button#edit-plant-modal-button:hover{
+    background: transparent;
+    border: 2px solid #6AA17B;
+    color: #6AA17B;
+}
+button#AddPlantButton{
+    display: flex;
+    flex-direction: row;
+    margin-right: 5%;
+    margin-left: 0%;
+    padding: 10px 160px;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #26222E;
+    font-family: "Avenir";
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+button#AddPlantButton:hover{
+    background: transparent;
+    border: 2px solid #6AA17B;
+    color: #6AA17B;
+}
+button#EditOrderButton{
+    display: flex;
+    flex-direction: row;
+    margin-right: 5%;
+    margin-left: 0%;
+    padding: 10px 182px;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #26222E;
+    font-family: "Avenir";
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+button#EditOrderButton:hover{
+    background: transparent;
+    border: 2px solid #6AA17B;
+    color: #6AA17B;
+}
+button#AddAddress.submit-button.btn{
+    display: flex;
+    flex-direction: row;
+    margin-right: 5%;
+    margin-left: 0%;
+    padding: 10px 171px;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #26222E;
+    font-family: "Avenir";
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+button#AddAddress.submit-button.btn:hover{
+    background: transparent;
+    border: 2px solid #6AA17B;
+    color: #6AA17B;
+}
+button#EditAddress.submit-button.btn{
+    display: flex;
+    flex-direction: row;
+    margin-right: 5%;
+    margin-left: 0%;
+    padding: 10px 180px;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #26222E;
+    font-family: "Avenir";
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+button#EditAddress.submit-button.btn:hover{
+    background: transparent;
+    border: 2px solid #6AA17B;
+    color: #6AA17B;
 }

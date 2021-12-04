@@ -214,7 +214,7 @@ export default class Cart extends React.Component {
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Add Address</h5>
+                <h5 className="modal-title" id="AddAddressLabel">Add Address</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">
@@ -303,7 +303,7 @@ export default class Cart extends React.Component {
                   </form>
 
                   <div className="flex-box-submit-button">
-                    <button className="submit-button btn" type="submit" data-bs-dismiss="modal">Submit</button>
+                    <button className="submit-button btn" id="AddAddress" type="submit" data-bs-dismiss="modal">Submit</button>
                   </div>
                 </div>
               </div>
@@ -316,7 +316,7 @@ export default class Cart extends React.Component {
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Edit Address</h5>
+                <h5 className="modal-title" id="EditAddressLabel">Edit Address</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">
@@ -401,7 +401,7 @@ export default class Cart extends React.Component {
                     </div>
                   </form>
                   <div className="flex-box-submit-button">
-                    <button className="submit-button btn" type="submit" data-bs-dismiss="modal">Save</button>
+                    <button className="submit-button btn" type="submit" id="EditAddress" data-bs-dismiss="modal">Save</button>
                   </div>
                 </div>
               </div>
@@ -413,7 +413,7 @@ export default class Cart extends React.Component {
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLabel">Add Purge Plant</h5>
+                <h5 className="modal-title" id="AddPurgePlantlLabel">Add Purge Plant</h5>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">
@@ -429,12 +429,16 @@ export default class Cart extends React.Component {
                       <br />
                       <input className="input-box-modal form-control" type="text" placeholder="Enter Price" id="streetAddress" />
                     </div>
-                    <div className="mb-3">
-                      <label htmlFor="zipcode" className="form-label">Upload Screenshot</label>
-                      <br />
-                      <input className="input-box-modal form-control" type="file" id="fileupload" name="image">
+                    <p className="field-name">
+                      Upload Image
+                    </p>
+                    <div className="mb-3" id="Cart-Image-Upload">
+                      <label htmlFor="file-upload" class="custom-file-upload">
+                          <i class="ri-image-add-fill"></i>
+                          <p>Drop your image here, or browse</p>
+                          <p>Supports: JPG, PNG</p>
+                      </label>
 
-                      </input>
                     </div>
                   </form>
 

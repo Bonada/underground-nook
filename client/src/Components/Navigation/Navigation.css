@@ -47,6 +47,8 @@ img#Logo.img-fluid{
 /* CSS For the Pre-Login Navbar*/
 div#Pre-Login_NavBar{
     padding: 19px;
+    padding-top: 45px;
+    padding-bottom: 45px;
 }
 button#NavbarButton.btn {
     color: #1877F2 !important;
@@ -136,7 +138,7 @@ button#LogoutBtn:hover{
 button.dropbtn.btn p{
     font-size: 17px;
     margin-bottom: 0px;
-    margin-top: 1.4em;
+    margin-top: 1.5em;
     color: #E5E5E5;
     font-family: 'Raleway', sans-serif;
 }
