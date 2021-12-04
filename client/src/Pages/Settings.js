@@ -101,7 +101,7 @@ export default class Settings extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.success == false) {
+        if (data.success != false) {
           this.setState({
             loading: false,
             addresses: data.addresses
