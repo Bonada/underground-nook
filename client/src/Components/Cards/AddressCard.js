@@ -1,9 +1,8 @@
 export function AddressCard(props) {
-  return <div className="card h-100" style={{ width: '18rem' }}>
+  return <div className="card h-100" style={{ width: '18rem' }} onClick={props.onClick}>
     <div className="card-body">
-      <p className="card-text">{props.name}</p>
-      <p className="card-text">{props.street}</p>
-      <p className="card-text">{props.city}</p>
+      <p className="card-text">{props.address.address}</p>
+      <p className="card-text">{props.address.city}</p>
       <div className="edit-address-block">
         <div className="container address-card">
           <i className="ri-delete-bin-line"></i>

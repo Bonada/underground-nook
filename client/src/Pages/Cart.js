@@ -22,8 +22,6 @@ export default class Cart extends React.Component {
       selected_address: null,
       redirect: null
     };
-    // this.handleSubmit = this.handleSubmit.bind(this, event);
-    // this.handleChange = this.handleChange.bind(this, event);
   }
 
   handleSubmit(name, street, city, state, zip, shipping_radios, payment_radios) {
@@ -319,13 +317,13 @@ export default class Cart extends React.Component {
               </div>
             </div>
           </div>
-        
+      
           {/*  Add Address Modal */}
           <div className="modal fade" id="addAddressModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">Add Address</h5>
+                  <h5 className="modal-title" id="AddAddressLabel">Add Address</h5>
                   <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
@@ -349,73 +347,16 @@ export default class Cart extends React.Component {
                       <div className="mb-3">
                         <label htmlFor="state" className="form-label">State</label>
                         <br />
-
-                        <select className="input-box-modal form-control" id="state" name="state" value="Select State" onChange={this.handleChange}>
-                          <option value="Select State" disabled>Select State</option>
-                          <option value="AL">AL</option>
-                          <option value="AK">AK</option>
-                          <option value="AR">AR</option>
-                          <option value="AZ">AZ</option>
-                          <option value="CA">CA</option>
-                          <option value="CO">CO</option>
-                          <option value="CT">CT</option>
-                          <option value="DC">DC</option>
-                          <option value="DE">DE</option>
-                          <option value="FL">FL</option>
-                          <option value="GA">GA</option>
-                          <option value="HI">HI</option>
-                          <option value="IA">IA</option>
-                          <option value="ID">ID</option>
-                          <option value="IL">IL</option>
-                          <option value="IN">IN</option>
-                          <option value="KS">KS</option>
-                          <option value="KY">KY</option>
-                          <option value="LA">LA</option>
-                          <option value="MA">MA</option>
-                          <option value="MD">MD</option>
-                          <option value="ME">ME</option>
-                          <option value="MI">MI</option>
-                          <option value="MN">MN</option>
-                          <option value="MO">MO</option>
-                          <option value="MS">MS</option>
-                          <option value="MT">MT</option>
-                          <option value="NC">NC</option>
-                          <option value="NE">NE</option>
-                          <option value="NH">NH</option>
-                          <option value="NJ">NJ</option>
-                          <option value="NM">NM</option>
-                          <option value="NV">NV</option>
-                          <option value="NY">NY</option>
-                          <option value="ND">ND</option>
-                          <option value="OH">OH</option>
-                          <option value="OK">OK</option>
-                          <option value="OR">OR</option>
-                          <option value="PA">PA</option>
-                          <option value="RI">RI</option>
-                          <option value="SC">SC</option>
-                          <option value="SD">SD</option>
-                          <option value="TN">TN</option>
-                          <option value="TX">TX</option>
-                          <option value="UT">UT</option>
-                          <option value="VT">VT</option>
-                          <option value="VA">VA</option>
-                          <option value="WA">WA</option>
-                          <option value="WI">WI</option>
-                          <option value="WV">WV</option>
-                          <option value="WY">WY</option>
-                        </select>
                       </div>
-
                       <div className="mb-3">
                         <label htmlFor="zipcode" className="form-label">Zip Code</label>
                         <br />
                         <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" />
                       </div>
+                      <div className="flex-box-submit-button">
+                        <button className="submit-button btn" type="submit" data-bs-dismiss="modal">Submit</button>
+                      </div>
                     </form>
-
-                    <div className="flex-box-submit-button">
-                      <button className="submit-button btn" type="submit" data-bs-dismiss="modal">Submit</button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -427,7 +368,7 @@ export default class Cart extends React.Component {
             <div className="modal-dialog">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">Edit Address</h5>
+                  <h5 className="modal-title" id="EditAddressLabel">Edit Address</h5>
                   <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div className="modal-body">
@@ -510,16 +451,52 @@ export default class Cart extends React.Component {
                         <br />
                         <input className="input-box-modal form-control" type="text" defaultValue="12180" id="zipcode" />
                       </div>
+                      <div className="flex-box-submit-button">
+                        <button className="submit-button btn" type="submit" id="EditAddress" data-bs-dismiss="modal">Save</button>
+                      </div>
                     </form>
-                    <div className="flex-box-submit-button">
-                      <button className="submit-button btn" type="submit" data-bs-dismiss="modal">Save</button>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
+          {/*  Add Purge Plant Modal */}
+          <div className="modal fade" id="addPurgePlantModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="AddPurgePlantlLabel">Add Purge Plant</h5>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  <div className="container">
+                    <form>
+                      <div className="mb-3">
+                        <label htmlFor="fullName" className="form-label">Title</label>
+                        <br />
+                        <input className="input-box-modal form-control" type="text" placeholder="Enter Plant Title" id="fullName" />
+                      </div>
+                      <div className="mb-3">
+                        <label htmlFor="streetAddress" className="form-label">Price</label>
+                        <br />
+                        <input className="input-box-modal form-control" type="text" placeholder="Enter Price" id="streetAddress" />
+                      </div>
+                      <p className="field-name">
+                        Upload Image
+                      </p>
+                      <div className="mb-3" id="Cart-Image-Upload">
+                        <label htmlFor="file-upload" className="custom-file-upload">
+                            <i className="ri-image-add-fill"></i>
+                            <p>Drop your image here, or browse</p>
+                            <p>Supports: JPG, PNG</p>
+                        </label>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           {/*  Add Purge Plant Modal */}
           <AddPlantModal id="addPurgePlantModal" title="Add Purge Plant" type="purge" userid={this.props.currentUser.userid}/>
         </div>

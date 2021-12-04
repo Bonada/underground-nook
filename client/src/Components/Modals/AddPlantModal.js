@@ -95,7 +95,7 @@ function AddPlantModal(props){
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">{props.title}</h5>
+                        <h5 className="modal-title" id="AddPlantModalLabel">{props.title}</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -137,7 +137,7 @@ function AddPlantModal(props){
                                 </div>
                             </form>
                             <div className="flex-box-submit-button">
-                                <button onClick={(e) => handleSubmit(e, props.type, props.userid)} className="cart-button" type="submit" data-bs-dismiss="modal" >Add Plant</button>
+                                <button onClick={(e) => handleSubmit(e, props.type, props.userid)} className="cart-button" id="AddPlantButton" type="submit" data-bs-dismiss="modal" >Add Plant</button>
                             </div>
                         </div>
                     </div>

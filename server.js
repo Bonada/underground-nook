@@ -6,6 +6,9 @@ const express = require('express');
 // const { json } = require('body-parser');
 const path = require('path');
 
+const Json2csvParser = require("json2csv").Parser;
+const fs = require("fs");
+
 const app = express();
 const cors = require('cors');
 app.use(cors());
@@ -148,7 +151,40 @@ app.post('/add-address', async (req, res) => {
         res.status(400);
         res.json({
             success: false,
-            err: 'User ' + userid + 'does not exist'
+            err: 'Add Address failed'
+        });
+    }
+})
+
+app.post('/get-addresses', async (req, res) => {
+
+    console.log("looking for addresses");
+    let userid = req.body.userid;
+    console.log(userid);
+
+    try {
+        // await client.connect();
+        let db = client.db('main');
+        let users = db.collection('users');
+
+        let existinguser = await users.findOne({ userid: userid });
+
+        console.log(existinguser);
+        if (existinguser) {
+            res.send(existinguser.addresses);
+        }
+        else {
+            res.json({
+                success: false,
+                err: 'Facebook user ' + userid + 'does not exist'
+            });
+        }
+    } catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'User ' + userid + 'does not exist',
+            error: e
         });
     }
 })
@@ -159,9 +195,9 @@ app.post('/edit-address' , async (req, res) =>{
     let userid = req.body.userid;
     console.log(userid);
 
-    let old = req.body.oldaddress;
+    let old = req.body.old;
 
-    let update = req.body.newaddress;
+    let update = req.body.update;
   
     try {
         // await client.connect();
@@ -172,8 +208,14 @@ app.post('/edit-address' , async (req, res) =>{
   
         console.log(existinguser);
         if(existinguser){
-            let index = existinguser.addresses.indexOf(old);
-            existinguser.addresses[index] = update;
+            console.log(old);
+            let index = existinguser.addresses.findIndex(function(item, i){
+                return item.address === old.address;
+              });
+            let addrarray = existinguser.addresses;
+            addrarray[index] = update;
+            users.updateOne({userid: userid}, {$set:{addresses: addrarray}});
+            console.log(existinguser);
             res.send(existinguser);
         }
         else {
@@ -186,7 +228,7 @@ app.post('/edit-address' , async (req, res) =>{
         res.status(400);
         res.json({
             success: false,
-            err: 'User ' + userid + 'does not exist'
+            err: 'Edit Address failed'
         });
     }
   })
@@ -820,6 +862,48 @@ app.post('/get-user-orders' , async (req, res) =>{
       });
   }
 })
+
+app.post('/get-csv' , async (req, res) =>{
+
+  shippingcarrier = req.body.shippingcarrier;
+
+    try {
+
+        console.log("connecting to db to get plants");
+      //   await client.connect();
+        orders = client.db("main").collection("orders")
+
+        let document;
+        if(shippingcarrier == "all"){
+          document = orders.find({})
+        }
+        else{
+          document = orders.find({shippingcarrier: shippingcarrier})
+        }
+        
+        document.toArray((err, data) => {
+            // if (err) throw err;
+    
+            console.log(data);
+            const json2csvParser = new Json2csvParser({ header: true });
+            const csvData = json2csvParser.parse(data);
+    
+            res.send(csvData);
+
+            // const file = fs.createWriteStream("test.csv");
+            // const request = http.get("/get-csv", function(response) {
+            // response.pipe(file);})
+        });
+        // console.log(items);
+        // res.send(items);
+    }catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Cannot get the plant data'
+        });
+    }
+  })
 
 //--------------------------------------------------------------------------------------------------------------
 

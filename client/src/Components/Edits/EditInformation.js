@@ -30,8 +30,8 @@ function EditInformation(props) {
         <input className="input-box" type="text" defaultValue={props.currentUser.number || "000"} id="phonenumber" />
       </div>
 
-      <div className="row flex-box-save-button">
-        <button className="btn save-button" type="button">Save</button>
+      <div className="row flex-box-save-button" id="edit-information-div-btn">
+        <button className="btn save-button" id="edit-information-save-btn" type="button">Save</button>
       </div>
     </form>
   );

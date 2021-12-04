@@ -5,6 +5,8 @@ import '../Components/Navigation/Navigation.css';
 import HexagonPlants from '../Images/HexagonPlants.PNG'; // gives image path
 import Plant1 from '../Images/Plant1.PNG'; // gives image path
 import Plant2 from '../Images/Plant2.PNG'; // gives image path
+import Ledge1 from '../Images/ledge.PNG'; // gives image path
+import Ledge2 from '../Images/ledge.PNG'; // gives image path
 
 export default function Home(props) {
   return (

@@ -56,6 +56,8 @@ div.OrderContents{
     border-bottom-width: thin;
     border-bottom-style: solid;
     border-bottom-color:#E5E5E5;
+    font-family: "Avenir";
+    text-align: center;
 }
 div.order.card{
     background-color: transparent;
@@ -77,9 +79,10 @@ img.order-img.card-img-top{
 h2.order-card-title.card-title.col-md-8{
     font-size: 25px;
 }
-div#OrderTotal.row{
+div#OrderTotal.row h1{
     color: #E5E5E5;
     font-family: "Avenir";
+    text-align: left;
 }
 div.col-md-8{
     padding: 0px;
@@ -92,7 +95,7 @@ button.AddPurgePlant-button{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 12px 20px;
+    padding: 12px 29px;
     background: #6AA17B;
     border-color: transparent;
     border: 2px solid transparent;
@@ -293,6 +296,15 @@ div.container.addresses-container{
 div.card.h-100.cart{
     margin-right: 0px !important;
     max-width: 13rem;
+    height: 200px !important;
+}
+div.card.h-100.cart a{
+    font-size: 1.25rem;
+    font-family: 'Avenir';
+    color:#000000;
+    font-weight: 500;
+    font-style: normal;
+    text-decoration:none ;
 }
 input{
     margin-right: 5px;
@@ -310,6 +322,15 @@ div.PaymentSelection{
 input#PaymentUsername{
     width: 15em;
     margin-left: 45px;
+}
+div.card.h-100.cart{
+    font-size: 1.25rem;
+    font-family: 'Avenir';
+    color:#000000;
+    font-weight: 500;
+}
+div#Cart-Image-Upload{
+    text-align: center;
 }
 @media screen and (min-width: 1200px)  and (max-width: 1400px)  {
     div.col-sm{
