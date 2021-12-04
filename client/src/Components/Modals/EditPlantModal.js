@@ -145,7 +145,7 @@ function EditPlantModal(props) {
                                 </div>
                             </form>
                             <div className="flex-box-submit-button">
-                                <button onClick={handleSubmit} className="cart-button" type="submit" data-bs-dismiss="modal">Save</button>
+                                <button onClick={handleSubmit} className="cart-button" id="edit-plant-modal-button" type="submit" data-bs-dismiss="modal">Save</button>
                             </div>
                         </div>
                     </div>

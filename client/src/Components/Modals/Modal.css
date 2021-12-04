@@ -29,3 +29,18 @@
 .modal {
     color: #e5e5e5;
 }
+button#edit-plant-modal-button{
+    display: flex;
+    flex-direction: row;
+    margin-right: 1%;
+    padding: 10px 185px;
+    background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 50px !important;
+    color: #26222E;
+    font-family: "Avenir";
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+}

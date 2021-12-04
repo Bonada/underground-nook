@@ -31,8 +31,10 @@
     margin-left: 8px;
 }
 
-.btn {
+/*.btn {
     background: #6AA17B;
+    border-color: transparent;
+    border: 2px solid transparent;
     border-radius: 20px;
     box-sizing: border-box;
     color: #000000;
@@ -42,14 +44,20 @@
     font-weight: 400;
     line-height: 24px;
     opacity: 1;
-    outline: 0 solid transparent;
     padding: 8px 18px;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: fit-content;
+    width: 100%;
     word-break: break-word;
-    border: 0;
+}
+
+div.card-body.align-items-center.d-flex.justify-content-center{
+    height: 190px !important;
+}*/
+
+div.card.h-100{
+    height: 200px !important;
 }
 
 .card-body {
@@ -94,21 +102,29 @@
     width: 84%;
 }
 
-.save-button, .submit-button{
+div#edit-information-div-btn.row.flex-box-save-button{
+    margin-left: 15% !important;
+}
+
+button#edit-information-save-btn.btn.save-button, .submit-button{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    padding: 12px 18px;
     background: #6AA17B;
     border-color: transparent;
     border: 2px solid transparent;
     border-radius: 50px !important;
-    color: #000000;
+    color: #26222E;
+    margin-top: 10px;
+    font-family: "Avenir";
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 16px;
 }
 
-.save-button:hover, .submit-button:hover {
+button#edit-information-save-btn.btn.save-button:hover, .submit-button:hover {
     color: #6AA17B;
-    background: #26222E;
+    background: transparent;
     border-color: #6AA17B;
 }
 

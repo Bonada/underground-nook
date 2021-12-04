@@ -61,6 +61,7 @@ export default class AdminViewOrders extends React.Component{
           </div>
         </div>
         {this.state.loading ? (null) : <EditOrderModal order={this.state.orders[this.state.currentIndex]}/>}
+      <ExportDataModal></ExportDataModal>
       </div>
     );
   }

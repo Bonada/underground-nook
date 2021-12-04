@@ -18,7 +18,8 @@ function CartAddresses() {
               <p className="card-text">Minying Cao</p>
               <p className="card-text">1761 15th St</p>
               <p className="card-text">Troy, NY 12180</p>
-
+              
+              <i className="ri-pencil-line"></i>
               <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
                 Edit
               </a>
@@ -33,6 +34,7 @@ function CartAddresses() {
               <p className="card-text">1761 15th St</p>
               <p className="card-text">Troy, NY 12180</p>
             
+              <i className="ri-pencil-line"></i>
               <a data-bs-toggle="modal" data-bs-target="#editAddressModal" href="">
                 Edit
               </a>
