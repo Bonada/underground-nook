@@ -60,6 +60,7 @@ div.cards {
     background-color: #FBFBEF;
     color: #000000;
     min-height: 28rem;
+    margin-bottom: 10%;
 }
 
 #catalogModal {
