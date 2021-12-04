@@ -106,6 +106,6 @@ export default class Settings extends React.Component {
             loading: false,
             addresses: data.addresses
           });
-      });
+        });
   }
 }
