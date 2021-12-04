@@ -1,5 +1,5 @@
 import React from "react";
-export default class Settings extends React.Component {
+export default class StateSelect extends React.Component {
     constructor(props) {
         super(props);
         this._isMounted = false;
@@ -8,18 +8,13 @@ export default class Settings extends React.Component {
         }
     };
 
-    handleChange(state) {
-        this.setState({
-            value: state
-        })
-    }
-
     render() {
         return <div className="mb-3">
             <label htmlFor="state" className="form-label">State</label>
             <br />
 
-            <select className="input-box-modal form-select" id="state" name="state" value={this.state.value} placeholder={this.props.placeholder} onChange={this.handleChange.bind(this)}>
+            <select className="input-box-modal form-select" id="state" name="state" defaultValue={this.props.defaultState} onChange={this.props.handleChange}>
+                <option value="Select State" disabled>Select State</option>
                 <option value="AL">AL</option>
                 <option value="AK">AK</option>
                 <option value="AR">AR</option>

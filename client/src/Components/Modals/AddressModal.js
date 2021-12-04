@@ -36,9 +36,9 @@ function AddressModal(props) {
     }
 
     function updateState(event) {
-        console.log(oldaddress.state);
+        // console.log(oldaddress.state);
         console.log(event.target.value);
-        StateSelect.value = event.target.value;
+        // StateSelect.value = event.target.value;
         useraddress.state = event.target.value;
     }
 
@@ -112,8 +112,8 @@ function AddressModal(props) {
         <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" onChange={updateZip} /> :
         <input className="input-box-modal form-control" type="text" defaultValue={oldaddress.zip} id="zipcode" onChange={updateZip} />;
     const state_select = props.isNew ?
-        <StateSelect state="" placeholder="" onChange={updateState} /> :
-        <StateSelect state={oldaddress.state} placeholder="" onChange={updateState} />;
+        <StateSelect defaultState='Select State' handleChange={updateState} /> :
+        <StateSelect defaultState={oldaddress.state} handleChange={updateState} />;
 
     return (
         <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onMouseEnter={props.onMouseEnter}>
