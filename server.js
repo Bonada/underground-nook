@@ -6,6 +6,9 @@ const express = require('express');
 // const { json } = require('body-parser');
 const path = require('path');
 
+const Json2csvParser = require("json2csv").Parser;
+const fs = require("fs");
+
 const app = express();
 const cors = require('cors');
 app.use(cors());
@@ -757,6 +760,39 @@ app.post('/get-user-orders' , async (req, res) =>{
       });
   }
 })
+
+app.get('/get-csv' , async (req, res) =>{
+    try {
+
+        console.log("connecting to db to get plants");
+      //   await client.connect();
+        client
+        .db("main")
+        .collection("orders")
+        .find({})
+        .toArray((err, data) => {
+            // if (err) throw err;
+    
+            console.log(data);
+            const json2csvParser = new Json2csvParser({ header: true });
+            const csvData = json2csvParser.parse(data);
+    
+            res.send(csvData);
+
+            // const file = fs.createWriteStream("test.csv");
+            // const request = http.get("/get-csv", function(response) {
+            // response.pipe(file);})
+        });
+        // console.log(items);
+        // res.send(items);
+    }catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Cannot get the plant data'
+        });
+    }
+  })
 
 //--------------------------------------------------------------------------------------------------------------
 
