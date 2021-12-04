@@ -79,14 +79,6 @@ function EditOrderModal(props) {
         // console.log(this.state);
         let floatprice = parseFloat(price);
 
-            let addrobj = {
-                address: address,
-                aptno: aptno,
-                city: city,
-                state: state,
-                zip: zip
-            }
-
 
             fetch("http://localhost:3030/update-order", {
                 method: 'POST',
@@ -99,7 +91,11 @@ function EditOrderModal(props) {
                     paystatus: paystatus,
                     paymentmethod: paymentmethod,
                     paymentinfo: paymentinfo,
-                    address: addrobj,
+                    address: address,
+                    aptno: aptno,
+                    city: city,
+                    state: state,
+                    zip: zip,
                     shippingcarrier: shippingcarrier,
                     orderstatus: orderstatus,
                     price: floatprice
