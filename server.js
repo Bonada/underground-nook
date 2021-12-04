@@ -148,7 +148,40 @@ app.post('/add-address', async (req, res) => {
         res.status(400);
         res.json({
             success: false,
-            err: 'User ' + userid + 'does not exist'
+            err: 'Add Address failed'
+        });
+    }
+})
+
+app.post('/get-addresses', async (req, res) => {
+
+    console.log("looking for addresses");
+    let userid = req.body.userid;
+    console.log(userid);
+
+    try {
+        // await client.connect();
+        let db = client.db('main');
+        let users = db.collection('users');
+
+        let existinguser = await users.findOne({ userid: userid });
+
+        console.log(existinguser);
+        if (existinguser) {
+            res.send(existinguser.addresses);
+        }
+        else {
+            res.json({
+                success: false,
+                err: 'Facebook user ' + userid + 'does not exist'
+            });
+        }
+    } catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'User ' + userid + 'does not exist',
+            error: e
         });
     }
 })
@@ -159,9 +192,9 @@ app.post('/edit-address' , async (req, res) =>{
     let userid = req.body.userid;
     console.log(userid);
 
-    let old = req.body.oldaddress;
+    let old = req.body.old;
 
-    let update = req.body.newaddress;
+    let update = req.body.update;
   
     try {
         // await client.connect();
@@ -172,8 +205,14 @@ app.post('/edit-address' , async (req, res) =>{
   
         console.log(existinguser);
         if(existinguser){
-            let index = existinguser.addresses.indexOf(old);
-            existinguser.addresses[index] = update;
+            console.log(old);
+            let index = existinguser.addresses.findIndex(function(item, i){
+                return item.address === old.address;
+              });
+            let addrarray = existinguser.addresses;
+            addrarray[index] = update;
+            users.updateOne({userid: userid}, {$set:{addresses: addrarray}});
+            console.log(existinguser);
             res.send(existinguser);
         }
         else {
@@ -186,7 +225,7 @@ app.post('/edit-address' , async (req, res) =>{
         res.status(400);
         res.json({
             success: false,
-            err: 'User ' + userid + 'does not exist'
+            err: 'Edit Address failed'
         });
     }
   })

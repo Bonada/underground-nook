@@ -2,16 +2,23 @@ import StateSelect from "../Selects/StateSelect.js";
 
 function AddressModal(props) {
 
-    let useraddress = {
+    let useraddress = props.isNew ? {
         fulladdress: "",
         address: "",
         aptno: "",
         city: "",
         state: "",
         zip: ""
+    } : {
+        fulladdress: props.address.fulladdress,
+        address: props.address.address,
+        aptno: props.address.aptno,
+        city: props.address.city,
+        state: props.address.state,
+        zip: props.address.zip
     }
 
-    let oldaddress = props.isNew ? useraddress : props.old
+    let oldaddress = props.isNew ? null : props.address
 
     function updateAddress(event) {
         console.log(event.target.value);
@@ -41,8 +48,8 @@ function AddressModal(props) {
 
     const handleSubmit = function (event) {
         console.log("Started submit");
-        console.log("adding");
         if (props.isNew) {
+            console.log("adding");
             // Call add address endpoint
             fetch('http://localhost:3030/add-address', {
                 method: 'POST',
@@ -54,11 +61,18 @@ function AddressModal(props) {
                     userid: props.currentUser.userid,
                     address: useraddress
                 })
+            }).then(async addaddress_response => {
+                const data = await addaddress_response.json()
+                console.log(data);
             })
+                .catch(e => {
+                    console.log(e);
+                });
         }
         else {
             // Call edit address endpoint
             console.log("editing");
+            console.log(oldaddress);
             fetch('http://localhost:3030/edit-address', {
                 method: 'POST',
                 mode: 'cors',
@@ -66,6 +80,7 @@ function AddressModal(props) {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
+                    userid: props.currentUser.userid,
                     old: oldaddress,
                     update: useraddress
                 })
@@ -85,19 +100,19 @@ function AddressModal(props) {
     const title = props.isNew ? "Add Address" : "Edit Address";
     const street_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" onChange={updateAddress} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.address} id="streetAddress" onChange={updateAddress} />;
+        <input className="input-box-modal form-control" type="text" defaultValue={oldaddress.address} id="streetAddress" onChange={updateAddress} />;
     const aptno_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter Apt/Suite No." id="aptno" onChange={updateAddress} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.aptno} id="aptno" onChange={updateAptno} />;
+        <input className="input-box-modal form-control" type="text" defaultValue={oldaddress.aptno} id="aptno" onChange={updateAptno} />;
     const city_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" onChange={updateCity} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.city} id="city" onChange={updateCity} />;
+        <input className="input-box-modal form-control" type="text" defaultValue={oldaddress.city} id="city" onChange={updateCity} />;
     const zip_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" onChange={updateZip} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={props.zip} id="zipcode" onChange={updateZip} />;
+        <input className="input-box-modal form-control" type="text" defaultValue={oldaddress.zip} id="zipcode" onChange={updateZip} />;
     const state_select = props.isNew ?
-        <StateSelect state="" state={useraddress.state} placeholder="" onChange={updateState} /> :
-        <StateSelect state={props.state} placeholder="" onChange={updateState} />;
+        <StateSelect state="" placeholder="" onChange={updateState} /> :
+        <StateSelect state={oldaddress.state} placeholder="" onChange={updateState} />;
 
     return (
         <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onMouseEnter={props.onMouseEnter}>
