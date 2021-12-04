@@ -125,8 +125,8 @@ function AddPlantModal(props){
                                     Upload Image
                                 </p>
                                 <div className="mb-3">
-                                        <label htmlFor="file-upload-add" class="custom-file-upload">
-                                            <i class="ri-image-add-fill"></i>
+                                        <label htmlFor="file-upload-add" className="custom-file-upload">
+                                            <i className="ri-image-add-fill"></i>
                                             <p>Drop your image here, or browse</p>
                                             <p>Supports: JPG, PNG</p>
                                         </label>

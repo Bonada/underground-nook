@@ -19,7 +19,8 @@ import './Navigation.css';
 /*global FB*/
 //'1839081979786582'
 export default function Navigation(props) {
-  const admin_ids = ['1238211160013297', '4524022054277037', '2034884766556492', '2997818750540073', '1839081979786582'];
+  //const admin_ids = ['1238211160013297', '4524022054277037', '2034884766556492', '2997818750540073', '1839081979786582'];
+  const admin_ids = ['1839081979786582'];
 
   const [userType, setUserType] = useState("Pre-Login");
   const [redirect, setRedirect] = useState(null);
@@ -181,7 +182,6 @@ export default function Navigation(props) {
     }
   }
 
-  // Try redirect with else branch
   var showPage = '';
   if (redirect) {
     showPage = <Redirect to={redirect} />;
