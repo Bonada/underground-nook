@@ -128,7 +128,6 @@ button#LogoutBtn{
     border-color: transparent;
     border: 2px solid transparent;
     border-radius: 50px !important;
-    padding: 6px 9px;
 }
 button#LogoutBtn:hover{
     background-color: transparent;
