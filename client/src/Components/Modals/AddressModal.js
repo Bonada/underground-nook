@@ -36,8 +36,9 @@ function AddressModal(props) {
     }
 
     function updateState(event) {
+        // console.log(oldaddress.state);
         console.log(event.target.value);
-        StateSelect.state = event.target.value;
+        // StateSelect.value = event.target.value;
         useraddress.state = event.target.value;
     }
 
@@ -94,25 +95,28 @@ function AddressModal(props) {
                 });
         }
         event.preventDefault();
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
     }
 
     const id = props.isNew ? "addAddressModal" : "editAddressModal";
     const title = props.isNew ? "Add Address" : "Edit Address";
     const street_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" onChange={updateAddress} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={oldaddress.address} id="streetAddress" onChange={updateAddress} />;
+        <input className="input-box-modal form-control" type="text" value={oldaddress.address} id="streetAddress" onChange={updateAddress} />;
     const aptno_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter Apt/Suite No." id="aptno" onChange={updateAddress} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={oldaddress.aptno} id="aptno" onChange={updateAptno} />;
+        <input className="input-box-modal form-control" type="text" value={oldaddress.aptno} id="aptno" onChange={updateAptno} />;
     const city_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" onChange={updateCity} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={oldaddress.city} id="city" onChange={updateCity} />;
+        <input className="input-box-modal form-control" type="text" value={oldaddress.city} id="city" onChange={updateCity} />;
     const zip_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter Zip Code" id="zipcode" onChange={updateZip} /> :
-        <input className="input-box-modal form-control" type="text" defaultValue={oldaddress.zip} id="zipcode" onChange={updateZip} />;
+        <input className="input-box-modal form-control" type="text" value={oldaddress.zip} id="zipcode" onChange={updateZip} />;
     const state_select = props.isNew ?
-        <StateSelect state="" placeholder="" onChange={updateState} /> :
-        <StateSelect state={oldaddress.state} placeholder="" onChange={updateState} />;
+        <StateSelect defaultState='Select State' handleChange={updateState} /> :
+        <StateSelect defaultState={oldaddress.state} handleChange={updateState} />;
 
     return (
         <div className="modal fade" id={id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onMouseEnter={props.onMouseEnter}>

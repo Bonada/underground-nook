@@ -51,12 +51,13 @@ app.post('/add-user', async (req, res) => {
     let username = req.body.username;
     let userid = req.body.userid;
     let email = req.body.email;
+    let phonenumber = req.body.phonenumber;
 
   try {
     //   await client.connect();
       let db = client.db('main');
 
-        let newUser = { userid: userid, username: username, email: email, addresses: [] };
+        let newUser = { userid: userid, username: username, email: email, addresses: [], phonenumber: phonenumber };
         let users = db.collection('users');
 
         let existinguser = await users.findOne({ userid: userid });
@@ -171,7 +172,7 @@ app.post('/get-addresses', async (req, res) => {
 
         console.log(existinguser);
         if (existinguser) {
-            res.send(existinguser.addresses);
+            res.send(existinguser);
         }
         else {
             res.json({
@@ -754,6 +755,10 @@ app.post('/update-order' , async (req, res) =>{
     let paymentmethod = req.body.paymentmethod;
     let paymentinfo = req.body.paymentinfo;
     let address = req.body.address;
+    let aptno = req.body.aptno;
+    let city = req.body.city;
+    let state = req.body.state;
+    let zip = req.body.zip;
     let shippingcarrier = req.body.shippingcarrier;
     let orderstatus = req.body.orderstatus;
     let price = req.body.price;
@@ -764,7 +769,7 @@ app.post('/update-order' , async (req, res) =>{
   
         // await client.connect();
         let db = client.db('main');
-        db.collection('orders').updateOne({id: orderid}, {$set:{paystatus: paystatus, orderstatus: orderstatus, address: address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, price: price, shippingcarrier: shippingcarrier}})
+        db.collection('orders').updateOne({id: orderid}, {$set:{paystatus: paystatus, orderstatus: orderstatus, address: address, aptno: aptno, city: city, state: state, zip: zip, paymentmethod: paymentmethod, paymentinfo: paymentinfo, price: price, shippingcarrier: shippingcarrier}})
   
         console.log("updated order");
   
