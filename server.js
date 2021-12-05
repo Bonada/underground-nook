@@ -312,7 +312,75 @@ app.post('/add-plant', async (req, res) => {
     }
 })
 
-app.post('/update-plant', async (req, res) => {
+app.post('/add-purge-plant', async (req, res) => {
+
+  console.log("adding purge plant to cart");
+  let userid = req.body.userid;
+  let id = uuidv4();
+
+  let species_name = req.body.sname;
+  let common_name = "";
+  let description = "";
+  let price = req.body.price;
+  let img = req.body.img;
+
+  try {
+    let newPlant = {id: id, species_name: species_name, common_name: common_name, description: description, price: price, img_url: img, availability: false};
+
+    let db = client.db('main');
+    db.collection('plants').insertOne(newPlant);
+
+    console.log("added new purge plant");
+
+    let carts = db.collection('carts');
+    let user_cart = await carts.findOne({userid: userid});
+
+    if (!user_cart) {
+      carts.insertOne({userid: userid, plants: [newPlant], total_price: price, size: 1});
+
+      console.log("added plant to new cart for user");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + id + ' added to new cart'
+      });
+    }
+    else {
+      let new_price = user_cart.total_price + price;
+      let new_size = user_cart.size + 1;
+      let new_plants = user_cart.plants;
+
+      for (var i = 0; i < new_plants.length; i++) {
+        if (new_plants[i].id == id) {
+          res.json({
+            success: false,
+            err: 'Plant already exists in cart'
+          })
+          return;
+        }
+      }
+      new_plants.push(newPlant);
+
+      carts.updateOne({userid: userid}, {$set: {plants: new_plants, total_price: new_price, size: new_size}});
+
+      console.log("added plant to existing cart for user");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + id + ' added to existing cart'
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+    res.json({
+        success: false,
+        err: 'Error adding purge plant ' + species_name
+    });
+  }
+})
+
+app.post('/update-plant' , async (req, res) =>{
 
     console.log("updating plant");
     let id = req.body.id;
@@ -424,43 +492,59 @@ app.post('/add-to-cart', async (req, res) => {
 
     console.log("adding plant to cart");
     let userid = req.body.userid;
-    let plant = req.body.plant;
+    let plantid = req.body.plantid;
 
   try {
     // await client.connect();
     let db = client.db('main');
 
-        let carts = db.collection('carts');
-        let user_cart = await carts.findOne({ userid: userid });
-        if (!user_cart) {
-            carts.insertOne({ userid: userid, plants: [plant], total_price: plant.price, size: 1 });
+    let carts = db.collection('carts');
+    let plants = db.collection('plants');
+    let user_cart = await carts.findOne({ userid: userid });
+    let plant = await plants.findOne({id: plantid});
+    if (!user_cart) {
+        carts.insertOne({ userid: userid, plants: [plant], total_price: plant.price, size: 1 });
 
-            console.log("added plant to new cart for user");
+        console.log("added plant to new cart for user");
 
-            res.json({
-                success: true,
-                err: 'Plant ' + plant.id + ' added to new cart'
-            });
-        }
-        else {
-            user_cart.plants.push(plant);
-            user_cart.total_price += plant.price;
-            user_cart.size += 1;
-
-            console.log("added plant to existing cart for user");
-
-            res.json({
-                success: true,
-                err: 'Plant ' + plant.id + ' added to existing cart'
-            });
-        }
-    } catch (e) {
-        res.status(400);
         res.json({
-            success: false,
-            err: 'Could not add plant to cart'
+            success: true,
+            err: 'Plant ' + plant.id + ' added to new cart'
         });
     }
+    else {
+      let new_price = user_cart.total_price + plant.price;
+      let new_size = user_cart.size + 1;
+      let new_plants = user_cart.plants;
+
+      for (var i = 0; i < new_plants.length; i++) {
+        if (new_plants[i].id == plant.id) {
+          res.json({
+            success: false,
+            err: 'Plant already exists in cart'
+          })
+          return;
+        }
+      }
+      new_plants.push(plant);
+
+      carts.updateOne({userid: userid}, {$set: {plants: new_plants, total_price: new_price, size: new_size}});
+
+      console.log("added plant to existing cart for user");
+
+      res.json({
+          success: true,
+          err: 'Plant ' + plant.id + ' added to existing cart'
+      });
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(400);
+    res.json({
+        success: false,
+        err: 'Could not add plant to cart'
+    });
+  }
 })
 
 app.post('/get-cart', async (req, res) => {
@@ -558,42 +642,60 @@ app.post('/remove-from-cart', async (req, res) => {
 // Order endpoints
 
 // Add timestamp to this api with order
-app.post('/add-order', async (req, res) => {
+app.post('/place-order', async (req, res) => {
 
     console.log("adding new plant");
     let id = uuidv4();
     let username = req.body.username;
     let userid = req.body.userid;
-    let date = Date().toString();
-    let time = Date().now();
-    let address = req.body.address;
-    let paymentmethod = req.body.paymentmethod;
-    let paymentinfo = req.body.paymentinfo;
-    let shippingcarrier = req.body.shippingcarrier;
-    let plants = req.body.plants;
-    let images = req.body.images;
+    let date = Date.toString();
+    let time = Date.now();
+    let price = req.body.price;
+    let address_name = req.body.address_name;
+    let address_st = req.body.address_st;
+    let address_city = req.body.address_city;
+    let address_state = req.body.address_state;
+    let address_zip = req.body.address_zip;
+    let paymentmethod = req.body.payment;
+    let paymentinfo = req.body.payment_username;
+    let shippingcarrier = req.body.shipping;
+    let plantids = req.body.plantids;
   
     try {
-
-        // await client.connect();
         let db = client.db('main');
-
-        let newOrder = { id: id, username: username, userid: userid, plants: plants, date: date, time: time, address: address, paymentmethod: paymentmethod, paymentinfo: paymentinfo, shippingcarrier: shippingcarrier, images: images };
-
+        let newOrder = {
+          id: id,
+          username: username,
+          userid: userid,
+          plants: plantids,
+          time: time,
+          address: address_st,
+          aptno: "",
+          city: address_city,
+          state: address_state,
+          zip: address_zip,
+          paymentmethod: paymentmethod,
+          paymentinfo: paymentinfo,
+          shippingcarrier: shippingcarrier,
+          price: price,
+          orderstatus: "pending",
+          paystatus: "pending"
+        };
         db.collection('orders').insertOne(newOrder);
+        console.log("placed order");
 
-        console.log("added new plant");
+        db.collection('carts').deleteOne({userid: userid});
+        console.log("removed cart");
 
         res.json({
-            success: true,
-            err: 'Plant ' + scientific_name + 'added to database'
+          success: true,
+          err: 'Order ' + id + 'placed in database'
         });
-
     } catch (e) {
         res.status(400);
         res.json({
             success: false,
-            err: 'Error adding ' + scientific_name + 'to database'
+            err: 'Error adding order ' + id + 'to database'
         });
     }
 })
@@ -685,63 +787,63 @@ app.post('/update-order' , async (req, res) =>{
     }
   })
 
-  app.delete('/delete-order', async (req, res) => {
+app.delete('/delete-order', async (req, res) => {
 
-    let id = req.body.id;
+  let id = req.body.id;
 
-    try {
+  try {
 
-        console.log("connecting to db to delete order");
+      console.log("connecting to db to delete order");
 
-        // await client.connect();
-        let db = client.db('main');
-        let collection = db.collection('orders');
-        let document = await collection.deleteOne({id: id});
+      // await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('orders');
+      let document = await collection.deleteOne({id: id});
 
-        console.log("Deleted: ", document);
-        res.send(document);
-        
-    } catch (e) {
-        res.status(400);
-        res.json({
-            success: false,
-            err: 'Cannot find order'
-        });
-    }
+      console.log("Deleted: ", document);
+      res.send(document);
+      
+  } catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot find order'
+      });
+  }
 
-  })
+})
 
-  app.post('/get-order-plants' , async (req, res) =>{
+app.post('/get-order-plants' , async (req, res) =>{
 
-    let plants = req.body.plants;
-    console.log(plants);
+  let plants = req.body.plants;
+  console.log(plants);
 
-    try {
-  
-        console.log("connecting to db to get order plants");
-  
-        // await client.connect();
-        let db = client.db('main');
-        let collection = db.collection('plants');
+  try {
 
-        let retplants = [];
-        for(plantid of plants){
-            console.log(plantid);
-            let document = await collection.findOne({id:plantid});
-            retplants.push(document);
-        }
-        
-  
-        console.log(retplants);
-        res.send(retplants);
-    } catch (e) {
-        res.status(400);
-        res.json({
-            success: false,
-            err: 'Cannot get the plant data'
-        });
-    }
-  })
+      console.log("connecting to db to get order plants");
+
+      // await client.connect();
+      let db = client.db('main');
+      let collection = db.collection('plants');
+
+      let retplants = [];
+      for(plantid of plants){
+          console.log(plantid);
+          let document = await collection.findOne({id:plantid});
+          retplants.push(document);
+      }
+      
+
+      console.log(retplants);
+      res.send(retplants);
+  } catch (e) {
+      res.status(400);
+      res.json({
+          success: false,
+          err: 'Cannot get the plant data'
+      });
+  }
+})
 
 app.post('/get-user-orders' , async (req, res) =>{
   try {

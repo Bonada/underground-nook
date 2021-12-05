@@ -96,7 +96,7 @@ export default class Settings extends React.Component {
       .then(data => {
         if (data.success !== false) {
           console.log(data);
-          if (data.addresses.length !== 0) {
+          if (data.addresses && data.addresses.length !== 0) {
             this.setState({
               addresses: data.addresses
             });
