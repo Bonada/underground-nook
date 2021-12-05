@@ -115,22 +115,22 @@ function EditPlantModal(props) {
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">Scientific Name</label>
                                     <br />
-                                    <input onChange={changesname} className="input-box-modal form-control" type="text" defaultValue={sname} id="name" />
+                                    <input onChange={changesname} className="input-box-modal form-control" type="text" placeholder={props.plant.species_name} id="name" />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">Common Name</label>
                                     <br />
-                                    <input onChange={changecname} className="input-box-modal form-control" type="text" defaultValue={cname} id="name" />
+                                    <input onChange={changecname} className="input-box-modal form-control" type="text" placeholder={props.plant.common_name} id="name" />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="descriptionOfPlant" className="form-label">Description</label>
                                     <br />
-                                    <textarea onChange={changedesc} className="input-box-modal form-control" type="text" defaultValue={desc} id="descriptionOfPlant" />
+                                    <textarea onChange={changedesc} className="input-box-modal form-control" type="text" placeholder={props.plant.description} id="descriptionOfPlant" />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="price" className="form-label">Price</label>
                                     <br />
-                                    <input onChange={changeprice} className="input-box-modal form-control" type="text" defaultValue={price} id="price" />
+                                    <input onChange={changeprice} className="input-box-modal form-control" type="text" placeholder={props.plant.price} id="price" />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="fileUpload" className="form-label">Upload Screenshot</label>
