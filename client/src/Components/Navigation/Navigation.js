@@ -111,6 +111,7 @@ export default function Navigation(props) {
           setRedirect("/NewUser");
         }
         else {
+          setUserInfo(data);
           handleUserLogin(fb_response.id, true);
         }
       })
