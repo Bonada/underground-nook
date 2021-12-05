@@ -76,7 +76,7 @@ function AddPlantModal(props){
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="exampleModalLabel">Add Plant to Catalog</h5>
+                        <h5 className="modal-title" id="AddPlantModalLabel">Add Plant to Catalog</h5>
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -102,23 +102,19 @@ function AddPlantModal(props){
                                     <br />
                                     <input onChange={changePrice}  className="input-box-modal form-control" type="text" placeholder="Enter a Price" id="price" />
                                 </div>
-                                <p className="field-name">
-                                    Upload Image
-                                </p>
                                 <div className="mb-3">
-                                        <label htmlFor="file-upload-add" class="custom-file-upload">
-                                            <i class="ri-image-add-fill"></i>
-                                            <p>Drop your image here, or browse</p>
-                                            <p>Supports: JPG, PNG</p>
-                                        </label>
-                                    <input onChange={changeFiles} id="file-upload-add" type="file"/>
+                                <div className="mb-3">
+                                    <label for="fileUpload" className="form-label">Upload Screenshot</label>
+                                    <br />
+                                    <input type="file" onChange={changeFiles} className="input-box-modal form-control" id="fileUpload" name="file" accept="image/*"></input>
+                                </div>
                                 </div>
                                 <div id="filename" className="mb-3">
                                     
                                 </div>
                             </form>
                             <div className="flex-box-submit-button">
-                                <button onClick={handleSubmit} className="cart-button" type="submit" data-bs-dismiss="modal" >Add Plant</button>
+                                <button onClick={handleSubmit} className="cart-button" id="AddPlantModalButton" type="submit" data-bs-dismiss="modal" >Add Plant</button>
                             </div>
                         </div>
                     </div>

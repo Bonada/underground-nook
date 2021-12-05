@@ -8,6 +8,25 @@
     color: #E5E5E5;
 }
 
+h2.total-price{
+    color: #E5E5E5;
+    font-family: "Avenir";
+    font-size: 2.5rem;
+}
+
+p.p-tag{
+    color: #E5E5E5;
+    font-family: "Avenir";
+    font-size: 23px;
+}
+
+p.p-tag a{
+    color: #E5E5E5;
+    font-family: "Avenir";
+    font-size: 23px;
+    text-decoration: none !important;
+}
+
 div#AdminViewOrdersContainer.container {
     padding-top: 12%;
     margin-left: 0px;
@@ -54,13 +73,13 @@ div#AdminViewOrders{
 }
 
 #AdminViewOrders .edit-col i {
-    color: #000000;
+    color: #26222E;
     position: relative;
     top: 1.5px;
 }
 
 #AdminViewOrders .edit-col a {
-    color: #000000;
+    color: #26222E;
 }
 
 #AdminViewOrders .edit-col .edit-container:hover > * {

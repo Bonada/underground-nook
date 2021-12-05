@@ -8,6 +8,12 @@ i {
     margin-right: 5px;
     margin-left: 30px;
 }
+i.fa.fa-caret-down {
+    color: #E5E5E5;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 16px;
+}
 div#WebsiteTitle a{
     color: #E5E5E5 !important;
     font-size: 30px;
@@ -46,7 +52,9 @@ img#Logo.img-fluid{
 
 /* CSS For the Pre-Login Navbar*/
 div#Pre-Login_NavBar{
-    padding: 19px;
+    padding: 17px;
+    padding-top: 32px;
+    padding-bottom: 45px;
 }
 button#NavbarButton.btn {
     color: #1877F2 !important;
@@ -79,7 +87,7 @@ i.ri-facebook-circle-fill.ri-lg{
 
 /* CSS For the Post-Login Navbar*/
 div#Post-Login_NavBar{
-    padding: 15px;
+    padding: 17px;
 }
 .dropdown {
     float: left;
@@ -92,6 +100,7 @@ div#Post-Login_NavBar{
     outline: none;
     color: #E5E5E5;
     padding: 14px 16px;
+    padding-top: 0px;
     background-color: inherit;
     font-family: 'Raleway', sans-serif;
     margin: 0;
@@ -109,7 +118,7 @@ div#DropDown a{
     float: none;
     color: #E5E5E5;
     font-family: 'Raleway', sans-serif;
-    padding: 6px 10px;
+    padding: 6px 13px;
     text-decoration: none;
     display: block;
     text-align: left;
@@ -128,6 +137,7 @@ button#LogoutBtn{
     border-color: transparent;
     border: 2px solid transparent;
     border-radius: 50px !important;
+    padding: 3px 13px;
 }
 button#LogoutBtn:hover{
     background-color: transparent;
@@ -136,14 +146,19 @@ button#LogoutBtn:hover{
 button.dropbtn.btn p{
     font-size: 17px;
     margin-bottom: 0px;
-    margin-top: 1.4em;
+    margin-top: 1.45em;
     color: #E5E5E5;
     font-family: 'Raleway', sans-serif;
+}
+button.dropbtn.btn{
+    padding-bottom: 25px;
+    padding-left: 12px !important;
+    padding-right: 9px !important;
 }
 
 /* CSS For the Admin Navbar*/
 div#Admin_NavBar{
-    padding: 15px;
+    padding: 17px;
 }
 #userid{
     display: none;
