@@ -502,6 +502,7 @@ app.post('/add-to-cart', async (req, res) => {
     let plants = db.collection('plants');
     let user_cart = await carts.findOne({ userid: userid });
     let plant = await plants.findOne({id: plantid});
+    plants.updateOne({id: plantid}, {$set: {availability: false}});
     if (!user_cart) {
         carts.insertOne({ userid: userid, plants: [plant], total_price: plant.price, size: 1 });
 
