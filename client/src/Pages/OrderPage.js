@@ -30,7 +30,8 @@ export default class OrderPage extends React.Component {
 				<h1 className="AdminViewOrders_Title">{"Order id: " + this.state.order.id}</h1>
 				
 				<div className="container" id="AdminViewOrdersContainer">
-					<p className="p-tag">Purchaser ID: <a href="#">{this.state.order.userid}</a></p>
+					<p className="p-tag">Purchaser Name: <a href="#">{this.state.order.username}</a></p>
+					<p className="p-tag">Purchaser Phone #: <a href="#">{this.state.order.phonenumber}</a></p>
 					<p className="p-tag">Status: {this.state.order.orderstatus}</p>
 					<div className="row">
 						<div className="col-md col-catalog">
