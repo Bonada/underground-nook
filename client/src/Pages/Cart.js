@@ -56,6 +56,7 @@ export default class Cart extends React.Component {
       },
       body: JSON.stringify({
         username: this.props.currentUser.username,
+        phonenumber: this.props.currentUser.phonenumber,
         userid: this.props.currentUser.userid,
         plantids: this.state.plants.map(p => p.id),
         price: this.state.price,

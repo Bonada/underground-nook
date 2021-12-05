@@ -649,6 +649,7 @@ app.post('/place-order', async (req, res) => {
     let id = uuidv4();
     let username = req.body.username;
     let userid = req.body.userid;
+    let phonenumber = req.body.phonenumber;
     let date = Date.toString();
     let time = Date.now();
     let price = req.body.price;
@@ -668,6 +669,7 @@ app.post('/place-order', async (req, res) => {
           id: id,
           username: username,
           userid: userid,
+          phonenumber: phonenumber,
           plants: plantids,
           time: time,
           address: address_st,
