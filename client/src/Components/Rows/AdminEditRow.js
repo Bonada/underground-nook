@@ -3,7 +3,7 @@ function AdminEditRow(props) {
     let id = props.id;
 
     function deletePlant(event){
-        alert(id);
+        alert(id + "DELETED");
         fetch("http://localhost:3030/delete-plant", {
                     method: 'DELETE',
                     mode: 'cors',
