@@ -29,10 +29,8 @@ export default class AdminEditCatalog extends React.Component {
 
   getTableRows(plant, index) {
     return (
-      <div onClick={() => this.setState({currentIndex: index}) } >
-        <AdminEditRow key={"catrow"+index} id={plant['id']} name={plant['species_name']} price={plant['price']} desc={plant['description']} img_url={plant['img_url']}
-        onClick={() => this.setState({currentIndex: index})}/>
-      </div>
+      <AdminEditRow key={"catrow"+index} id={plant['id']} name={plant['species_name']} price={plant['price']} desc={plant['description']} img_url={plant['img_url']}
+      onClick={() => this.setState({currentIndex: index})}/>
     );
   }
 
