@@ -47,7 +47,7 @@ h1.YourOrderTitle{
     color: #E5E5E5;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 28px;
+    font-size: 30px;
     float: left;
 }
 div.OrderContents{
@@ -134,7 +134,7 @@ button.purge-plant-button.btn{
     border-color: transparent;
     border: 2px solid transparent;
     border-radius: 50px !important;
-    color: #000000;
+    color: #26222E;
 }
 .save-button:hover, .submit-button:hover, button.purge-plant-button.btn:hover {
     color: #6AA17B;
@@ -264,10 +264,10 @@ h1.AccordianTitle{
     font-size: 30px;
 }
 h2.AccordianSubtitle{
-    font-family: 'Scope One', serif;
-    font-style: normal;
-    color: #E5E5E5;
-    font-size: 15px;
+    font-family: 'Scope One', serif !important;
+    font-style: normal !important;
+    color: #E5E5E5 !important;
+    font-size: 15px !important;
     float:left;
 }
 div.accordion-body{
@@ -301,7 +301,7 @@ div.card.h-100.cart{
 div.card.h-100.cart a{
     font-size: 1.25rem;
     font-family: 'Avenir';
-    color:#000000;
+    color:#26222E;
     font-weight: 500;
     font-style: normal;
     text-decoration:none ;
@@ -326,7 +326,7 @@ input#PaymentUsername{
 div.card.h-100.cart{
     font-size: 1.25rem;
     font-family: 'Avenir';
-    color:#000000;
+    color:#26222E;
     font-weight: 500;
 }
 div#Cart-Image-Upload{

@@ -297,7 +297,7 @@ export default class Cart extends React.Component {
                           <div className="radio 2">
                             <input id="Facebook" name="radio 2" type="radio" value="Facebook"></input>
                             <label  htmlFor="Facebook" className="radio-label"> Facebook Pay</label>
-                          </div>  
+                          </div>
                         </div>
                         <br ></br>
                         <h2 className="AccordianSubtitle">If you are using Venmo or Zelle as a payment method, enter you username for the payment system below. Otherwise, enter in your respective email or mobil number within the text box.</h2>
@@ -460,43 +460,7 @@ export default class Cart extends React.Component {
               </div>
             </div>
           </div>
-          {/*  Add Purge Plant Modal */}
-          <div className="modal fade" id="addPurgePlantModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="AddPurgePlantlLabel">Add Purge Plant</h5>
-                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div className="modal-body">
-                  <div className="container">
-                    <form>
-                      <div className="mb-3">
-                        <label htmlFor="fullName" className="form-label">Title</label>
-                        <br />
-                        <input className="input-box-modal form-control" type="text" placeholder="Enter Plant Title" id="fullName" />
-                      </div>
-                      <div className="mb-3">
-                        <label htmlFor="streetAddress" className="form-label">Price</label>
-                        <br />
-                        <input className="input-box-modal form-control" type="text" placeholder="Enter Price" id="streetAddress" />
-                      </div>
-                      <p className="field-name">
-                        Upload Image
-                      </p>
-                      <div className="mb-3" id="Cart-Image-Upload">
-                        <label htmlFor="file-upload" className="custom-file-upload">
-                            <i className="ri-image-add-fill"></i>
-                            <p>Drop your image here, or browse</p>
-                            <p>Supports: JPG, PNG</p>
-                        </label>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
           {/*  Add Purge Plant Modal */}
           <AddPlantModal id="addPurgePlantModal" title="Add Purge Plant" type="purge" userid={this.props.currentUser.userid}/>
         </div>

@@ -1,6 +1,6 @@
 .table-bg {
     background-color: #fbfbef;
-    color: #000000;
+    color: #26222E;
 }
 
 .orders.table {
@@ -20,11 +20,11 @@ h1.orders-header {
     font-style: normal;
     font-weight: 400;
     font-size: 45px;
-    padding-top: 14%;
+    padding-top: 14.5%;
     color: #E5E5E5;
 }
 div#OrderHeader.offset-md-1.col-md-3{
-    margin-left: 5% !important;
+    margin-left: 5.4% !important;
 }
 
 .table-body {

@@ -41,7 +41,7 @@ export default class Settings extends React.Component {
         <div className="container basic-user-info-container">
           <div className="row">
             <div className="col-md">
-              <img className="profile-picture" src="https://scontent-lga3-2.xx.fbcdn.net/v/t1.6435-9/226848957_4524022060943703_6194489319445931835_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=n3IESs-gxKEAX8NvLXV&_nc_ht=scontent-lga3-2.xx&oh=2b7631efff9821d4eb42bd3a1c8f728b&oe=6195B0A3" alt="Minying Cao Profile" width="300px" />
+              <img className="profile-picture" src={"https://graph.facebook.com/" + this.props.currentUser.userid + "/picture?type=large"} alt="Minying Cao Profile" width="300px" />
             </div>
             <div className="col-md">
               {this.state.loading ? null : <EditInformation currentUser={this.props.currentUser} parent="Settings" onSubmit="save-settings" />}

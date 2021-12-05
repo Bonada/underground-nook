@@ -13,7 +13,7 @@ h1.page-header{
 div.offset-md-1.col-md-8{
   margin-left: 6% !important;
 }
-p.page-caption{
+p#AboutUs-page-caption{
   font-family: 'Petrona', serif;
   font-style: italic;
   font-weight: 300;
@@ -36,7 +36,7 @@ div.col-md-5{
     margin-left: 3%;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 905px)  {
+@media screen and (min-width: 768px) and (max-width: 918px)  {
   img.minying{
     max-width: 95%;
   }
