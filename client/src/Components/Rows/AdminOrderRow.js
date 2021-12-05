@@ -17,6 +17,7 @@ function AdminOrderRow(props) {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        plants: props.order.plants,
                         id: props.order.id
                     })
                 })

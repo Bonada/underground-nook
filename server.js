@@ -645,7 +645,8 @@ app.post('/remove-from-cart', async (req, res) => {
 // Add timestamp to this api with order
 app.post('/place-order', async (req, res) => {
 
-    console.log("adding new plant");
+    console.log("adding new order");
+    console.log(req.body);
     let id = uuidv4();
     let username = req.body.username;
     let userid = req.body.userid;
@@ -793,6 +794,7 @@ app.post('/update-order' , async (req, res) =>{
 app.delete('/delete-order', async (req, res) => {
 
   let id = req.body.id;
+  let plants = req.body.plants;
 
   try {
 
@@ -801,6 +803,12 @@ app.delete('/delete-order', async (req, res) => {
       // await client.connect();
       let db = client.db('main');
       let collection = db.collection('orders');
+      let plantsdb = db.collection('plants');
+
+      for(plantid of plants){
+        plantsdb.updateOne({id: plantid}, {$set:{availability: true}});
+      }
+
       let document = await collection.deleteOne({id: id});
 
       console.log("Deleted: ", document);
