@@ -106,7 +106,7 @@ function AddressModal(props) {
         <input className="input-box-modal form-control" type="text" placeholder="Enter Street Address" id="streetAddress" onChange={updateAddress} /> :
         <input className="input-box-modal form-control" type="text" value={oldaddress.address} id="streetAddress" onChange={updateAddress} />;
     const aptno_input = props.isNew ?
-        <input className="input-box-modal form-control" type="text" placeholder="Enter Apt/Suite No." id="aptno" onChange={updateAddress} /> :
+        <input className="input-box-modal form-control" type="text" placeholder="Enter Apt/Suite No." id="aptno" onChange={updateAptno} /> :
         <input className="input-box-modal form-control" type="text" value={oldaddress.aptno} id="aptno" onChange={updateAptno} />;
     const city_input = props.isNew ?
         <input className="input-box-modal form-control" type="text" placeholder="Enter City" id="city" onChange={updateCity} /> :

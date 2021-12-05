@@ -3,8 +3,7 @@ import { Redirect } from "react-router-dom";
 import './Cart.css';
 import '../Components/Navigation/Navigation.css';
 import CartItemCard from '../Components/Cards/CartItemCard.js'
-import CartAddresses from '../Components/CartAddresses.js'
-import AddressCard from '../Components/Cards/AddressCard.js'
+import AddressRadio from '../Components/AddressRadio.js'
 import AddPlantModal from '../Components/Modals/AddPlantModal.js'
 import AddressModal from '../Components/Modals/AddressModal.js'
 
@@ -243,22 +242,19 @@ export default class Cart extends React.Component {
                         <h2 className="AccordianSubtitle">Select or Add an Address:</h2>
                         <div className="container addresses-container">
                           <div className="row">
-
-                            <div className="col-sm">
-                              <div className="card h-100 cart" style={{width: '18rem'}} data-bs-toggle="modal" data-bs-target="#addAddressModal">
-                                <div className="card-body align-items-center d-flex justify-content-center">
-                                  <h5 className="card-title">+ Add Address</h5>
-                                </div>
-                              </div>
-                            </div>
-
                             {this.state.loading ? (null) : this.state.addresses.map((address, index) => {
                               return (
                                 <div className="col-sm">
-                                  <AddressCard key={"Address " + index} id={"address" + index} address={address} onClick={() => this.chooseAddress(address, index)} isCart={true} />
+                                  <AddressRadio key={"Address " + index} id={"address" + index} address={address} onClick={() => this.chooseAddress(address, index)} isCart={true} />
                                 </div>
                               );
                             })}
+
+                            <div className="col-sm">
+                              <a className="align-items-center d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#addAddressModal">
+                                <h5 className="card-title">+ Add Address</h5>
+                              </a>
+                            </div>
 
                           </div>
                         </div>
@@ -267,11 +263,11 @@ export default class Cart extends React.Component {
                   </div>
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="panelsStayOpen-headingTwo">
-                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                      <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
                         <h1 className="AccordianTitle">Select Shipping Carrier</h1>
                       </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                    <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
                       <div className="accordion-body">
                         <div className="radio 1">
                           <input id="USPS" name="radio 1" type="radio" value="USPS" defaultChecked></input>
@@ -286,11 +282,11 @@ export default class Cart extends React.Component {
                   </div>
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="panelsStayOpen-headingThree">
-                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                      <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
                         <h1 className="AccordianTitle">Select Payment Method</h1>
                       </button>
                     </h2>
-                    <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                    <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
                       <div className="accordion-body">
                         <h2 className="AccordianSubtitle">Select a Payment Method:</h2>
                         <div className="PaymentSelection">
