@@ -153,7 +153,7 @@ export default class Cart extends React.Component {
                   <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                     <div className="accordion-body">
                       <div className="radio 1">
-                        <input id="USPS" name="radio 1" type="radio" checked></input>
+                        <input id="USPS" name="radio 1" type="radio"></input>
                         <label htmlFor="USPS" className="radio-label"> USPS - 3-Day Shipping ($14 for small orders | $15+ for larger orders with multiple items)</label>
                       </div>
                       <div className="radio 1">
@@ -174,7 +174,7 @@ export default class Cart extends React.Component {
                       <h2 className="AccordianSubtitle">Select a Payment Method:</h2>
                       <div className="PaymentSelection">
                         <div className="radio 2">
-                          <input id="PayPal" name="radio 2" type="radio" checked></input>
+                          <input id="PayPal" name="radio 2" type="radio"></input>
                           <label htmlFor="PayPal" className="radio-label"> PayPal</label>
                         </div>
                         <div className="radio 2">
@@ -182,7 +182,7 @@ export default class Cart extends React.Component {
                           <label  htmlFor="Venmo" className="radio-label"> Venmo</label>
                         </div>
                         <div className="radio 2">
-                          <input id="Zelle" name="radio 2" type="radio" checked></input>
+                          <input id="Zelle" name="radio 2" type="radio"></input>
                           <label htmlFor="Zelle" className="radio-label"> Zelle</label>
                         </div>
                         <div className="radio 2">
@@ -429,16 +429,10 @@ export default class Cart extends React.Component {
                       <br />
                       <input className="input-box-modal form-control" type="text" placeholder="Enter Price" id="streetAddress" />
                     </div>
-                    <p className="field-name">
-                      Upload Image
-                    </p>
                     <div className="mb-3" id="Cart-Image-Upload">
-                      <label htmlFor="file-upload" class="custom-file-upload">
-                          <i class="ri-image-add-fill"></i>
-                          <p>Drop your image here, or browse</p>
-                          <p>Supports: JPG, PNG</p>
-                      </label>
-
+                      <label for="fileUpload" className="form-label">Upload Screenshot</label>
+                      <br />
+                      <input type="file" className="input-box-modal form-control" id="fileUpload" name="file" accept="image/*"></input>
                     </div>
                   </form>
 

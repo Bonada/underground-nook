@@ -130,6 +130,7 @@ button#LogoutBtn{
     border-color: transparent;
     border: 2px solid transparent;
     border-radius: 50px !important;
+    padding: 3px 10px;
 }
 button#LogoutBtn:hover{
     background-color: transparent;
@@ -138,9 +139,12 @@ button#LogoutBtn:hover{
 button.dropbtn.btn p{
     font-size: 17px;
     margin-bottom: 0px;
-    margin-top: 1.5em;
+    margin-top: 1.45em;
     color: #E5E5E5;
     font-family: 'Raleway', sans-serif;
+}
+button.dropbtn.btn{
+    padding-bottom: 13px;
 }
 
 /* CSS For the Admin Navbar*/

@@ -10,7 +10,7 @@ function About() {
         <div className="row">
           <div className="offset-md-1 col-md-8">
             <h1 className="page-header">About Us</h1>
-            <p className="page-caption">Underground Nook is an NYC-based company dedicated to selling plants.</p>
+            <p className="page-caption" id="AboutUs-page-caption">Underground Nook is an NYC-based company dedicated to selling plants.</p>
           </div>
         </div><div className="container-fluid">
           <div className="row cards">

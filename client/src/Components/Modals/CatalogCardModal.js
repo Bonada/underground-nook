@@ -50,7 +50,7 @@ function CatalogCardModal(props) {
           </div>
         </div>
         <div className="catalog modal-footer">
-          <button className="cart-button" type="button" data-bs-dismiss="modal" onClick={handleSubmit.bind(null, props.plant.id, props.currentUser.userid)}>Add to Cart</button>
+          <button className="cart-button" type="button" id="CatalogCardSubmit" data-bs-dismiss="modal" onClick={handleSubmit.bind(null, props.plant.id, props.currentUser.userid)}>Add to Cart</button>
         </div>
       </div>
     </div>

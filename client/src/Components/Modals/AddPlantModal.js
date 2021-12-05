@@ -102,23 +102,19 @@ function AddPlantModal(props){
                                     <br />
                                     <input onChange={changePrice}  className="input-box-modal form-control" type="text" placeholder="Enter a Price" id="price" />
                                 </div>
-                                <p className="field-name">
-                                    Upload Image
-                                </p>
                                 <div className="mb-3">
-                                        <label htmlFor="file-upload-add" class="custom-file-upload">
-                                            <i class="ri-image-add-fill"></i>
-                                            <p>Drop your image here, or browse</p>
-                                            <p>Supports: JPG, PNG</p>
-                                        </label>
-                                    <input onChange={changeFiles} id="file-upload-add" type="file"/>
+                                <div className="mb-3">
+                                    <label for="fileUpload" className="form-label">Upload Screenshot</label>
+                                    <br />
+                                    <input type="file" onChange={changeFiles} className="input-box-modal form-control" id="fileUpload" name="file" accept="image/*"></input>
+                                </div>
                                 </div>
                                 <div id="filename" className="mb-3">
                                     
                                 </div>
                             </form>
                             <div className="flex-box-submit-button">
-                                <button onClick={handleSubmit} className="cart-button" id="AddPlantButton" type="submit" data-bs-dismiss="modal" >Add Plant</button>
+                                <button onClick={handleSubmit} className="cart-button" id="AddPlantModalButton" type="submit" data-bs-dismiss="modal" >Add Plant</button>
                             </div>
                         </div>
                     </div>

@@ -26,6 +26,30 @@ div.offset-md-1.col-md-3{
     margin-left: 6% !important;
 }
 
+h2.catalog-card-title.card-title.col-md-7{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+div.row h2{
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    color: #E5E5E5;
+}
+h5.card-title{
+    font-size: 19px;
+}
+
+div.row p{
+    font-family: 'Avenir', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    color: #26222E;
+}
+
 .catalog-img {
     width: 90%;
     margin-left: 5%;
@@ -58,7 +82,7 @@ div.cards {
 .catalog-card {
     font-family: 'Scope One', 'Serif';
     background-color: #FBFBEF;
-    color: #000000;
+    color: #26222E;
     min-height: 28rem;
     margin-bottom: 10%;
 }
