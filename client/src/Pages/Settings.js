@@ -31,8 +31,6 @@ export default class Settings extends React.Component {
     }
   }
 
-
-
   // Get user addresses with api call
 
   render() {
@@ -41,10 +39,10 @@ export default class Settings extends React.Component {
         <div className="container basic-user-info-container">
           <div className="row">
             <div className="col-md">
-              <img className="profile-picture" src={"https://graph.facebook.com/" + this.props.currentUser.userid + "/picture?type=large"} alt="Minying Cao Profile" width="300px" />
+              {/* <img className="profile-picture" src={"https://graph.facebook.com/" + this.props.currentUser.userid + "/picture?type=large"} alt="Minying Cao Profile" width="300px" /> */}
             </div>
             <div className="col-md">
-              {this.state.loading ? null : <EditInformation currentUser={this.props.currentUser} parent="Settings" onSubmit="save-settings" />}
+              {this.state.loading ? null : <EditInformation currentUser={this.props.currentUser} parent="Settings" />}
             </div>
           </div>
         </div>
@@ -65,7 +63,8 @@ export default class Settings extends React.Component {
               console.log(address, index);
               return (<div className="col-sm">
                 <AddressCard key={"address " + index} address={address}
-                  onClick={() => {this.setState({ currentIndex: index }); console.log(this.state.currentIndex)}} />
+                  onClick={() => { this.setState({ currentIndex: index }); console.log(this.state.currentIndex) }}
+                  handleDelete={() => { this.deleteAddress() }} />
               </div>);
             }))}
           </div>
@@ -100,6 +99,8 @@ export default class Settings extends React.Component {
             this.setState({
               addresses: data.addresses
             });
+            this.props.currentUser.email = data.email;
+            this.props.currentUser.phonenumber = data.phonenumber;
           }
           this.setState({
             loading: false,
@@ -107,5 +108,30 @@ export default class Settings extends React.Component {
 
         }
       });
+  }
+
+  async deleteAddress() {
+    fetch('http://localhost:3030/delete-address', {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        userid: this.props.currentUser.userid,
+        old: this.state.addresses[this.state.currentIndex]
+      })
+    })
+      .then(async addaddress_response => {
+        const data = await addaddress_response.json()
+        console.log(data);      
+        setTimeout(() => {
+        window.location.reload();
+    }, 50);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+
   }
 }

@@ -234,15 +234,13 @@ app.post('/edit-address' , async (req, res) =>{
     }
   })
 
-  app.post('/edit-info' , async (req, res) =>{
+  app.delete('/delete-address' , async (req, res) =>{
 
     console.log("looking for user");
     let userid = req.body.userid;
     console.log(userid);
 
-    let old = req.body.oldaddress;
-
-    let update = req.body.newaddress;
+    let old = req.body.old;
   
     try {
         // await client.connect();
@@ -253,8 +251,14 @@ app.post('/edit-address' , async (req, res) =>{
   
         console.log(existinguser);
         if(existinguser){
-            let index = existinguser.addresses.indexOf(old);
-            existinguser.addresses[index] = update;
+            console.log(old);
+            let index = existinguser.addresses.findIndex(function(item, i){
+                return item.address === old.address;
+              });
+            let addrarray = existinguser.addresses;
+            addrarray.splice(index, 1);
+            users.updateOne({userid: userid}, {$set:{addresses: addrarray}});
+            console.log(existinguser);
             res.send(existinguser);
         }
         else {
@@ -266,8 +270,50 @@ app.post('/edit-address' , async (req, res) =>{
     } catch (e) {
         res.status(400);
         res.json({
+            error: e,
             success: false,
-            err: 'User ' + userid + 'does not exist'
+            err: 'Edit Address failed'
+        });
+    }
+  })
+
+
+  app.post('/edit-info' , async (req, res) =>{
+
+    console.log("looking for user");
+    let userid = req.body.userid;
+    console.log(userid);
+
+    let name = req.body.name;
+    let email = req.body.email;
+    let phonenumber = req.body.phonenumber;
+    console.log(req.body);
+    try {
+        // await client.connect();
+        let db = client.db('main');
+        let users = db.collection('users');
+  
+        let existinguser = await users.findOne({userid:userid});
+  
+        console.log(existinguser);
+        if(existinguser){
+            users.updateOne({userid: userid}, {$set:{username: name, email: email, phonenumber: phonenumber}});
+            res.json({
+                success: true,
+                err: 'User ' + userid + ' updated'
+            })
+        }
+        else {
+          res.json({
+            success: false,
+            err: 'User ' + userid +  ' does not exist'
+          });
+        }
+    } catch (e) {
+        res.status(400);
+        res.json({
+            success: false,
+            err: 'Failed to edit'
         });
     }
   })
