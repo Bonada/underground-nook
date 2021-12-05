@@ -133,7 +133,7 @@ function EditPlantModal(props) {
                                     <input onChange={changeprice} className="input-box-modal form-control" type="text" placeholder="Price" id="price" />
                                 </div>
                                 <div className="mb-3">
-                                    <label for="fileUpload" className="form-label">Upload Screenshot</label>
+                                    <label htmlFor="fileUpload" className="form-label">Upload Screenshot</label>
                                     <br />
                                     <input type="file" onChange={changefiles} className="input-box-modal form-control" id="fileUpload" name="file" accept="image/*"></input>
                                 </div>

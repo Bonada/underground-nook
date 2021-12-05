@@ -25,7 +25,7 @@ function AdminEditRow(props) {
             <td className="price-col">$15</td>
             <td className="edit-col">
             <div className="edit-container">
-                <i class="ri-pencil-line"></i>
+                <i className="ri-pencil-line"></i>
                 <a href="#" onClick={props.onClick} className="card-link" data-bs-toggle="modal" data-bs-target="#editPlantModal">Edit</a>
             </div>
             
