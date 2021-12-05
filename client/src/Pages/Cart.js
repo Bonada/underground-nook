@@ -136,10 +136,17 @@ export default class Cart extends React.Component {
     .then(response => response.json())
     .then(data => {
       console.log(data);
-      this.setState({
-        address_loading: false,
-        addresses: data
-      });
+      if (data.success !== false) {
+        if (data.addresses && data.addresses.length !== 0) {
+          this.setState({
+            addresses: data.addresses
+          });
+        }
+        this.setState({
+          address_loading: false,
+        });
+
+      }
     })
     .catch(e => console.log(e));
   }
@@ -251,7 +258,7 @@ export default class Cart extends React.Component {
                   </div>
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="panelsStayOpen-headingTwo">
-                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
                         <h1 className="AccordianTitle">Select Shipping Carrier</h1>
                       </button>
                     </h2>
@@ -270,7 +277,7 @@ export default class Cart extends React.Component {
                   </div>
                   <div className="accordion-item">
                     <h2 className="accordion-header" id="panelsStayOpen-headingThree">
-                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
                         <h1 className="AccordianTitle">Select Payment Method</h1>
                       </button>
                     </h2>
