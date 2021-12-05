@@ -131,7 +131,7 @@ function AddPlantModal(props){
                                 </div>
                             </form>
                             <div className="flex-box-submit-button">
-                                <button onClick={(e) => handleSubmit(e, props.type, props.userid)} className="cart-button" id="AddPlantButton" type="submit" data-bs-dismiss="modal" >Add Plant</button>
+                                <button onClick={(e) => handleSubmit(e, props.type, props.userid)} className="cart-button" id="AddPlantModalButton" type="submit" data-bs-dismiss="modal" >Add Plant</button>
                             </div>
                         </div>
                     </div>
