@@ -24,7 +24,18 @@ export default class Cart extends React.Component {
     };
   }
 
-  handleSubmit(name, street, city, state, zip, shipping_radios, payment_radios) {
+  handleSubmit(shipping_radios, payment_radios) {
+    if (!this.state.selected_address) {
+      alert('Please select an address');
+      return;
+    }
+
+    let name = this.props.currentUser.username;
+    let street = this.state.selected_address.address;
+    let aptno = this.state.selected_address.aptno;
+    let city = this.state.selected_address.city;
+    let state = this.state.selected_address.state;
+    let zip = this.state.selected_address.zip;
     let payment_username = document.getElementById('PaymentUsername').value;
     if (payment_username == "") {
       alert('Please provide payment username info');
@@ -61,6 +72,7 @@ export default class Cart extends React.Component {
         price: this.state.price,
         address_name: name,
         address_st: street,
+        address_aptno: aptno,
         address_city: city,
         address_state: state,
         address_zip: zip,
@@ -322,7 +334,7 @@ export default class Cart extends React.Component {
                 </div>
                 {this.state.size &&
                   <button type = "button" id="cart-placeOrder" className="PlaceOrder-button" onClick={
-                    this.handleSubmit.bind(this, "Minying Cao", "1761 15th St", "Troy", "NY", "12180", document.getElementsByName('radio 1'), document.getElementsByName('radio 2'))
+                    this.handleSubmit.bind(this, document.getElementsByName('radio 1'), document.getElementsByName('radio 2'))
                   }>
                       Place Order
                   </button>

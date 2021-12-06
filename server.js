@@ -656,6 +656,7 @@ app.post('/place-order', async (req, res) => {
     let price = req.body.price;
     let address_name = req.body.address_name;
     let address_st = req.body.address_st;
+    let address_aptno = req.body.aptno;
     let address_city = req.body.address_city;
     let address_state = req.body.address_state;
     let address_zip = req.body.address_zip;
@@ -674,7 +675,7 @@ app.post('/place-order', async (req, res) => {
           plants: plantids,
           time: time,
           address: address_st,
-          aptno: "",
+          aptno: address_aptno,
           city: address_city,
           state: address_state,
           zip: address_zip,
