@@ -21,7 +21,6 @@ function AdminOrderRow(props) {
                         id: props.order.id
                     })
                 })
-        window.location.reload(false);
     }
 
     return (
@@ -36,7 +35,7 @@ function AdminOrderRow(props) {
             <td>{props.order.state}</td>
             <td>{props.order.zip}</td>
             <td>{props.order.shippingcarrier}</td>
-            <td>{props.order.paystatus}</td>
+            <td>{props.order.orderstatus}</td>
             <td>{props.order.price}</td>
 
             <td className="edit-col">

@@ -105,11 +105,7 @@ export default function Navigation(props) {
           setRedirect("/NewUser");
         }
         else {
-          setUserInfo({
-            userid: fb_response.id,
-            username: fb_response.name,
-            email: fb_response.email
-          });
+          setUserInfo(data);
           handleUserLogin(fb_response.id, true);
         }
       })

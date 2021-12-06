@@ -124,6 +124,7 @@ export default class Cart extends React.Component {
   }
 
   chooseAddress(a, i) {
+    console.log(this.state);
     console.log(a);
     this.setState({
       selected_address: a
