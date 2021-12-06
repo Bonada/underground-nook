@@ -81,12 +81,6 @@ export default function Navigation(props) {
     FB.api('/me', {fields: 'name, email, picture'}, function(fb_response) {
       console.log(fb_response);
 
-      setUserInfo({
-        userid: fb_response.id,
-        username: fb_response.name,
-        email: fb_response.email
-      });
-
       // If user doesn't exist in database, redirect to registration
       fetch('http://localhost:3030/get-user', {
         method: 'POST',
@@ -111,6 +105,11 @@ export default function Navigation(props) {
           setRedirect("/NewUser");
         }
         else {
+          setUserInfo({
+            userid: fb_response.id,
+            username: fb_response.name,
+            email: fb_response.email
+          });
           handleUserLogin(fb_response.id, true);
         }
       })

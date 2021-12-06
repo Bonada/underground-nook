@@ -70,6 +70,7 @@ function AddPlantModal(props){
                     })
                 })
                 // Reload cart page for new item to show up
+                window.location.reload(false);
             }
             else {
                 fetch("http://localhost:3030/add-plant", {

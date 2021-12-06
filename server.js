@@ -300,14 +300,14 @@ app.post('/add-plant', async (req, res) => {
 
         res.json({
             success: true,
-            err: 'Plant ' + scientific_name + 'added to database'
+            err: 'Plant ' + species_name + 'added to database'
         });
     } catch (e) {
         console.log(e);
         res.status(400);
         res.json({
             success: false,
-            err: 'Error adding ' + scientific_name + 'to database'
+            err: 'Error adding ' + species_name + 'to database'
         });
     }
 })
