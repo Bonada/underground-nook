@@ -38,7 +38,9 @@ button.PlaceOrder-button:hover{
     background: transparent;
 }
 
-
+.cart-item-price {
+    color: #E5E5E5 !important;
+}
 
 /* CSS for the Your Order Section */
 h1.YourOrderTitle{

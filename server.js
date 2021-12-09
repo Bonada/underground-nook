@@ -328,10 +328,6 @@ app.post('/add-purge-plant', async (req, res) => {
     let newPlant = {id: id, species_name: species_name, common_name: common_name, description: description, price: price, img_url: img, availability: false};
 
     let db = client.db('main');
-    db.collection('plants').insertOne(newPlant);
-
-    console.log("added new purge plant");
-
     let carts = db.collection('carts');
     let user_cart = await carts.findOne({userid: userid});
 

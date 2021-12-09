@@ -12,7 +12,7 @@ function CartItemCard(props) {
             </div>
             <div className="row">
               <div className="col-md-10">
-                <p className="order-price col">${props.plant.price}</p>
+                <p className="order-price col cart-item-price">${props.plant.price}</p>
               </div>
               <div className="col-md-1" onClick={props.handleRemove}>
                 <i className="fa fa-trash-o fa-lg" aria-hidden="true"></i>

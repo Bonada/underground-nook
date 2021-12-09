@@ -8,21 +8,6 @@ function AdminOrderRow(props) {
         document.getElementById("row-10028492").classList.add("displayed-row");
     }
 
-    function handleDeleteClicked() {
-        hideRow();
-        fetch("http://localhost:3030/delete-order", {
-                    method: 'DELETE',
-                    mode: 'cors',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        plants: props.order.plants,
-                        id: props.order.id
-                    })
-                })
-    }
-
     return (
         <tr id="row-10028492" className="displayed-row">
             <th scope="row">
@@ -46,7 +31,7 @@ function AdminOrderRow(props) {
                 
                 <div className="edit-container">
                     <i className="ri-delete-bin-line"></i>
-                    <a href="#" className="card-link" onClick={handleDeleteClicked}>Remove</a>
+                    <a className="card-link" onClick={props.handleDeleteClicked}>Remove</a>
                 </div>
             </td>
             {/* <EditOrderModal /> */}

@@ -22,6 +22,28 @@ export default class AdminViewOrders extends React.Component{
     this.populateAdminOrders();
   }
 
+  handleDeleteClicked(plants, id) {
+      fetch("http://localhost:3030/delete-order", {
+          method: 'DELETE',
+          mode: 'cors',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              plants: plants,
+              id: id
+          })
+      })
+      .then(async response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert("Order removed");
+          this.populateAdminOrders();
+        }
+      })
+      .catch(e => console.log(e));
+  }
+
   render(){
 
     const headers = [
@@ -44,6 +66,7 @@ export default class AdminViewOrders extends React.Component{
                 key={"catrow"+index}
                 order={order}
                 onClick={() => this.setState({currentIndex: index})}
+                handleDeleteClicked={this.handleDeleteClicked.bind(this, order.plants, order.id)}
               />;
     });
 
@@ -60,7 +83,7 @@ export default class AdminViewOrders extends React.Component{
             </div>
           </div>
         </div>
-        {this.state.loading ? (null) : <EditOrderModal order={this.state.orders[this.state.currentIndex]}/>}
+        {this.state.loading || this.state.orders == 0 ? (null) : <EditOrderModal order={this.state.orders[this.state.currentIndex]}/>}
       <ExportDataModal></ExportDataModal>
       </div>
     );
