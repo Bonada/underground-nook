@@ -54,7 +54,7 @@ function AddPlantModal(props){
             // this.setState({img: response['data']['url']});
 
             if (type == "purge") {
-                fetch("api/add-purge-plant", {
+                fetch("http://localhost:3030/add-purge-plant", {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -73,7 +73,7 @@ function AddPlantModal(props){
                 window.location.reload(false);
             }
             else {
-                fetch("api/add-plant", {
+                fetch("http://localhost:3030/add-plant", {
                     method: 'POST',
                     mode: 'cors',
                     headers: {

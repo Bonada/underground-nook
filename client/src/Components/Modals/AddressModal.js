@@ -52,7 +52,7 @@ function AddressModal(props) {
         if (props.isNew) {
             console.log("adding");
             // Call add address endpoint
-            fetch('api/add-address', {
+            fetch('http://localhost:3030/add-address', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -74,7 +74,7 @@ function AddressModal(props) {
             // Call edit address endpoint
             console.log("editing");
             console.log(oldaddress);
-            fetch('api/edit-address', {
+            fetch('http://localhost:3030/edit-address', {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

@@ -71,7 +71,7 @@ export default class OrderPage extends React.Component {
     // console.log(this.props);
     // let id = this.props.currentUser['userid'];
     // alert(id);
-    fetch("api/get-order", {
+    fetch("http://localhost:3030/get-order", {
               method: 'POST',
               mode: 'cors',
               headers: {
@@ -88,7 +88,7 @@ export default class OrderPage extends React.Component {
                 order: data
               });
 
-			  fetch("api/get-order-plants", {
+			  fetch("http://localhost:3030/get-order-plants", {
 					method: 'POST',
 					mode: 'cors',
 					headers: {

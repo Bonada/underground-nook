@@ -58,7 +58,7 @@ export default class AdminEditCatalog extends React.Component {
   }
 
   async populateAdminCatalog() {
-    fetch("api/get-plants", {
+    fetch("http://localhost:3030/get-plants", {
             method: 'GET',
             mode: 'cors'
         })

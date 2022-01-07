@@ -58,7 +58,7 @@ export default class Cart extends React.Component {
       }
     }
 
-    fetch("api/place-order", {
+    fetch("http://localhost:3030/place-order", {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -96,7 +96,7 @@ export default class Cart extends React.Component {
   }
 
   handleRemove(pid) {
-    fetch("api/remove-from-cart", {
+    fetch("http://localhost:3030/remove-from-cart", {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -145,7 +145,7 @@ export default class Cart extends React.Component {
   }
 
   async getAddresses() {
-    fetch("api/get-addresses", {
+    fetch("http://localhost:3030/get-addresses", {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -176,7 +176,7 @@ export default class Cart extends React.Component {
   async getCartItems() {
     console.log("fetching cart");
 
-    fetch("api/get-cart", {
+    fetch("http://localhost:3030/get-cart", {
       method: 'POST',
       mode: 'cors',
       headers: {
