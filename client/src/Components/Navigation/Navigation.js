@@ -52,7 +52,7 @@ export default function Navigation(props) {
     // Check initial login status
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
-        fetch('/api/get-user', {
+        fetch('api/get-user', {
           method: 'POST',
           mode: 'cors',
           headers: {
@@ -82,7 +82,7 @@ export default function Navigation(props) {
       console.log(fb_response);
 
       // If user doesn't exist in database, redirect to registration
-      fetch('/api/get-user', {
+      fetch('api/get-user', {
         method: 'POST',
         mode: 'cors',
         headers: {
@@ -116,7 +116,7 @@ export default function Navigation(props) {
   }
 
   const addUser = (user) => {
-    fetch('/api/add-user', {
+    fetch('api/add-user', {
         method: 'POST',
         mode: 'cors',
         headers: {

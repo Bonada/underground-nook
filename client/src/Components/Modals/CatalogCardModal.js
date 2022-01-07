@@ -6,7 +6,7 @@ function CatalogCardModal(props) {
       alert("Log in to purchase plants");
       return;
     }
-    fetch("/api/add-to-cart", {
+    fetch("api/add-to-cart", {
       method: 'POST',
       mode: 'cors',
       headers: {

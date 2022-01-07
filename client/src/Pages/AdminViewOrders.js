@@ -23,7 +23,7 @@ export default class AdminViewOrders extends React.Component{
   }
 
   handleDeleteClicked(plants, id) {
-      fetch("/api/delete-order", {
+      fetch("api/delete-order", {
           method: 'DELETE',
           mode: 'cors',
           headers: {
@@ -90,7 +90,7 @@ export default class AdminViewOrders extends React.Component{
   }
 
   async populateAdminOrders() {
-    fetch("/api/get-orders", {
+    fetch("api/get-orders", {
             method: 'GET',
             mode: 'cors'
         })

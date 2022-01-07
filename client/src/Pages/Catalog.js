@@ -56,7 +56,7 @@ export default class Catalog extends React.Component {
   }
 
   async populateCards() {
-    fetch("/api/get-available-plants", {
+    fetch("api/get-available-plants", {
             method: 'GET',
             mode: 'cors'
         })

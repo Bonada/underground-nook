@@ -76,7 +76,7 @@ export default class Admin extends React.Component {
     }
 
   async populateAdminCatalog() {
-    fetch("/api/get-plants", {
+    fetch("api/get-plants", {
             method: 'GET',
             mode: 'cors'
         })
@@ -88,7 +88,7 @@ export default class Admin extends React.Component {
             });
           });
 
-  fetch("/api/get-orders", {
+  fetch("api/get-orders", {
     method: 'GET',
     mode: 'cors'
     })
