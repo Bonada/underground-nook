@@ -82,7 +82,7 @@ export default class Settings extends React.Component {
   }
 
   async populateAddresses() {
-    fetch("http://localhost:3030/get-addresses", {
+    fetch("api/get-addresses", {
       method: 'POST',
       mode: 'cors',
       headers: {

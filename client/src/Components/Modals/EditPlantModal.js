@@ -60,7 +60,7 @@ function EditPlantModal(props) {
                 console.log(response['data']['url']);
                 imageurl = response['data']['url'];
 
-                fetch("http://localhost:3030/update-plant", {
+                fetch("api/update-plant", {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
@@ -80,7 +80,7 @@ function EditPlantModal(props) {
         }
         else{
 
-            fetch("http://localhost:3030/update-plant", {
+            fetch("api/update-plant", {
                         method: 'POST',
                         mode: 'cors',
                         headers: {

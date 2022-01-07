@@ -4,7 +4,7 @@ function AdminEditRow(props) {
 
     function deletePlant(event){
         alert(id + "DELETED");
-        fetch("http://localhost:3030/delete-plant", {
+        fetch("api/delete-plant", {
                     method: 'DELETE',
                     mode: 'cors',
                     headers: {

@@ -34,7 +34,7 @@ export default function Home(props) {
     <div className="rectangle4"></div>
   */
   // async getPlants() {
-  //   fetch("http://localhost:3030/get-plants", {
+  //   fetch("api/get-plants", {
   //           method: 'GET',
   //           mode: 'cors'
   //       })
