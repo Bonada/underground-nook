@@ -80,7 +80,7 @@ function EditOrderModal(props) {
         let floatprice = parseFloat(price);
 
 
-            fetch("http://localhost:3030/update-order", {
+            fetch("/api/update-order", {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

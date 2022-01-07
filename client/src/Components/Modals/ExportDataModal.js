@@ -15,7 +15,7 @@ function ExportDataModal(handleSubmit) {
     }
 
     function getCSV(event){
-        fetch("http://localhost:3030/get-csv", {
+        fetch("/api/get-csv", {
             method: 'POST',
             mode: 'cors',
             headers: {

@@ -59,7 +59,7 @@ export default class Orders extends React.Component {
     console.log(this.props);
     let id = this.props.currentUser['userid'];
     // alert(id);
-    fetch("http://localhost:3030/get-user-orders", {
+    fetch("/api/get-user-orders", {
       method: 'POST',
       mode: 'cors',
       headers: {
