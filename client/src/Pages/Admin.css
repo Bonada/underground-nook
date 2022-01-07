@@ -3,7 +3,7 @@
     font-family: 'Scope One', serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 45px;
     padding-top: 4%;
     color: #E5E5E5;
 }
@@ -15,6 +15,9 @@ div#AdminDashboardPageContainer.container{
 div#AdminDashboardPage{
     padding-left: 6%;
     padding-right: 6%;
+    font-family: "Avenir";
+    font-size: 20px;
+    text-align: center;
 }
 
 #AdminDashboardPage .edit-catalog-pane {
@@ -47,13 +50,16 @@ div#AdminDashboardPage{
     border-color: transparent;
     border: 2px solid transparent;
     border-radius: 50px !important;
-    color: #000000;
+    color: #26222E;
+    font-family: "Avenir";
+    font-size: 20px;
+
 }
 
 #AdminDashboardPage .view-orders-button:hover, 
 #AdminDashboardPage .edit-catalog-button:hover {
     color: #6AA17B;
-    background: #26222E;
+    background: transparent;
     border-color: #6AA17B;
 }
 
@@ -63,4 +69,10 @@ div#AdminDashboardPage{
 
 #AdminDashboardPage .col-catalog {
     padding-left: 0px ;
+}
+
+.Adminlinks {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
 }

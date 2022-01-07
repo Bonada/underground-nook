@@ -1,14 +1,53 @@
 .catalog-card-title {
-    font-size: calc(5.5px + 1vw);
+    font-size: calc(9px + 1vmin);
 }
 
-.catalog-header {
-    font-family: 'Scope One', 'Serif';
+h1.catalog-header{
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 45px;
+    padding-top: 14%;
+    color: #E5E5E5;
 }
-
-.catalog-caption {
-    font-family: 'Scope One', 'Serif';
+p.catalog-caption{
+    font-family: 'Petrona', serif;
     font-style: italic;
+    font-weight: 300;
+    font-size: 25px;
+    color: #E5E5E5;
+}
+section.searchbar{
+    margin-left: 19%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+}
+div.offset-md-1.col-md-3{
+    margin-left: 6% !important;
+}
+
+h2.catalog-card-title.card-title.col-md-7{
+    font-size: 20px;
+    font-weight: 400;
+}
+
+div.row h2{
+    font-family: 'Scope One', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    color: #E5E5E5;
+}
+h5.card-title{
+    font-size: 19px;
+}
+
+div.row p{
+    font-family: 'Avenir', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    color: #26222E;
 }
 
 .catalog-img {
@@ -16,6 +55,8 @@
     margin-left: 5%;
     margin-top: 5%;
     margin-bottom: 5%;
+    object-fit: cover;
+    min-height: 24rem;
 }
 
 .catalog-card-title {
@@ -38,10 +79,12 @@ div.cards {
     text-align: right;
 }
 
-.catalog.card {
+.catalog-card {
     font-family: 'Scope One', 'Serif';
     background-color: #FBFBEF;
-    color: #000000;
+    color: #26222E;
+    min-height: 28rem;
+    margin-bottom: 10%;
 }
 
 #catalogModal {
@@ -50,29 +93,25 @@ div.cards {
 }
 
 button.cart-button {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 310px;
     background: #6AA17B;
     border-color: transparent;
     border: 2px solid transparent;
-    border-radius: 20px;
-    box-sizing: border-box;
-    color: #000000;
-    cursor: pointer;
+    border-radius: 50px !important;
+    color: #26222E;
+    margin: 40px;
+    margin-left: 80px;
     font-family: "Avenir";
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 24px;
-    opacity: 1;
-    padding: 8px 18px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    width: 100%;
-    word-break: break-word;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
 }
 
 button.cart-button:hover {
     color: #6AA17B;
-    background: #26222E;
+    background: transparent;
     border-color: #6AA17B;
 }
 
@@ -86,4 +125,14 @@ button.cart-button:focus {
 
 .catalog.modal-footer {
     border: none;
+}
+
+.searchbar {
+    width: 60%;
+}
+
+.col-md-2 {
+    display: inline-block;
+    margin-left: 3%;
+    margin-top: 2%;
 }

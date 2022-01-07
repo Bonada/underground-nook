@@ -3,7 +3,7 @@
     font-family: 'Scope One', serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 45px;
     padding-top: 4%;
     color: #E5E5E5;
 }
@@ -11,6 +11,8 @@
 div#AdminEditCatalogContainer.container {
     padding-top: 10%;
     margin-left: 0px;
+    font-family: "Avenir";
+    font-size: 20px;
 }
 
 div#AdminEditCatalog{
@@ -52,13 +54,13 @@ div#AdminEditCatalog{
 }
 
 #AdminEditCatalog .edit-col i {
-    color: #000000;
+    color: #26222E;;
     position: relative;
     top: 1.5px;
 }
 
 #AdminEditCatalog .edit-col a {
-    color: #000000;
+    color: #26222E;;
 }
 
 #AdminEditCatalog .edit-col .edit-container:hover > * {
@@ -69,7 +71,7 @@ div#AdminEditCatalog{
     text-align: center;
 }
 
-#AdminEditCatalog .add-plant-button{
+#AdminEditCatalog .add-plant-button, #AdminViewOrders .add-plant-button{
     text-decoration: none;
     padding: 10px 50px;
     background: #6AA17B;
@@ -77,12 +79,14 @@ div#AdminEditCatalog{
     border: 2px solid transparent;
     border-radius: 50px !important;
     color: #26222E;
-    font-weight: 500;
-    font-size: 1.1vw;
+    font-weight: 400;
+    font-size: 20px;
+    font-family: "Avenir";
     margin-bottom: 10px;
+    width:99%;
 }
-#AdminEditCatalog .add-plant-button:hover {
+#AdminEditCatalog .add-plant-button:hover, #AdminViewOrders .add-plant-button:hover {
     color: #6AA17B;
-    background: #26222E;
+    background: transparent;
     border-color: #6AA17B;
 }
