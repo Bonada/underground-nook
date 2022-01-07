@@ -7,6 +7,7 @@ const router = express.Router();
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://TestUser:TestUserPass@undergroundnook.lh3mc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect();
 
 router.post('/add-user', async (req, res) => {
 
